@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
+using System.Text.Json;
 using Weather.core.DTO;
 using Weather.infra.ExternalClients;
 
@@ -10,7 +12,8 @@ namespace Weather.api.Controllers
     {
         private readonly WeatherClient weatherClient;
 
-        public RemoteWeatherController(WeatherClient weatherClient)
+        public RemoteWeatherController(
+            WeatherClient weatherClient)
         {
             this.weatherClient = weatherClient;
         }
@@ -99,12 +102,12 @@ namespace Weather.api.Controllers
             {
                 var dto = await weatherClient.GetMunicipioAsync(codprovincia, codmunicipio);
                 if (dto == null)
-                    return NotFound(new { Message = $"Municipio {codmunicipio} no encontrado en provincia {codprovincia}" });
+                    return NotFound(new { message = $"municipio {codmunicipio} no encontrado en provincia {codprovincia}" });
                 return Ok(dto);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = "Error llamando a ElTiempo (detalle municipio)", Detail = ex.Message });
+                return StatusCode(500, new { message = "error llamando a eltiempo (detalle municipio)", detail = ex.Message });
             }
         }
     }

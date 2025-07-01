@@ -17,8 +17,5 @@ namespace Weather.core.DTO
 
         [JsonPropertyName("NOMBRE")]
         public string Nombre { get; set; } = null!;
-
-        [JsonPropertyName("fecha")]
-        public string Fecha { get; set; } = null!;
     }
 }

@@ -10,3 +10,4 @@ C:\Users\IRubio-WS\source\repos\Weather.api\Weather.core\obj\Debug\net8.0\Weathe
 C:\Users\IRubio-WS\source\repos\Weather.api\Weather.core\obj\Debug\net8.0\refint\Weather.core.dll
 C:\Users\IRubio-WS\source\repos\Weather.api\Weather.core\obj\Debug\net8.0\Weather.core.pdb
 C:\Users\IRubio-WS\source\repos\Weather.api\Weather.core\obj\Debug\net8.0\ref\Weather.core.dll
+C:\Users\IRubio-WS\source\repos\Weather.api\Weather.core\obj\Debug\net8.0\Weather.core.sourcelink.json

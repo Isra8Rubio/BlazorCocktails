@@ -1,8 +1,10 @@
-﻿using System;
+﻿using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Weather.core.DTO;
 using static System.Net.WebRequestMethods;
@@ -11,40 +13,55 @@ namespace Weather.infra.ExternalClients
 {
     public class WeatherClient
     {
-        private readonly HttpClient httpClient;
+        private readonly RestClient _restClient;
 
-        public WeatherClient(HttpClient httpClient)
+        public WeatherClient(RestClient restClient)
         {
-            this.httpClient = httpClient;
-            httpClient.BaseAddress = new Uri("https://www.el-tiempo.net/api/json/v2/");
+            _restClient = restClient;
         }
-
         public async Task<ProvinceResponseDTO?> GetProvinciasAsync()
         {
-            var response = await httpClient.GetAsync("provincias");
-            return await response.Content.ReadFromJsonAsync<ProvinceResponseDTO>();
+            var request = new RestRequest("provincias", Method.Get);
+            var response = await _restClient.ExecuteAsync<ProvinceResponseDTO>(request);
+            if (!response.IsSuccessful)
+                throw new Exception($"ElTiempo API error ({response.StatusCode}): {response.ErrorMessage}");
+            return response.Data;
         }
+
         public async Task<ProvinceDetailResponseDTO?> GetProvinciaDetailAsync(string codProvincia)
         {
-            var response = await httpClient.GetAsync($"provincias/{codProvincia}");
-            return await response.Content.ReadFromJsonAsync<ProvinceDetailResponseDTO>();
+            var request = new RestRequest($"provincias/{codProvincia}", Method.Get);
+            var response = await _restClient.ExecuteAsync<ProvinceDetailResponseDTO>(request);
+            if (!response.IsSuccessful)
+                throw new Exception($"ElTiempo API error ({response.StatusCode}): {response.ErrorMessage}");
+            return response.Data;
         }
+
         public async Task<HomeResponseDTO?> GetHomeAsync()
         {
-            var response = await httpClient.GetAsync("home");
-            return await response.Content.ReadFromJsonAsync<HomeResponseDTO>();
+            var request = new RestRequest("home", Method.Get);
+            var response = await _restClient.ExecuteAsync<HomeResponseDTO>(request);
+            if (!response.IsSuccessful)
+                throw new Exception($"ElTiempo API error ({response.StatusCode}): {response.ErrorMessage}");
+            return response.Data;
         }
+
         public async Task<MunicipioResponseDTO?> GetMunicipiosAsync(string codProvincia)
         {
-            var response = await httpClient.GetAsync($"provincias/{codProvincia}/municipios");
-            return await response.Content.ReadFromJsonAsync<MunicipioResponseDTO>();
+            var request = new RestRequest($"provincias/{codProvincia}/municipios", Method.Get);
+            var response = await _restClient.ExecuteAsync<MunicipioResponseDTO>(request);
+            if (!response.IsSuccessful)
+                throw new Exception($"ElTiempo API error ({response.StatusCode}): {response.ErrorMessage}");
+            return response.Data;
         }
+
         public async Task<MunicipioDetailResponseDTO?> GetMunicipioAsync(string codProvincia, string codMunicipio)
         {
-            // Example: GET https://www.el-tiempo.net/api/json/v2/provincias/28/municipios/28140
-            var response = await httpClient.GetAsync($"provincias/{codProvincia}/municipios/{codMunicipio}");
-            return await response.Content.ReadFromJsonAsync<MunicipioDetailResponseDTO>();
+            var request = new RestRequest($"provincias/{codProvincia}/municipios/{codMunicipio}", Method.Get);
+            var response = await _restClient.ExecuteAsync<MunicipioDetailResponseDTO>(request);
+            if (!response.IsSuccessful)
+                throw new Exception($"ElTiempo API error ({response.StatusCode}): {response.ErrorMessage}");
+            return response.Data;
         }
-        // restsharp
     }
 }

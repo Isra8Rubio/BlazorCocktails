@@ -13,3 +13,4 @@ C:\Users\IRubio-WS\source\repos\Weather.api\Weather.infra\obj\Debug\net8.0\Weath
 C:\Users\IRubio-WS\source\repos\Weather.api\Weather.infra\obj\Debug\net8.0\refint\Weather.infra.dll
 C:\Users\IRubio-WS\source\repos\Weather.api\Weather.infra\obj\Debug\net8.0\Weather.infra.pdb
 C:\Users\IRubio-WS\source\repos\Weather.api\Weather.infra\obj\Debug\net8.0\ref\Weather.infra.dll
+C:\Users\IRubio-WS\source\repos\Weather.api\Weather.infra\obj\Debug\net8.0\Weather.infra.sourcelink.json

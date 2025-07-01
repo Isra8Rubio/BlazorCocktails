@@ -11,11 +11,5 @@ namespace Weather.core.DTO
     {
         [JsonPropertyName("description")]
         public string Description { get; set; } = null!;
-
-        [JsonPropertyName("id")]
-        public string Id { get; set; } = null!;
-
-        [JsonPropertyName("temperatura_actual")]
-        public string TemperaturaActual { get; set; } = null!;
     }
 }
