@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36127.28 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.api", "Weather.api\Weather.api.csproj", "{8FEA8C4C-1D24-41E4-8C86-30A1BACCD4D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.core", "Weather.core\Weather.core.csproj", "{B75F8C27-7226-4AD8-9025-924FC309324D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.infra", "Weather.infra\Weather.infra.csproj", "{AC502747-7DE9-4EFE-B379-81C02744DC76}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8FEA8C4C-1D24-41E4-8C86-30A1BACCD4D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FEA8C4C-1D24-41E4-8C86-30A1BACCD4D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FEA8C4C-1D24-41E4-8C86-30A1BACCD4D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FEA8C4C-1D24-41E4-8C86-30A1BACCD4D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B75F8C27-7226-4AD8-9025-924FC309324D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B75F8C27-7226-4AD8-9025-924FC309324D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B75F8C27-7226-4AD8-9025-924FC309324D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B75F8C27-7226-4AD8-9025-924FC309324D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC502747-7DE9-4EFE-B379-81C02744DC76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC502747-7DE9-4EFE-B379-81C02744DC76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC502747-7DE9-4EFE-B379-81C02744DC76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC502747-7DE9-4EFE-B379-81C02744DC76}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {71819263-91BE-4D71-9686-5926B3E096D0}
+	EndGlobalSection
+EndGlobal

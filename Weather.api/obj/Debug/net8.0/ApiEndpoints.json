@@ -1,0 +1,145 @@
+[
+  {
+    "ContainingType": "Weather.api.Controllers.RemoteWeatherController",
+    "Method": "GetHomeAsync",
+    "RelativePath": "api/RemoteWeather/home",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Weather.core.DTO.HomeResponseDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Weather.api.Controllers.RemoteWeatherController",
+    "Method": "GetProvinciasAsync",
+    "RelativePath": "api/RemoteWeather/provincias",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Weather.core.DTO.ProvinciaDto, Weather.core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Weather.api.Controllers.RemoteWeatherController",
+    "Method": "GetProvinciaDetailAsync",
+    "RelativePath": "api/RemoteWeather/provincias/{codprovincia}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codprovincia",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Weather.core.DTO.ProvinceDetailResponseDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Weather.api.Controllers.RemoteWeatherController",
+    "Method": "GetMunicipiosAsync",
+    "RelativePath": "api/RemoteWeather/provincias/{codprovincia}/municipios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codprovincia",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Weather.core.DTO.MunicipioDTO, Weather.core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Weather.api.Controllers.RemoteWeatherController",
+    "Method": "GetMunicipioAsync",
+    "RelativePath": "api/RemoteWeather/provincias/{codprovincia}/municipios/{codmunicipio}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codprovincia",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "codmunicipio",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Weather.core.DTO.MunicipioDetailResponseDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Weather.api.Controllers.WeatherCompleteController",
+    "Method": "GetAllAsync",
+    "RelativePath": "api/WeatherComplete",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Weather.core.DTO.WeatherCompleteReadDTO, Weather.core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]
