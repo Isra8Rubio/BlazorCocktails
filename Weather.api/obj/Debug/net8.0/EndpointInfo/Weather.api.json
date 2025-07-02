@@ -1,0 +1,787 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Weather API",
+    "description": "The time",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/RemoteWeather/provincias": {
+      "get": {
+        "tags": [
+          "RemoteWeather"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProvinciaDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProvinciaDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProvinciaDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/RemoteWeather/provincias/{codprovincia}": {
+      "get": {
+        "tags": [
+          "RemoteWeather"
+        ],
+        "parameters": [
+          {
+            "name": "codprovincia",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProvinceDetailResponseDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProvinceDetailResponseDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProvinceDetailResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/RemoteWeather/home": {
+      "get": {
+        "tags": [
+          "RemoteWeather"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HomeResponseDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HomeResponseDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HomeResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/RemoteWeather/provincias/{codprovincia}/municipios": {
+      "get": {
+        "tags": [
+          "RemoteWeather"
+        ],
+        "parameters": [
+          {
+            "name": "codprovincia",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MunicipioDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MunicipioDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MunicipioDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/RemoteWeather/provincias/{codprovincia}/municipios/{codmunicipio}": {
+      "get": {
+        "tags": [
+          "RemoteWeather"
+        ],
+        "parameters": [
+          {
+            "name": "codprovincia",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "codmunicipio",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MunicipioDetailResponseDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MunicipioDetailResponseDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MunicipioDetailResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/register": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CredentialsUserDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CredentialsUserDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CredentialsUserDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerAuthenticationDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerAuthenticationDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerAuthenticationDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/login": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CredentialsUserDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CredentialsUserDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CredentialsUserDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerAuthenticationDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerAuthenticationDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerAuthenticationDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserDTO"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/Users/DoAdmin": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditClaimDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditClaimDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditClaimDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/WeatherComplete": {
+      "get": {
+        "tags": [
+          "WeatherComplete"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherCompleteReadDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherCompleteReadDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherCompleteReadDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AnswerAuthenticationDTO": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "nullable": true
+          },
+          "expiration": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CredentialsUserDTO": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EditClaimDTO": {
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          }
+        },
+        "additionalProperties": false
+      },
+      "HomeCityDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "idProvince": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "nameProvince": {
+            "type": "string",
+            "nullable": true
+          },
+          "stateSky": {
+            "$ref": "#/components/schemas/StateSkyDTO"
+          },
+          "temperatures": {
+            "$ref": "#/components/schemas/TemperatureDTO"
+          }
+        },
+        "additionalProperties": false
+      },
+      "HomeResponseDTO": {
+        "type": "object",
+        "properties": {
+          "ciudades": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HomeCityDTO"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MunicipioDTO": {
+        "type": "object",
+        "properties": {
+          "CODIGOINE": {
+            "type": "string",
+            "nullable": true
+          },
+          "NOMBRE": {
+            "type": "string",
+            "nullable": true
+          },
+          "CODPROV": {
+            "type": "string",
+            "nullable": true
+          },
+          "NOMBRE_PROVINCIA": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MunicipioDetailResponseDTO": {
+        "type": "object",
+        "properties": {
+          "municipio": {
+            "$ref": "#/components/schemas/MunicipioInfoDTO"
+          },
+          "stateSky": {
+            "$ref": "#/components/schemas/StateSkyDetailDTO"
+          },
+          "temperaturas": {
+            "$ref": "#/components/schemas/TemperatureDetailDTO"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MunicipioInfoDTO": {
+        "type": "object",
+        "properties": {
+          "CODIGOINE": {
+            "type": "string",
+            "nullable": true
+          },
+          "NOMBRE_PROVINCIA": {
+            "type": "string",
+            "nullable": true
+          },
+          "NOMBRE": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProvinceCityDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "idProvince": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "nameProvince": {
+            "type": "string",
+            "nullable": true
+          },
+          "stateSky": {
+            "$ref": "#/components/schemas/StateSkyDTO"
+          },
+          "temperatures": {
+            "$ref": "#/components/schemas/TemperatureDTO"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProvinceDetailResponseDTO": {
+        "type": "object",
+        "properties": {
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "ciudades": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProvinceCityDTO"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProvinciaDto": {
+        "type": "object",
+        "properties": {
+          "codprov": {
+            "type": "string",
+            "nullable": true
+          },
+          "nombrE_PROVINCIA": {
+            "type": "string",
+            "nullable": true
+          },
+          "codauton": {
+            "type": "string",
+            "nullable": true
+          },
+          "comunidaD_CIUDAD_AUTONOMA": {
+            "type": "string",
+            "nullable": true
+          },
+          "capitaL_PROVINCIA": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "StateSkyDTO": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "StateSkyDetailDTO": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TemperatureDTO": {
+        "type": "object",
+        "properties": {
+          "max": {
+            "type": "string",
+            "nullable": true
+          },
+          "min": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TemperatureDetailDTO": {
+        "type": "object",
+        "properties": {
+          "max": {
+            "type": "string",
+            "nullable": true
+          },
+          "min": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WeatherCompleteReadDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "updateDateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "idProvince": {
+            "type": "string",
+            "nullable": true
+          },
+          "nameProvince": {
+            "type": "string",
+            "nullable": true
+          },
+          "idTown": {
+            "type": "string",
+            "nullable": true
+          },
+          "nameTown": {
+            "type": "string",
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "stateSkyDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "stateSkyId": {
+            "type": "string",
+            "nullable": true
+          },
+          "temperature": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maxTemperature": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "minTemperature": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "humidity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "wind": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "precipitation": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rain": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Enter: {token}",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
