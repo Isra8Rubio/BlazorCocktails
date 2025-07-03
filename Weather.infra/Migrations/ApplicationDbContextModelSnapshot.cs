@@ -226,56 +226,16 @@ namespace Weather.infra.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateOnly>("Date")
-                        .HasColumnType("date");
-
-                    b.Property<int>("Humidity")
-                        .HasColumnType("int");
-
                     b.Property<string>("IdProvince")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IdTown")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("MaxTemperature")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MinTemperature")
-                        .HasColumnType("int");
 
                     b.Property<string>("NameProvince")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NameTown")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Precipitation")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Rain")
-                        .HasColumnType("int");
-
-                    b.Property<string>("StateSkyDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StateSkyId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Temperature")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("UpdateDateTime")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("Wind")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

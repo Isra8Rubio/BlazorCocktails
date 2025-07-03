@@ -1,36 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{AC502747-7DE9-4EFE-B379-81C02744DC76}|Weather.infra\\Weather.infra.csproj|c:\\users\\irubio-ws\\source\\repos\\weather.api\\weather.infra\\services\\weathercompleteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC502747-7DE9-4EFE-B379-81C02744DC76}|Weather.infra\\Weather.infra.csproj|solutionrelative:weather.infra\\services\\weathercompleteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC502747-7DE9-4EFE-B379-81C02744DC76}|Weather.infra\\Weather.infra.csproj|c:\\users\\irubio-ws\\source\\repos\\weather.api\\weather.infra\\repositories\\weathercompleterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC502747-7DE9-4EFE-B379-81C02744DC76}|Weather.infra\\Weather.infra.csproj|solutionrelative:weather.infra\\repositories\\weathercompleterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8FEA8C4C-1D24-41E4-8C86-30A1BACCD4D4}|Weather.api\\Weather.api.csproj|c:\\users\\irubio-ws\\source\\repos\\weather.api\\weather.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{8FEA8C4C-1D24-41E4-8C86-30A1BACCD4D4}|Weather.api\\Weather.api.csproj|solutionrelative:weather.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B75F8C27-7226-4AD8-9025-924FC309324D}|Weather.core\\Weather.core.csproj|c:\\users\\irubio-ws\\source\\repos\\weather.api\\weather.core\\dto\\weathercompletereaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B75F8C27-7226-4AD8-9025-924FC309324D}|Weather.core\\Weather.core.csproj|solutionrelative:weather.core\\dto\\weathercompletereaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8FEA8C4C-1D24-41E4-8C86-30A1BACCD4D4}|Weather.api\\Weather.api.csproj|c:\\users\\irubio-ws\\source\\repos\\weather.api\\weather.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8FEA8C4C-1D24-41E4-8C86-30A1BACCD4D4}|Weather.api\\Weather.api.csproj|solutionrelative:weather.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8FEA8C4C-1D24-41E4-8C86-30A1BACCD4D4}|Weather.api\\Weather.api.csproj|c:\\users\\irubio-ws\\source\\repos\\weather.api\\weather.api\\swagger\\authorizecheckoperationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8FEA8C4C-1D24-41E4-8C86-30A1BACCD4D4}|Weather.api\\Weather.api.csproj|solutionrelative:weather.api\\swagger\\authorizecheckoperationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B75F8C27-7226-4AD8-9025-924FC309324D}|Weather.core\\Weather.core.csproj|c:\\users\\irubio-ws\\source\\repos\\weather.api\\weather.core\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{B75F8C27-7226-4AD8-9025-924FC309324D}|Weather.core\\Weather.core.csproj|solutionrelative:weather.core\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -38,99 +9,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": -1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.api\\appsettings.json",
-              "RelativeDocumentMoniker": "Weather.api\\appsettings.json",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.api\\appsettings.json",
-              "RelativeToolTip": "Weather.api\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-02T10:45:41.228Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "WeatherCompleteReadDTO.cs",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.core\\DTO\\WeatherCompleteReadDTO.cs",
-              "RelativeDocumentMoniker": "Weather.core\\DTO\\WeatherCompleteReadDTO.cs",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.core\\DTO\\WeatherCompleteReadDTO.cs",
-              "RelativeToolTip": "Weather.core\\DTO\\WeatherCompleteReadDTO.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAzwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-02T10:35:39.947Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "WeatherCompleteRepository.cs",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.infra\\Repositories\\WeatherCompleteRepository.cs",
-              "RelativeDocumentMoniker": "Weather.infra\\Repositories\\WeatherCompleteRepository.cs",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.infra\\Repositories\\WeatherCompleteRepository.cs",
-              "RelativeToolTip": "Weather.infra\\Repositories\\WeatherCompleteRepository.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAowB4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-02T10:35:10.592Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "WeatherCompleteService.cs",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.infra\\Services\\WeatherCompleteService.cs",
-              "RelativeDocumentMoniker": "Weather.infra\\Services\\WeatherCompleteService.cs",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.infra\\Services\\WeatherCompleteService.cs",
-              "RelativeToolTip": "Weather.infra\\Services\\WeatherCompleteService.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAswB8AAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-02T10:34:51.016Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AuthorizeCheckOperationFilter.cs",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.api\\Swagger\\AuthorizeCheckOperationFilter.cs",
-              "RelativeDocumentMoniker": "Weather.api\\Swagger\\AuthorizeCheckOperationFilter.cs",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.api\\Swagger\\AuthorizeCheckOperationFilter.cs",
-              "RelativeToolTip": "Weather.api\\Swagger\\AuthorizeCheckOperationFilter.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-02T10:27:57.859Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.core\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "Weather.core\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.core\\Properties\\launchSettings.json",
-              "RelativeToolTip": "Weather.core\\Properties\\launchSettings.json",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABwAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-02T09:39:17.545Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.api\\Program.cs",
-              "RelativeDocumentMoniker": "Weather.api\\Program.cs",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.api\\Program.cs",
-              "RelativeToolTip": "Weather.api\\Program.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAAAIwGwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-02T09:37:49.965Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"

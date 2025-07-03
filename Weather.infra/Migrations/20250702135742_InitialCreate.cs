@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Weather.infra.Migrations
 {
     /// <inheritdoc />
-    public partial class WeatherCompleteAndUsuario : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -66,7 +66,10 @@ namespace Weather.infra.Migrations
                     Temperature = table.Column<int>(type: "int", nullable: false),
                     MaxTemperature = table.Column<int>(type: "int", nullable: false),
                     MinTemperature = table.Column<int>(type: "int", nullable: false),
-                    Rain = table.Column<int>(type: "int", nullable: false)
+                    Rain = table.Column<int>(type: "int", nullable: false),
+                    Humidity = table.Column<int>(type: "int", nullable: false),
+                    Wind = table.Column<int>(type: "int", nullable: false),
+                    Precipitation = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -9,6 +9,6 @@ namespace Weather.core.DTO
     public class ProvinceResponseDTO
     {
         // Provinces list
-        public List<ProvinciaDto> provincias { get; set; } = new();
+        public List<ProvinceDTO> provincias { get; set; } = new();
     }
 }

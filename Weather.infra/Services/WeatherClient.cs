@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Weather.core.DTO;
 using static System.Net.WebRequestMethods;
 
-namespace Weather.infra.ExternalClients
+namespace Weather.infra.Services
 {
     public class WeatherClient
     {

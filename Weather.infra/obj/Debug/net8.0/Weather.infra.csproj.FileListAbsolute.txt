@@ -8,9 +8,9 @@ C:\Users\IRubio-WS\source\repos\Weather.api\Weather.infra\obj\Debug\net8.0\Weath
 C:\Users\IRubio-WS\source\repos\Weather.api\Weather.infra\obj\Debug\net8.0\Weather.infra.AssemblyInfoInputs.cache
 C:\Users\IRubio-WS\source\repos\Weather.api\Weather.infra\obj\Debug\net8.0\Weather.infra.AssemblyInfo.cs
 C:\Users\IRubio-WS\source\repos\Weather.api\Weather.infra\obj\Debug\net8.0\Weather.infra.csproj.CoreCompileInputs.cache
+C:\Users\IRubio-WS\source\repos\Weather.api\Weather.infra\obj\Debug\net8.0\Weather.infra.sourcelink.json
 C:\Users\IRubio-WS\source\repos\Weather.api\Weather.infra\obj\Debug\net8.0\Weather..F9B18BBD.Up2Date
 C:\Users\IRubio-WS\source\repos\Weather.api\Weather.infra\obj\Debug\net8.0\Weather.infra.dll
 C:\Users\IRubio-WS\source\repos\Weather.api\Weather.infra\obj\Debug\net8.0\refint\Weather.infra.dll
 C:\Users\IRubio-WS\source\repos\Weather.api\Weather.infra\obj\Debug\net8.0\Weather.infra.pdb
 C:\Users\IRubio-WS\source\repos\Weather.api\Weather.infra\obj\Debug\net8.0\ref\Weather.infra.dll
-C:\Users\IRubio-WS\source\repos\Weather.api\Weather.infra\obj\Debug\net8.0\Weather.infra.sourcelink.json

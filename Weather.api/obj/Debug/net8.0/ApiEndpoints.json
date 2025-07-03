@@ -29,7 +29,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[Weather.core.DTO.ProvinciaDto, Weather.core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[Weather.core.DTO.ProvinceDTO, Weather.core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -144,14 +144,14 @@
   },
   {
     "ContainingType": "UsersController",
-    "Method": "HacerAdmin",
-    "RelativePath": "api/Users/DoAdmin",
+    "Method": "DoAdmin",
+    "RelativePath": "api/Users/doAdmin",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "editClaimDTO",
+        "Name": "dto",
         "Type": "Weather.core.DTO.EditClaimDTO",
         "IsRequired": true
       }
@@ -167,7 +167,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "credentialsUserDTO",
+        "Name": "creds",
         "Type": "Weather.core.DTO.CredentialsUserDTO",
         "IsRequired": true
       }
@@ -193,7 +193,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "credentialsUserDTO",
+        "Name": "creds",
         "Type": "Weather.core.DTO.CredentialsUserDTO",
         "IsRequired": true
       }

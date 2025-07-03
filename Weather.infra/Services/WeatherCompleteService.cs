@@ -4,44 +4,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Weather.core.DTO;
+using Weather.core.Entities;
 using Weather.infra.Repositories;
 
 namespace Weather.infra.Services
 {
     public class WeatherCompleteService
     {
-        private readonly WeatherCompleteRepository repo;
+        private readonly WeatherCompleteRepository weatherCompleteRepository;
 
-        public WeatherCompleteService(WeatherCompleteRepository repo)
+        public WeatherCompleteService(WeatherCompleteRepository weatherCompleteRepository)
         {
-            this.repo = repo;
+            this.weatherCompleteRepository = weatherCompleteRepository;
         }
 
         public async Task<IEnumerable<WeatherCompleteReadDTO>> GetAllAsync()
         {
-            var entities = await repo.ListAllAsync();
+            var entities = await weatherCompleteRepository.ListAllAsync();
             return entities.Select(e => new WeatherCompleteReadDTO
             {
                 UpdateDateTime = e.UpdateDateTime,
                 IdProvince = e.IdProvince,
-                NameProvince = e.NameProvince,
-                IdTown = e.IdTown,
-                NameTown = e.NameTown,
-                Date = e.Date,
-                StateSkyDescription = e.StateSkyDescription,
-                StateSkyId = e.StateSkyId,
-                Temperature = e.Temperature,
-                MaxTemperature = e.MaxTemperature,
-                MinTemperature = e.MinTemperature,
-                Humidity = e.Humidity,
-                Wind = e.Wind,
-                Precipitation = e.Precipitation,
-                Rain = e.Rain
+                NameProvince = e.NameProvince
             });
         }
         public async Task<WeatherCompleteReadDTO?> GetByIdAsync(Guid id)
         {
-            var e = await repo.GetByIdAsync(id);
+            var e = await weatherCompleteRepository.GetByIdAsync(id);
             if (e == null) return null;
 
             return new WeatherCompleteReadDTO
@@ -49,19 +38,7 @@ namespace Weather.infra.Services
                 Id = e.Id,
                 UpdateDateTime = e.UpdateDateTime,
                 IdProvince = e.IdProvince,
-                NameProvince = e.NameProvince,
-                IdTown = e.IdTown,
-                NameTown = e.NameTown,
-                Date = e.Date,
-                StateSkyDescription = e.StateSkyDescription,
-                StateSkyId = e.StateSkyId,
-                Temperature = e.Temperature,
-                MaxTemperature = e.MaxTemperature,
-                MinTemperature = e.MinTemperature,
-                Humidity = e.Humidity,
-                Wind = e.Wind,
-                Precipitation = e.Precipitation,
-                Rain = e.Rain
+                NameProvince = e.NameProvince
             };
         }
     }

@@ -12,8 +12,8 @@ using Weather.infra.Data;
 namespace Weather.infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250630075239_HumidityWindPrecipitation")]
-    partial class HumidityWindPrecipitation
+    [Migration("20250702135742_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

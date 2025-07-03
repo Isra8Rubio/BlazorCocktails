@@ -12,8 +12,8 @@ using Weather.infra.Data;
 namespace Weather.infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250627130000_WeatherCompleteAndUsuario")]
-    partial class WeatherCompleteAndUsuario
+    [Migration("20250702140425_MinimalWeather")]
+    partial class MinimalWeather
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -229,44 +229,13 @@ namespace Weather.infra.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateOnly>("Date")
-                        .HasColumnType("date");
-
                     b.Property<string>("IdProvince")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("IdTown")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("MaxTemperature")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MinTemperature")
-                        .HasColumnType("int");
-
                     b.Property<string>("NameProvince")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NameTown")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Rain")
-                        .HasColumnType("int");
-
-                    b.Property<string>("StateSkyDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StateSkyId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Temperature")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdateDateTime")
                         .HasColumnType("datetime2");

@@ -2,7 +2,7 @@
   "openapi": "3.0.4",
   "info": {
     "title": "Weather API",
-    "description": "The time",
+    "description": "API The time",
     "version": "v1"
   },
   "paths": {
@@ -19,7 +19,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ProvinciaDto"
+                    "$ref": "#/components/schemas/ProvinceDTO"
                   }
                 }
               },
@@ -27,7 +27,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ProvinciaDto"
+                    "$ref": "#/components/schemas/ProvinceDTO"
                   }
                 }
               },
@@ -35,7 +35,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ProvinciaDto"
+                    "$ref": "#/components/schemas/ProvinceDTO"
                   }
                 }
               }
@@ -338,15 +338,10 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
+        }
       }
     },
-    "/api/Users/DoAdmin": {
+    "/api/Users/doAdmin": {
       "post": {
         "tags": [
           "Users"
@@ -374,12 +369,7 @@
           "200": {
             "description": "OK"
           }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
+        }
       }
     },
     "/api/WeatherComplete": {
@@ -595,28 +585,7 @@
         },
         "additionalProperties": false
       },
-      "ProvinceDetailResponseDTO": {
-        "type": "object",
-        "properties": {
-          "descripcion": {
-            "type": "string",
-            "nullable": true
-          },
-          "title": {
-            "type": "string",
-            "nullable": true
-          },
-          "ciudades": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ProvinceCityDTO"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ProvinciaDto": {
+      "ProvinceDTO": {
         "type": "object",
         "properties": {
           "codprov": {
@@ -637,6 +606,27 @@
           },
           "capitaL_PROVINCIA": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProvinceDetailResponseDTO": {
+        "type": "object",
+        "properties": {
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "ciudades": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProvinceCityDTO"
+            },
             "nullable": true
           }
         },
@@ -722,54 +712,6 @@
           "nameProvince": {
             "type": "string",
             "nullable": true
-          },
-          "idTown": {
-            "type": "string",
-            "nullable": true
-          },
-          "nameTown": {
-            "type": "string",
-            "nullable": true
-          },
-          "date": {
-            "type": "string",
-            "format": "date"
-          },
-          "stateSkyDescription": {
-            "type": "string",
-            "nullable": true
-          },
-          "stateSkyId": {
-            "type": "string",
-            "nullable": true
-          },
-          "temperature": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "maxTemperature": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "minTemperature": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "humidity": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "wind": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "precipitation": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "rain": {
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -778,10 +720,15 @@
     "securitySchemes": {
       "Bearer": {
         "type": "http",
-        "description": "Enter: {token}",
+        "description": "Introduce:{token}",
         "scheme": "bearer",
         "bearerFormat": "JWT"
       }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
 }

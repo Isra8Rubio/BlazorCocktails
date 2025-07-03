@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -7,7 +8,6 @@ using RestSharp;
 using System.Text;
 using Weather.core.Entities;
 using Weather.infra.Data;
-using Weather.infra.ExternalClients;
 using Weather.infra.Repositories;
 using Weather.infra.Services;
 
@@ -25,6 +25,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(opts =>
 
 builder.Services.AddScoped<WeatherCompleteRepository>();
 builder.Services.AddScoped<WeatherCompleteService>();
+builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<UserService>();
 
 
 // External Client
@@ -41,7 +43,6 @@ builder.Services.AddTransient<WeatherClient>();
 
 // Identity & Data Protection
 builder.Services.AddDataProtection();
-
 builder.Services
     .AddIdentity<Usuario, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -73,15 +74,14 @@ builder.Services
         };
     });
 
-//builder.Services.AddAuthorization(options =>
-//{
-//    options.AddPolicy("esAdmin", policy => policy.RequireRole("Admin"));
-//});
-
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("isAdmin", policy =>
         policy.RequireClaim("isAdmin", "true"));
+
+    options.FallbackPolicy = new AuthorizationPolicyBuilder()
+    .RequireAuthenticatedUser()
+    .Build();
 });
 
 
@@ -93,8 +93,8 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "Weather API",
-        Description = "The time",
         Version = "v1",
+        Description = "API The time"
     });
 
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -104,26 +104,42 @@ builder.Services.AddSwaggerGen(options =>
         Scheme = "bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "Enter: {token}"
+        Description = "Introduce:{token}"
     });
 
-    options.OperationFilter<AuthorizeCheckOperationFilter>();
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id   = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
 });
+
 
 var app = builder.Build();
 
 
-    // Middleware
-    app.UseAuthentication();
-    app.UseAuthorization();
+// Middleware
 
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Weather API 1");
-        options.RoutePrefix = string.Empty;
-    });
+app.UseSwagger();
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Weather API 1");
+    options.RoutePrefix = string.Empty;
+});
 
-    app.MapControllers();
-    app.Run();
+app.UseAuthentication();
+app.UseAuthorization();
+
+
+app.MapControllers();
+app.Run();
 

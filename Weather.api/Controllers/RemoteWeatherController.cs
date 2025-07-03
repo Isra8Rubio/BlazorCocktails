@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Text.Json;
 using Weather.core.DTO;
-using Weather.infra.ExternalClients;
+using Weather.infra.Services;
 
 namespace Weather.api.Controllers
 {
@@ -19,7 +19,7 @@ namespace Weather.api.Controllers
         }
 
         [HttpGet("provincias")]
-        public async Task<ActionResult<List<ProvinciaDto>>> GetProvinciasAsync()
+        public async Task<ActionResult<List<ProvinceDTO>>> GetProvinciasAsync()
         {
             try
             {

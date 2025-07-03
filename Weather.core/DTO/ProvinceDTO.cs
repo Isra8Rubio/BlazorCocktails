@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Weather.core.DTO
 {
-    public class ProvinciaDto
+    public class ProvinceDTO
     {
         public string CODPROV { get; set; } = null!;
         public string NOMBRE_PROVINCIA { get; set; } = null!;
