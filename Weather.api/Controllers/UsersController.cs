@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Core.DTO;
+using Infraestructura.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Weather.core.DTO;
-using Weather.infra.Services;
+using System.Security.Claims;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -90,6 +91,57 @@ public class UsersController : ControllerBase
         catch (Exception ex)
         {
             return StatusCode(500, new { Message = "Error assigning admin", Detail = ex.Message });
+        }
+    }
+
+    [HttpPut("password")]
+    [Authorize]
+    public async Task<ActionResult> ChangePasswordAsync(ChangePasswordDTO dto)
+    {
+        try
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized();
+
+            await _userService.ChangeOwnPasswordAsync(userId, dto);
+            return NoContent();
+        }
+        catch (InvalidOperationException ex)
+        {
+            ModelState.AddModelError(string.Empty, ex.Message);
+            return ValidationProblem(ModelState);
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { Message = "Error changing password", Detail = ex.Message });
+        }
+    }
+
+    [HttpDelete("{id}")]
+    [Authorize(Policy = "isAdmin")]
+    public async Task<ActionResult> DeleteUser(string id)
+    {
+        try
+        {
+            await _userService.DeleteUserAsync(id);
+            return NoContent();
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { Message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { Message = "Error deleting user", Detail = ex.Message });
         }
     }
 }

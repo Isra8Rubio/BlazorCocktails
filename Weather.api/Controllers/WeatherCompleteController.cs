@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Weather.core.DTO;
-using Weather.infra.Data;
-using Weather.infra.Services;
+using Core.DTO;
+using Infraestructura.Data;
+using Infraestructura.Services;
 
 namespace Weather.api.Controllers
 {

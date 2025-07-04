@@ -1,3 +1,9 @@
+using Core.Entities;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using Infraestructura.Data;
+using Infraestructura.Repositories;
+using Infraestructura.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -5,11 +11,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using RestSharp;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
-using Weather.core.Entities;
-using Weather.infra.Data;
-using Weather.infra.Repositories;
-using Weather.infra.Services;
+using Weather.api.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
@@ -51,7 +56,10 @@ builder.Services
 
 // JWT Configuration
 var jwtSection = config.GetSection("Jwt");
-var key = Encoding.UTF8.GetBytes(jwtSection["Key"]!);
+var keyBytes = Encoding.UTF8.GetBytes(jwtSection["Key"]!);
+
+// Limpia el mapeo automático de claims para que "nameid" y "securityStamp" lleguen con ese mismo nombre
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 builder.Services
     .AddAuthentication(options =>
@@ -61,6 +69,7 @@ builder.Services
     })
     .AddJwtBearer(opts =>
     {
+        // 1) Parámetros básicos de validación
         opts.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
@@ -68,9 +77,31 @@ builder.Services
             ValidateAudience = true,
             ValidAudience = jwtSection["Audience"],
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(key),
+            IssuerSigningKey = new SymmetricSecurityKey(keyBytes),
             ValidateLifetime = true,
             ClockSkew = TimeSpan.Zero
+        };
+
+        // 2) Aquí enganchamos el evento que comprueba el SecurityStamp
+        opts.Events = new JwtBearerEvents
+        {
+            OnTokenValidated = async ctx =>
+            {
+                // obtenemos el UserManager desde DI
+                var userMgr = ctx.HttpContext.RequestServices
+                                     .GetRequiredService<UserManager<Usuario>>();
+
+                // extraemos el userId y el stamp que vino en el token
+                var userId = ctx.Principal!.FindFirstValue(ClaimTypes.NameIdentifier);
+                var stampInToken = ctx.Principal?.FindFirstValue("securityStamp");
+
+                // buscamos el usuario en BD y comparamos
+                var user = await userMgr.FindByIdAsync(userId!);
+                if (user == null || user.SecurityStamp != stampInToken)
+                {
+                    ctx.Fail("Token inválido: SecurityStamp no coincide.");
+                }
+            }
         };
     });
 
@@ -80,13 +111,16 @@ builder.Services.AddAuthorization(options =>
         policy.RequireClaim("isAdmin", "true"));
 
     options.FallbackPolicy = new AuthorizationPolicyBuilder()
-    .RequireAuthenticatedUser()
-    .Build();
+        .RequireAuthenticatedUser()
+        .Build();
 });
 
 
 // Controllers & Swagger
 builder.Services.AddControllers();
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<CredentialsUserDTOValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<EditClaimDTOValidator>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {

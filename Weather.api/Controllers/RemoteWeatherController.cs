@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using System.Text.Json;
-using Weather.core.DTO;
-using Weather.infra.Services;
+using Infraestructura.Services;
+using Core.DTO;
 
-namespace Weather.api.Controllers
+namespace Infraestructura.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

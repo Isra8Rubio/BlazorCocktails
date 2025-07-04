@@ -1556,19 +1556,6 @@
             "rid": "win"
           }
         }
-      },
-      "Weather.core/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.17"
-        },
-        "compile": {
-          "bin/placeholder/Weather.core.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Weather.core.dll": {}
-        }
       }
     }
   },
@@ -3953,11 +3940,6 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "Weather.core/1.0.0": {
-      "type": "project",
-      "path": "../Weather.core/Weather.core.csproj",
-      "msbuildProject": "../Weather.core/Weather.core.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -3967,8 +3949,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.6",
       "Microsoft.Extensions.Configuration.Binder >= 9.0.6",
       "Microsoft.Extensions.Hosting.Abstractions >= 9.0.6",
-      "RestSharp >= 112.1.0",
-      "Weather.core >= 1.0.0"
+      "RestSharp >= 112.1.0"
     ]
   },
   "packageFolders": {
@@ -4003,11 +3984,7 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {
-            "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.core\\Weather.core.csproj": {
-              "projectPath": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.core\\Weather.core.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
