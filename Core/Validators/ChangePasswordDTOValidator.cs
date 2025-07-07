@@ -1,7 +1,8 @@
 ﻿using Core.DTO;
 using FluentValidation;
 
-namespace Weather.api.Validators
+
+namespace Core.Validators
 {
     public class ChangePasswordDTOValidator : AbstractValidator<ChangePasswordDTO>
     {

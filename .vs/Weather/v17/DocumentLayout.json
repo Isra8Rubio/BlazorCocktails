@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{93EC81C3-157F-8B21-2D68-7166FBCE2AD1}|Weather.api\\Weather.api.csproj|c:\\users\\irubio-ws\\source\\repos\\weather.api\\weather.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93EC81C3-157F-8B21-2D68-7166FBCE2AD1}|Weather.api\\Weather.api.csproj|solutionrelative:weather.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|c:\\users\\irubio-ws\\source\\repos\\weather.api\\core\\entities\\weathercomplete.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|solutionrelative:core\\entities\\weathercomplete.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +18,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WeatherComplete.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Core\\Entities\\WeatherComplete.cs",
+              "RelativeDocumentMoniker": "Core\\Entities\\WeatherComplete.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Core\\Entities\\WeatherComplete.cs",
+              "RelativeToolTip": "Core\\Entities\\WeatherComplete.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-07T14:04:21.952Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.api\\Program.cs",
+              "RelativeDocumentMoniker": "Weather.api\\Program.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.api\\Program.cs",
+              "RelativeToolTip": "Weather.api\\Program.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAHYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-07T14:04:02.955Z",
+              "EditorCaption": ""
             }
           ]
         }

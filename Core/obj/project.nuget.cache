@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "OIifUs9JzQQ=",
+  "dgSpecHash": "tM/RoLe92os=",
   "success": true,
   "projectFilePath": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Core\\Core.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\IRubio-WS\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512",
     "C:\\Users\\IRubio-WS\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.3.0\\microsoft.aspnetcore.authentication.2.3.0.nupkg.sha512",
     "C:\\Users\\IRubio-WS\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.3.0\\microsoft.aspnetcore.authentication.abstractions.2.3.0.nupkg.sha512",
     "C:\\Users\\IRubio-WS\\.nuget\\packages\\microsoft.aspnetcore.authentication.cookies\\2.3.0\\microsoft.aspnetcore.authentication.cookies.2.3.0.nupkg.sha512",

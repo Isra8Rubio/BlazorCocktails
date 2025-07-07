@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Core.DTO
@@ -11,6 +12,9 @@ namespace Core.DTO
         public Guid Id { get; set; }
         public DateTime UpdateDateTime { get; set; }
         public string IdProvince { get; set; } = null!;
+        public string NameTown { get; set; } = null!;
         public string NameProvince { get; set; } = null!;
+        public StateSkyDTO StateSky { get; set; } = null!;
+        public TemperatureDTO Temperatures { get; set; } = null!;
     }
 }

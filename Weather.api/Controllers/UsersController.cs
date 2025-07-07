@@ -1,4 +1,6 @@
 ﻿using Core.DTO;
+using FluentValidation;
+using FluentValidation.Results;
 using Infraestructura.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,17 +11,28 @@ using System.Security.Claims;
 public class UsersController : ControllerBase
 {
     private readonly UserService _userService;
+    private readonly IValidator<CredentialsUserDTO> _credsValidator;
 
-    public UsersController(UserService userService)
+    public UsersController(
+        UserService userService,
+        IValidator<CredentialsUserDTO> credsValidator)
     {
         _userService = userService;
+        _credsValidator = credsValidator;
     }
 
     [HttpPost("register")]
     [AllowAnonymous]
-    public async Task<ActionResult<AnswerAuthenticationDTO>> Register(
-        [FromBody] CredentialsUserDTO creds)
+    public async Task<ActionResult<AnswerAuthenticationDTO>> Register([FromBody] CredentialsUserDTO creds)
     {
+        ValidationResult validation = await _credsValidator.ValidateAsync(creds);
+        if (!validation.IsValid)
+        {
+            foreach (var err in validation.Errors)
+                ModelState.AddModelError(err.PropertyName, err.ErrorMessage);
+            return ValidationProblem(ModelState);
+        }
+
         try
         {
             var result = await _userService.RegisterAsync(creds);
@@ -38,9 +51,16 @@ public class UsersController : ControllerBase
 
     [HttpPost("login")]
     [AllowAnonymous]
-    public async Task<ActionResult<AnswerAuthenticationDTO>> Login(
-        [FromBody] CredentialsUserDTO creds)
+    public async Task<ActionResult<AnswerAuthenticationDTO>> Login([FromBody] CredentialsUserDTO creds)
     {
+        ValidationResult validation = await _credsValidator.ValidateAsync(creds);
+        if (!validation.IsValid)
+        {
+            foreach (var err in validation.Errors)
+                ModelState.AddModelError(err.PropertyName, err.ErrorMessage);
+            return ValidationProblem(ModelState);
+        }
+
         try
         {
             var result = await _userService.LoginAsync(creds);

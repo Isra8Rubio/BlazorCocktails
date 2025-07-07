@@ -70,6 +70,19 @@ namespace Infraestructura.Repositories
 
             await AddOrUpdateAsync(entity);
         }
+        public async Task<WeatherComplete> AddAsync(WeatherComplete entity)
+        {
+            context.WeatherComplete.Add(entity);
+            await context.SaveChangesAsync();
+            return entity;
+        }
+        public async Task DeleteAsync(Guid id)
+        {
+            var e = await context.WeatherComplete.FindAsync(id);
+            if (e == null) throw new KeyNotFoundException();
+            context.WeatherComplete.Remove(e);
+            await context.SaveChangesAsync();
+        }
 
 
 

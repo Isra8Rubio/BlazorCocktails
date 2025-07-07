@@ -12,6 +12,7 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.17",
           "Microsoft.EntityFrameworkCore": "9.0.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.6",
+          "Microsoft.Extensions.Configuration.Binder": "9.0.6",
           "RestSharp": "112.1.0"
         },
         "runtime": {
@@ -50,6 +51,14 @@
           "lib/netstandard2.0/Azure.Identity.dll": {
             "assemblyVersion": "1.11.4.0",
             "fileVersion": "1.1100.424.31005"
+          }
+        }
+      },
+      "FluentValidation/11.11.0": {
+        "runtime": {
+          "lib/net8.0/FluentValidation.dll": {
+            "assemblyVersion": "11.0.0.0",
+            "fileVersion": "11.11.0.0"
           }
         }
       },
@@ -424,6 +433,17 @@
         },
         "runtime": {
           "lib/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.625.26613"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.Binder/9.0.6": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.6"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.Binder.dll": {
             "assemblyVersion": "9.0.0.0",
             "fileVersion": "9.0.625.26613"
           }
@@ -973,6 +993,7 @@
       },
       "Core/1.0.0": {
         "dependencies": {
+          "FluentValidation": "11.11.0",
           "Microsoft.AspNetCore.Identity": "2.3.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.17"
         },
@@ -1004,6 +1025,13 @@
       "sha512": "sha512-Sf4BoE6Q3jTgFkgBkx7qztYOFELBCo+wQgpYDwal/qJ1unBH73ywPztIJKXBXORRzAeNijsuxhk94h0TIMvfYg==",
       "path": "azure.identity/1.11.4",
       "hashPath": "azure.identity.1.11.4.nupkg.sha512"
+    },
+    "FluentValidation/11.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cyIVdQBwSipxWG8MA3Rqox7iNbUNUTK5bfJi9tIdm4CAfH71Oo5ABLP4/QyrUwuakqpUEPGtE43BDddvEehuYw==",
+      "path": "fluentvalidation/11.11.0",
+      "hashPath": "fluentvalidation.11.11.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication/2.3.0": {
       "type": "package",
@@ -1207,6 +1235,13 @@
       "sha512": "sha512-3GgMIi2jP8g1fBW93Z9b9Unamc0SIsgyhiCmC91gq4loTixK9vQMuxxUsfJ1kRGwn+/FqLKwOHqmn0oYWn3Fvw==",
       "path": "microsoft.extensions.configuration.abstractions/9.0.6",
       "hashPath": "microsoft.extensions.configuration.abstractions.9.0.6.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.Binder/9.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Opl/7SIrwDy9WjHn/vU2thQ8CUtrIWHLr+89I7/0VYNEJQvpL24zvqYrh83cH38RzNKHji0WGVkCVP6HJChVVw==",
+      "path": "microsoft.extensions.configuration.binder/9.0.6",
+      "hashPath": "microsoft.extensions.configuration.binder.9.0.6.nupkg.sha512"
     },
     "Microsoft.Extensions.DependencyInjection/9.0.6": {
       "type": "package",

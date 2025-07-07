@@ -776,9 +776,19 @@
             "type": "string",
             "nullable": true
           },
+          "nameTown": {
+            "type": "string",
+            "nullable": true
+          },
           "nameProvince": {
             "type": "string",
             "nullable": true
+          },
+          "stateSky": {
+            "$ref": "#/components/schemas/StateSkyDTO"
+          },
+          "temperatures": {
+            "$ref": "#/components/schemas/TemperatureDTO"
           }
         },
         "additionalProperties": false

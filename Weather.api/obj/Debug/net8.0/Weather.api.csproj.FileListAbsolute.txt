@@ -184,5 +184,5 @@ C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api\obj\Debug\net8.0\Weather
 C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api\obj\Debug\net8.0\Weather.api.genruntimeconfig.cache
 C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api\obj\Debug\net8.0\ref\Weather.api.dll
 C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api\bin\Debug\net8.0\FluentValidation.dll
-C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
-C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api\bin\Debug\net8.0\NLog.dll

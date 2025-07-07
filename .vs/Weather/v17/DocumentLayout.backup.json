@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{93EC81C3-157F-8B21-2D68-7166FBCE2AD1}|Weather.api\\Weather.api.csproj|c:\\users\\irubio-ws\\source\\repos\\weather.api\\weather.api\\validators\\changepassworddtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{93EC81C3-157F-8B21-2D68-7166FBCE2AD1}|Weather.api\\Weather.api.csproj|solutionrelative:weather.api\\validators\\changepassworddtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|c:\\users\\irubio-ws\\source\\repos\\weather.api\\core\\entities\\weathercomplete.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|solutionrelative:core\\entities\\weathercomplete.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{93EC81C3-157F-8B21-2D68-7166FBCE2AD1}|Weather.api\\Weather.api.csproj|c:\\users\\irubio-ws\\source\\repos\\weather.api\\weather.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{93EC81C3-157F-8B21-2D68-7166FBCE2AD1}|Weather.api\\Weather.api.csproj|solutionrelative:weather.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{154E5C25-13C5-4557-99A2-CD959FE45DF1}|Infraestructura\\Infraestructura.csproj|c:\\users\\irubio-ws\\source\\repos\\weather.api\\infraestructura\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{154E5C25-13C5-4557-99A2-CD959FE45DF1}|Infraestructura\\Infraestructura.csproj|solutionrelative:infraestructura\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,19 +22,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ChangePasswordDTOValidator.cs",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.api\\Validators\\ChangePasswordDTOValidator.cs",
-              "RelativeDocumentMoniker": "Weather.api\\Validators\\ChangePasswordDTOValidator.cs",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.api\\Validators\\ChangePasswordDTOValidator.cs",
-              "RelativeToolTip": "Weather.api\\Validators\\ChangePasswordDTOValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Title": "WeatherComplete.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Core\\Entities\\WeatherComplete.cs",
+              "RelativeDocumentMoniker": "Core\\Entities\\WeatherComplete.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Core\\Entities\\WeatherComplete.cs",
+              "RelativeToolTip": "Core\\Entities\\WeatherComplete.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-04T11:42:33.885Z",
+              "WhenOpened": "2025-07-07T14:04:21.952Z",
               "EditorCaption": ""
             },
             {
@@ -41,14 +49,23 @@
               "RelativeDocumentMoniker": "Weather.api\\Program.cs",
               "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.api\\Program.cs",
               "RelativeToolTip": "Weather.api\\Program.cs",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAAAHkAAABQAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-04T11:30:25.316Z",
+              "WhenOpened": "2025-07-07T14:04:02.955Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Infraestructura\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Infraestructura\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Infraestructura\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Infraestructura\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-07T14:03:48.516Z",
+              "EditorCaption": ""
             }
           ]
         }

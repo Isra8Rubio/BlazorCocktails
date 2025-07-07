@@ -1,4 +1,4 @@
-﻿// Weather.infra/Services/UserService.cs
+﻿
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -12,18 +12,21 @@ using Microsoft.IdentityModel.Tokens;
 using Core.DTO;
 using Core.Entities;
 using Infraestructura.Repositories;
+using Microsoft.Identity.Client;
+using Infraestructura.Configuration;
+
 
 namespace Infraestructura.Services
 {
     public class UserService
     {
         private readonly UserRepository _repo;
-        private readonly IConfiguration  _config;
+        private readonly AppConfiguration config;
 
-        public UserService(UserRepository repo, IConfiguration config)
+        public UserService(UserRepository repo, AppConfiguration config)
         {
             _repo   = repo;
-            _config = config;
+            this.config = config;
         }
 
         public async Task<AnswerAuthenticationDTO> RegisterAsync(CredentialsUserDTO creds)
@@ -101,7 +104,7 @@ namespace Infraestructura.Services
             var user = await _repo.FindByEmailAsync(creds.Email)
                        ?? throw new KeyNotFoundException("User not found.");
 
-            // 2) Empieza la lista de claims incluyendo el NameIdentifier
+            // 2) Claims base
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id!),
@@ -109,40 +112,35 @@ namespace Infraestructura.Services
                 new Claim("securityStamp", user.SecurityStamp!)
             };
 
-            // 3) Añade los claims extra que haya en la BD
-            var dbClaims = await _repo.GetClaimsAsync(user);
-            claims.AddRange(dbClaims);
-
-            // 4) Añade rol de admin si aplica
-            var roles = await _repo.GetRolesAsync(user);
-            if (roles.Contains("Admin"))
-            {
+            // 3) Añade claims y roles
+            claims.AddRange(await _repo.GetClaimsAsync(user));
+            if ((await _repo.GetRolesAsync(user)).Contains("Admin"))
                 claims.Add(new Claim("isAdmin", "true"));
-            }
 
-            // 5) Recupera configuración de JWT
-            var jwtSection = _config.GetSection("Jwt");
-            var keyBytes = Encoding.UTF8.GetBytes(jwtSection["Key"]!);
+            // 4) Recupera la sección Jwt de AppConfiguration
+            var jwtCfg = config.Jwt;
+            var keyBytes = Encoding.UTF8.GetBytes(jwtCfg.Key!);
             var signingKey = new SymmetricSecurityKey(keyBytes);
             var credsSign = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
 
-            // 6) Genera el token
-            var expires = DateTime.UtcNow.AddYears(1);
+            // 5) Usa ExpiresInMinutes en lugar de AddYears(1)
+            var expires = DateTime.UtcNow.AddMinutes(jwtCfg.ExpiresInMinutes);
+
+            // 6) Construye el token
             var token = new JwtSecurityToken(
-                issuer: jwtSection["Issuer"],
-                audience: jwtSection["Audience"],
+                issuer: jwtCfg.Issuer,
+                audience: jwtCfg.Audience,
                 claims: claims,
                 expires: expires,
                 signingCredentials: credsSign
             );
 
-            // 7) Devuelve DTO con string del token y fecha de expiración
+            // 7) Devuelve el DTO
             return new AnswerAuthenticationDTO
             {
                 Token = new JwtSecurityTokenHandler().WriteToken(token),
                 Expiration = expires
             };
         }
-
     }
 }
