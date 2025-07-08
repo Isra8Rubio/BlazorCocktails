@@ -11,12 +11,12 @@ namespace Core.DTO
     {
         public Guid Id { get; set; }
         public DateTime UpdateDateTime { get; set; }
-        public string IdProvince { get; set; } = null!;
-        public string NameTown { get; set; } = null!;
-        public string NameProvince { get; set; } = null!;
-        public string StateSkyId { get; set; } = null!;
-        public string StateSkyDescription { get; set; } = null!;
-        public int MaxTemperature { get; set; }
-        public int MinTemperature { get; set; }
+        public string? IdProvince { get; set; }
+        public string? NameTown { get; set; }
+        public string? NameProvince { get; set; }
+        public string? StateSkyId { get; set; }
+        public string? StateSkyDescription { get; set; }
+        public int? MaxTemperature { get; set; }
+        public int? MinTemperature { get; set; }
     }
 }

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Core.DTO
 {
-    [Keyless]
     public class StateSkyDTO
     {
-        public string description { get; set; } = null!;
+        public string? id { get; set; }
+        public string? description { get; set; }
     }
 }

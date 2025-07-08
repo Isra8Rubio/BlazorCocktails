@@ -8,7 +8,6 @@ namespace Core.DTO
 {
     public class ProvinceResponseDTO
     {
-        // Provinces list
         public List<ProvinceDTO> provincias { get; set; } = new();
     }
 }

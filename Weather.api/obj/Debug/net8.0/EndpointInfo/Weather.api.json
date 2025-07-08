@@ -598,7 +598,7 @@
             "$ref": "#/components/schemas/StateSkyDetailDTO"
           },
           "temperaturas": {
-            "$ref": "#/components/schemas/TemperatureDetailDTO"
+            "$ref": "#/components/schemas/TemperatureDTO"
           }
         },
         "additionalProperties": false
@@ -702,6 +702,10 @@
       "StateSkyDTO": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
           "description": {
             "type": "string",
             "nullable": true
@@ -712,6 +716,10 @@
       "StateSkyDetailDTO": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
           "description": {
             "type": "string",
             "nullable": true
@@ -723,26 +731,12 @@
         "type": "object",
         "properties": {
           "max": {
-            "type": "string",
-            "nullable": true
+            "type": "integer",
+            "format": "int32"
           },
           "min": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "TemperatureDetailDTO": {
-        "type": "object",
-        "properties": {
-          "max": {
-            "type": "string",
-            "nullable": true
-          },
-          "min": {
-            "type": "string",
-            "nullable": true
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -794,11 +788,13 @@
           },
           "maxTemperature": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "minTemperature": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           }
         },
         "additionalProperties": false

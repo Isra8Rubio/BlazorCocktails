@@ -55,6 +55,7 @@ builder.Services.AddSingleton(_ =>
     return new RestClient(options);
 });
 builder.Services.AddTransient<WeatherClient>();
+builder.Services.AddHostedService<WeatherUpdateHostedService>();
 
 
 // Identity & Data Protection
@@ -173,6 +174,8 @@ try
 {
     // Crear carpeta de logs si no existe
     Directory.CreateDirectory(Path.Combine(builder.Environment.ContentRootPath, "logs"));
+
+    app.UseRouting();
 
     // Middlewares
     app.UseSwagger();

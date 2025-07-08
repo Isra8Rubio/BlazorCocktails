@@ -156,3 +156,1307 @@ DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
 2025-07-08 11:11:46.0279|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||12|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 23.0085ms
 2025-07-08 11:11:46.1346|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||12|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
 2025-07-08 11:11:46.1655|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||11|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 30.8135ms
+2025-07-08 11:52:02.9038|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 11:52:02.9273|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando.
+2025-07-08 11:52:05.8566|INFO|Microsoft.EntityFrameworkCore.Database.Command||7|Executed DbCommand (41ms) [Parameters=[@__entity_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+WHERE [w].[Id] = @__entity_Id_0
+2025-07-08 11:52:05.9561|ERROR|Microsoft.EntityFrameworkCore.Database.Command||7|Failed executing DbCommand (13ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [WeatherComplete] ([Id], [IdProvince], [MaxTemperature], [MinTemperature], [NameProvince], [NameTown], [StateSkyDescription], [StateSkyId], [UpdateDateTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-08 11:52:05.9830|ERROR|Microsoft.EntityFrameworkCore.Update||7|An exception occurred in the database while saving changes for context type 'Infraestructura.Data.ApplicationDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): No se puede insertar el valor NULL en la columna 'NameTown', tabla 'Weather.dbo.WeatherComplete'. La columna no admite valores NULL. Error de INSERT.
+Se terminó la instrucción.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:32c2d651-a5cd-449a-a210-cacfdc189890
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)|Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): No se puede insertar el valor NULL en la columna 'NameTown', tabla 'Weather.dbo.WeatherComplete'. La columna no admite valores NULL. Error de INSERT.
+Se terminó la instrucción.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:32c2d651-a5cd-449a-a210-cacfdc189890
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-07-08 11:52:05.9830|ERROR|Infraestructura.Services.WeatherUpdateHostedService||7|WeatherUpdateHostedService: error al actualizar clima.|Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): No se puede insertar el valor NULL en la columna 'NameTown', tabla 'Weather.dbo.WeatherComplete'. La columna no admite valores NULL. Error de INSERT.
+Se terminó la instrucción.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:32c2d651-a5cd-449a-a210-cacfdc189890
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Infraestructura.Repositories.WeatherCompleteRepository.AddOrUpdateAsync(WeatherComplete entity) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Repositories\WeatherCompleteRepository.cs:line 43
+   at Infraestructura.Repositories.WeatherCompleteRepository.UpdateFromHomeAsync(HomeResponseDTO homeDto) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Repositories\WeatherCompleteRepository.cs:line 71
+   at Infraestructura.Services.WeatherUpdateHostedService.StartAsync(CancellationToken cancellationToken) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherUpdateHostedService.cs:line 41
+2025-07-08 11:52:06.0973|INFO|Microsoft.Hosting.Lifetime||7|Now listening on: https://localhost:7131
+2025-07-08 11:52:06.0973|INFO|Microsoft.Hosting.Lifetime||7|Now listening on: http://localhost:5216
+2025-07-08 11:52:06.1460|INFO|Microsoft.Hosting.Lifetime||7|Application started. Press Ctrl+C to shut down.
+2025-07-08 11:52:06.1460|INFO|Microsoft.Hosting.Lifetime||7|Hosting environment: Development
+2025-07-08 11:52:06.1460|INFO|Microsoft.Hosting.Lifetime||7|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 11:52:06.6702|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 11:52:06.6703|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 11:52:06.6703|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 18.2045ms
+2025-07-08 11:52:06.7577|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 89.8262ms
+2025-07-08 11:52:06.8984|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 11:52:06.9447|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 46.2839ms
+2025-07-08 11:52:28.2997|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/api/RemoteWeather/home - - -
+2025-07-08 11:52:28.3350|INFO|Microsoft.AspNetCore.Authorization.DefaultAuthorizationService||4|Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-07-08 11:52:28.3350|INFO|Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler||4|AuthenticationScheme: Bearer was challenged.
+2025-07-08 11:52:28.3350|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request finished HTTP/2 GET https://localhost:7131/api/RemoteWeather/home - 401 0 - 39.8197ms
+2025-07-08 11:54:02.3528|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||3|Request starting HTTP/2 POST https://localhost:7131/api/Users/login - application/json 60
+2025-07-08 11:54:02.3643|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware||3|Executing endpoint 'Infraestructura.Controllers.UsersController.Login (Weather.api)'
+2025-07-08 11:54:02.3923|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker||3|Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Core.DTO.AnswerAuthenticationDTO]] Login(Core.DTO.CredentialsUserDTO) on controller Infraestructura.Controllers.UsersController (Weather.api).
+2025-07-08 11:54:02.4403|INFO|Infraestructura.Controllers.UsersController||3|[0HNDU0KCH4VK3] Call: Login(email=prueba@gmail.com)
+2025-07-08 11:54:02.4821|INFO|Microsoft.EntityFrameworkCore.Database.Command||3|Executed DbCommand (18ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-08 11:54:02.6009|INFO|Microsoft.EntityFrameworkCore.Database.Command||3|Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-07-08 11:54:02.6317|INFO|Microsoft.EntityFrameworkCore.Database.Command||3|Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-07-08 11:54:02.6454|INFO|Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler||3|AuthenticationScheme: Identity.Application signed in.
+2025-07-08 11:54:02.6581|INFO|Microsoft.EntityFrameworkCore.Database.Command|prueba@gmail.com|4|Executed DbCommand (4ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-07-08 11:54:02.6581|INFO|Microsoft.EntityFrameworkCore.Database.Command|prueba@gmail.com|4|Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-07-08 11:54:02.6581|INFO|Microsoft.EntityFrameworkCore.Database.Command|prueba@gmail.com|4|Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-07-08 11:54:02.6789|INFO|Infraestructura.Controllers.UsersController|prueba@gmail.com|4|[0HNDU0KCH4VK3] FinishCall: Login – token issued
+2025-07-08 11:54:02.6789|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor|prueba@gmail.com|4|Executing OkObjectResult, writing value of type 'Core.DTO.AnswerAuthenticationDTO'.
+2025-07-08 11:54:02.6946|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|prueba@gmail.com|4|Executed action Infraestructura.Controllers.UsersController.Login (Weather.api) in 295.5758ms
+2025-07-08 11:54:02.6946|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|prueba@gmail.com|4|Executed endpoint 'Infraestructura.Controllers.UsersController.Login (Weather.api)'
+2025-07-08 11:54:02.6946|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|prueba@gmail.com|4|Request finished HTTP/2 POST https://localhost:7131/api/Users/login - 200 - application/json;+charset=utf-8 346.3698ms
+2025-07-08 11:54:18.4731|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/api/RemoteWeather/home - - -
+2025-07-08 11:54:18.5772|INFO|Microsoft.EntityFrameworkCore.Database.Command||4|Executed DbCommand (16ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-07-08 11:54:18.5772|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware||4|Executing endpoint 'Infraestructura.Controllers.RemoteWeatherController.GetHomeAsync (Weather.api)'
+2025-07-08 11:54:18.5772|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker||4|Route matched with {action = "GetHome", controller = "RemoteWeather"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Core.DTO.HomeResponseDTO]] GetHomeAsync() on controller Infraestructura.Controllers.RemoteWeatherController (Weather.api).
+2025-07-08 11:54:18.5772|INFO|Infraestructura.Controllers.RemoteWeatherController||4|[0HNDU0KCH4VK3] Call: GetHomeAsync()
+2025-07-08 11:54:20.3093|INFO|Infraestructura.Controllers.RemoteWeatherController||4|[0HNDU0KCH4VK3] FinishCall: GetHomeAsync – details retrieved
+2025-07-08 11:54:20.3093|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor||4|Executing OkObjectResult, writing value of type 'Core.DTO.HomeResponseDTO'.
+2025-07-08 11:54:20.3148|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker||4|Executed action Infraestructura.Controllers.RemoteWeatherController.GetHomeAsync (Weather.api) in 1729.9372ms
+2025-07-08 11:54:20.3148|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware||4|Executed endpoint 'Infraestructura.Controllers.RemoteWeatherController.GetHomeAsync (Weather.api)'
+2025-07-08 11:54:20.3148|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request finished HTTP/2 GET https://localhost:7131/api/RemoteWeather/home - 200 - application/json;+charset=utf-8 1844.2252ms
+2025-07-08 12:08:06.6252|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 12:08:06.6401|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando.
+2025-07-08 12:08:09.4805|INFO|Microsoft.EntityFrameworkCore.Database.Command||6|Executed DbCommand (37ms) [Parameters=[@__entity_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+WHERE [w].[Id] = @__entity_Id_0
+2025-07-08 12:08:09.5818|ERROR|Microsoft.EntityFrameworkCore.Database.Command||6|Failed executing DbCommand (6ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [WeatherComplete] ([Id], [IdProvince], [MaxTemperature], [MinTemperature], [NameProvince], [NameTown], [StateSkyDescription], [StateSkyId], [UpdateDateTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-08 12:08:09.5987|ERROR|Microsoft.EntityFrameworkCore.Update||6|An exception occurred in the database while saving changes for context type 'Infraestructura.Data.ApplicationDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): No se puede insertar el valor NULL en la columna 'StateSkyDescription', tabla 'Weather.dbo.WeatherComplete'. La columna no admite valores NULL. Error de INSERT.
+Se terminó la instrucción.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:9923aa2e-f127-43b1-89f1-775bd38a17fb
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)|Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): No se puede insertar el valor NULL en la columna 'StateSkyDescription', tabla 'Weather.dbo.WeatherComplete'. La columna no admite valores NULL. Error de INSERT.
+Se terminó la instrucción.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:9923aa2e-f127-43b1-89f1-775bd38a17fb
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-07-08 12:08:09.5987|ERROR|Infraestructura.Services.WeatherUpdateHostedService||6|WeatherUpdateHostedService: error al actualizar clima.|Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): No se puede insertar el valor NULL en la columna 'StateSkyDescription', tabla 'Weather.dbo.WeatherComplete'. La columna no admite valores NULL. Error de INSERT.
+Se terminó la instrucción.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:9923aa2e-f127-43b1-89f1-775bd38a17fb
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Infraestructura.Repositories.WeatherCompleteRepository.AddOrUpdateAsync(WeatherComplete entity) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Repositories\WeatherCompleteRepository.cs:line 43
+   at Infraestructura.Services.WeatherCompleteService.UpdateFromHomeAsync(HomeResponseDTO homeDto) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherCompleteService.cs:line 96
+   at Infraestructura.Services.WeatherUpdateHostedService.StartAsync(CancellationToken cancellationToken) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherUpdateHostedService.cs:line 41
+2025-07-08 12:08:09.6752|INFO|Microsoft.Hosting.Lifetime||6|Now listening on: https://localhost:7131
+2025-07-08 12:08:09.6752|INFO|Microsoft.Hosting.Lifetime||6|Now listening on: http://localhost:5216
+2025-07-08 12:08:09.7136|INFO|Microsoft.Hosting.Lifetime||6|Application started. Press Ctrl+C to shut down.
+2025-07-08 12:08:09.7136|INFO|Microsoft.Hosting.Lifetime||6|Hosting environment: Development
+2025-07-08 12:08:09.7136|INFO|Microsoft.Hosting.Lifetime||6|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 12:08:09.9797|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 12:08:10.0456|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 68.2654ms
+2025-07-08 12:08:10.0763|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 12:08:10.0763|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 12:08:10.0846|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 8.2113ms
+2025-07-08 12:08:10.1023|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 25.9522ms
+2025-07-08 12:08:10.3362|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 12:08:10.3567|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 20.3619ms
+2025-07-08 12:09:05.1605|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 12:09:05.1743|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando.
+2025-07-08 12:09:07.8776|INFO|Microsoft.EntityFrameworkCore.Database.Command||6|Executed DbCommand (50ms) [Parameters=[@__entity_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+WHERE [w].[Id] = @__entity_Id_0
+2025-07-08 12:09:08.0073|ERROR|Microsoft.EntityFrameworkCore.Database.Command||9|Failed executing DbCommand (6ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [WeatherComplete] ([Id], [IdProvince], [MaxTemperature], [MinTemperature], [NameProvince], [NameTown], [StateSkyDescription], [StateSkyId], [UpdateDateTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-08 12:09:08.0263|ERROR|Microsoft.EntityFrameworkCore.Update||9|An exception occurred in the database while saving changes for context type 'Infraestructura.Data.ApplicationDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): No se puede insertar el valor NULL en la columna 'StateSkyId', tabla 'Weather.dbo.WeatherComplete'. La columna no admite valores NULL. Error de INSERT.
+Se terminó la instrucción.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:e1f3ad4d-8407-47fb-8e0a-bc1d65179d86
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)|Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): No se puede insertar el valor NULL en la columna 'StateSkyId', tabla 'Weather.dbo.WeatherComplete'. La columna no admite valores NULL. Error de INSERT.
+Se terminó la instrucción.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:e1f3ad4d-8407-47fb-8e0a-bc1d65179d86
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-07-08 12:09:08.0340|ERROR|Infraestructura.Services.WeatherUpdateHostedService||9|WeatherUpdateHostedService: error al actualizar clima.|Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): No se puede insertar el valor NULL en la columna 'StateSkyId', tabla 'Weather.dbo.WeatherComplete'. La columna no admite valores NULL. Error de INSERT.
+Se terminó la instrucción.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:e1f3ad4d-8407-47fb-8e0a-bc1d65179d86
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Infraestructura.Repositories.WeatherCompleteRepository.AddOrUpdateAsync(WeatherComplete entity) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Repositories\WeatherCompleteRepository.cs:line 43
+   at Infraestructura.Services.WeatherCompleteService.UpdateFromHomeAsync(HomeResponseDTO homeDto) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherCompleteService.cs:line 96
+   at Infraestructura.Services.WeatherUpdateHostedService.StartAsync(CancellationToken cancellationToken) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherUpdateHostedService.cs:line 41
+2025-07-08 12:09:08.1101|INFO|Microsoft.Hosting.Lifetime||9|Now listening on: https://localhost:7131
+2025-07-08 12:09:08.1101|INFO|Microsoft.Hosting.Lifetime||9|Now listening on: http://localhost:5216
+2025-07-08 12:09:08.1551|INFO|Microsoft.Hosting.Lifetime||9|Application started. Press Ctrl+C to shut down.
+2025-07-08 12:09:08.1574|INFO|Microsoft.Hosting.Lifetime||9|Hosting environment: Development
+2025-07-08 12:09:08.1574|INFO|Microsoft.Hosting.Lifetime||9|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 12:09:08.5143|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 12:09:08.5863|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 73.4079ms
+2025-07-08 12:09:08.6206|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||16|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 12:09:08.6206|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 12:09:08.6306|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 9.9046ms
+2025-07-08 12:09:08.6487|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 27.9936ms
+2025-07-08 12:09:08.7947|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 12:09:08.8145|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 19.7139ms
+2025-07-08 12:13:55.3014|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1
+2025-07-08 12:13:55.3138|INFO|Microsoft.EntityFrameworkCore.Migrations||1|Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-07-08 12:13:55.3621|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (33ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-07-08 12:13:55.4182|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-07-08 12:13:55.4273|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1
+2025-07-08 12:13:55.4273|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-07-08 12:13:55.4392|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-07-08 12:13:55.4392|INFO|Microsoft.EntityFrameworkCore.Migrations||1|Applying migration '20250708101333_CambioNulos'.
+2025-07-08 12:13:55.5701|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (102ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var sysname;
+SELECT @var = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[WeatherComplete]') AND [c].[name] = N'StateSkyId');
+IF @var IS NOT NULL EXEC(N'ALTER TABLE [WeatherComplete] DROP CONSTRAINT [' + @var + '];');
+ALTER TABLE [WeatherComplete] ALTER COLUMN [StateSkyId] nvarchar(max) NULL;
+2025-07-08 12:13:55.6040|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (32ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var1 sysname;
+SELECT @var1 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[WeatherComplete]') AND [c].[name] = N'StateSkyDescription');
+IF @var1 IS NOT NULL EXEC(N'ALTER TABLE [WeatherComplete] DROP CONSTRAINT [' + @var1 + '];');
+ALTER TABLE [WeatherComplete] ALTER COLUMN [StateSkyDescription] nvarchar(max) NULL;
+2025-07-08 12:13:55.6410|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (36ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var2 sysname;
+SELECT @var2 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[WeatherComplete]') AND [c].[name] = N'NameTown');
+IF @var2 IS NOT NULL EXEC(N'ALTER TABLE [WeatherComplete] DROP CONSTRAINT [' + @var2 + '];');
+ALTER TABLE [WeatherComplete] ALTER COLUMN [NameTown] nvarchar(max) NULL;
+2025-07-08 12:13:55.6752|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (33ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var3 sysname;
+SELECT @var3 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[WeatherComplete]') AND [c].[name] = N'NameProvince');
+IF @var3 IS NOT NULL EXEC(N'ALTER TABLE [WeatherComplete] DROP CONSTRAINT [' + @var3 + '];');
+ALTER TABLE [WeatherComplete] ALTER COLUMN [NameProvince] nvarchar(max) NULL;
+2025-07-08 12:13:55.7601|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (35ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var4 sysname;
+SELECT @var4 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[WeatherComplete]') AND [c].[name] = N'IdProvince');
+IF @var4 IS NOT NULL EXEC(N'ALTER TABLE [WeatherComplete] DROP CONSTRAINT [' + @var4 + '];');
+ALTER TABLE [WeatherComplete] ALTER COLUMN [IdProvince] nvarchar(max) NULL;
+2025-07-08 12:13:55.7601|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250708101333_CambioNulos', N'9.0.6');
+2025-07-08 12:13:55.7715|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-07-08 12:14:16.6964|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 12:14:16.7296|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando.
+2025-07-08 12:14:37.9745|ERROR|Infraestructura.Services.WeatherUpdateHostedService||13|WeatherUpdateHostedService: error al actualizar clima.|System.Exception: WeatherClient.GetHomeAsync error
+ ---> System.Exception: ElTiempo API error (0): Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder. (www.el-tiempo.net:443)
+   at Infraestructura.Services.WeatherClient.GetHomeAsync() in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 56
+   --- End of inner exception stack trace ---
+   at Infraestructura.Services.WeatherClient.GetHomeAsync() in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 61
+   at Infraestructura.Services.WeatherUpdateHostedService.StartAsync(CancellationToken cancellationToken) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherUpdateHostedService.cs:line 34
+2025-07-08 12:14:38.0651|INFO|Microsoft.Hosting.Lifetime||13|Now listening on: https://localhost:7131
+2025-07-08 12:14:38.0651|INFO|Microsoft.Hosting.Lifetime||13|Now listening on: http://localhost:5216
+2025-07-08 12:14:38.1971|INFO|Microsoft.Hosting.Lifetime||13|Application started. Press Ctrl+C to shut down.
+2025-07-08 12:14:38.1971|INFO|Microsoft.Hosting.Lifetime||13|Hosting environment: Development
+2025-07-08 12:14:38.1971|INFO|Microsoft.Hosting.Lifetime||13|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 12:14:38.4568|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 12:14:38.5406|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 88.9240ms
+2025-07-08 12:14:38.5640|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 12:14:38.5640|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 12:14:38.5640|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 13.1385ms
+2025-07-08 12:14:38.5937|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 29.6704ms
+2025-07-08 12:14:38.7966|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 12:14:38.8184|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 21.8047ms
+2025-07-08 12:15:45.4614|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 12:15:45.4885|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando.
+2025-07-08 12:16:06.7362|ERROR|Infraestructura.Services.WeatherUpdateHostedService||9|WeatherUpdateHostedService: error al actualizar clima.|System.Exception: WeatherClient.GetHomeAsync error
+ ---> System.Exception: ElTiempo API error (0): Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder. (www.el-tiempo.net:443)
+   at Infraestructura.Services.WeatherClient.GetHomeAsync() in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 56
+   --- End of inner exception stack trace ---
+   at Infraestructura.Services.WeatherClient.GetHomeAsync() in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 61
+   at Infraestructura.Services.WeatherUpdateHostedService.StartAsync(CancellationToken cancellationToken) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherUpdateHostedService.cs:line 34
+2025-07-08 12:16:06.8027|INFO|Microsoft.Hosting.Lifetime||9|Now listening on: https://localhost:7131
+2025-07-08 12:16:06.8027|INFO|Microsoft.Hosting.Lifetime||9|Now listening on: http://localhost:5216
+2025-07-08 12:16:06.8732|INFO|Microsoft.Hosting.Lifetime||9|Application started. Press Ctrl+C to shut down.
+2025-07-08 12:16:06.8748|INFO|Microsoft.Hosting.Lifetime||9|Hosting environment: Development
+2025-07-08 12:16:06.8748|INFO|Microsoft.Hosting.Lifetime||9|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 12:18:50.3279|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 12:18:50.3516|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando.
+2025-07-08 12:19:08.3368|INFO|Microsoft.EntityFrameworkCore.Database.Command||6|Executed DbCommand (46ms) [Parameters=[@__entity_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+WHERE [w].[Id] = @__entity_Id_0
+2025-07-08 12:19:08.4628|INFO|Microsoft.EntityFrameworkCore.Database.Command||6|Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [WeatherComplete] ([Id], [IdProvince], [MaxTemperature], [MinTemperature], [NameProvince], [NameTown], [StateSkyDescription], [StateSkyId], [UpdateDateTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-08 12:19:08.4728|INFO|Infraestructura.Services.WeatherUpdateHostedService||6|WeatherUpdateHostedService: datos registrados correctamente.
+2025-07-08 12:19:08.5386|INFO|Microsoft.Hosting.Lifetime||6|Now listening on: https://localhost:7131
+2025-07-08 12:19:08.5386|INFO|Microsoft.Hosting.Lifetime||6|Now listening on: http://localhost:5216
+2025-07-08 12:19:08.5794|INFO|Microsoft.Hosting.Lifetime||6|Application started. Press Ctrl+C to shut down.
+2025-07-08 12:19:08.5794|INFO|Microsoft.Hosting.Lifetime||6|Hosting environment: Development
+2025-07-08 12:19:08.5794|INFO|Microsoft.Hosting.Lifetime||6|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 12:19:08.9463|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||17|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 12:19:08.9463|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 12:19:08.9625|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 18.2671ms
+2025-07-08 12:19:08.9830|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||17|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 39.5816ms
+2025-07-08 12:19:09.1976|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 12:19:09.2438|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 46.1890ms
+2025-07-08 12:41:46.9449|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 12:41:46.9686|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando.
+2025-07-08 12:41:50.9320|INFO|Microsoft.EntityFrameworkCore.Database.Command||7|Executed DbCommand (38ms) [Parameters=[@__entity_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+WHERE [w].[Id] = @__entity_Id_0
+2025-07-08 12:41:51.0380|INFO|Microsoft.EntityFrameworkCore.Database.Command||7|Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [WeatherComplete] ([Id], [IdProvince], [MaxTemperature], [MinTemperature], [NameProvince], [NameTown], [StateSkyDescription], [StateSkyId], [UpdateDateTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-08 12:41:51.0463|INFO|Infraestructura.Services.WeatherUpdateHostedService||7|WeatherUpdateHostedService: datos registrados correctamente.
+2025-07-08 12:41:51.1190|INFO|Microsoft.Hosting.Lifetime||7|Now listening on: https://localhost:7131
+2025-07-08 12:41:51.1190|INFO|Microsoft.Hosting.Lifetime||7|Now listening on: http://localhost:5216
+2025-07-08 12:41:51.1558|INFO|Microsoft.Hosting.Lifetime||7|Application started. Press Ctrl+C to shut down.
+2025-07-08 12:41:51.1558|INFO|Microsoft.Hosting.Lifetime||7|Hosting environment: Development
+2025-07-08 12:41:51.1558|INFO|Microsoft.Hosting.Lifetime||7|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 12:41:51.6650|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 12:41:51.7344|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 71.6704ms
+2025-07-08 12:41:51.7739|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 12:41:51.7739|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 12:41:51.7828|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 8.8220ms
+2025-07-08 12:41:51.8021|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 28.0846ms
+2025-07-08 12:41:52.0388|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 12:41:52.0578|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 19.0040ms
+2025-07-08 12:43:34.8329|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 12:43:34.8456|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando.
+2025-07-08 12:43:37.3389|INFO|Microsoft.EntityFrameworkCore.Database.Command||6|Executed DbCommand (46ms) [Parameters=[@__entity_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+WHERE [w].[Id] = @__entity_Id_0
+2025-07-08 12:43:37.4516|INFO|Microsoft.EntityFrameworkCore.Database.Command||6|Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [WeatherComplete] ([Id], [IdProvince], [MaxTemperature], [MinTemperature], [NameProvince], [NameTown], [StateSkyDescription], [StateSkyId], [UpdateDateTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-08 12:43:37.4581|INFO|Infraestructura.Services.WeatherUpdateHostedService||6|WeatherUpdateHostedService: datos registrados correctamente.
+2025-07-08 12:43:37.5219|INFO|Microsoft.Hosting.Lifetime||6|Now listening on: https://localhost:7131
+2025-07-08 12:43:37.5219|INFO|Microsoft.Hosting.Lifetime||6|Now listening on: http://localhost:5216
+2025-07-08 12:43:37.5615|INFO|Microsoft.Hosting.Lifetime||6|Application started. Press Ctrl+C to shut down.
+2025-07-08 12:43:37.5615|INFO|Microsoft.Hosting.Lifetime||6|Hosting environment: Development
+2025-07-08 12:43:37.5615|INFO|Microsoft.Hosting.Lifetime||6|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 12:43:37.9564|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 12:43:38.0297|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 74.5167ms
+2025-07-08 12:43:38.0569|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 12:43:38.0569|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 12:43:38.0675|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 10.4572ms
+2025-07-08 12:43:38.0827|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 25.7800ms
+2025-07-08 12:43:38.2580|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 12:43:38.2742|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 16.1931ms
+2025-07-08 12:46:12.7037|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 12:46:12.7172|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando.
+2025-07-08 12:46:15.3974|INFO|Microsoft.EntityFrameworkCore.Database.Command||6|Executed DbCommand (25ms) [Parameters=[@__entity_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+WHERE [w].[Id] = @__entity_Id_0
+2025-07-08 12:46:15.4843|INFO|Microsoft.EntityFrameworkCore.Database.Command||6|Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [WeatherComplete] ([Id], [IdProvince], [MaxTemperature], [MinTemperature], [NameProvince], [NameTown], [StateSkyDescription], [StateSkyId], [UpdateDateTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-08 12:46:15.4843|INFO|Infraestructura.Services.WeatherUpdateHostedService||6|WeatherUpdateHostedService: datos registrados correctamente.
+2025-07-08 12:46:15.5521|INFO|Microsoft.Hosting.Lifetime||6|Now listening on: https://localhost:7131
+2025-07-08 12:46:15.5521|INFO|Microsoft.Hosting.Lifetime||6|Now listening on: http://localhost:5216
+2025-07-08 12:46:15.5933|INFO|Microsoft.Hosting.Lifetime||6|Application started. Press Ctrl+C to shut down.
+2025-07-08 12:46:15.5933|INFO|Microsoft.Hosting.Lifetime||6|Hosting environment: Development
+2025-07-08 12:46:15.5933|INFO|Microsoft.Hosting.Lifetime||6|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 12:46:15.7723|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||10|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 12:46:15.8390|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||10|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 67.9606ms
+2025-07-08 12:46:15.8648|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 12:46:15.8648|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 12:46:15.8648|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 6.9325ms
+2025-07-08 12:46:15.8878|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 21.9242ms
+2025-07-08 12:46:16.0509|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 12:46:16.0691|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 18.1189ms
+2025-07-08 13:04:07.3949|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 13:04:07.4073|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando.
+2025-07-08 13:04:09.8693|INFO|Microsoft.EntityFrameworkCore.Database.Command||7|Executed DbCommand (47ms) [Parameters=[@__entity_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+WHERE [w].[Id] = @__entity_Id_0
+2025-07-08 13:04:09.9838|INFO|Microsoft.EntityFrameworkCore.Database.Command||7|Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [WeatherComplete] ([Id], [IdProvince], [MaxTemperature], [MinTemperature], [NameProvince], [NameTown], [StateSkyDescription], [StateSkyId], [UpdateDateTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-08 13:04:09.9838|INFO|Infraestructura.Services.WeatherUpdateHostedService||7|WeatherUpdateHostedService: datos registrados correctamente.
+2025-07-08 13:04:10.0585|INFO|Microsoft.Hosting.Lifetime||7|Now listening on: https://localhost:7131
+2025-07-08 13:04:10.0585|INFO|Microsoft.Hosting.Lifetime||7|Now listening on: http://localhost:5216
+2025-07-08 13:04:10.0966|INFO|Microsoft.Hosting.Lifetime||7|Application started. Press Ctrl+C to shut down.
+2025-07-08 13:04:10.0966|INFO|Microsoft.Hosting.Lifetime||7|Hosting environment: Development
+2025-07-08 13:04:10.0966|INFO|Microsoft.Hosting.Lifetime||7|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 13:04:10.1805|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 13:04:10.2527|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 73.2818ms
+2025-07-08 13:04:10.2811|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 13:04:10.2811|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 13:04:10.2811|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 10.1390ms
+2025-07-08 13:04:10.3067|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 25.5623ms
+2025-07-08 13:04:10.5122|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 13:04:10.5281|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 15.8177ms
+2025-07-08 13:04:18.7696|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 13:04:18.7834|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando.
+2025-07-08 13:04:21.5520|INFO|Microsoft.EntityFrameworkCore.Database.Command||7|Executed DbCommand (46ms) [Parameters=[@__entity_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+WHERE [w].[Id] = @__entity_Id_0
+2025-07-08 13:04:21.7099|INFO|Microsoft.EntityFrameworkCore.Database.Command||7|Executed DbCommand (11ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [WeatherComplete] ([Id], [IdProvince], [MaxTemperature], [MinTemperature], [NameProvince], [NameTown], [StateSkyDescription], [StateSkyId], [UpdateDateTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-08 13:04:21.7099|INFO|Infraestructura.Services.WeatherUpdateHostedService||7|WeatherUpdateHostedService: datos registrados correctamente.
+2025-07-08 13:04:21.8005|INFO|Microsoft.Hosting.Lifetime||7|Now listening on: https://localhost:7131
+2025-07-08 13:04:21.8005|INFO|Microsoft.Hosting.Lifetime||7|Now listening on: http://localhost:5216
+2025-07-08 13:04:21.8569|INFO|Microsoft.Hosting.Lifetime||7|Application started. Press Ctrl+C to shut down.
+2025-07-08 13:04:21.8593|INFO|Microsoft.Hosting.Lifetime||7|Hosting environment: Development
+2025-07-08 13:04:21.8593|INFO|Microsoft.Hosting.Lifetime||7|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 13:04:21.8876|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||16|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 13:04:21.9683|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 81.9947ms
+2025-07-08 13:04:21.9683|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||17|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 13:04:21.9903|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 13:04:22.0020|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 11.5298ms
+2025-07-08 13:04:22.0153|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||16|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 34.1330ms
+2025-07-08 13:04:22.2129|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||16|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 13:04:22.2325|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 19.5101ms
+2025-07-08 13:04:27.6726|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 13:04:27.6880|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando.
+2025-07-08 13:04:28.0099|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1
+2025-07-08 13:04:28.0350|INFO|Microsoft.EntityFrameworkCore.Migrations||1|Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-07-08 13:04:28.0705|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (33ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-07-08 13:04:28.1267|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-07-08 13:04:28.1267|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1
+2025-07-08 13:04:28.1267|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-07-08 13:04:28.1465|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-07-08 13:04:28.1604|INFO|Microsoft.EntityFrameworkCore.Migrations||1|Applying migration '20250708110419_PosibleNullTemperatura'.
+2025-07-08 13:04:28.2933|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (115ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var sysname;
+SELECT @var = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[WeatherComplete]') AND [c].[name] = N'MinTemperature');
+IF @var IS NOT NULL EXEC(N'ALTER TABLE [WeatherComplete] DROP CONSTRAINT [' + @var + '];');
+ALTER TABLE [WeatherComplete] ALTER COLUMN [MinTemperature] int NULL;
+2025-07-08 13:04:28.3344|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (40ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var1 sysname;
+SELECT @var1 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[WeatherComplete]') AND [c].[name] = N'MaxTemperature');
+IF @var1 IS NOT NULL EXEC(N'ALTER TABLE [WeatherComplete] DROP CONSTRAINT [' + @var1 + '];');
+ALTER TABLE [WeatherComplete] ALTER COLUMN [MaxTemperature] int NULL;
+2025-07-08 13:04:28.3451|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250708110419_PosibleNullTemperatura', N'9.0.6');
+2025-07-08 13:04:28.3451|INFO|Microsoft.EntityFrameworkCore.Database.Command||1|Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-07-08 13:04:30.2349|INFO|Microsoft.EntityFrameworkCore.Database.Command||4|Executed DbCommand (31ms) [Parameters=[@__entity_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+WHERE [w].[Id] = @__entity_Id_0
+2025-07-08 13:04:30.3438|INFO|Microsoft.EntityFrameworkCore.Database.Command||7|Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [WeatherComplete] ([Id], [IdProvince], [MaxTemperature], [MinTemperature], [NameProvince], [NameTown], [StateSkyDescription], [StateSkyId], [UpdateDateTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-08 13:04:30.3438|INFO|Infraestructura.Services.WeatherUpdateHostedService||7|WeatherUpdateHostedService: datos registrados correctamente.
+2025-07-08 13:04:30.4265|INFO|Microsoft.Hosting.Lifetime||7|Now listening on: https://localhost:7131
+2025-07-08 13:04:30.4265|INFO|Microsoft.Hosting.Lifetime||7|Now listening on: http://localhost:5216
+2025-07-08 13:04:30.4692|INFO|Microsoft.Hosting.Lifetime||7|Application started. Press Ctrl+C to shut down.
+2025-07-08 13:04:30.4692|INFO|Microsoft.Hosting.Lifetime||7|Hosting environment: Development
+2025-07-08 13:04:30.4692|INFO|Microsoft.Hosting.Lifetime||7|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 13:04:30.4907|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 13:04:30.5634|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 75.2344ms
+2025-07-08 13:04:30.5634|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 13:04:30.5634|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 13:04:30.5877|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 10.7104ms
+2025-07-08 13:04:30.6026|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 25.7120ms
+2025-07-08 13:04:30.7658|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 13:04:30.7827|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||19|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 16.8374ms
+2025-07-08 13:06:01.1131|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 13:06:01.1245|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 11.3651ms
+2025-07-08 13:06:01.1411|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 13:06:01.1411|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 13:06:01.1411|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||20|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 4.2322ms
+2025-07-08 13:06:01.1603|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||20|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 19.1236ms
+2025-07-08 13:06:01.3301|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||20|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 13:06:01.3524|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||20|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 22.2877ms
+2025-07-08 13:06:38.9606|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 13:06:38.9885|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando.
+2025-07-08 13:06:41.2611|INFO|Microsoft.EntityFrameworkCore.Database.Command||9|Executed DbCommand (37ms) [Parameters=[@__entity_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+WHERE [w].[Id] = @__entity_Id_0
+2025-07-08 13:06:41.3614|INFO|Microsoft.EntityFrameworkCore.Database.Command||9|Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [WeatherComplete] ([Id], [IdProvince], [MaxTemperature], [MinTemperature], [NameProvince], [NameTown], [StateSkyDescription], [StateSkyId], [UpdateDateTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-08 13:06:41.3614|INFO|Infraestructura.Services.WeatherUpdateHostedService||9|WeatherUpdateHostedService: datos registrados correctamente.
+2025-07-08 13:06:41.4363|INFO|Microsoft.Hosting.Lifetime||9|Now listening on: https://localhost:7131
+2025-07-08 13:06:41.4372|INFO|Microsoft.Hosting.Lifetime||9|Now listening on: http://localhost:5216
+2025-07-08 13:06:41.4736|INFO|Microsoft.Hosting.Lifetime||9|Application started. Press Ctrl+C to shut down.
+2025-07-08 13:06:41.4736|INFO|Microsoft.Hosting.Lifetime||9|Hosting environment: Development
+2025-07-08 13:06:41.4736|INFO|Microsoft.Hosting.Lifetime||9|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 13:06:42.0673|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 13:06:42.0673|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 13:06:42.0811|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 15.2078ms
+2025-07-08 13:06:42.0962|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 30.8361ms
+2025-07-08 13:06:42.3710|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 13:06:42.4052|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 34.1291ms
+2025-07-08 13:11:42.8122|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 13:11:42.8286|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando.
+2025-07-08 13:11:45.8095|INFO|Microsoft.EntityFrameworkCore.Database.Command||9|Executed DbCommand (38ms) [Parameters=[@__entity_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+WHERE [w].[Id] = @__entity_Id_0
+2025-07-08 13:11:45.9184|INFO|Microsoft.EntityFrameworkCore.Database.Command||9|Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [WeatherComplete] ([Id], [IdProvince], [MaxTemperature], [MinTemperature], [NameProvince], [NameTown], [StateSkyDescription], [StateSkyId], [UpdateDateTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-08 13:11:45.9256|INFO|Infraestructura.Services.WeatherUpdateHostedService||9|WeatherUpdateHostedService: datos registrados correctamente.
+2025-07-08 13:11:45.9946|INFO|Microsoft.Hosting.Lifetime||9|Now listening on: https://localhost:7131
+2025-07-08 13:11:45.9946|INFO|Microsoft.Hosting.Lifetime||9|Now listening on: http://localhost:5216
+2025-07-08 13:11:46.0359|INFO|Microsoft.Hosting.Lifetime||9|Application started. Press Ctrl+C to shut down.
+2025-07-08 13:11:46.0359|INFO|Microsoft.Hosting.Lifetime||9|Hosting environment: Development
+2025-07-08 13:11:46.0359|INFO|Microsoft.Hosting.Lifetime||9|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 13:11:46.1214|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 13:11:46.1864|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 66.8403ms
+2025-07-08 13:11:46.2181|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 13:11:46.2181|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||17|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 8.6295ms
+2025-07-08 13:11:46.2734|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 13:11:46.2935|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||17|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 20.0966ms
+2025-07-08 13:11:46.4500|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 13:11:46.4694|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||17|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 19.3037ms
+2025-07-08 13:12:02.4692|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 13:12:02.4692|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||17|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 8.1110ms
+2025-07-08 13:12:02.4940|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||17|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 13:12:02.5007|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 13:12:02.5007|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 1.8480ms
+2025-07-08 13:12:02.5007|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 18.5786ms
+2025-07-08 13:12:02.6984|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 13:12:02.7128|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 14.4019ms
+2025-07-08 13:12:18.6542|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 13:12:18.6733|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando.
+2025-07-08 13:12:21.1002|INFO|Microsoft.EntityFrameworkCore.Database.Command||6|Executed DbCommand (23ms) [Parameters=[@__entity_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+WHERE [w].[Id] = @__entity_Id_0
+2025-07-08 13:12:21.2042|INFO|Microsoft.EntityFrameworkCore.Database.Command||6|Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [WeatherComplete] ([Id], [IdProvince], [MaxTemperature], [MinTemperature], [NameProvince], [NameTown], [StateSkyDescription], [StateSkyId], [UpdateDateTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-08 13:12:21.2042|INFO|Infraestructura.Services.WeatherUpdateHostedService||6|WeatherUpdateHostedService: datos registrados correctamente.
+2025-07-08 13:12:21.2834|INFO|Microsoft.Hosting.Lifetime||6|Now listening on: https://localhost:7131
+2025-07-08 13:12:21.2834|INFO|Microsoft.Hosting.Lifetime||6|Now listening on: http://localhost:5216
+2025-07-08 13:12:21.3283|INFO|Microsoft.Hosting.Lifetime||6|Application started. Press Ctrl+C to shut down.
+2025-07-08 13:12:21.3283|INFO|Microsoft.Hosting.Lifetime||6|Hosting environment: Development
+2025-07-08 13:12:21.3283|INFO|Microsoft.Hosting.Lifetime||6|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 13:12:21.7033|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 13:12:21.7033|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 13:12:21.7033|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 17.5085ms
+2025-07-08 13:12:21.7366|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||19|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 36.0206ms
+2025-07-08 13:12:21.8712|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||19|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 13:12:21.9040|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||16|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 32.7405ms
+2025-07-08 13:19:02.8681|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 13:19:02.9021|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando.
+2025-07-08 13:19:06.4457|INFO|Microsoft.EntityFrameworkCore.Database.Command||9|Executed DbCommand (38ms) [Parameters=[@__entity_IdProvince_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+WHERE [w].[IdProvince] = @__entity_IdProvince_0
+2025-07-08 13:19:06.5475|INFO|Microsoft.EntityFrameworkCore.Database.Command||9|Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [WeatherComplete] ([Id], [IdProvince], [MaxTemperature], [MinTemperature], [NameProvince], [NameTown], [StateSkyDescription], [StateSkyId], [UpdateDateTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-08 13:19:06.5475|INFO|Infraestructura.Services.WeatherUpdateHostedService||9|WeatherUpdateHostedService: datos registrados correctamente.
+2025-07-08 13:19:06.6245|INFO|Microsoft.Hosting.Lifetime||9|Now listening on: https://localhost:7131
+2025-07-08 13:19:06.6245|INFO|Microsoft.Hosting.Lifetime||9|Now listening on: http://localhost:5216
+2025-07-08 13:19:06.6602|INFO|Microsoft.Hosting.Lifetime||9|Application started. Press Ctrl+C to shut down.
+2025-07-08 13:19:06.6602|INFO|Microsoft.Hosting.Lifetime||9|Hosting environment: Development
+2025-07-08 13:19:06.6602|INFO|Microsoft.Hosting.Lifetime||9|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 13:19:07.0506|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||17|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 13:19:07.1166|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 67.2519ms
+2025-07-08 13:19:07.1459|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 13:19:07.1459|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||17|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 13:19:07.1562|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||17|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 10.0963ms
+2025-07-08 13:19:07.1744|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 28.4577ms
+2025-07-08 13:19:07.3734|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 13:19:07.3927|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 19.2951ms
+2025-07-08 13:19:53.8584|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 13:19:53.8663|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||20|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 7.9437ms
+2025-07-08 13:19:53.8826|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 13:19:53.8826|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||20|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 13:19:53.8826|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||19|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 1.9511ms
+2025-07-08 13:19:53.8978|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||21|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 15.1652ms
+2025-07-08 13:19:54.1073|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||19|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 13:19:54.1159|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||19|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 8.5974ms
+2025-07-08 13:20:28.3601|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 13:20:28.3753|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando.
+2025-07-08 13:20:30.8128|INFO|Microsoft.EntityFrameworkCore.Database.Command||9|Executed DbCommand (23ms) [Parameters=[@__entity_IdProvince_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+WHERE [w].[IdProvince] = @__entity_IdProvince_0
+2025-07-08 13:20:30.9069|INFO|Microsoft.EntityFrameworkCore.Database.Command||9|Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [WeatherComplete] ([Id], [IdProvince], [MaxTemperature], [MinTemperature], [NameProvince], [NameTown], [StateSkyDescription], [StateSkyId], [UpdateDateTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-08 13:20:30.9069|INFO|Infraestructura.Services.WeatherUpdateHostedService||9|WeatherUpdateHostedService: datos registrados correctamente.
+2025-07-08 13:20:31.0014|INFO|Microsoft.Hosting.Lifetime||9|Now listening on: https://localhost:7131
+2025-07-08 13:20:31.0014|INFO|Microsoft.Hosting.Lifetime||9|Now listening on: http://localhost:5216
+2025-07-08 13:20:31.0388|INFO|Microsoft.Hosting.Lifetime||9|Application started. Press Ctrl+C to shut down.
+2025-07-08 13:20:31.0388|INFO|Microsoft.Hosting.Lifetime||9|Hosting environment: Development
+2025-07-08 13:20:31.0388|INFO|Microsoft.Hosting.Lifetime||9|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 13:20:31.4579|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 13:20:31.5268|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||17|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 70.8029ms
+2025-07-08 13:20:31.5549|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 13:20:31.5549|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||16|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 13:20:31.5640|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||17|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 9.1140ms
+2025-07-08 13:20:31.5806|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||16|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 25.5682ms
+2025-07-08 13:20:31.7169|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 13:20:31.7391|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 22.0115ms
+2025-07-08 13:20:57.1522|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 13:20:57.1800|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando.
+2025-07-08 13:21:00.2307|INFO|Microsoft.EntityFrameworkCore.Database.Command||4|Executed DbCommand (35ms) [Parameters=[@__entity_IdProvince_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+WHERE [w].[IdProvince] = @__entity_IdProvince_0
+2025-07-08 13:21:00.3355|INFO|Microsoft.EntityFrameworkCore.Database.Command||4|Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [WeatherComplete] ([Id], [IdProvince], [MaxTemperature], [MinTemperature], [NameProvince], [NameTown], [StateSkyDescription], [StateSkyId], [UpdateDateTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-08 13:21:00.3431|INFO|Infraestructura.Services.WeatherUpdateHostedService||4|WeatherUpdateHostedService: datos registrados correctamente.
+2025-07-08 13:21:00.4108|INFO|Microsoft.Hosting.Lifetime||4|Now listening on: https://localhost:7131
+2025-07-08 13:21:00.4108|INFO|Microsoft.Hosting.Lifetime||4|Now listening on: http://localhost:5216
+2025-07-08 13:21:00.4468|INFO|Microsoft.Hosting.Lifetime||4|Application started. Press Ctrl+C to shut down.
+2025-07-08 13:21:00.4468|INFO|Microsoft.Hosting.Lifetime||4|Hosting environment: Development
+2025-07-08 13:21:00.4468|INFO|Microsoft.Hosting.Lifetime||4|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 13:21:00.9845|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||16|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 13:21:01.0478|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 64.4128ms
+2025-07-08 13:21:01.0772|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 13:21:01.0772|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 13:21:01.0843|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 7.0174ms
+2025-07-08 13:21:01.1017|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 24.4281ms
+2025-07-08 13:21:01.2448|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 13:21:01.2667|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 22.0417ms
+2025-07-08 13:21:22.3093|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 13:21:22.3342|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando.
+2025-07-08 13:21:24.8799|INFO|Microsoft.EntityFrameworkCore.Database.Command||4|Executed DbCommand (24ms) [Parameters=[@__entity_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+WHERE [w].[Id] = @__entity_Id_0
+2025-07-08 13:21:24.9840|INFO|Microsoft.EntityFrameworkCore.Database.Command||4|Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [WeatherComplete] ([Id], [IdProvince], [MaxTemperature], [MinTemperature], [NameProvince], [NameTown], [StateSkyDescription], [StateSkyId], [UpdateDateTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-08 13:21:24.9840|INFO|Infraestructura.Services.WeatherUpdateHostedService||4|WeatherUpdateHostedService: datos registrados correctamente.
+2025-07-08 13:21:25.0612|INFO|Microsoft.Hosting.Lifetime||4|Now listening on: https://localhost:7131
+2025-07-08 13:21:25.0620|INFO|Microsoft.Hosting.Lifetime||4|Now listening on: http://localhost:5216
+2025-07-08 13:21:25.1002|INFO|Microsoft.Hosting.Lifetime||4|Application started. Press Ctrl+C to shut down.
+2025-07-08 13:21:25.1002|INFO|Microsoft.Hosting.Lifetime||4|Hosting environment: Development
+2025-07-08 13:21:25.1002|INFO|Microsoft.Hosting.Lifetime||4|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 13:21:25.5684|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 13:21:25.6434|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 75.9239ms
+2025-07-08 13:21:25.6434|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 13:21:25.6434|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 13:21:25.6620|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 9.9324ms
+2025-07-08 13:21:25.6822|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 30.2121ms
+2025-07-08 13:21:25.8460|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 13:21:25.8762|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 29.9533ms
+2025-07-08 13:22:14.9624|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 13:22:14.9927|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando.
+2025-07-08 13:22:17.7322|INFO|Microsoft.EntityFrameworkCore.Database.Command||7|Executed DbCommand (38ms) [Parameters=[@__entity_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+WHERE [w].[Id] = @__entity_Id_0
+2025-07-08 13:22:17.8313|INFO|Microsoft.EntityFrameworkCore.Database.Command||7|Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [WeatherComplete] ([Id], [IdProvince], [MaxTemperature], [MinTemperature], [NameProvince], [NameTown], [StateSkyDescription], [StateSkyId], [UpdateDateTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-08 13:22:17.8313|INFO|Infraestructura.Services.WeatherUpdateHostedService||7|WeatherUpdateHostedService: datos registrados correctamente.
+2025-07-08 13:22:17.9011|INFO|Microsoft.Hosting.Lifetime||7|Now listening on: https://localhost:7131
+2025-07-08 13:22:17.9011|INFO|Microsoft.Hosting.Lifetime||7|Now listening on: http://localhost:5216
+2025-07-08 13:22:17.9421|INFO|Microsoft.Hosting.Lifetime||7|Application started. Press Ctrl+C to shut down.
+2025-07-08 13:22:17.9421|INFO|Microsoft.Hosting.Lifetime||7|Hosting environment: Development
+2025-07-08 13:22:17.9421|INFO|Microsoft.Hosting.Lifetime||7|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 13:22:18.0130|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 13:22:18.0893|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 77.1657ms
+2025-07-08 13:22:18.1243|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 13:22:18.1243|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 7.6646ms
+2025-07-08 13:22:18.1860|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 13:22:18.2153|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 29.2906ms
+2025-07-08 13:22:18.3278|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 13:22:18.3476|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||16|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 19.7371ms
+2025-07-08 15:40:57.0070|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 15:40:57.0197|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando con municipio aleatorio.
+2025-07-08 15:40:57.7189|ERROR|Infraestructura.Services.WeatherUpdateHostedService||6|Error en WeatherUpdateHostedService al procesar municipio aleatorio.|System.Exception: WeatherClient.GetMunicipioAsync error
+ ---> System.Exception: ElTiempo API error (NotFound): There is an error in XML document (0, 0).
+   at Infraestructura.Services.WeatherClient.GetMunicipioAsync(String codProvincia, String codMunicipio) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 88
+   --- End of inner exception stack trace ---
+   at Infraestructura.Services.WeatherClient.GetMunicipioAsync(String codProvincia, String codMunicipio) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 93
+   at Infraestructura.Services.WeatherUpdateHostedService.StartAsync(CancellationToken cancellationToken) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherUpdateHostedService.cs:line 59
+2025-07-08 15:40:57.8151|INFO|Microsoft.Hosting.Lifetime||6|Now listening on: https://localhost:7131
+2025-07-08 15:40:57.8151|INFO|Microsoft.Hosting.Lifetime||6|Now listening on: http://localhost:5216
+2025-07-08 15:40:57.8563|INFO|Microsoft.Hosting.Lifetime||6|Application started. Press Ctrl+C to shut down.
+2025-07-08 15:40:57.8581|INFO|Microsoft.Hosting.Lifetime||6|Hosting environment: Development
+2025-07-08 15:40:57.8581|INFO|Microsoft.Hosting.Lifetime||6|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 15:40:58.4939|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 15:40:58.4939|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 15:40:58.5104|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||16|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 19.2524ms
+2025-07-08 15:40:58.5291|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||16|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 39.2571ms
+2025-07-08 15:40:58.7507|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 15:40:58.7868|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||16|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 36.0214ms
+2025-07-08 15:42:44.9523|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 15:42:44.9869|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando con municipio aleatorio.
+2025-07-08 15:42:45.6741|ERROR|Infraestructura.Services.WeatherUpdateHostedService||9|Error en WeatherUpdateHostedService al procesar municipio aleatorio.|System.Exception: WeatherClient.GetMunicipioAsync error
+ ---> System.Exception: ElTiempo API error (NotFound): There is an error in XML document (0, 0).
+   at Infraestructura.Services.WeatherClient.GetMunicipioAsync(String codProvincia, String codMunicipio) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 88
+   --- End of inner exception stack trace ---
+   at Infraestructura.Services.WeatherClient.GetMunicipioAsync(String codProvincia, String codMunicipio) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 93
+   at Infraestructura.Services.WeatherUpdateHostedService.StartAsync(CancellationToken cancellationToken) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherUpdateHostedService.cs:line 59
+2025-07-08 15:42:45.7357|INFO|Microsoft.Hosting.Lifetime||9|Now listening on: https://localhost:7131
+2025-07-08 15:42:45.7357|INFO|Microsoft.Hosting.Lifetime||9|Now listening on: http://localhost:5216
+2025-07-08 15:42:45.7674|INFO|Microsoft.Hosting.Lifetime||9|Application started. Press Ctrl+C to shut down.
+2025-07-08 15:42:45.7674|INFO|Microsoft.Hosting.Lifetime||9|Hosting environment: Development
+2025-07-08 15:42:45.7674|INFO|Microsoft.Hosting.Lifetime||9|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 15:42:46.0720|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 15:42:46.1441|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 74.3435ms
+2025-07-08 15:42:46.1609|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 15:42:46.1609|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 15:42:46.1734|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||14|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 12.3228ms
+2025-07-08 15:42:46.1960|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 34.9930ms
+2025-07-08 15:42:46.2642|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 15:42:46.2832|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 19.0378ms
+2025-07-08 15:49:22.6640|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 15:49:22.6958|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando con municipio aleatorio.
+2025-07-08 15:49:23.0937|INFO|Infraestructura.Services.WeatherUpdateHostedService||10|HostedService: provincias recuperadas = 52
+2025-07-08 15:49:23.2198|INFO|Infraestructura.Services.WeatherUpdateHostedService||10|HostedService: municipios recuperados en 42 = 183
+2025-07-08 15:49:23.3490|ERROR|Infraestructura.Services.WeatherUpdateHostedService||6|Error en WeatherUpdateHostedService al procesar municipio aleatorio.|System.Exception: WeatherClient.GetMunicipioAsync error
+ ---> System.Exception: ElTiempo API error (NotFound): There is an error in XML document (0, 0).
+   at Infraestructura.Services.WeatherClient.GetMunicipioAsync(String codProvincia, String codMunicipio) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 88
+   --- End of inner exception stack trace ---
+   at Infraestructura.Services.WeatherClient.GetMunicipioAsync(String codProvincia, String codMunicipio) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 93
+   at Infraestructura.Services.WeatherUpdateHostedService.StartAsync(CancellationToken cancellationToken) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherUpdateHostedService.cs:line 67
+2025-07-08 15:49:23.4180|INFO|Microsoft.Hosting.Lifetime||6|Now listening on: https://localhost:7131
+2025-07-08 15:49:23.4180|INFO|Microsoft.Hosting.Lifetime||6|Now listening on: http://localhost:5216
+2025-07-08 15:49:23.4542|INFO|Microsoft.Hosting.Lifetime||6|Application started. Press Ctrl+C to shut down.
+2025-07-08 15:49:23.4542|INFO|Microsoft.Hosting.Lifetime||6|Hosting environment: Development
+2025-07-08 15:49:23.4542|INFO|Microsoft.Hosting.Lifetime||6|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 15:49:23.9017|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 15:49:23.9648|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 64.7661ms
+2025-07-08 15:49:23.9773|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 15:49:23.9833|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 15:49:23.9833|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 8.7684ms
+2025-07-08 15:49:24.0042|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 26.8538ms
+2025-07-08 15:49:24.0917|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 15:49:24.1099|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 18.2263ms
+2025-07-08 15:52:00.2190|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 15:52:00.2524|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando con municipio aleatorio.
+2025-07-08 15:52:00.6423|INFO|Infraestructura.Services.WeatherUpdateHostedService||9|HostedService: provincias recuperadas = 52
+2025-07-08 15:52:00.7766|INFO|Infraestructura.Services.WeatherUpdateHostedService||9|HostedService: municipios recuperados en 43 = 184
+2025-07-08 15:52:00.9457|ERROR|Infraestructura.Services.WeatherUpdateHostedService||9|Error en WeatherUpdateHostedService al procesar municipio aleatorio.|System.Exception: WeatherClient.GetMunicipioAsync error
+ ---> System.Exception: ElTiempo API error (NotFound): There is an error in XML document (0, 0).
+   at Infraestructura.Services.WeatherClient.GetMunicipioAsync(String codProvincia, String codMunicipio) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 88
+   --- End of inner exception stack trace ---
+   at Infraestructura.Services.WeatherClient.GetMunicipioAsync(String codProvincia, String codMunicipio) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 93
+   at Infraestructura.Services.WeatherUpdateHostedService.StartAsync(CancellationToken cancellationToken) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherUpdateHostedService.cs:line 67
+2025-07-08 15:52:01.0152|INFO|Microsoft.Hosting.Lifetime||9|Now listening on: https://localhost:7131
+2025-07-08 15:52:01.0152|INFO|Microsoft.Hosting.Lifetime||9|Now listening on: http://localhost:5216
+2025-07-08 15:52:01.0527|INFO|Microsoft.Hosting.Lifetime||9|Application started. Press Ctrl+C to shut down.
+2025-07-08 15:52:01.0527|INFO|Microsoft.Hosting.Lifetime||9|Hosting environment: Development
+2025-07-08 15:52:01.0527|INFO|Microsoft.Hosting.Lifetime||9|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 15:52:01.4886|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 15:52:01.5606|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 74.3974ms
+2025-07-08 15:52:01.5801|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 15:52:01.5801|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 15:52:01.5985|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 8.5161ms
+2025-07-08 15:52:01.6088|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 28.6569ms
+2025-07-08 15:52:01.7227|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 15:52:01.7436|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 20.8814ms
+2025-07-08 15:52:08.2024|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 15:52:08.2198|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando con municipio aleatorio.
+2025-07-08 15:52:08.6593|INFO|Infraestructura.Services.WeatherUpdateHostedService||4|HostedService: provincias recuperadas = 52
+2025-07-08 15:52:08.8005|INFO|Infraestructura.Services.WeatherUpdateHostedService||4|HostedService: municipios recuperados en 09 = 371
+2025-07-08 15:52:08.9278|ERROR|Infraestructura.Services.WeatherUpdateHostedService||4|Error en WeatherUpdateHostedService al procesar municipio aleatorio.|System.Exception: WeatherClient.GetMunicipioAsync error
+ ---> System.Exception: ElTiempo API error (NotFound): There is an error in XML document (0, 0).
+   at Infraestructura.Services.WeatherClient.GetMunicipioAsync(String codProvincia, String codMunicipio) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 88
+   --- End of inner exception stack trace ---
+   at Infraestructura.Services.WeatherClient.GetMunicipioAsync(String codProvincia, String codMunicipio) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 93
+   at Infraestructura.Services.WeatherUpdateHostedService.StartAsync(CancellationToken cancellationToken) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherUpdateHostedService.cs:line 67
+2025-07-08 15:52:08.9924|INFO|Microsoft.Hosting.Lifetime||4|Now listening on: https://localhost:7131
+2025-07-08 15:52:08.9924|INFO|Microsoft.Hosting.Lifetime||4|Now listening on: http://localhost:5216
+2025-07-08 15:52:09.0278|INFO|Microsoft.Hosting.Lifetime||4|Application started. Press Ctrl+C to shut down.
+2025-07-08 15:52:09.0278|INFO|Microsoft.Hosting.Lifetime||4|Hosting environment: Development
+2025-07-08 15:52:09.0305|INFO|Microsoft.Hosting.Lifetime||4|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 15:52:09.1175|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||14|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 15:52:09.1774|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||14|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 61.8566ms
+2025-07-08 15:52:09.1938|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 15:52:09.1938|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 15:52:09.1938|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 7.1604ms
+2025-07-08 15:52:09.2204|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 26.5912ms
+2025-07-08 15:52:09.2837|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 15:52:09.3043|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 20.5489ms
+2025-07-08 15:56:57.1003|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 15:56:57.1298|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando con municipio aleatorio.
+2025-07-08 15:56:57.5856|INFO|Infraestructura.Services.WeatherUpdateHostedService||6|HostedService: provincias recuperadas = 52
+2025-07-08 15:56:57.6643|INFO|Infraestructura.Services.WeatherUpdateHostedService||6|HostedService: municipios recuperados en 07 = 67
+2025-07-08 15:56:57.8494|ERROR|Infraestructura.Services.WeatherUpdateHostedService||7|Error en WeatherUpdateHostedService al procesar municipio aleatorio.|System.Exception: WeatherClient.GetMunicipioAsync error
+ ---> System.Exception: ElTiempo API error (NotFound): There is an error in XML document (0, 0).
+   at Infraestructura.Services.WeatherClient.GetMunicipioAsync(String codProvincia, String codMunicipio) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 88
+   --- End of inner exception stack trace ---
+   at Infraestructura.Services.WeatherClient.GetMunicipioAsync(String codProvincia, String codMunicipio) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 93
+   at Infraestructura.Services.WeatherUpdateHostedService.StartAsync(CancellationToken cancellationToken) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherUpdateHostedService.cs:line 67
+2025-07-08 15:56:57.9162|INFO|Microsoft.Hosting.Lifetime||7|Now listening on: https://localhost:7131
+2025-07-08 15:56:57.9162|INFO|Microsoft.Hosting.Lifetime||7|Now listening on: http://localhost:5216
+2025-07-08 15:56:57.9497|INFO|Microsoft.Hosting.Lifetime||7|Application started. Press Ctrl+C to shut down.
+2025-07-08 15:56:57.9497|INFO|Microsoft.Hosting.Lifetime||7|Hosting environment: Development
+2025-07-08 15:56:57.9520|INFO|Microsoft.Hosting.Lifetime||7|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 15:56:58.2884|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 15:56:58.3611|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 74.3192ms
+2025-07-08 15:56:58.3740|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 15:56:58.3740|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 15:56:58.3740|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 9.5650ms
+2025-07-08 15:56:58.3993|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 25.3133ms
+2025-07-08 15:56:58.4945|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 15:56:58.5153|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 20.7685ms
+2025-07-08 16:00:01.5419|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 16:00:01.5654|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando con municipio aleatorio.
+2025-07-08 16:00:01.9770|INFO|Infraestructura.Services.WeatherUpdateHostedService||6|HostedService: provincias recuperadas = 52
+2025-07-08 16:00:02.0808|INFO|Infraestructura.Services.WeatherUpdateHostedService||6|HostedService: municipios recuperados en 03 = 141
+2025-07-08 16:00:02.2175|ERROR|Infraestructura.Services.WeatherUpdateHostedService||6|Error en WeatherUpdateHostedService al procesar municipio aleatorio.|System.Exception: WeatherClient.GetMunicipioAsync error
+ ---> System.Exception: ElTiempo API error (NotFound): There is an error in XML document (0, 0).
+   at Infraestructura.Services.WeatherClient.GetMunicipioAsync(String codProvincia, String codMunicipio) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 88
+   --- End of inner exception stack trace ---
+   at Infraestructura.Services.WeatherClient.GetMunicipioAsync(String codProvincia, String codMunicipio) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 93
+   at Infraestructura.Services.WeatherUpdateHostedService.StartAsync(CancellationToken cancellationToken) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherUpdateHostedService.cs:line 67
+2025-07-08 16:00:02.3057|INFO|Microsoft.Hosting.Lifetime||6|Now listening on: https://localhost:7131
+2025-07-08 16:00:02.3057|INFO|Microsoft.Hosting.Lifetime||6|Now listening on: http://localhost:5216
+2025-07-08 16:00:02.3447|INFO|Microsoft.Hosting.Lifetime||6|Application started. Press Ctrl+C to shut down.
+2025-07-08 16:00:02.3447|INFO|Microsoft.Hosting.Lifetime||6|Hosting environment: Development
+2025-07-08 16:00:02.3447|INFO|Microsoft.Hosting.Lifetime||6|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 16:00:02.7930|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 16:00:02.8545|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 63.7705ms
+2025-07-08 16:00:02.8734|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 16:00:02.8734|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 16:00:02.8830|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 9.4990ms
+2025-07-08 16:00:02.9018|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 28.3753ms
+2025-07-08 16:00:02.9743|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 16:00:02.9972|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 22.7184ms
+2025-07-08 16:18:42.4830|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||3|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 16:18:42.4830|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||20|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 9.5701ms
+2025-07-08 16:18:42.5115|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||12|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 16:18:42.5201|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||20|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 16:18:42.5201|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||22|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 1.6918ms
+2025-07-08 16:18:42.5201|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||23|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 12.9960ms
+2025-07-08 16:18:42.8266|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||12|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 16:18:42.8403|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 13.5792ms
+2025-07-08 16:26:42.6287|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||19|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 16:26:42.6287|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||26|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 8.6700ms
+2025-07-08 16:26:42.6659|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||19|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 16:26:42.6659|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||28|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 16:26:42.6659|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||26|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 2.2083ms
+2025-07-08 16:26:42.6742|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||30|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 7.8839ms
+2025-07-08 16:26:42.7772|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||26|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 16:26:42.7849|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||28|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 7.6104ms
+2025-07-08 16:26:51.5871|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 16:26:51.6145|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|WeatherUpdateHostedService arrancando con municipio aleatorio.
+2025-07-08 16:26:52.2338|INFO|Infraestructura.Services.WeatherUpdateHostedService||9|HostedService: provincias recuperadas = 52
+2025-07-08 16:26:52.3388|INFO|Infraestructura.Services.WeatherUpdateHostedService||9|HostedService: municipios recuperados en 39 = 102
+2025-07-08 16:27:21.4369|ERROR|Infraestructura.Services.WeatherUpdateHostedService||14|Error en WeatherUpdateHostedService al procesar municipio aleatorio.|System.Exception: WeatherClient.GetMunicipioAsync error
+ ---> System.Exception: ElTiempo API error (NotFound): There is an error in XML document (0, 0).
+   at Infraestructura.Services.WeatherClient.GetMunicipioAsync(String codProvincia, String codMunicipio) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 88
+   --- End of inner exception stack trace ---
+   at Infraestructura.Services.WeatherClient.GetMunicipioAsync(String codProvincia, String codMunicipio) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 93
+   at Infraestructura.Services.WeatherUpdateHostedService.StartAsync(CancellationToken cancellationToken) in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherUpdateHostedService.cs:line 67
+2025-07-08 16:27:21.6366|INFO|Microsoft.Hosting.Lifetime||14|Now listening on: https://localhost:7131
+2025-07-08 16:27:21.6366|INFO|Microsoft.Hosting.Lifetime||14|Now listening on: http://localhost:5216
+2025-07-08 16:27:21.6738|INFO|Microsoft.Hosting.Lifetime||14|Application started. Press Ctrl+C to shut down.
+2025-07-08 16:27:21.6738|INFO|Microsoft.Hosting.Lifetime||14|Hosting environment: Development
+2025-07-08 16:27:21.6738|INFO|Microsoft.Hosting.Lifetime||14|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 16:27:22.7562|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 16:27:22.7562|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||17|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 16:27:22.8070|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 64.2293ms
+2025-07-08 16:27:22.8406|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||18|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 99.4284ms
+2025-07-08 16:27:23.0339|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||18|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 16:27:23.0989|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||17|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 65.8682ms
+2025-07-08 16:44:34.6590|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 16:44:34.7817|INFO|Microsoft.Hosting.Lifetime||1|Now listening on: https://localhost:7131
+2025-07-08 16:44:34.7817|INFO|Microsoft.Hosting.Lifetime||1|Now listening on: http://localhost:5216
+2025-07-08 16:44:34.8366|INFO|Microsoft.Hosting.Lifetime||1|Application started. Press Ctrl+C to shut down.
+2025-07-08 16:44:34.8366|INFO|Microsoft.Hosting.Lifetime||1|Hosting environment: Development
+2025-07-08 16:44:34.8366|INFO|Microsoft.Hosting.Lifetime||1|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 16:44:35.2236|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 16:44:35.2236|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||11|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 16:44:35.2407|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 19.8481ms
+2025-07-08 16:44:35.2629|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 42.9186ms
+2025-07-08 16:44:35.5925|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 16:44:35.6294|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 36.8728ms
+2025-07-08 16:44:58.4103|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request starting HTTP/2 POST https://localhost:7131/api/Users/login - application/json 60
+2025-07-08 16:44:58.4654|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware||15|Executing endpoint 'Infraestructura.Controllers.UsersController.Login (Weather.api)'
+2025-07-08 16:44:58.5176|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker||15|Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Core.DTO.AnswerAuthenticationDTO]] Login(Core.DTO.CredentialsUserDTO) on controller Infraestructura.Controllers.UsersController (Weather.api).
+2025-07-08 16:44:58.7827|INFO|Infraestructura.Controllers.UsersController||15|[0HNDU5NQEIR42] Call: Login(email=prueba@gmail.com)
+2025-07-08 16:45:00.5623|INFO|Microsoft.EntityFrameworkCore.Database.Command||15|Executed DbCommand (56ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-08 16:45:00.9698|INFO|Microsoft.EntityFrameworkCore.Database.Command||9|Executed DbCommand (6ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-07-08 16:45:01.0357|INFO|Microsoft.EntityFrameworkCore.Database.Command||9|Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-07-08 16:45:01.0585|INFO|Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler||9|AuthenticationScheme: Identity.Application signed in.
+2025-07-08 16:45:01.0876|INFO|Microsoft.EntityFrameworkCore.Database.Command|prueba@gmail.com|9|Executed DbCommand (4ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-07-08 16:45:01.1010|INFO|Microsoft.EntityFrameworkCore.Database.Command|prueba@gmail.com|9|Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-07-08 16:45:01.1010|INFO|Microsoft.EntityFrameworkCore.Database.Command|prueba@gmail.com|9|Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-07-08 16:45:01.1529|INFO|Infraestructura.Controllers.UsersController|prueba@gmail.com|9|[0HNDU5NQEIR42] FinishCall: Login – token issued
+2025-07-08 16:45:01.1714|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor|prueba@gmail.com|9|Executing OkObjectResult, writing value of type 'Core.DTO.AnswerAuthenticationDTO'.
+2025-07-08 16:45:01.2022|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|prueba@gmail.com|9|Executed action Infraestructura.Controllers.UsersController.Login (Weather.api) in 2669.6473ms
+2025-07-08 16:45:01.2050|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|prueba@gmail.com|9|Executed endpoint 'Infraestructura.Controllers.UsersController.Login (Weather.api)'
+2025-07-08 16:45:01.2210|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|prueba@gmail.com|9|Request finished HTTP/2 POST https://localhost:7131/api/Users/login - 200 - application/json;+charset=utf-8 2810.6927ms
+2025-07-08 16:45:17.2823|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request starting HTTP/2 GET https://localhost:7131/api/RemoteWeather/home - - -
+2025-07-08 16:45:17.4653|INFO|Microsoft.EntityFrameworkCore.Database.Command||13|Executed DbCommand (4ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-07-08 16:45:17.4748|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware||13|Executing endpoint 'Infraestructura.Controllers.RemoteWeatherController.GetHomeAsync (Weather.api)'
+2025-07-08 16:45:17.4748|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker||13|Route matched with {action = "GetHome", controller = "RemoteWeather"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Core.DTO.HomeResponseDTO]] GetHomeAsync() on controller Infraestructura.Controllers.RemoteWeatherController (Weather.api).
+2025-07-08 16:45:17.5082|INFO|Infraestructura.Controllers.RemoteWeatherController||13|[0HNDU5NQEIR42] Call: GetHomeAsync()
+2025-07-08 16:45:19.6706|INFO|Infraestructura.Controllers.RemoteWeatherController||13|[0HNDU5NQEIR42] FinishCall: GetHomeAsync – details retrieved
+2025-07-08 16:45:19.6729|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor||13|Executing OkObjectResult, writing value of type 'Core.DTO.HomeResponseDTO'.
+2025-07-08 16:45:19.6729|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker||13|Executed action Infraestructura.Controllers.RemoteWeatherController.GetHomeAsync (Weather.api) in 2200.0546ms
+2025-07-08 16:45:19.6875|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware||13|Executed endpoint 'Infraestructura.Controllers.RemoteWeatherController.GetHomeAsync (Weather.api)'
+2025-07-08 16:45:19.6875|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request finished HTTP/2 GET https://localhost:7131/api/RemoteWeather/home - 200 - application/json;+charset=utf-8 2407.4960ms
+2025-07-08 17:08:29.7780|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 17:08:29.8750|INFO|Microsoft.Hosting.Lifetime||1|Now listening on: https://localhost:7131
+2025-07-08 17:08:29.8750|INFO|Microsoft.Hosting.Lifetime||1|Now listening on: http://localhost:5216
+2025-07-08 17:08:29.9377|INFO|Microsoft.Hosting.Lifetime||1|Application started. Press Ctrl+C to shut down.
+2025-07-08 17:08:29.9377|INFO|Microsoft.Hosting.Lifetime||1|Hosting environment: Development
+2025-07-08 17:08:29.9377|INFO|Microsoft.Hosting.Lifetime||1|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 17:08:30.3583|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||11|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 17:08:30.4609|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||12|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 104.3553ms
+2025-07-08 17:08:30.4791|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 17:08:30.4849|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||11|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 17:08:30.4849|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 9.7173ms
+2025-07-08 17:08:30.5088|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 23.8359ms
+2025-07-08 17:08:30.9359|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 17:08:30.9531|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||11|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 17.1273ms
+2025-07-08 17:09:01.1672|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||11|Request starting HTTP/2 GET https://localhost:7131/api/RemoteWeather/home - - -
+2025-07-08 17:09:02.1361|INFO|Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler||11|Bearer was not authenticated. Failure message: Token inválido: SecurityStamp no coincide.
+2025-07-08 17:09:02.1422|INFO|Microsoft.AspNetCore.Authorization.DefaultAuthorizationService||11|Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-07-08 17:09:02.1422|INFO|Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler||11|AuthenticationScheme: Bearer was challenged.
+2025-07-08 17:09:02.1577|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||11|Request finished HTTP/2 GET https://localhost:7131/api/RemoteWeather/home - 401 0 - 990.3986ms
+2025-07-08 17:09:10.2916|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||11|Request starting HTTP/2 GET https://localhost:7131/api/RemoteWeather/home - - -
+2025-07-08 17:09:11.1526|INFO|Microsoft.EntityFrameworkCore.Database.Command||11|Executed DbCommand (79ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-07-08 17:09:11.3217|INFO|Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler||11|Bearer was not authenticated. Failure message: Token inválido: SecurityStamp no coincide.
+2025-07-08 17:09:11.3282|INFO|Microsoft.AspNetCore.Authorization.DefaultAuthorizationService||11|Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-07-08 17:09:11.3282|INFO|Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler||11|AuthenticationScheme: Bearer was challenged.
+2025-07-08 17:09:11.3282|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||11|Request finished HTTP/2 GET https://localhost:7131/api/RemoteWeather/home - 401 0 - 1045.1068ms
+2025-07-08 17:09:30.6181|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 POST https://localhost:7131/api/Users/login - application/json 60
+2025-07-08 17:09:30.6539|INFO|Microsoft.EntityFrameworkCore.Database.Command||9|Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-07-08 17:09:30.6583|INFO|Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler||9|Bearer was not authenticated. Failure message: Token inválido: SecurityStamp no coincide.
+2025-07-08 17:09:30.6583|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware||9|Executing endpoint 'Infraestructura.Controllers.UsersController.Login (Weather.api)'
+2025-07-08 17:09:30.7060|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker||9|Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Core.DTO.AnswerAuthenticationDTO]] Login(Core.DTO.CredentialsUserDTO) on controller Infraestructura.Controllers.UsersController (Weather.api).
+2025-07-08 17:09:30.7878|INFO|Infraestructura.Controllers.UsersController||9|[0HNDU6567ORBA] Call: Login(email=prueba@gmail.com)
+2025-07-08 17:09:30.8252|INFO|Microsoft.EntityFrameworkCore.Database.Command||11|Executed DbCommand (5ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-08 17:09:31.0506|INFO|Microsoft.EntityFrameworkCore.Database.Command||9|Executed DbCommand (9ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-07-08 17:09:31.1144|INFO|Microsoft.EntityFrameworkCore.Database.Command||9|Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-07-08 17:09:31.1391|INFO|Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler||9|AuthenticationScheme: Identity.Application signed in.
+2025-07-08 17:09:31.1693|INFO|Microsoft.EntityFrameworkCore.Database.Command|prueba@gmail.com|9|Executed DbCommand (4ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-07-08 17:09:31.1757|INFO|Microsoft.EntityFrameworkCore.Database.Command|prueba@gmail.com|9|Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-07-08 17:09:31.1757|INFO|Microsoft.EntityFrameworkCore.Database.Command|prueba@gmail.com|9|Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-07-08 17:09:31.2036|INFO|Infraestructura.Controllers.UsersController|prueba@gmail.com|9|[0HNDU6567ORBA] FinishCall: Login – token issued
+2025-07-08 17:09:31.2036|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor|prueba@gmail.com|9|Executing OkObjectResult, writing value of type 'Core.DTO.AnswerAuthenticationDTO'.
+2025-07-08 17:09:31.2444|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|prueba@gmail.com|9|Executed action Infraestructura.Controllers.UsersController.Login (Weather.api) in 521.1168ms
+2025-07-08 17:09:31.2444|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|prueba@gmail.com|9|Executed endpoint 'Infraestructura.Controllers.UsersController.Login (Weather.api)'
+2025-07-08 17:09:31.2508|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|prueba@gmail.com|9|Request finished HTTP/2 POST https://localhost:7131/api/Users/login - 200 - application/json;+charset=utf-8 632.5363ms
+2025-07-08 17:09:44.6327|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||11|Request starting HTTP/2 GET https://localhost:7131/api/RemoteWeather/home - - -
+2025-07-08 17:09:44.6414|INFO|Microsoft.EntityFrameworkCore.Database.Command||11|Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-07-08 17:09:44.6414|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware||11|Executing endpoint 'Infraestructura.Controllers.RemoteWeatherController.GetHomeAsync (Weather.api)'
+2025-07-08 17:09:44.6596|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker||11|Route matched with {action = "GetHome", controller = "RemoteWeather"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Core.DTO.HomeResponseDTO]] GetHomeAsync() on controller Infraestructura.Controllers.RemoteWeatherController (Weather.api).
+2025-07-08 17:09:44.6895|INFO|Infraestructura.Controllers.RemoteWeatherController||11|[0HNDU6567ORBA] Call: GetHomeAsync()
+2025-07-08 17:09:46.4540|INFO|Infraestructura.Controllers.RemoteWeatherController||20|[0HNDU6567ORBA] FinishCall: GetHomeAsync – details retrieved
+2025-07-08 17:09:46.4540|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor||20|Executing OkObjectResult, writing value of type 'Core.DTO.HomeResponseDTO'.
+2025-07-08 17:09:46.4540|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker||20|Executed action Infraestructura.Controllers.RemoteWeatherController.GetHomeAsync (Weather.api) in 1805.2712ms
+2025-07-08 17:09:46.4688|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware||20|Executed endpoint 'Infraestructura.Controllers.RemoteWeatherController.GetHomeAsync (Weather.api)'
+2025-07-08 17:09:46.4688|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||20|Request finished HTTP/2 GET https://localhost:7131/api/RemoteWeather/home - 200 - application/json;+charset=utf-8 1838.3325ms
+2025-07-08 17:13:26.3319|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 17:13:26.3447|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|HostedService: arrancando actualización desde Home.
+2025-07-08 17:13:29.1974|INFO|Microsoft.EntityFrameworkCore.Database.Command||7|Executed DbCommand (42ms) [Parameters=[@__entity_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+WHERE [w].[Id] = @__entity_Id_0
+2025-07-08 17:13:29.2960|INFO|Microsoft.EntityFrameworkCore.Database.Command||7|Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [WeatherComplete] ([Id], [IdProvince], [MaxTemperature], [MinTemperature], [NameProvince], [NameTown], [StateSkyDescription], [StateSkyId], [UpdateDateTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-08 17:13:29.3040|INFO|Infraestructura.Services.WeatherUpdateHostedService||7|HostedService: datos de Home registrados correctamente.
+2025-07-08 17:13:29.3743|INFO|Microsoft.Hosting.Lifetime||7|Now listening on: https://localhost:7131
+2025-07-08 17:13:29.3743|INFO|Microsoft.Hosting.Lifetime||7|Now listening on: http://localhost:5216
+2025-07-08 17:13:29.4134|INFO|Microsoft.Hosting.Lifetime||7|Application started. Press Ctrl+C to shut down.
+2025-07-08 17:13:29.4134|INFO|Microsoft.Hosting.Lifetime||7|Hosting environment: Development
+2025-07-08 17:13:29.4134|INFO|Microsoft.Hosting.Lifetime||7|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 17:13:29.8336|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 17:13:29.8932|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 60.7702ms
+2025-07-08 17:13:29.9103|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 17:13:29.9103|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 17:13:29.9103|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 10.1379ms
+2025-07-08 17:13:29.9358|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 25.5381ms
+2025-07-08 17:13:30.2889|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 17:13:30.3079|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 18.9870ms
+2025-07-08 17:14:10.4668|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 17:14:10.4914|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|HostedService: arrancando actualización desde Home.
+2025-07-08 17:14:13.6093|INFO|Microsoft.EntityFrameworkCore.Database.Command||7|Executed DbCommand (51ms) [Parameters=[@__entity_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+WHERE [w].[Id] = @__entity_Id_0
+2025-07-08 17:14:13.7356|INFO|Microsoft.EntityFrameworkCore.Database.Command||7|Executed DbCommand (14ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [WeatherComplete] ([Id], [IdProvince], [MaxTemperature], [MinTemperature], [NameProvince], [NameTown], [StateSkyDescription], [StateSkyId], [UpdateDateTime])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-08 17:14:13.7356|INFO|Infraestructura.Services.WeatherUpdateHostedService||7|HostedService: datos de Home registrados correctamente.
+2025-07-08 17:14:13.8100|INFO|Microsoft.Hosting.Lifetime||7|Now listening on: https://localhost:7131
+2025-07-08 17:14:13.8100|INFO|Microsoft.Hosting.Lifetime||7|Now listening on: http://localhost:5216
+2025-07-08 17:14:13.8557|INFO|Microsoft.Hosting.Lifetime||7|Application started. Press Ctrl+C to shut down.
+2025-07-08 17:14:13.8557|INFO|Microsoft.Hosting.Lifetime||7|Hosting environment: Development
+2025-07-08 17:14:13.8557|INFO|Microsoft.Hosting.Lifetime||7|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 17:14:14.2859|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 17:14:14.3577|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 72.2759ms
+2025-07-08 17:14:14.3751|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||17|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 17:14:14.3751|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||15|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 17:14:14.3751|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 11.0767ms
+2025-07-08 17:14:14.4034|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 28.2092ms
+2025-07-08 17:14:14.5666|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 17:14:14.5902|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||17|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 23.5894ms

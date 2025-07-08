@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Core.DTO
 {
     public class TemperatureDTO
     {
-        public string max { get; set; } = null!;
-        public string min { get; set; } = null!;
+        [JsonPropertyName("max")]
+        public int Max { get; set; }
+
+        [JsonPropertyName("min")]
+        public int Min { get; set; }
     }
 }

@@ -9,7 +9,10 @@ namespace Core.DTO
 {
     public class StateSkyDetailDTO
     {
+        [JsonPropertyName("id")]
+        public string? Id { get; set; }
+
         [JsonPropertyName("description")]
-        public string Description { get; set; } = null!;
+        public string? Description { get; set; }
     }
 }

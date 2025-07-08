@@ -10,12 +10,12 @@ namespace Core.DTO
     public class MunicipioInfoDTO
     {
         [JsonPropertyName("CODIGOINE")]
-        public string CodigoIne { get; set; } = null!;
+        public string? CodigoIne { get; set; }
 
         [JsonPropertyName("NOMBRE_PROVINCIA")]
-        public string NombreProvincia { get; set; } = null!;
+        public string? NombreProvincia { get; set; }
 
         [JsonPropertyName("NOMBRE")]
-        public string Nombre { get; set; } = null!;
+        public string? Nombre { get; set; }
     }
 }

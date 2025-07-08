@@ -8,8 +8,8 @@ namespace Core.DTO
 {
     public class ProvinceDetailResponseDTO
     {
-        public string descripcion { get; set; } = null!;
-        public string title { get; set; } = null!;
+        public string? descripcion { get; set; }
+        public string? title { get; set; }
         public List<ProvinceCityDTO> ciudades { get; set; } = new();
     }
 }

@@ -57,7 +57,6 @@ namespace Infraestructura.Repositories
             var first = homeDto.Ciudades.FirstOrDefault();
             if (first == null) return;
 
-            // Extraemos la IdTown solo para culpa del diccionario (no lo persistimos aún)
             var idTown = first.Id.Values.FirstOrDefault();
 
             var entity = new WeatherComplete
