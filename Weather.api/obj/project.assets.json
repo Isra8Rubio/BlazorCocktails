@@ -1512,6 +1512,43 @@
           }
         }
       },
+      "NLog.Extensions.Logging/6.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Logging": "8.0.0",
+          "NLog": "6.0.1"
+        },
+        "compile": {
+          "lib/net8.0/NLog.Extensions.Logging.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/NLog.Extensions.Logging.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "NLog.Web.AspNetCore/6.0.1": {
+        "type": "package",
+        "dependencies": {
+          "NLog.Extensions.Logging": "6.0.1"
+        },
+        "compile": {
+          "lib/net8.0/NLog.Web.AspNetCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/NLog.Web.AspNetCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "RestSharp/112.1.0": {
         "type": "package",
         "compile": {
@@ -4715,6 +4752,50 @@
         "nlog.nuspec"
       ]
     },
+    "NLog.Extensions.Logging/6.0.1": {
+      "sha512": "nrzqXA7TndN2sMQ0wecyNyyL0PnEO/ArOVYWeYcBlf0H3TvZYNGq0/jjOmudh7T5ZFZyVzErQ2lPaP5ueEH+OQ==",
+      "type": "package",
+      "path": "nlog.extensions.logging/6.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "N.png",
+        "README.md",
+        "lib/net462/NLog.Extensions.Logging.dll",
+        "lib/net462/NLog.Extensions.Logging.xml",
+        "lib/net6.0/NLog.Extensions.Logging.dll",
+        "lib/net6.0/NLog.Extensions.Logging.xml",
+        "lib/net8.0/NLog.Extensions.Logging.dll",
+        "lib/net8.0/NLog.Extensions.Logging.xml",
+        "lib/netstandard2.0/NLog.Extensions.Logging.dll",
+        "lib/netstandard2.0/NLog.Extensions.Logging.xml",
+        "lib/netstandard2.1/NLog.Extensions.Logging.dll",
+        "lib/netstandard2.1/NLog.Extensions.Logging.xml",
+        "nlog.extensions.logging.6.0.1.nupkg.sha512",
+        "nlog.extensions.logging.nuspec"
+      ]
+    },
+    "NLog.Web.AspNetCore/6.0.1": {
+      "sha512": "z4Tni30VF0jH66wAqFOpIcDZjV0wQJB+Em+bFA44Mj3VdnL0sYrmzSbBs+OxZUXGuzlIdVlR5ZeddhRljH9SKA==",
+      "type": "package",
+      "path": "nlog.web.aspnetcore/6.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "N.png",
+        "README.md",
+        "lib/net462/NLog.Web.AspNetCore.dll",
+        "lib/net462/NLog.Web.AspNetCore.xml",
+        "lib/net6.0/NLog.Web.AspNetCore.dll",
+        "lib/net6.0/NLog.Web.AspNetCore.xml",
+        "lib/net8.0/NLog.Web.AspNetCore.dll",
+        "lib/net8.0/NLog.Web.AspNetCore.xml",
+        "lib/netstandard2.0/NLog.Web.AspNetCore.dll",
+        "lib/netstandard2.0/NLog.Web.AspNetCore.xml",
+        "nlog.web.aspnetcore.6.0.1.nupkg.sha512",
+        "nlog.web.aspnetcore.nuspec"
+      ]
+    },
     "RestSharp/112.1.0": {
       "sha512": "bOUGNZqhhv/QeCXHTKEUil846yBjwWXpzPKjO67kFvaAOoF361z7jLY5BMnuZ6WD2WQRA750sNMcK7MSPCQ5Mg==",
       "type": "package",
@@ -5948,6 +6029,8 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.6",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.6",
       "NLog >= 6.0.1",
+      "NLog.Extensions.Logging >= 6.0.1",
+      "NLog.Web.AspNetCore >= 6.0.1",
       "Swashbuckle.AspNetCore >= 9.0.1"
     ]
   },
@@ -6029,6 +6112,14 @@
             "version": "[9.0.6, )"
           },
           "NLog": {
+            "target": "Package",
+            "version": "[6.0.1, )"
+          },
+          "NLog.Extensions.Logging": {
+            "target": "Package",
+            "version": "[6.0.1, )"
+          },
+          "NLog.Web.AspNetCore": {
             "target": "Package",
             "version": "[6.0.1, )"
           },

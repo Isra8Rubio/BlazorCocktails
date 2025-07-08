@@ -14,7 +14,9 @@ namespace Core.DTO
         public string IdProvince { get; set; } = null!;
         public string NameTown { get; set; } = null!;
         public string NameProvince { get; set; } = null!;
-        public StateSkyDTO StateSky { get; set; } = null!;
-        public TemperatureDTO Temperatures { get; set; } = null!;
+        public string StateSkyId { get; set; } = null!;
+        public string StateSkyDescription { get; set; } = null!;
+        public int MaxTemperature { get; set; }
+        public int MinTemperature { get; set; }
     }
 }

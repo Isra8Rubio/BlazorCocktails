@@ -76,6 +76,7 @@ namespace Infraestructura.Repositories
             await context.SaveChangesAsync();
             return entity;
         }
+
         public async Task DeleteAsync(Guid id)
         {
             var e = await context.WeatherComplete.FindAsync(id);

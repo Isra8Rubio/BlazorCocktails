@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "w9+go/PoZis=",
+  "dgSpecHash": "0JX7eP9wLEM=",
   "success": true,
   "projectFilePath": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Weather.api\\Weather.api.csproj",
   "expectedPackageFiles": [
@@ -78,6 +78,8 @@
     "C:\\Users\\IRubio-WS\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\IRubio-WS\\.nuget\\packages\\mono.texttemplating\\3.0.0\\mono.texttemplating.3.0.0.nupkg.sha512",
     "C:\\Users\\IRubio-WS\\.nuget\\packages\\nlog\\6.0.1\\nlog.6.0.1.nupkg.sha512",
+    "C:\\Users\\IRubio-WS\\.nuget\\packages\\nlog.extensions.logging\\6.0.1\\nlog.extensions.logging.6.0.1.nupkg.sha512",
+    "C:\\Users\\IRubio-WS\\.nuget\\packages\\nlog.web.aspnetcore\\6.0.1\\nlog.web.aspnetcore.6.0.1.nupkg.sha512",
     "C:\\Users\\IRubio-WS\\.nuget\\packages\\restsharp\\112.1.0\\restsharp.112.1.0.nupkg.sha512",
     "C:\\Users\\IRubio-WS\\.nuget\\packages\\swashbuckle.aspnetcore\\9.0.1\\swashbuckle.aspnetcore.9.0.1.nupkg.sha512",
     "C:\\Users\\IRubio-WS\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\9.0.1\\swashbuckle.aspnetcore.swagger.9.0.1.nupkg.sha512",

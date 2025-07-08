@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Core.DTO;
-using Infraestructura.Data;
+﻿using Core.DTO;
+using FluentValidation;
 using Infraestructura.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Weather.api.Controllers
 {
@@ -10,11 +9,15 @@ namespace Weather.api.Controllers
     [Route("api/[controller]")]
     public class WeatherCompleteController : ControllerBase
     {
-        private readonly WeatherCompleteService service;
+        private readonly WeatherCompleteService _service;
+        private readonly IValidator<CreateWeatherCompleteDTO> _validator;
 
-        public WeatherCompleteController(WeatherCompleteService service)
+        public WeatherCompleteController(
+            WeatherCompleteService service,
+            IValidator<CreateWeatherCompleteDTO> validator)
         {
-            this.service = service;
+            _service = service;
+            _validator = validator;
         }
 
         [HttpGet]
@@ -22,8 +25,8 @@ namespace Weather.api.Controllers
         {
             try
             {
-                var dtos = await service.GetAllAsync();
-                return Ok(dtos);
+                var list = await _service.GetAllAsync();
+                return Ok(list);
             }
             catch (Exception ex)
             {

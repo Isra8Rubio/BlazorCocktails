@@ -784,11 +784,21 @@
             "type": "string",
             "nullable": true
           },
-          "stateSky": {
-            "$ref": "#/components/schemas/StateSkyDTO"
+          "stateSkyId": {
+            "type": "string",
+            "nullable": true
           },
-          "temperatures": {
-            "$ref": "#/components/schemas/TemperatureDTO"
+          "stateSkyDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "maxTemperature": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "minTemperature": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

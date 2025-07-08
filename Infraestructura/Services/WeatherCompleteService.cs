@@ -41,6 +41,35 @@ namespace Infraestructura.Services
                 NameProvince = e.NameProvince
             };
         }
+        public async Task<WeatherCompleteReadDTO> CreateAsync(CreateWeatherCompleteDTO dto)
+        {
+            var entity = new WeatherComplete
+            {
+                Id = Guid.NewGuid(),
+                UpdateDateTime = DateTime.UtcNow,
+                IdProvince = dto.IdProvince,
+                NameProvince = dto.NameProvince,
+                NameTown = dto.NameTown,
+                StateSkyId = dto.StateSkyId,
+                StateSkyDescription = dto.StateSkyDescription,
+                MaxTemperature = dto.MaxTemperature,
+                MinTemperature = dto.MinTemperature
+            };
 
+            var saved = await weatherCompleteRepository.AddAsync(entity);
+
+            return new WeatherCompleteReadDTO
+            {
+                Id = saved.Id,
+                UpdateDateTime = saved.UpdateDateTime,
+                IdProvince = saved.IdProvince,
+                NameProvince = saved.NameProvince,
+                NameTown = saved.NameTown,
+                StateSkyId = saved.StateSkyId,
+                StateSkyDescription = saved.StateSkyDescription,
+                MaxTemperature = saved.MaxTemperature,
+                MinTemperature = saved.MinTemperature
+            };
+        }
     }
 }

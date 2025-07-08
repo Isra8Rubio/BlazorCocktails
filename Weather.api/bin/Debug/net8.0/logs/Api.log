@@ -1,0 +1,158 @@
+2025-07-08 09:29:13.3626|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 09:29:13.4614|INFO|Microsoft.Hosting.Lifetime||1|Now listening on: https://localhost:7131
+2025-07-08 09:29:13.4614|INFO|Microsoft.Hosting.Lifetime||1|Now listening on: http://localhost:5216
+2025-07-08 09:29:13.5205|INFO|Microsoft.Hosting.Lifetime||1|Application started. Press Ctrl+C to shut down.
+2025-07-08 09:29:13.5205|INFO|Microsoft.Hosting.Lifetime||1|Hosting environment: Development
+2025-07-08 09:29:13.5205|INFO|Microsoft.Hosting.Lifetime||1|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 09:29:13.9015|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 09:29:14.0181|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 123.8634ms
+2025-07-08 09:29:14.0549|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 09:29:14.0549|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||12|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 09:29:14.0666|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||16|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 11.6060ms
+2025-07-08 09:29:14.0853|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 30.3335ms
+2025-07-08 09:29:14.3592|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 09:29:14.3857|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 26.4639ms
+2025-07-08 09:44:30.2099|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 09:44:30.3009|INFO|Microsoft.Hosting.Lifetime||1|Now listening on: https://localhost:7131
+2025-07-08 09:44:30.3009|INFO|Microsoft.Hosting.Lifetime||1|Now listening on: http://localhost:5216
+2025-07-08 09:44:30.3608|INFO|Microsoft.Hosting.Lifetime||1|Application started. Press Ctrl+C to shut down.
+2025-07-08 09:44:30.3608|INFO|Microsoft.Hosting.Lifetime||1|Hosting environment: Development
+2025-07-08 09:44:30.3608|INFO|Microsoft.Hosting.Lifetime||1|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 09:44:30.5970|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 09:44:30.6981|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 102.7117ms
+2025-07-08 09:44:30.7275|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 09:44:30.7275|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 09:44:30.7353|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 7.7230ms
+2025-07-08 09:44:30.7509|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||12|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 23.4010ms
+2025-07-08 09:44:30.9595|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 09:44:30.9789|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 19.3537ms
+2025-07-08 09:45:28.5915|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||12|Request starting HTTP/2 POST https://localhost:7131/api/Users/login - application/json 60
+2025-07-08 09:45:28.6188|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware||12|Executing endpoint 'Infraestructura.Controllers.UsersController.Login (Weather.api)'
+2025-07-08 09:45:28.6445|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker||12|Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Core.DTO.AnswerAuthenticationDTO]] Login(Core.DTO.CredentialsUserDTO) on controller Infraestructura.Controllers.UsersController (Weather.api).
+2025-07-08 09:45:28.7724|INFO|Infraestructura.Controllers.UsersController||12|[0HNDTUD2VHV8J] Call: Login(email=prueba@gmail.com)
+2025-07-08 09:45:29.4968|INFO|Microsoft.EntityFrameworkCore.Database.Command||12|Executed DbCommand (46ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-08 09:45:29.6605|INFO|Microsoft.EntityFrameworkCore.Database.Command||9|Executed DbCommand (6ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-07-08 09:45:29.6940|INFO|Microsoft.EntityFrameworkCore.Database.Command||12|Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-07-08 09:45:29.7023|INFO|Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler||12|AuthenticationScheme: Identity.Application signed in.
+2025-07-08 09:45:29.7183|INFO|Microsoft.EntityFrameworkCore.Database.Command|prueba@gmail.com|12|Executed DbCommand (4ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-07-08 09:45:29.7183|INFO|Microsoft.EntityFrameworkCore.Database.Command|prueba@gmail.com|12|Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-07-08 09:45:29.7183|INFO|Microsoft.EntityFrameworkCore.Database.Command|prueba@gmail.com|9|Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-07-08 09:45:29.7469|INFO|Infraestructura.Controllers.UsersController|prueba@gmail.com|9|[0HNDTUD2VHV8J] FinishCall: Login – token issued
+2025-07-08 09:45:29.7585|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor|prueba@gmail.com|9|Executing OkObjectResult, writing value of type 'Core.DTO.AnswerAuthenticationDTO'.
+2025-07-08 09:45:29.7788|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|prueba@gmail.com|9|Executed action Infraestructura.Controllers.UsersController.Login (Weather.api) in 1123.3492ms
+2025-07-08 09:45:29.7802|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|prueba@gmail.com|9|Executed endpoint 'Infraestructura.Controllers.UsersController.Login (Weather.api)'
+2025-07-08 09:45:29.7802|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|prueba@gmail.com|9|Request finished HTTP/2 POST https://localhost:7131/api/Users/login - 200 - application/json;+charset=utf-8 1199.1340ms
+2025-07-08 09:45:52.6146|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request starting HTTP/2 GET https://localhost:7131/api/RemoteWeather/home - - -
+2025-07-08 09:45:52.7125|INFO|Microsoft.EntityFrameworkCore.Database.Command||9|Executed DbCommand (17ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-07-08 09:45:52.7180|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware||9|Executing endpoint 'Infraestructura.Controllers.RemoteWeatherController.GetHomeAsync (Weather.api)'
+2025-07-08 09:45:52.7180|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker||9|Route matched with {action = "GetHome", controller = "RemoteWeather"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Core.DTO.HomeResponseDTO]] GetHomeAsync() on controller Infraestructura.Controllers.RemoteWeatherController (Weather.api).
+2025-07-08 09:45:52.7180|INFO|Infraestructura.Controllers.RemoteWeatherController||9|[0HNDTUD2VHV8J] Call: GetHomeAsync()
+2025-07-08 09:45:54.1191|INFO|Infraestructura.Controllers.RemoteWeatherController||17|[0HNDTUD2VHV8J] FinishCall: GetHomeAsync – details retrieved
+2025-07-08 09:45:54.1191|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor||17|Executing OkObjectResult, writing value of type 'Core.DTO.HomeResponseDTO'.
+2025-07-08 09:45:54.1275|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker||17|Executed action Infraestructura.Controllers.RemoteWeatherController.GetHomeAsync (Weather.api) in 1403.3587ms
+2025-07-08 09:45:54.1275|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware||17|Executed endpoint 'Infraestructura.Controllers.RemoteWeatherController.GetHomeAsync (Weather.api)'
+2025-07-08 09:45:54.1275|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||17|Request finished HTTP/2 GET https://localhost:7131/api/RemoteWeather/home - 200 - application/json;+charset=utf-8 1515.0387ms
+2025-07-08 09:49:17.1069|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||23|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 09:49:17.1156|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||23|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 8.6471ms
+2025-07-08 09:49:17.1391|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||23|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 09:49:17.1419|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||27|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 2.7761ms
+2025-07-08 09:49:17.1419|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||25|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 09:49:17.1549|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||29|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 12.7414ms
+2025-07-08 09:49:17.6815|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||25|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 09:49:17.6907|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||25|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 9.1728ms
+2025-07-08 10:02:23.6196|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 10:02:23.7288|INFO|Microsoft.Hosting.Lifetime||1|Now listening on: https://localhost:7131
+2025-07-08 10:02:23.7288|INFO|Microsoft.Hosting.Lifetime||1|Now listening on: http://localhost:5216
+2025-07-08 10:02:23.7938|INFO|Microsoft.Hosting.Lifetime||1|Application started. Press Ctrl+C to shut down.
+2025-07-08 10:02:23.7938|INFO|Microsoft.Hosting.Lifetime||1|Hosting environment: Development
+2025-07-08 10:02:23.7966|INFO|Microsoft.Hosting.Lifetime||1|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 10:02:24.0657|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 10:02:24.1679|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 103.7287ms
+2025-07-08 10:02:24.2130|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 10:02:24.2192|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||11|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 10:02:24.2192|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 9.4501ms
+2025-07-08 10:02:24.2453|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 26.0318ms
+2025-07-08 10:02:24.7156|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 10:02:24.7439|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 28.2864ms
+2025-07-08 11:02:10.3781|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 11:02:10.4985|INFO|Microsoft.Hosting.Lifetime||1|Now listening on: https://localhost:7131
+2025-07-08 11:02:10.5005|INFO|Microsoft.Hosting.Lifetime||1|Now listening on: http://localhost:5216
+2025-07-08 11:02:10.5726|INFO|Microsoft.Hosting.Lifetime||1|Application started. Press Ctrl+C to shut down.
+2025-07-08 11:02:10.5726|INFO|Microsoft.Hosting.Lifetime||1|Hosting environment: Development
+2025-07-08 11:02:10.5726|INFO|Microsoft.Hosting.Lifetime||1|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 11:02:10.8896|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 11:02:11.0040|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 116.7686ms
+2025-07-08 11:02:11.0300|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 11:02:11.0300|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 7.9839ms
+2025-07-08 11:02:11.0300|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||11|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 11:02:11.0653|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 25.5291ms
+2025-07-08 11:02:11.3412|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||11|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 11:02:11.3597|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 18.4366ms
+2025-07-08 11:03:33.5717|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||19|Request starting HTTP/2 POST https://localhost:7131/api/Users/login - application/json 47
+2025-07-08 11:03:33.6142|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware||19|Executing endpoint 'Infraestructura.Controllers.UsersController.Login (Weather.api)'
+2025-07-08 11:03:33.6602|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker||19|Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Core.DTO.AnswerAuthenticationDTO]] Login(Core.DTO.CredentialsUserDTO) on controller Infraestructura.Controllers.UsersController (Weather.api).
+2025-07-08 11:03:33.9437|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor||19|Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-07-08 11:03:33.9956|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker||19|Executed action Infraestructura.Controllers.UsersController.Login (Weather.api) in 322.7601ms
+2025-07-08 11:03:33.9956|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware||19|Executed endpoint 'Infraestructura.Controllers.UsersController.Login (Weather.api)'
+2025-07-08 11:03:34.0025|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||19|Request finished HTTP/2 POST https://localhost:7131/api/Users/login - 400 - application/problem+json;+charset=utf-8 430.8116ms
+2025-07-08 11:04:17.0730|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||11|Request starting HTTP/2 GET https://localhost:7131/api/RemoteWeather/provincias - - -
+2025-07-08 11:04:17.0870|INFO|Microsoft.AspNetCore.Authorization.DefaultAuthorizationService||11|Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-07-08 11:04:17.0870|INFO|Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler||11|AuthenticationScheme: Bearer was challenged.
+2025-07-08 11:04:17.0984|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||11|Request finished HTTP/2 GET https://localhost:7131/api/RemoteWeather/provincias - 401 0 - 25.2504ms
+2025-07-08 11:05:14.9413|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||17|Request starting HTTP/2 GET https://localhost:7131/api/RemoteWeather/home - - -
+2025-07-08 11:05:14.9536|INFO|Microsoft.AspNetCore.Authorization.DefaultAuthorizationService||17|Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-07-08 11:05:14.9536|INFO|Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler||17|AuthenticationScheme: Bearer was challenged.
+2025-07-08 11:05:14.9536|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||17|Request finished HTTP/2 GET https://localhost:7131/api/RemoteWeather/home - 401 0 - 17.6916ms
+2025-07-08 11:11:18.8953|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 11:11:19.0545|INFO|Microsoft.Hosting.Lifetime||1|Now listening on: https://localhost:7131
+2025-07-08 11:11:19.0545|INFO|Microsoft.Hosting.Lifetime||1|Now listening on: http://localhost:5216
+2025-07-08 11:11:19.1505|INFO|Microsoft.Hosting.Lifetime||1|Application started. Press Ctrl+C to shut down.
+2025-07-08 11:11:19.1505|INFO|Microsoft.Hosting.Lifetime||1|Hosting environment: Development
+2025-07-08 11:11:19.1505|INFO|Microsoft.Hosting.Lifetime||1|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 11:11:19.3369|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||4|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 11:11:19.4584|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 121.8165ms
+2025-07-08 11:11:19.4771|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||11|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 11:11:19.4771|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 11:11:19.4886|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 11.3896ms
+2025-07-08 11:11:19.5062|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 29.0501ms
+2025-07-08 11:11:19.6780|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||11|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 11:11:19.6997|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 21.5848ms
+2025-07-08 11:11:45.1592|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-08 11:11:45.2676|INFO|Microsoft.Hosting.Lifetime||1|Now listening on: https://localhost:7131
+2025-07-08 11:11:45.2676|INFO|Microsoft.Hosting.Lifetime||1|Now listening on: http://localhost:5216
+2025-07-08 11:11:45.4256|INFO|Microsoft.Hosting.Lifetime||1|Application started. Press Ctrl+C to shut down.
+2025-07-08 11:11:45.4256|INFO|Microsoft.Hosting.Lifetime||1|Hosting environment: Development
+2025-07-08 11:11:45.4256|INFO|Microsoft.Hosting.Lifetime||1|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-08 11:11:45.8726|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/index.html - - -
+2025-07-08 11:11:45.9789|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/index.html - 200 - text/html;charset=utf-8 108.4418ms
+2025-07-08 11:11:45.9997|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-08 11:11:45.9997|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-08 11:11:45.9997|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||12|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 9.7427ms
+2025-07-08 11:11:46.0279|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||12|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 23.0085ms
+2025-07-08 11:11:46.1346|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||12|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-08 11:11:46.1655|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||11|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 30.8135ms

@@ -123,7 +123,7 @@
     ]
   },
   {
-    "ContainingType": "UsersController",
+    "ContainingType": "Infraestructura.Controllers.UsersController",
     "Method": "GetAllUsers",
     "RelativePath": "api/Users",
     "HttpMethod": "GET",
@@ -143,7 +143,7 @@
     ]
   },
   {
-    "ContainingType": "UsersController",
+    "ContainingType": "Infraestructura.Controllers.UsersController",
     "Method": "DeleteUser",
     "RelativePath": "api/Users/{id}",
     "HttpMethod": "DELETE",
@@ -159,7 +159,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "UsersController",
+    "ContainingType": "Infraestructura.Controllers.UsersController",
     "Method": "DoAdmin",
     "RelativePath": "api/Users/doAdmin",
     "HttpMethod": "POST",
@@ -175,7 +175,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "UsersController",
+    "ContainingType": "Infraestructura.Controllers.UsersController",
     "Method": "Login",
     "RelativePath": "api/Users/login",
     "HttpMethod": "POST",
@@ -201,7 +201,7 @@
     ]
   },
   {
-    "ContainingType": "UsersController",
+    "ContainingType": "Infraestructura.Controllers.UsersController",
     "Method": "ChangePasswordAsync",
     "RelativePath": "api/Users/password",
     "HttpMethod": "PUT",
@@ -217,7 +217,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "UsersController",
+    "ContainingType": "Infraestructura.Controllers.UsersController",
     "Method": "Register",
     "RelativePath": "api/Users/register",
     "HttpMethod": "POST",

@@ -4,164 +4,208 @@ using FluentValidation.Results;
 using Infraestructura.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
+using NLog;
 
-[ApiController]
-[Route("api/[controller]")]
-public class UsersController : ControllerBase
+namespace Infraestructura.Controllers
 {
-    private readonly UserService _userService;
-    private readonly IValidator<CredentialsUserDTO> _credsValidator;
-
-    public UsersController(
-        UserService userService,
-        IValidator<CredentialsUserDTO> credsValidator)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class UsersController : ControllerBase
     {
-        _userService = userService;
-        _credsValidator = credsValidator;
-    }
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+        private readonly UserService _userService;
+        private readonly IValidator<CredentialsUserDTO> _credsValidator;
+        private readonly IHttpContextAccessor _context;
 
-    [HttpPost("register")]
-    [AllowAnonymous]
-    public async Task<ActionResult<AnswerAuthenticationDTO>> Register([FromBody] CredentialsUserDTO creds)
-    {
-        ValidationResult validation = await _credsValidator.ValidateAsync(creds);
-        if (!validation.IsValid)
+        public UsersController(
+            UserService userService,
+            IValidator<CredentialsUserDTO> credsValidator,
+            IHttpContextAccessor context)
         {
-            foreach (var err in validation.Errors)
-                ModelState.AddModelError(err.PropertyName, err.ErrorMessage);
-            return ValidationProblem(ModelState);
-        }
-
-        try
-        {
-            var result = await _userService.RegisterAsync(creds);
-            return Ok(result);
-        }
-        catch (InvalidOperationException ex)
-        {
-            ModelState.AddModelError(string.Empty, ex.Message);
-            return ValidationProblem(ModelState);
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, new { Message = "User error", Detail = ex.Message });
-        }
-    }
-
-    [HttpPost("login")]
-    [AllowAnonymous]
-    public async Task<ActionResult<AnswerAuthenticationDTO>> Login([FromBody] CredentialsUserDTO creds)
-    {
-        ValidationResult validation = await _credsValidator.ValidateAsync(creds);
-        if (!validation.IsValid)
-        {
-            foreach (var err in validation.Errors)
-                ModelState.AddModelError(err.PropertyName, err.ErrorMessage);
-            return ValidationProblem(ModelState);
+            _userService = userService;
+            _credsValidator = credsValidator;
+            _context = context;
         }
 
-        try
+        [HttpPost("register")]
+        [AllowAnonymous]
+        public async Task<ActionResult<AnswerAuthenticationDTO>> Register([FromBody] CredentialsUserDTO creds)
         {
-            var result = await _userService.LoginAsync(creds);
-            return Ok(result);
-        }
-        catch (UnauthorizedAccessException)
-        {
-            return Unauthorized();
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, new { Message = "Login error", Detail = ex.Message });
-        }
-    }
+            var traceId = _context.HttpContext?.TraceIdentifier?.Split(':')[0] ?? "";
+            ValidationResult validation = await _credsValidator.ValidateAsync(creds);
+            if (!validation.IsValid)
+            {
+                foreach (var err in validation.Errors)
+                    ModelState.AddModelError(err.PropertyName, err.ErrorMessage);
+                return ValidationProblem(ModelState);
+            }
 
-    [HttpGet]
-    [Authorize(Policy = "isAdmin")]
-    public ActionResult<IEnumerable<UserDTO>> GetAllUsers()
-    {
-        try
-        {
-            var users = _userService.GetAllUsers();
-            return Ok(users);
+            try
+            {
+                _logger.Info($"[{traceId}] Call: Register(email={creds.Email})");
+                var result = await _userService.RegisterAsync(creds);
+                _logger.Info($"[{traceId}] FinishCall: Register – user registered id={result.Token}");
+                return Ok(result);
+            }
+            catch (InvalidOperationException ex)
+            {
+                _logger.Error(ex, $"[{traceId}] Register error");
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return ValidationProblem(ModelState);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, $"[{traceId}] Register error");
+                return StatusCode(500, new { Message = "User error", Detail = ex.Message });
+            }
         }
-        catch (Exception ex)
-        {
-            return StatusCode(500, new { Message = "Users recovery error", Detail = ex.Message });
-        }
-    }
 
-    [HttpPost("doAdmin")]
-    [Authorize(Policy = "isAdmin")]
-    public async Task<ActionResult> DoAdmin([FromBody] EditClaimDTO dto)
-    {
-        try
+        [HttpPost("login")]
+        [AllowAnonymous]
+        public async Task<ActionResult<AnswerAuthenticationDTO>> Login([FromBody] CredentialsUserDTO creds)
         {
-            await _userService.AssignAdminAsync(dto.Email);
-            return NoContent();
-        }
-        catch (KeyNotFoundException)
-        {
-            return NotFound();
-        }
-        catch (InvalidOperationException)
-        {
-            return BadRequest();
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, new { Message = "Error assigning admin", Detail = ex.Message });
-        }
-    }
+            var traceId = _context.HttpContext?.TraceIdentifier?.Split(':')[0] ?? "";
+            ValidationResult validation = await _credsValidator.ValidateAsync(creds);
+            if (!validation.IsValid)
+            {
+                foreach (var err in validation.Errors)
+                    ModelState.AddModelError(err.PropertyName, err.ErrorMessage);
+                return ValidationProblem(ModelState);
+            }
 
-    [HttpPut("password")]
-    [Authorize]
-    public async Task<ActionResult> ChangePasswordAsync(ChangePasswordDTO dto)
-    {
-        try
-        {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (string.IsNullOrEmpty(userId))
+            try
+            {
+                _logger.Info($"[{traceId}] Call: Login(email={creds.Email})");
+                var result = await _userService.LoginAsync(creds);
+                _logger.Info($"[{traceId}] FinishCall: Login – token issued");
+                return Ok(result);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                _logger.Error(ex, $"[{traceId}] Login unauthorized");
                 return Unauthorized();
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, $"[{traceId}] Login error");
+                return StatusCode(500, new { Message = "Login error", Detail = ex.Message });
+            }
+        }
 
-            await _userService.ChangeOwnPasswordAsync(userId, dto);
-            return NoContent();
-        }
-        catch (InvalidOperationException ex)
+        [HttpGet]
+        [Authorize(Policy = "isAdmin")]
+        public ActionResult<IEnumerable<UserDTO>> GetAllUsers()
         {
-            ModelState.AddModelError(string.Empty, ex.Message);
-            return ValidationProblem(ModelState);
+            var traceId = _context.HttpContext?.TraceIdentifier?.Split(':')[0] ?? "";
+            try
+            {
+                _logger.Info($"[{traceId}] Call: GetAllUsers()");
+                var users = _userService.GetAllUsers();
+                _logger.Info($"[{traceId}] FinishCall: GetAllUsers – returned {users.Count()} users");
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, $"[{traceId}] GetAllUsers error");
+                return StatusCode(500, new { Message = "Users recovery error", Detail = ex.Message });
+            }
         }
-        catch (KeyNotFoundException)
-        {
-            return NotFound();
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, new { Message = "Error changing password", Detail = ex.Message });
-        }
-    }
 
-    [HttpDelete("{id}")]
-    [Authorize(Policy = "isAdmin")]
-    public async Task<ActionResult> DeleteUser(string id)
-    {
-        try
+        [HttpPost("doAdmin")]
+        [Authorize(Policy = "isAdmin")]
+        public async Task<ActionResult> DoAdmin([FromBody] EditClaimDTO dto)
         {
-            await _userService.DeleteUserAsync(id);
-            return NoContent();
+            var traceId = _context.HttpContext?.TraceIdentifier?.Split(':')[0] ?? "";
+            try
+            {
+                _logger.Info($"[{traceId}] Call: DoAdmin(email={dto.Email})");
+                await _userService.AssignAdminAsync(dto.Email);
+                _logger.Info($"[{traceId}] FinishCall: DoAdmin – admin granted to {dto.Email}");
+                return NoContent();
+            }
+            catch (KeyNotFoundException ex)
+            {
+                _logger.Error(ex, $"[{traceId}] DoAdmin not found");
+                return NotFound();
+            }
+            catch (InvalidOperationException ex)
+            {
+                _logger.Error(ex, $"[{traceId}] DoAdmin invalid operation");
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, $"[{traceId}] DoAdmin error");
+                return StatusCode(500, new { Message = "Error assigning admin", Detail = ex.Message });
+            }
         }
-        catch (KeyNotFoundException)
+
+        [HttpPut("password")]
+        [Authorize]
+        public async Task<ActionResult> ChangePasswordAsync(ChangePasswordDTO dto)
         {
-            return NotFound();
+            var traceId = _context.HttpContext?.TraceIdentifier?.Split(':')[0] ?? "";
+            try
+            {
+                _logger.Info($"[{traceId}] Call: ChangePasswordAsync(user={User.FindFirstValue(ClaimTypes.NameIdentifier)})");
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (string.IsNullOrEmpty(userId))
+                {
+                    _logger.Warn($"[{traceId}] ChangePasswordAsync unauthorized");
+                    return Unauthorized();
+                }
+
+                await _userService.ChangeOwnPasswordAsync(userId, dto);
+                _logger.Info($"[{traceId}] FinishCall: ChangePasswordAsync – password changed");
+                return NoContent();
+            }
+            catch (InvalidOperationException ex)
+            {
+                _logger.Error(ex, $"[{traceId}] ChangePasswordAsync invalid operation");
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return ValidationProblem(ModelState);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                _logger.Error(ex, $"[{traceId}] ChangePasswordAsync not found");
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, $"[{traceId}] ChangePasswordAsync error");
+                return StatusCode(500, new { Message = "Error changing password", Detail = ex.Message });
+            }
         }
-        catch (InvalidOperationException ex)
+
+        [HttpDelete("{id}")]
+        [Authorize(Policy = "isAdmin")]
+        public async Task<ActionResult> DeleteUser(string id)
         {
-            return BadRequest(new { Message = ex.Message });
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, new { Message = "Error deleting user", Detail = ex.Message });
+            var traceId = _context.HttpContext?.TraceIdentifier?.Split(':')[0] ?? "";
+            try
+            {
+                _logger.Info($"[{traceId}] Call: DeleteUser(id={id})");
+                await _userService.DeleteUserAsync(id);
+                _logger.Info($"[{traceId}] FinishCall: DeleteUser – user {id} deleted");
+                return NoContent();
+            }
+            catch (KeyNotFoundException ex)
+            {
+                _logger.Error(ex, $"[{traceId}] DeleteUser not found");
+                return NotFound();
+            }
+            catch (InvalidOperationException ex)
+            {
+                _logger.Error(ex, $"[{traceId}] DeleteUser invalid operation");
+                return BadRequest(new { Message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, $"[{traceId}] DeleteUser error");
+                return StatusCode(500, new { Message = "Error deleting user", Detail = ex.Message });
+            }
         }
     }
 }

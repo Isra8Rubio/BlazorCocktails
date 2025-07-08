@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using NLog;
+using NLog.Web;
 using RestSharp;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -18,6 +20,11 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
+
+// Limpiamos los providers por defecto y usamos NLog y httpcontext para capturar datoa de usuario
+builder.Logging.ClearProviders();
+builder.Host.UseNLog();
+builder.Services.AddHttpContextAccessor();
 
 // AppConfiguration bind
 var appConfig = new Infraestructura.Configuration.AppConfiguration(builder.Configuration);
@@ -28,7 +35,7 @@ builder.Services.AddSingleton(appConfig);
 builder.Services.AddDbContext<ApplicationDbContext>(opts =>
     opts.UseSqlServer(
         config.GetConnectionString("DefaultConnection"),
-        sql => sql.MigrationsAssembly("Weather.infra")
+        sql => sql.MigrationsAssembly("Infraestructura")
     )
 );
 
@@ -119,7 +126,10 @@ builder.Services.AddAuthorization(options =>
 
 // Controllers & Swagger
 builder.Services.AddControllers();
+
 builder.Services.AddSingleton<IValidator<CredentialsUserDTO>, CredentialsUserDTOValidator>();
+builder.Services.AddSingleton<IValidator<CreateWeatherCompleteDTO>, CreateWeatherCompleteDTOValidator>();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -159,20 +169,36 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
-
-// Middleware
-
-app.UseSwagger();
-app.UseSwaggerUI(options =>
+try
 {
-    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Weather API 1");
-    options.RoutePrefix = string.Empty;
-});
+    // Crear carpeta de logs si no existe
+    Directory.CreateDirectory(Path.Combine(builder.Environment.ContentRootPath, "logs"));
 
-app.UseAuthentication();
-app.UseAuthorization();
+    // Middlewares
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Weather API 1");
+        options.RoutePrefix = string.Empty;
+    });
 
+    app.UseAuthentication();
+    app.UseAuthorization();
 
-app.MapControllers();
-app.Run();
+    app.MapControllers();
+    app.Run();
+}
+catch (Exception ex)
+{
+    // En caso de fallo en el arranque
+    var logger = LogManager.GetCurrentClassLogger();
+    logger.Error(ex, "Se produjo un error al arrancar la aplicación");
+    throw;
+}
+finally
+{
+    // Fuerza a NLog a cerrar y vaciar todos los targets
+    LogManager.Shutdown();
+}
+
 

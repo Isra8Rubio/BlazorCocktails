@@ -186,3 +186,6 @@ C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api\obj\Debug\net8.0\ref\Wea
 C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api\bin\Debug\net8.0\FluentValidation.dll
 C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api\bin\Debug\net8.0\NLog.dll
+C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api\bin\Debug\net8.0\nlog.config
+C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api\bin\Debug\net8.0\NLog.Extensions.Logging.dll
+C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api\bin\Debug\net8.0\NLog.Web.AspNetCore.dll

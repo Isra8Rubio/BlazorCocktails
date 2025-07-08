@@ -15,6 +15,8 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.6",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.6",
           "NLog": "6.0.1",
+          "NLog.Extensions.Logging": "6.0.1",
+          "NLog.Web.AspNetCore": "6.0.1",
           "Swashbuckle.AspNetCore": "9.0.1"
         },
         "runtime": {
@@ -1007,6 +1009,30 @@
           }
         }
       },
+      "NLog.Extensions.Logging/6.0.1": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.6",
+          "Microsoft.Extensions.Logging": "9.0.6",
+          "NLog": "6.0.1"
+        },
+        "runtime": {
+          "lib/net8.0/NLog.Extensions.Logging.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1.716"
+          }
+        }
+      },
+      "NLog.Web.AspNetCore/6.0.1": {
+        "dependencies": {
+          "NLog.Extensions.Logging": "6.0.1"
+        },
+        "runtime": {
+          "lib/net8.0/NLog.Web.AspNetCore.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1.1317"
+          }
+        }
+      },
       "RestSharp/112.1.0": {
         "runtime": {
           "lib/net8.0/RestSharp.dll": {
@@ -1917,6 +1943,20 @@
       "sha512": "sha512-qDWiqy8/xdpZKtHna/645KbalwP86N2NFJEzfqhcv+Si4V2iNaEfR/dCneuF/4+Dcwl3f7jHMXj3ndWYftV3Ug==",
       "path": "nlog/6.0.1",
       "hashPath": "nlog.6.0.1.nupkg.sha512"
+    },
+    "NLog.Extensions.Logging/6.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nrzqXA7TndN2sMQ0wecyNyyL0PnEO/ArOVYWeYcBlf0H3TvZYNGq0/jjOmudh7T5ZFZyVzErQ2lPaP5ueEH+OQ==",
+      "path": "nlog.extensions.logging/6.0.1",
+      "hashPath": "nlog.extensions.logging.6.0.1.nupkg.sha512"
+    },
+    "NLog.Web.AspNetCore/6.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-z4Tni30VF0jH66wAqFOpIcDZjV0wQJB+Em+bFA44Mj3VdnL0sYrmzSbBs+OxZUXGuzlIdVlR5ZeddhRljH9SKA==",
+      "path": "nlog.web.aspnetcore/6.0.1",
+      "hashPath": "nlog.web.aspnetcore.6.0.1.nupkg.sha512"
     },
     "RestSharp/112.1.0": {
       "type": "package",
