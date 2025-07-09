@@ -45,7 +45,7 @@ namespace Infraestructura.Services
         {
             try
             {
-                var result = await _repo.PasswordSignInAsync(creds.Email, creds.Password!);
+                var result = await _repo.PasswordSignInAsync(creds.Email!, creds.Password!);
                 if (!result.Succeeded)
                     throw new UnauthorizedAccessException();
                 return await BuildTokenAsync(creds);
@@ -132,7 +132,7 @@ namespace Infraestructura.Services
         {
             try
             {
-                var user = await _repo.FindByEmailAsync(creds.Email)
+                var user = await _repo.FindByEmailAsync(creds.Email!)
                            ?? throw new KeyNotFoundException("User not found.");
                 var claims = new List<Claim>
                 {

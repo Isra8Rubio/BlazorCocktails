@@ -595,7 +595,7 @@
             "$ref": "#/components/schemas/MunicipioInfoDTO"
           },
           "stateSky": {
-            "$ref": "#/components/schemas/StateSkyDetailDTO"
+            "$ref": "#/components/schemas/StateSkyDTO"
           },
           "temperaturas": {
             "$ref": "#/components/schemas/TemperatureDTO"
@@ -700,20 +700,6 @@
         "additionalProperties": false
       },
       "StateSkyDTO": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "StateSkyDetailDTO": {
         "type": "object",
         "properties": {
           "id": {

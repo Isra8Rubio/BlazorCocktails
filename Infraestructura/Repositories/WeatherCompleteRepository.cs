@@ -33,18 +33,28 @@ namespace Infraestructura.Repositories
             try
             {
                 var existing = await context.WeatherComplete
-                    .FirstOrDefaultAsync(e => e.Id == entity.Id);
+                    .FirstOrDefaultAsync();
 
                 if (existing == null)
+                {
                     context.WeatherComplete.Add(entity);
+                }
                 else
-                    context.Entry(existing).CurrentValues.SetValues(entity);
-
+                {
+                    // Si ya existe, actualizamos todos los campos
+                    existing.IdProvince = entity.IdProvince;
+                    existing.NameProvince = entity.NameProvince;
+                    existing.NameTown = entity.NameTown;
+                    existing.StateSkyId = entity.StateSkyId;
+                    existing.StateSkyDescription = entity.StateSkyDescription;
+                    existing.MaxTemperature = entity.MaxTemperature;
+                    existing.MinTemperature = entity.MinTemperature;
+                    existing.UpdateDateTime = entity.UpdateDateTime;
+                }
                 await context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
-                // Aquí mostramos el error completo en consola
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("ERROR al guardar WeatherComplete:");
                 Console.WriteLine(ex.GetBaseException().Message);
@@ -52,41 +62,12 @@ namespace Infraestructura.Repositories
                 throw;
             }
         }
-        public async Task UpdateFromHomeAsync(HomeResponseDTO homeDto)
-        {
-            var first = homeDto.Ciudades.FirstOrDefault();
-            if (first == null) return;
 
-            var idTown = first.Id.Values.FirstOrDefault();
-
-            var entity = new WeatherComplete
-            {
-                Id = Guid.NewGuid(),
-                IdProvince = first.IdProvince,
-                NameProvince = first.NameProvince,
-                UpdateDateTime = DateTime.UtcNow
-            };
-
-            await AddOrUpdateAsync(entity);
-        }
         public async Task<WeatherComplete> AddAsync(WeatherComplete entity)
         {
             context.WeatherComplete.Add(entity);
             await context.SaveChangesAsync();
             return entity;
         }
-
-        public async Task DeleteAsync(Guid id)
-        {
-            var e = await context.WeatherComplete.FindAsync(id);
-            if (e == null) throw new KeyNotFoundException();
-            context.WeatherComplete.Remove(e);
-            await context.SaveChangesAsync();
-        }
-
-
-
-
-
     }
 }

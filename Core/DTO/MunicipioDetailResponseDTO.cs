@@ -13,7 +13,7 @@ namespace Core.DTO
         public MunicipioInfoDTO? Municipio { get; set; }
 
         [JsonPropertyName("stateSky")]
-        public StateSkyDetailDTO? StateSky { get; set; }
+        public StateSkyDTO? StateSky { get; set; }
 
         [JsonPropertyName("temperaturas")]
         public TemperatureDTO? Temperaturas { get; set; }

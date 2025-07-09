@@ -99,10 +99,10 @@ namespace Infraestructura.Controllers
                 var list = response.Municipios
                     .Select(m => new MunicipioDTO
                     {
-                        CodigoIne = m.CodigoIne.Substring(0, 5),
-                        Nombre = m.Nombre,
-                        CodigoProvincia = m.CodigoProvincia,
-                        NombreProvincia = m.NombreProvincia
+                        CodigoIne = m?.CodigoIne?.Substring(0, 5),
+                        Nombre = m?.Nombre,
+                        CodigoProvincia = m?.CodigoProvincia,
+                        NombreProvincia = m?.NombreProvincia
                     })
                     .ToList();
                 return Ok(list);

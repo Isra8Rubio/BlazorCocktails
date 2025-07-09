@@ -12,9 +12,7 @@ namespace Infraestructura.Repositories
         private readonly UserManager<Usuario> _userManager;
         private readonly SignInManager<Usuario> _signInManager;
 
-        public UserRepository(
-            UserManager<Usuario> userManager,
-            SignInManager<Usuario> signInManager)
+        public UserRepository(UserManager<Usuario> userManager,SignInManager<Usuario> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
