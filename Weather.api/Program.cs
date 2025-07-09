@@ -50,7 +50,6 @@ builder.Services.AddSingleton(_ =>
 {
     var options = new RestClientOptions("https://www.el-tiempo.net/api/json/v2/")
     {
-        // configure timeout, proxy, etc.
     };
     return new RestClient(options);
 });

@@ -22,12 +22,6 @@ namespace Infraestructura.Repositories
         public async Task<IEnumerable<WeatherComplete>> ListAllAsync() =>
             await context.WeatherComplete.ToListAsync();
 
-        public Task<WeatherComplete?> GetByIdAsync(Guid id)
-        {
-            return context.WeatherComplete
-             .FirstOrDefaultAsync(e => e.Id == id);
-        }
-
         public async Task AddOrUpdateAsync(WeatherComplete entity)
         {
             try
@@ -61,13 +55,6 @@ namespace Infraestructura.Repositories
                 Console.ResetColor();
                 throw;
             }
-        }
-
-        public async Task<WeatherComplete> AddAsync(WeatherComplete entity)
-        {
-            context.WeatherComplete.Add(entity);
-            await context.SaveChangesAsync();
-            return entity;
         }
     }
 }

@@ -5,10 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{154E5C25-13C5-4557-99A2-CD959FE45DF1}|Infraestructura\\Infraestructura.csproj|c:\\users\\irubio-ws\\source\\repos\\weather.api\\infraestructura\\services\\weatherupdatehostedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{154E5C25-13C5-4557-99A2-CD959FE45DF1}|Infraestructura\\Infraestructura.csproj|solutionrelative:infraestructura\\services\\weatherupdatehostedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|c:\\users\\irubio-ws\\source\\repos\\weather.api\\core\\dto\\homecitydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|solutionrelative:core\\dto\\homecitydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,24 +14,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HomeCityDTO.cs",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Core\\DTO\\HomeCityDTO.cs",
-              "RelativeDocumentMoniker": "Core\\DTO\\HomeCityDTO.cs",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Core\\DTO\\HomeCityDTO.cs",
-              "RelativeToolTip": "Core\\DTO\\HomeCityDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T08:33:05.865Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -45,9 +28,9 @@
               "RelativeDocumentMoniker": "Infraestructura\\Services\\WeatherUpdateHostedService.cs",
               "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Infraestructura\\Services\\WeatherUpdateHostedService.cs",
               "RelativeToolTip": "Infraestructura\\Services\\WeatherUpdateHostedService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAYwEgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T08:21:06.179Z",
+              "WhenOpened": "2025-07-09T11:28:41.337Z",
               "EditorCaption": ""
             }
           ]
