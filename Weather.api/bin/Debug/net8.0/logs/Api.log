@@ -2313,3 +2313,60 @@ WHERE [a].[Id] = @__p_0
 2025-07-09 10:16:16.7372|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker||13|Executed action Infraestructura.Controllers.RemoteWeatherController.GetMunicipiosAsync (Weather.api) in 21113.1426ms
 2025-07-09 10:16:16.7372|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware||13|Executed endpoint 'Infraestructura.Controllers.RemoteWeatherController.GetMunicipiosAsync (Weather.api)'
 2025-07-09 10:16:16.7372|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||13|Request finished HTTP/2 GET https://localhost:7131/api/RemoteWeather/provincias/28/municipios - 500 - application/json;+charset=utf-8 21225.8407ms
+2025-07-09 10:24:27.6742|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager||1|User profile is available. Using 'C:\Users\IRubio-WS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-09 10:24:27.6997|INFO|Infraestructura.Services.WeatherUpdateHostedService||1|HostedService arrancando. Primera ejecución inmediata, luego cada 2 min.
+2025-07-09 10:24:27.7806|INFO|Infraestructura.Services.WeatherUpdateHostedService||4|HostedService: arrancando actualización desde Home.
+2025-07-09 10:24:27.8044|INFO|Microsoft.Hosting.Lifetime||1|Now listening on: https://localhost:7131
+2025-07-09 10:24:27.8044|INFO|Microsoft.Hosting.Lifetime||1|Now listening on: http://localhost:5216
+2025-07-09 10:24:27.8706|INFO|Microsoft.Hosting.Lifetime||1|Application started. Press Ctrl+C to shut down.
+2025-07-09 10:24:27.8706|INFO|Microsoft.Hosting.Lifetime||1|Hosting environment: Development
+2025-07-09 10:24:27.8706|INFO|Microsoft.Hosting.Lifetime||1|Content root path: C:\Users\IRubio-WS\source\repos\Weather.api\Weather.api
+2025-07-09 10:24:28.4649|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - - -
+2025-07-09 10:24:28.4649|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||14|Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - - -
+2025-07-09 10:24:28.4815|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||7|Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript;+charset=utf-8 19.5035ms
+2025-07-09 10:24:28.5523|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||9|Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 90.8855ms
+2025-07-09 10:24:28.6463|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - - -
+2025-07-09 10:24:28.6810|INFO|Microsoft.AspNetCore.Hosting.Diagnostics||6|Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 34.6900ms
+2025-07-09 10:24:44.7783|WARN|Microsoft.EntityFrameworkCore.Query||6|The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results.
+2025-07-09 10:24:44.9906|INFO|Microsoft.EntityFrameworkCore.Database.Command||7|Executed DbCommand (26ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+2025-07-09 10:24:45.0862|INFO|Microsoft.EntityFrameworkCore.Database.Command||7|Executed DbCommand (15ms) [Parameters=[@p8='?' (DbType = Guid), @p0='?' (Size = 4000), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [WeatherComplete] SET [IdProvince] = @p0, [MaxTemperature] = @p1, [MinTemperature] = @p2, [NameProvince] = @p3, [NameTown] = @p4, [StateSkyDescription] = @p5, [StateSkyId] = @p6, [UpdateDateTime] = @p7
+OUTPUT 1
+WHERE [Id] = @p8;
+2025-07-09 10:24:45.0862|INFO|Infraestructura.Services.WeatherUpdateHostedService||7|HostedService: datos de Home registrados correctamente.
+2025-07-09 10:26:27.7195|INFO|Infraestructura.Services.WeatherUpdateHostedService||7|HostedService: arrancando actualización desde Home.
+2025-07-09 10:27:30.3168|ERROR|Infraestructura.Services.WeatherUpdateHostedService||19|HostedService: error al actualizar desde Home.|System.Exception: WeatherClient.GetHomeAsync error
+ ---> System.Exception: ElTiempo API error (InternalServerError): 
+   at Infraestructura.Services.WeatherClient.GetHomeAsync() in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 56
+   --- End of inner exception stack trace ---
+   at Infraestructura.Services.WeatherClient.GetHomeAsync() in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 61
+   at Infraestructura.Services.WeatherUpdateHostedService.DoWorkAsync() in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherUpdateHostedService.cs:line 51
+2025-07-09 10:28:27.7141|INFO|Infraestructura.Services.WeatherUpdateHostedService||16|HostedService: arrancando actualización desde Home.
+2025-07-09 10:29:08.1445|ERROR|Infraestructura.Services.WeatherUpdateHostedService||16|HostedService: error al actualizar desde Home.|System.Exception: WeatherClient.GetHomeAsync error
+ ---> System.Exception: ElTiempo API error (InternalServerError): 
+   at Infraestructura.Services.WeatherClient.GetHomeAsync() in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 56
+   --- End of inner exception stack trace ---
+   at Infraestructura.Services.WeatherClient.GetHomeAsync() in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 61
+   at Infraestructura.Services.WeatherUpdateHostedService.DoWorkAsync() in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherUpdateHostedService.cs:line 51
+2025-07-09 10:30:27.7148|INFO|Infraestructura.Services.WeatherUpdateHostedService||31|HostedService: arrancando actualización desde Home.
+2025-07-09 10:31:31.2906|INFO|Microsoft.EntityFrameworkCore.Database.Command||37|Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[IdProvince], [w].[MaxTemperature], [w].[MinTemperature], [w].[NameProvince], [w].[NameTown], [w].[StateSkyDescription], [w].[StateSkyId], [w].[UpdateDateTime]
+FROM [WeatherComplete] AS [w]
+2025-07-09 10:31:31.3002|INFO|Microsoft.EntityFrameworkCore.Database.Command||30|Executed DbCommand (6ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [WeatherComplete] SET [UpdateDateTime] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+2025-07-09 10:31:31.3002|INFO|Infraestructura.Services.WeatherUpdateHostedService||30|HostedService: datos de Home registrados correctamente.
+2025-07-09 10:32:27.7078|INFO|Infraestructura.Services.WeatherUpdateHostedService||37|HostedService: arrancando actualización desde Home.
+2025-07-09 10:32:27.9257|ERROR|Infraestructura.Services.WeatherUpdateHostedService||26|HostedService: error al actualizar desde Home.|System.Exception: WeatherClient.GetHomeAsync error
+ ---> System.Exception: ElTiempo API error (InternalServerError): 
+   at Infraestructura.Services.WeatherClient.GetHomeAsync() in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 56
+   --- End of inner exception stack trace ---
+   at Infraestructura.Services.WeatherClient.GetHomeAsync() in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherClient.cs:line 61
+   at Infraestructura.Services.WeatherUpdateHostedService.DoWorkAsync() in C:\Users\IRubio-WS\source\repos\Weather.api\Infraestructura\Services\WeatherUpdateHostedService.cs:line 51
