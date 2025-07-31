@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tM/RoLe92os=",
+  "dgSpecHash": "vR/TqE3C4F0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Core\\Core.csproj",
+  "projectFilePath": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\IRubio-WS\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512",
     "C:\\Users\\IRubio-WS\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.3.0\\microsoft.aspnetcore.authentication.2.3.0.nupkg.sha512",

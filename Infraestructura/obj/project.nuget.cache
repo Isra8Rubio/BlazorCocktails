@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "c41bs2xhJtQ=",
+  "dgSpecHash": "Rvbd/G5H+iU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Infraestructura\\Infraestructura.csproj",
+  "projectFilePath": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Infraestructura\\Infraestructura.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\IRubio-WS\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\IRubio-WS\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

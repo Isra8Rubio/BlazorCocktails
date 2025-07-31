@@ -48,11 +48,12 @@ builder.Services.AddScoped<UserService>();
 // External Client
 builder.Services.AddSingleton(_ =>
 {
-    var options = new RestClientOptions("https://www.el-tiempo.net/api/json/v2/")
+    var options = new RestClientOptions("https://www.thecocktaildb.com/api/json/v1/1/")
     {
     };
     return new RestClient(options);
 });
+builder.Services.AddTransient<CocktailClientService>();
 builder.Services.AddTransient<WeatherClient>();
 builder.Services.AddHostedService<WeatherUpdateHostedService>();
 

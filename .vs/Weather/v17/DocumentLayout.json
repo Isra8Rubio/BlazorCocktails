@@ -1,10 +1,66 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\",
+  "WorkspaceRootPath": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{154E5C25-13C5-4557-99A2-CD959FE45DF1}|Infraestructura\\Infraestructura.csproj|c:\\users\\irubio-ws\\source\\repos\\weather.api\\infraestructura\\services\\weatherupdatehostedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{154E5C25-13C5-4557-99A2-CD959FE45DF1}|Infraestructura\\Infraestructura.csproj|solutionrelative:infraestructura\\services\\weatherupdatehostedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{93EC81C3-157F-8B21-2D68-7166FBCE2AD1}|Weather.api\\Weather.api.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\weather.api\\controllers\\cocktailscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93EC81C3-157F-8B21-2D68-7166FBCE2AD1}|Weather.api\\Weather.api.csproj|solutionrelative:weather.api\\controllers\\cocktailscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{154E5C25-13C5-4557-99A2-CD959FE45DF1}|Infraestructura\\Infraestructura.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\infraestructura\\services\\cocktailclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{154E5C25-13C5-4557-99A2-CD959FE45DF1}|Infraestructura\\Infraestructura.csproj|solutionrelative:infraestructura\\services\\cocktailclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\core\\dto\\cocktailitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|solutionrelative:core\\dto\\cocktailitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\core\\dto\\cocktailitemresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|solutionrelative:core\\dto\\cocktailitemresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\core\\dto\\glassresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|solutionrelative:core\\dto\\glassresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\core\\dto\\glassdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|solutionrelative:core\\dto\\glassdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\core\\dto\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|solutionrelative:core\\dto\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\core\\dto\\categoryresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|solutionrelative:core\\dto\\categoryresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\core\\dto\\alcoholtyperesponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|solutionrelative:core\\dto\\alcoholtyperesponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\core\\dto\\alcoholtypedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|solutionrelative:core\\dto\\alcoholtypedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\core\\dto\\cocktaillookupresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|solutionrelative:core\\dto\\cocktaillookupresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\core\\dto\\cocktaildetaildto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|solutionrelative:core\\dto\\cocktaildetaildto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\core\\dto\\cocktaildetailrawdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|solutionrelative:core\\dto\\cocktaildetailrawdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\core\\dto\\ingredientdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|solutionrelative:core\\dto\\ingredientdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93EC81C3-157F-8B21-2D68-7166FBCE2AD1}|Weather.api\\Weather.api.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\weather.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93EC81C3-157F-8B21-2D68-7166FBCE2AD1}|Weather.api\\Weather.api.csproj|solutionrelative:weather.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +70,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,16 +78,202 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "WeatherUpdateHostedService.cs",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Infraestructura\\Services\\WeatherUpdateHostedService.cs",
-              "RelativeDocumentMoniker": "Infraestructura\\Services\\WeatherUpdateHostedService.cs",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\Weather.api\\Infraestructura\\Services\\WeatherUpdateHostedService.cs",
-              "RelativeToolTip": "Infraestructura\\Services\\WeatherUpdateHostedService.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAYwEgAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "GlassResponseDTO.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\GlassResponseDTO.cs",
+              "RelativeDocumentMoniker": "Core\\DTO\\GlassResponseDTO.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\GlassResponseDTO.cs",
+              "RelativeToolTip": "Core\\DTO\\GlassResponseDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T11:28:41.337Z",
+              "WhenOpened": "2025-07-30T15:59:00.271Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GlassDTO.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\GlassDTO.cs",
+              "RelativeDocumentMoniker": "Core\\DTO\\GlassDTO.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\GlassDTO.cs",
+              "RelativeToolTip": "Core\\DTO\\GlassDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T15:58:19.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CocktailClientService.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Infraestructura\\Services\\CocktailClientService.cs",
+              "RelativeDocumentMoniker": "Infraestructura\\Services\\CocktailClientService.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Infraestructura\\Services\\CocktailClientService.cs",
+              "RelativeToolTip": "Infraestructura\\Services\\CocktailClientService.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAcwMsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T11:30:52.295Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CocktailItemResponseDTO.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\CocktailItemResponseDTO.cs",
+              "RelativeDocumentMoniker": "Core\\DTO\\CocktailItemResponseDTO.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\CocktailItemResponseDTO.cs",
+              "RelativeToolTip": "Core\\DTO\\CocktailItemResponseDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T13:15:44.893Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CocktailItemDTO.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\CocktailItemDTO.cs",
+              "RelativeDocumentMoniker": "Core\\DTO\\CocktailItemDTO.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\CocktailItemDTO.cs",
+              "RelativeToolTip": "Core\\DTO\\CocktailItemDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAcwBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T13:09:07.649Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CocktailsController.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Weather.api\\Controllers\\CocktailsController.cs",
+              "RelativeDocumentMoniker": "Weather.api\\Controllers\\CocktailsController.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Weather.api\\Controllers\\CocktailsController.cs",
+              "RelativeToolTip": "Weather.api\\Controllers\\CocktailsController.cs",
+              "ViewState": "AgIAAOkAAAAAAAAAAAAmwEABAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T11:44:19.491Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CategoryDTO.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\CategoryDTO.cs",
+              "RelativeDocumentMoniker": "Core\\DTO\\CategoryDTO.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\CategoryDTO.cs",
+              "RelativeToolTip": "Core\\DTO\\CategoryDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T15:26:20.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CategoryResponseDTO.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\CategoryResponseDTO.cs",
+              "RelativeDocumentMoniker": "Core\\DTO\\CategoryResponseDTO.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\CategoryResponseDTO.cs",
+              "RelativeToolTip": "Core\\DTO\\CategoryResponseDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T15:27:16.235Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AlcoholTypeResponseDTO.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\AlcoholTypeResponseDTO.cs",
+              "RelativeDocumentMoniker": "Core\\DTO\\AlcoholTypeResponseDTO.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\AlcoholTypeResponseDTO.cs",
+              "RelativeToolTip": "Core\\DTO\\AlcoholTypeResponseDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T11:38:53.069Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AlcoholTypeDTO.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\AlcoholTypeDTO.cs",
+              "RelativeDocumentMoniker": "Core\\DTO\\AlcoholTypeDTO.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\AlcoholTypeDTO.cs",
+              "RelativeToolTip": "Core\\DTO\\AlcoholTypeDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T11:35:29.214Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CocktailLookupResponseDTO.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\CocktailLookupResponseDTO.cs",
+              "RelativeDocumentMoniker": "Core\\DTO\\CocktailLookupResponseDTO.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\CocktailLookupResponseDTO.cs",
+              "RelativeToolTip": "Core\\DTO\\CocktailLookupResponseDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T13:42:51.125Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CocktailDetailDTO.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\CocktailDetailDTO.cs",
+              "RelativeDocumentMoniker": "Core\\DTO\\CocktailDetailDTO.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\CocktailDetailDTO.cs",
+              "RelativeToolTip": "Core\\DTO\\CocktailDetailDTO.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAuwBEAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T13:35:53.368Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CocktailDetailRawDTO.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\CocktailDetailRawDTO.cs",
+              "RelativeDocumentMoniker": "Core\\DTO\\CocktailDetailRawDTO.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\CocktailDetailRawDTO.cs",
+              "RelativeToolTip": "Core\\DTO\\CocktailDetailRawDTO.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAA5wCEAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T13:43:24.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IngredientDTO.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\IngredientDTO.cs",
+              "RelativeDocumentMoniker": "Core\\DTO\\IngredientDTO.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\DTO\\IngredientDTO.cs",
+              "RelativeToolTip": "Core\\DTO\\IngredientDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T13:35:30.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Weather.api\\Program.cs",
+              "RelativeDocumentMoniker": "Weather.api\\Program.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Weather.api\\Program.cs",
+              "RelativeToolTip": "Weather.api\\Program.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAADwAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T11:40:41.13Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
             }
           ]
         }
