@@ -9,7 +9,7 @@ namespace Core.DTO
 {
     public class CocktailDetailRawDTO
     {
-        [JsonPropertyName("idDrink")] 
+        [JsonPropertyName("idDrink")]
         public string? IdDrink { get; set; }
         [JsonPropertyName("strDrink")] 
         public string? StrDrink { get; set; }

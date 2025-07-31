@@ -27,7 +27,12 @@ namespace Infraestructura.Services
 
                 var response = await restClient.ExecuteAsync<AlcoholTypeResponseDTO>(request);
                 if (!response.IsSuccessful)
-                    throw new Exception($"CocktailDB API error ({response.StatusCode}): {response.ErrorMessage}");
+                    throw new Exception($@"
+                        CocktailDB API error:
+                        StatusCode: {response.StatusCode}
+                        ErrorMessage: {response.ErrorMessage}
+                        Content: {response.Content}
+                    ");
 
                 // CocktailTypeListResponse.Drinks será Map<string strAlcoholic>
                 return response.Data?.Drinks
@@ -40,7 +45,7 @@ namespace Infraestructura.Services
             }
         }
 
-        public async Task<List<CocktailItemDTO>?> GetByTypeAsync(string type)
+        public async Task<List<CocktailItemDTO>?> GetByAlcoholTypeAsync(string type)
         {
             try
             {
@@ -49,7 +54,12 @@ namespace Infraestructura.Services
 
                 var response = await restClient.ExecuteAsync<CocktailItemResponseDTO>(request);
                 if (!response.IsSuccessful)
-                    throw new Exception($"CocktailDB API error ({response.StatusCode}): {response.ErrorMessage}");
+                    throw new Exception($@"
+                        CocktailDB API error:
+                        StatusCode: {response.StatusCode}
+                        ErrorMessage: {response.ErrorMessage}
+                        Content: {response.Content}
+                    ");
 
                 return response.Data?.Drinks;
             }
@@ -63,37 +73,65 @@ namespace Infraestructura.Services
         {
             try
             {
-                var request = new RestRequest("lookup.php", Method.Get);
-                request.AddQueryParameter("i", id);
+                // 1) Preparamos y enviamos la petición a la API
+                var request = new RestRequest("lookup.php", Method.Get)
+                    .AddQueryParameter("i", id);
 
                 var response = await restClient.ExecuteAsync<CocktailLookupResponseDTO>(request);
+
                 if (!response.IsSuccessful)
-                    throw new Exception($"CocktailDB API error ({response.StatusCode}): {response.ErrorMessage}");
+                    throw new Exception($@"
+                        CocktailDB API error:
+                        StatusCode: {response.StatusCode}
+                        ErrorMessage: {response.ErrorMessage}
+                        Content: {response.Content}
+                    ");
 
-                var raw = response.Data?.Drinks?.FirstOrDefault();
-                if (raw == null) return null;
+                // 2) Extraemos la lista de bebidas cruda y nos quedamos con la primera
+                var drinks = response.Data?.Drinks;
+                var apiDrink = drinks?.FirstOrDefault();
+                if (apiDrink == null)
+                    return null;
 
-                // Mapear ingredientes dinámicamente
-                var ingredients = new List<IngredientDTO>();
-                for (int i = 1; i <= 15; i++)
+                // 3) Mapeamos dinámicamente los ingredientes
+                var mappedIngredients = new List<IngredientDTO>();
+                for (int index = 1; index <= 15; index++)
                 {
-                    var propIng = raw.GetType().GetProperty($"StrIngredient{i}")?.GetValue(raw) as string;
-                    var propMea = raw.GetType().GetProperty($"StrMeasure{i}")?.GetValue(raw) as string;
-                    if (!string.IsNullOrWhiteSpace(propIng))
-                        ingredients.Add(new IngredientDTO { Name = propIng!, Measure = propMea ?? "" });
+                    // Propiedades como StrIngredient1, StrIngredient2, … StrMeasure1, StrMeasure2, …
+                    var ingredientName = apiDrink
+                        .GetType()
+                        .GetProperty($"StrIngredient{index}")
+                        ?.GetValue(apiDrink) as string;
+
+                    var measureText = apiDrink
+                        .GetType()
+                        .GetProperty($"StrMeasure{index}")
+                        ?.GetValue(apiDrink) as string;
+
+                    if (!string.IsNullOrWhiteSpace(ingredientName))
+                    {
+                        mappedIngredients.Add(new IngredientDTO
+                        {
+                            Name = ingredientName,
+                            Measure = measureText ?? string.Empty
+                        });
+                    }
                 }
 
-                return new CocktailDetailDTO
+                // 4) Construimos el DTO final
+                var cocktailDetail = new CocktailDetailDTO
                 {
-                    IdDrink = raw.IdDrink,
-                    StrDrink = raw.StrDrink,
-                    StrCategory = raw.StrCategory,
-                    StrAlcoholic = raw.StrAlcoholic,
-                    StrGlass = raw.StrGlass,
-                    StrInstructions = raw.StrInstructions,
-                    StrDrinkThumb = raw.StrDrinkThumb,
-                    Ingredients = ingredients
+                    IdDrink = apiDrink.IdDrink,
+                    StrDrink = apiDrink.StrDrink,
+                    StrCategory = apiDrink.StrCategory,
+                    StrAlcoholic = apiDrink.StrAlcoholic,
+                    StrGlass = apiDrink.StrGlass,
+                    StrInstructions = apiDrink.StrInstructions,
+                    StrDrinkThumb = apiDrink.StrDrinkThumb,
+                    Ingredients = mappedIngredients
                 };
+
+                return cocktailDetail;
             }
             catch (Exception ex)
             {
@@ -149,7 +187,6 @@ namespace Infraestructura.Services
             }
         }
 
-
         // Obtiene la lista de todos los tipos de vasos.
         public async Task<List<GlassDTO>?> GetGlassesAsync()
         {
@@ -174,7 +211,6 @@ namespace Infraestructura.Services
             }
         }
 
-
         // Filtra cócteles por tipo de vaso.
         public async Task<List<CocktailItemDTO>?> GetByGlassAsync(string glass)
         {
@@ -196,6 +232,72 @@ namespace Infraestructura.Services
             catch (Exception ex)
             {
                 throw new Exception("CocktailClientService.GetByGlassAsync error", ex);
+            }
+        }
+
+        // Obtiene la lista de todos los ingredientes.
+        public async Task<List<IngredientSummaryDTO>?> GetIngredientsAsync()
+        {
+            try
+            {
+                var request = new RestRequest("list.php", Method.Get)
+                    .AddQueryParameter("i", "list");
+
+                var response = await restClient.ExecuteAsync<IngredientResponseDTO>(request);
+                if (!response.IsSuccessful)
+                    throw new Exception($@"
+                        CocktailDB API error:
+                        StatusCode: {response.StatusCode}
+                        ErrorMessage: {response.ErrorMessage}
+                        Content: {response.Content}
+                    ");
+                return response.Data?.Drinks;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("CocktailClientService.GetIngredientsAsync error", ex);
+            }
+        }
+
+        public async Task<IngredientDetailDTO?> GetIngredientByIdAsync(string id)
+        {
+            try
+            {
+                var request = new RestRequest("lookup.php", Method.Get)
+                    .AddQueryParameter("iid", id);
+
+                var response = await restClient
+                    .ExecuteAsync<IngredientLookupResponseDTO>(request);
+
+                if (!response.IsSuccessful)
+                    throw new Exception($@"
+                        CocktailDB API error:
+                        StatusCode: {response.StatusCode}
+                        ErrorMessage: {response.ErrorMessage}
+                        Content: {response.Content}
+                    ");
+
+                // 1) Extraemos la lista de ingredientes del payload
+                var ingredients = response.Data?.Ingredients;
+                // 2) Tomamos el primero
+                var apiIngredient = ingredients?.FirstOrDefault();
+                if (apiIngredient == null)
+                    return null;
+
+                // 3) Mapeamos al DTO de detalle
+                var detail = new IngredientDetailDTO
+                {
+                    IdIngredient = apiIngredient.IdIngredient,
+                    Name = apiIngredient.Name,
+                    Type = apiIngredient.Type,
+                    Description = apiIngredient.Description
+                };
+
+                return detail;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("CocktailClientService.GetIngredientByIdAsync error", ex);
             }
         }
 

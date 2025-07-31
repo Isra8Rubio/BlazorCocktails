@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Core.DTO
 {
     public class CocktailDetailDTO
     {
+        [JsonIgnore]
         public string? IdDrink { get; set; }
         public string? StrDrink { get; set; }
         public string? StrCategory { get; set; }
