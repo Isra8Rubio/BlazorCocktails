@@ -14,7 +14,7 @@ namespace Infraestructura.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options) { }
 
-        public DbSet<WeatherComplete> WeatherComplete { get; set; }
+        //public DbSet<WeatherComplete> WeatherComplete { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

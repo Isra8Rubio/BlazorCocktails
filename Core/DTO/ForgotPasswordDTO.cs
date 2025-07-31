@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Core.DTO
 {
-    public class ProvinceResponseDTO
+    public class ForgotPasswordDTO
     {
-        public List<ProvinceDTO> provincias { get; set; } = new();
+        public string? Email { get; set; }
     }
 }

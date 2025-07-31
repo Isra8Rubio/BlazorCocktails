@@ -39,11 +39,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(opts =>
     )
 );
 
-builder.Services.AddScoped<WeatherCompleteRepository>();
-builder.Services.AddScoped<WeatherCompleteService>();
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<UserService>();
 
+// MemoryCache
+builder.Services.AddMemoryCache();
+
+// HostedService para refrescar cada X minutos
+builder.Services.AddHostedService<RandomCocktailHostedService>();
 
 // External Client
 builder.Services.AddSingleton(_ =>
@@ -54,8 +57,7 @@ builder.Services.AddSingleton(_ =>
     return new RestClient(options);
 });
 builder.Services.AddTransient<CocktailClientService>();
-builder.Services.AddTransient<WeatherClient>();
-//builder.Services.AddHostedService<WeatherUpdateHostedService>();
+
 
 
 // Identity & Data Protection
@@ -128,8 +130,9 @@ builder.Services.AddAuthorization(options =>
 // Controllers & Swagger
 builder.Services.AddControllers();
 
-builder.Services.AddSingleton<IValidator<CredentialsUserDTO>, CredentialsUserDTOValidator>();
-builder.Services.AddSingleton<IValidator<CreateWeatherCompleteDTO>, CreateWeatherCompleteDTOValidator>();
+//builder.Services.AddSingleton<IValidator<CredentialsUserDTO>, CredentialsUserDTOValidator>();
+builder.Services.AddScoped<IValidator<CredentialsUserDTO>, CredentialsUserDTOValidator>();
+builder.Services.AddScoped<IValidator<RegisterUserDTO>, RegisterUserDTOValidator>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>

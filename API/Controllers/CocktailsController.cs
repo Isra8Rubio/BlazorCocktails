@@ -2,6 +2,7 @@
 using Infraestructura.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Weather.api.Controllers
 {
@@ -12,19 +13,23 @@ namespace Weather.api.Controllers
         private readonly ILogger<CocktailsController> logger;
         private readonly CocktailClientService cocktailClientService;
         private readonly IHttpContextAccessor httpContext;
+        private readonly IMemoryCache cache;
+        private const string CacheKey = "RandomCocktail";
 
         public CocktailsController(ILogger<CocktailsController> logger, CocktailClientService cocktailClientService,
-            IHttpContextAccessor httpContext)
+            IHttpContextAccessor httpContext, IMemoryCache cache)
         {
             this.logger = logger;
             this.cocktailClientService = cocktailClientService;
             this.httpContext = httpContext;
+            this.cache = cache;
         }
 
         // Lista de tipos de cócteles (Alcoholic / Non alcoholic / Optional alcohol).
         [HttpGet("AlcoholTypes")]
         [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<AlcoholTypeDTO>))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<List<AlcoholTypeDTO>>> GetAlcoholTypesAsync()
@@ -64,9 +69,9 @@ namespace Weather.api.Controllers
 
         // Lista los cócteles filtrados por tipo ('Alcoholic', 'Non alcoholic' o 'Optional alcohol').
         [HttpGet("ByAlcoholType")]
-        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<CocktailItemDTO>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<List<CocktailItemDTO>>> GetByTypeAsync([FromQuery(Name = "Alcoholic, Non alcoholic or Optional alcohol")] string type)
@@ -110,8 +115,8 @@ namespace Weather.api.Controllers
 
         // Detalle completo de un cóctel por su ID.
         [HttpGet("{id}")]
-        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CocktailDetailDTO))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<CocktailDetailDTO>> GetByIdAsync(string id)
@@ -150,8 +155,8 @@ namespace Weather.api.Controllers
 
         // Lista de categorías de cócteles.
         [HttpGet("Categories")]
-        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<CategoryDTO>))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<List<CategoryDTO>>> GetCategoriesAsync()
         {
@@ -188,9 +193,9 @@ namespace Weather.api.Controllers
 
         // Lista los cócteles filtrados por categoría (por ejemplo "Ordinary Drink").
         [HttpGet("ByCategory")]
-        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<CocktailItemDTO>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<List<CocktailItemDTO>>> GetByCategoryAsync([FromQuery(Name = "category")] string category)
@@ -234,8 +239,8 @@ namespace Weather.api.Controllers
 
         // Lista de tipos de vasos disponibles.
         [HttpGet("Glasses")]
-        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<GlassDTO>))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<List<GlassDTO>>> GetGlassesAsync()
@@ -273,9 +278,9 @@ namespace Weather.api.Controllers
 
         // Lista los cócteles filtrados por tipo de vaso (por ejemplo "Cocktail glass").
         [HttpGet("ByGlass")]
-        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<CocktailItemDTO>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<List<CocktailItemDTO>>> GetByGlassAsync([FromQuery(Name = "glass")] string glass)
@@ -319,8 +324,8 @@ namespace Weather.api.Controllers
 
         // Devuelve la lista de ingredientes disponibles.
         [HttpGet("Ingredients")]
-        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<IngredientSummaryDTO>))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<List<IngredientSummaryDTO>>> GetIngredientsAsync()
@@ -358,8 +363,8 @@ namespace Weather.api.Controllers
 
         // Obtiene el detalle completo de un ingrediente por su ID.
         [HttpGet("Ingredients/{id}")]
-        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IngredientDetailDTO))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<IngredientDetailDTO>> GetIngredientByIdAsync(string id)
@@ -393,5 +398,33 @@ namespace Weather.api.Controllers
                 });
             }
         }
+
+
+        // Devuelve el cóctel aleatorio más reciente, almacenado en memoria.
+        [HttpGet("Random")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CocktailDetailDTO))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<CocktailDetailDTO>> GetRandomAsync()
+        {
+            const string CacheKey = "RandomCocktail";
+
+            // Intentamos leer de cache
+            if (cache.TryGetValue<CocktailDetailDTO>(CacheKey, out var random))
+                return Ok(random);
+
+            // Si no había nada, vamos a la API y cacheamos
+            logger.LogInformation("GetRandom: cache vacío, obteniendo al vuelo…");
+            random = await cocktailClientService.GetRandomAsync();
+
+            if (random == null)
+                return NotFound(new { Message = "No se pudo obtener un cóctel aleatorio." });
+
+            // Guardamos en cache sin expiración
+            cache.Set(CacheKey, random);
+            return Ok(random);
+        }
+
     }
 }

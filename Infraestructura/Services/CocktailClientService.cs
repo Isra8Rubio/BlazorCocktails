@@ -3,6 +3,7 @@ using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -301,5 +302,48 @@ namespace Infraestructura.Services
             }
         }
 
+        // Llama a random.php y devuelve un CocktailDetailDTO.
+        public async Task<CocktailDetailDTO?> GetRandomAsync()
+        {
+            var request = new RestRequest("random.php", Method.Get);
+            var response = await restClient.ExecuteAsync<CocktailLookupResponseDTO>(request);
+            if (!response.IsSuccessful)
+                throw new Exception($"CocktailDB API error ({response.StatusCode}): {response.ErrorMessage}");
+
+            var raw = response.Data?.Drinks?.FirstOrDefault();
+            if (raw == null) return null;
+
+            // Reusa tu mapeo de raw → CocktailDetailDTO
+            return MapRawToDetail(raw);
+        }
+        private CocktailDetailDTO MapRawToDetail(CocktailDetailRawDTO raw)
+        {
+            var ingredients = new List<IngredientDTO>();
+            var rawType = raw.GetType();
+
+            for (int i = 1; i <= 15; i++)
+            {
+                var ingProp = rawType.GetProperty($"StrIngredient{i}", BindingFlags.Public | BindingFlags.Instance);
+                var meaProp = rawType.GetProperty($"StrMeasure{i}", BindingFlags.Public | BindingFlags.Instance);
+
+                var ingValue = ingProp?.GetValue(raw) as string;
+                var meaValue = meaProp?.GetValue(raw) as string;
+
+                if (!string.IsNullOrWhiteSpace(ingValue))
+                    ingredients.Add(new IngredientDTO { Name = ingValue, Measure = meaValue ?? "" });
+            }
+
+            return new CocktailDetailDTO
+            {
+                IdDrink = raw.IdDrink,
+                StrDrink = raw.StrDrink,
+                StrCategory = raw.StrCategory,
+                StrAlcoholic = raw.StrAlcoholic,
+                StrGlass = raw.StrGlass,
+                StrInstructions = raw.StrInstructions,
+                StrDrinkThumb = raw.StrDrinkThumb,
+                Ingredients = ingredients
+            };
+        }
     }
 }

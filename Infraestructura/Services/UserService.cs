@@ -25,15 +25,15 @@ namespace Infraestructura.Services
             _config = config;
         }
 
-        public async Task<AnswerAuthenticationDTO> RegisterAsync(CredentialsUserDTO creds)
+        public async Task<AnswerAuthenticationDTO> RegisterAsync(RegisterUserDTO dto)
         {
             try
             {
-                var user = new Usuario { UserName = creds.Email, Email = creds.Email };
-                var result = await _repo.CreateUserAsync(user, creds.Password!);
+                var user = new Usuario { UserName = dto.Email, Email = dto.Email };
+                var result = await _repo.CreateUserAsync(user, dto.Password!);
                 if (!result.Succeeded)
                     throw new InvalidOperationException(string.Join("; ", result.Errors.Select(e => e.Description)));
-                return await BuildTokenAsync(creds);
+                return await BuildTokenAsync(dto.Email!);
             }
             catch (Exception ex)
             {
@@ -48,7 +48,7 @@ namespace Infraestructura.Services
                 var result = await _repo.PasswordSignInAsync(creds.Email!, creds.Password!);
                 if (!result.Succeeded)
                     throw new UnauthorizedAccessException();
-                return await BuildTokenAsync(creds);
+                return await BuildTokenAsync(creds.Email!);
             }
             catch (Exception ex)
             {
@@ -128,21 +128,26 @@ namespace Infraestructura.Services
             }
         }
 
-        private async Task<AnswerAuthenticationDTO> BuildTokenAsync(CredentialsUserDTO creds)
+        private async Task<AnswerAuthenticationDTO> BuildTokenAsync(string email)
         {
             try
             {
-                var user = await _repo.FindByEmailAsync(creds.Email!)
+                // Busca al usuario por email
+                var user = await _repo.FindByEmailAsync(email)
                            ?? throw new KeyNotFoundException("User not found.");
+
+                // Creamos los claims idénticos a antes
                 var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.NameIdentifier, user.Id!),
-                    new Claim(ClaimTypes.Email, creds.Email),
-                    new Claim("securityStamp", user.SecurityStamp!)
-                };
+        {
+            new Claim(ClaimTypes.NameIdentifier, user.Id!),
+            new Claim(ClaimTypes.Email, email),
+            new Claim("securityStamp", user.SecurityStamp!)
+        };
                 claims.AddRange(await _repo.GetClaimsAsync(user));
                 if ((await _repo.GetRolesAsync(user)).Contains("Admin"))
                     claims.Add(new Claim("isAdmin", "true"));
+
+                // Generamos el token igual que antes
                 var jwtCfg = _config.Jwt;
                 var keyBytes = Encoding.UTF8.GetBytes(jwtCfg.Key!);
                 var signingKey = new SymmetricSecurityKey(keyBytes);
@@ -155,6 +160,7 @@ namespace Infraestructura.Services
                     expires: expires,
                     signingCredentials: credsSign
                 );
+
                 return new AnswerAuthenticationDTO
                 {
                     Token = new JwtSecurityTokenHandler().WriteToken(token),
@@ -166,5 +172,8 @@ namespace Infraestructura.Services
                 throw new Exception("UserService.BuildTokenAsync error", ex);
             }
         }
+
+
+
     }
 }
