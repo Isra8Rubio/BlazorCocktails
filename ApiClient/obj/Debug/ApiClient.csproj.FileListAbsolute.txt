@@ -1,0 +1,10 @@
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\ApiClient\bin\Debug\ApiClient.dll
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\ApiClient\bin\Debug\ApiClient.pdb
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\ApiClient\bin\Debug\Newtonsoft.Json.dll
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\ApiClient\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\ApiClient\bin\Debug\Newtonsoft.Json.xml
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\ApiClient\obj\Debug\ApiClient.csproj.AssemblyReference.cache
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\ApiClient\obj\Debug\ApiClient.csproj.CoreCompileInputs.cache
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\ApiClient\obj\Debug\ApiClient.csproj.Up2Date
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\ApiClient\obj\Debug\ApiClient.dll
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\ApiClient\obj\Debug\ApiClient.pdb

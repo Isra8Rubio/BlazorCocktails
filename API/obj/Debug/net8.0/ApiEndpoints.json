@@ -100,7 +100,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Alcoholic, Non alcoholic or Optional alcohol",
+        "Name": "type",
         "Type": "System.String",
         "IsRequired": false
       }

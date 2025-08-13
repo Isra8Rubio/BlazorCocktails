@@ -9,7 +9,7 @@ namespace Core.DTO
 {
     public class CocktailItemDTO
     {
-        [JsonIgnore]
+        [JsonPropertyName("idDrink")]
         public string? IdDrink { get; set; }
 
         [JsonPropertyName("strDrink")]

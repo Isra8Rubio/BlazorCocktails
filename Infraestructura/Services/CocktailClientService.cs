@@ -36,7 +36,7 @@ namespace Infraestructura.Services
                     ");
 
                 // CocktailTypeListResponse.Drinks será Map<string strAlcoholic>
-                return response.Data?.Drinks
+                return response.Data?.Drinks?
                              .Select(x => new AlcoholTypeDTO { StrAlcoholic = x.StrAlcoholic })
                              .ToList();
             }

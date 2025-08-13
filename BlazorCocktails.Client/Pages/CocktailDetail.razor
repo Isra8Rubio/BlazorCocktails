@@ -1,0 +1,62 @@
+﻿@page "/cocktail/{id}"
+@using API.APIService
+@inject APIClient Api
+@inject ISnackbar Snackbar
+
+
+<h3>@(detail?.StrDrink ?? "Detalle")</h3>
+
+@if (loading)
+{
+    <MudProgressCircular Indeterminate="true" Class="mt-2" />
+}
+else if (detail is null)
+{
+    <MudText Color="Color.Error">No se encontró el cóctel.</MudText>
+}
+else
+{
+    <MudStack Spacing="2" Class="mt-2">
+        <img src="@detail.StrDrinkThumb" alt="@detail.StrDrink" style="max-width:320px" />
+        <MudText Typo="Typo.subtitle1">@detail.StrCategory — @detail.StrGlass</MudText>
+        <MudText>@detail.StrInstructions</MudText>
+        @if (detail?.Ingredients?.Any() == true)
+        {
+            <MudList T="string" Dense="true" Class="mt-2">
+                @foreach (var ing in detail.Ingredients!)
+                {
+                    <MudListItem Value="@ing.Name">
+                        @ing.Name @(!string.IsNullOrWhiteSpace(ing.Measure) ? $"({ing.Measure})" : "")
+                    </MudListItem>
+                }
+            </MudList>
+        }
+    </MudStack>
+}
+
+@code {
+    [Parameter] public string? id { get; set; }
+
+    CocktailDetailDTO? detail;
+    bool loading;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (string.IsNullOrWhiteSpace(id)) return;
+
+        loading = true;
+        try
+        {
+            detail = await Api.Cocktails_GetByIdAsync(id);
+        }
+        catch (ApiException ex)
+        {
+            Snackbar.Add($"Error cargando detalle: {ex.Message}", Severity.Error);
+            detail = null;
+        }
+        finally
+        {
+            loading = false;
+        }
+    }
+}

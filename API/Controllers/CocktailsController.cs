@@ -8,6 +8,7 @@ namespace Weather.api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [AllowAnonymous]
     public class CocktailsController: ControllerBase
     {
         private readonly ILogger<CocktailsController> logger;
@@ -24,6 +25,7 @@ namespace Weather.api.Controllers
             this.httpContext = httpContext;
             this.cache = cache;
         }
+
 
         // Lista de tipos de cócteles (Alcoholic / Non alcoholic / Optional alcohol).
         [HttpGet("AlcoholTypes")]
@@ -74,7 +76,7 @@ namespace Weather.api.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<List<CocktailItemDTO>>> GetByTypeAsync([FromQuery(Name = "Alcoholic, Non alcoholic or Optional alcohol")] string type)
+        public async Task<ActionResult<List<CocktailItemDTO>>> GetByTypeAsync([FromQuery(Name = "type")] string type)
         {
             var traceId = httpContext.HttpContext?.TraceIdentifier.Split(':')[0] ?? "";
 

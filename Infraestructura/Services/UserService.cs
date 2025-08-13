@@ -78,8 +78,8 @@ namespace Infraestructura.Services
                            ?? throw new KeyNotFoundException("Usuario no encontrado.");
                 var result = await _repo.ChangePasswordAsync(
                     user,
-                    dto.CurrentPassword,
-                    dto.NewPassword);
+                    dto.CurrentPassword ?? "",
+                    dto.NewPassword ?? "");
                 if (!result.Succeeded)
                 {
                     var errors = string.Join("; ", result.Errors.Select(e => e.Description));

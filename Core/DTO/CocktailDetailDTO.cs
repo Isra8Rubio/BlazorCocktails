@@ -9,7 +9,6 @@ namespace Core.DTO
 {
     public class CocktailDetailDTO
     {
-        [JsonIgnore]
         public string? IdDrink { get; set; }
         public string? StrDrink { get; set; }
         public string? StrCategory { get; set; }

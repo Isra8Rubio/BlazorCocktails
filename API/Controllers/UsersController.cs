@@ -24,8 +24,7 @@ namespace Infraestructura.Controllers
             UserService userService,
             IValidator<CredentialsUserDTO> credsValidator,
             IHttpContextAccessor context,
-            IValidator<RegisterUserDTO> registerValidator,
-            IValidator<ForgotPasswordDTO> forgotValidator)
+            IValidator<RegisterUserDTO> registerValidator)
         {
             _userService = userService;
             _credsValidator = credsValidator;
@@ -149,7 +148,7 @@ namespace Infraestructura.Controllers
             try
             {
                 _logger.Info($"[{traceId}] Call: DoAdmin(email={dto.Email})");
-                await _userService.AssignAdminAsync(dto.Email);
+                await _userService.AssignAdminAsync(dto.Email ?? "");
                 _logger.Info($"[{traceId}] FinishCall: DoAdmin – admin granted to {dto.Email}");
                 return Ok(new { Message = "Admin granted successfully." });
             }
@@ -223,23 +222,6 @@ namespace Infraestructura.Controllers
         }
 
 
-        //[HttpPost("ForgotPassword")]
-        //[AllowAnonymous]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-        //public async Task<ActionResult> ForgotPassword([FromBody] ForgotPasswordDTO dto)
-        //{
-        //    ValidationResult validation = await forgotValidator.ValidateAsync(dto);
-        //    if (!validation.IsValid)
-        //        return ValidationProblem(validation.ToDictionary());
-
-        //    // Genera token y envía email
-        //    await _userService.SendPasswordResetEmailAsync(dto.Email);
-        //    return Ok(new { Message = "Correo de recuperación enviado si el email existe." });
-        //}
-
-
-
         [HttpDelete("{id}")]
         [Authorize(Policy = "isAdmin")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -273,5 +255,22 @@ namespace Infraestructura.Controllers
                 return StatusCode(500, new { Message = "Error deleting user", Detail = ex.Message });
             }
         }
+
+
+        //  IValidator<ForgotPasswordDTO> forgotValidator
+        //[HttpPost("ForgotPassword")]
+        //[AllowAnonymous]
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
+        //public async Task<ActionResult> ForgotPassword([FromBody] ForgotPasswordDTO dto)
+        //{
+        //    ValidationResult validation = await forgotValidator.ValidateAsync(dto);
+        //    if (!validation.IsValid)
+        //        return ValidationProblem(validation.ToDictionary());
+
+        //    // Genera token y envía email
+        //    await _userService.SendPasswordResetEmailAsync(dto.Email);
+        //    return Ok(new { Message = "Correo de recuperación enviado si el email existe." });
+        //}
     }
 }

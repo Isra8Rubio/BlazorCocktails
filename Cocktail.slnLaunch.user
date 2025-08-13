@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Nuevo perfil",
+    "Projects": [
+      {
+        "Path": "API\\Cocktail.api.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "BlazorCocktails.Client\\BlazorCocktails.Client.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

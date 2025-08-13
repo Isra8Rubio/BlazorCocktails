@@ -45,6 +45,19 @@ builder.Services.AddScoped<UserService>();
 // MemoryCache
 builder.Services.AddMemoryCache();
 
+
+// CORS
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("Wasm", p =>
+        p.WithOrigins("https://localhost:7032", "http://localhost:7032")
+         .AllowAnyHeader()
+         .AllowAnyMethod()
+    // .AllowCredentials() // solo si vas a usar cookies. Con Bearer NO hace falta.
+    );
+});
+
+
 // HostedService para refrescar cada X minutos
 builder.Services.AddHostedService<RandomCocktailHostedService>();
 
@@ -57,7 +70,6 @@ builder.Services.AddSingleton(_ =>
     return new RestClient(options);
 });
 builder.Services.AddTransient<CocktailClientService>();
-
 
 
 // Identity & Data Protection
@@ -129,6 +141,12 @@ builder.Services.AddAuthorization(options =>
 
 // Controllers & Swagger
 builder.Services.AddControllers();
+builder.Services.AddOpenApiDocument(o =>
+{
+    o.Title = "Cocktails API";
+    o.Version = "v1";
+});
+
 
 //builder.Services.AddSingleton<IValidator<CredentialsUserDTO>, CredentialsUserDTOValidator>();
 builder.Services.AddScoped<IValidator<CredentialsUserDTO>, CredentialsUserDTOValidator>();
@@ -187,6 +205,8 @@ try
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "Weather API 1");
         options.RoutePrefix = string.Empty;
     });
+
+    app.UseCors("Wasm");
 
     app.UseAuthentication();
     app.UseAuthorization();

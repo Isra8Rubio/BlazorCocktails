@@ -21,7 +21,7 @@ namespace Core.Validators
             RuleFor(x => x).CustomAsync(async (creds, ctx, ct) =>
             {
                 // 1) Buscamos el usuario
-                var user = await userManager.FindByEmailAsync(creds.Email);
+                var user = await userManager.FindByEmailAsync(creds.Email ?? "");
                 if (user == null)
                 {
                     ctx.AddFailure("Email", "Usuario no encontrado");
@@ -29,7 +29,7 @@ namespace Core.Validators
                 }
 
                 // 2) Comprobamos la contraseña
-                var ok = await userManager.CheckPasswordAsync(user, creds.Password);
+                var ok = await userManager.CheckPasswordAsync(user, creds.Password ?? "");
                 if (!ok)
                 {
                     ctx.AddFailure("Password", "Password incorrecta");
