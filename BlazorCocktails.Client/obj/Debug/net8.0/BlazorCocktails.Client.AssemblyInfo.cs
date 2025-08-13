@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BlazorCocktails.Client")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+78ba0725a198544acd72eefc65be2633a1801aef")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2077adb861d36ab169019e270cadab9214c640da")]
 [assembly: System.Reflection.AssemblyProductAttribute("BlazorCocktails.Client")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BlazorCocktails.Client")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

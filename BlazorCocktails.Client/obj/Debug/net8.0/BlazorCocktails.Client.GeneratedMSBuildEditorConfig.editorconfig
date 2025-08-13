@@ -33,6 +33,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWxjb2hvbFR5cGVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Pages/Categories.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcmllcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Pages/CocktailDetail.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29ja3RhaWxEZXRhaWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

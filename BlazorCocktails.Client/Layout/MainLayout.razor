@@ -1,16 +1,51 @@
 ﻿@inherits LayoutComponentBase
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+@using MudBlazor
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+<MudThemeProvider IsDarkMode="@_isDark" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout Class="@(_isDark ? "summer-dark" : "summer-light")">
+    <MudAppBar Elevation="2" Color="Color.Primary">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu"
+                       Color="Color.Inherit"
+                       Edge="Edge.Start"
+                       OnClick="ToggleDrawer" />
+
+        <MudText Typo="Typo.h6" Class="ml-2">BlazorCocktails</MudText>
+
+        <MudSpacer />
+
+        <MudIconButton Icon="@(_isDark? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode)"
+                       Title="Cambiar tema"
+                       Color="Color.Inherit"
+                       OnClick="ToggleDarkMode" />
+    </MudAppBar>
+
+    <MudDrawer @bind-Open="_drawerOpen"
+               Variant="DrawerVariant.Responsive"
+               Elevation="1"
+               Class="p-0 drawer-fix">
+        <MudDrawerHeader Class="px-4 py-3">
+            <MudText Typo="Typo.subtitle1">Menú</MudText>
+        </MudDrawerHeader>
+
+        <div class="drawer-scroll">
+            <NavMenu />
         </div>
+    </MudDrawer>
 
-        <article class="content px-4">
+    <MudMainContent>
+        <div class="p-4">
             @Body
-        </article>
-    </main>
-</div>
+        </div>
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    private bool _drawerOpen = true;
+    private bool _isDark = true; // modo noche por defecto
+
+    private void ToggleDrawer() => _drawerOpen = !_drawerOpen;
+    private void ToggleDarkMode() => _isDark = !_isDark;
+}

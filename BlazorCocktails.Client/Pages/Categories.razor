@@ -1,0 +1,125 @@
+﻿@page "/categories"
+@using API.APIService
+@using System.Linq
+@inject APIClient Api
+@inject ISnackbar Snackbar
+@inject NavigationManager Nav
+
+<PageTitle>Categories</PageTitle>
+
+<MudStack Spacing="2">
+    @* <MudText Typo="Typo.h4">Categories</MudText> *@
+
+    @* Barra de carga inicial mientras llegan las categorías *@
+    @if (categories is null)
+    {
+        <MudProgressLinear Indeterminate="true" Class="mb-4" />
+    }
+    else
+    {
+        <MudSelect T="string"
+                   Label="Categoría"
+                   Dense="true"
+                   Clearable="true"
+                   Placeholder="Selecciona una categoría…"
+                   Value="selectedCategory"
+                   ValueChanged="OnCategoryChanged"
+                   Immediate="true"
+                   Disabled="@isLoading">
+            @foreach (var c in categories)
+            {
+                <MudSelectItem Value="@c.StrCategory">@c.StrCategory</MudSelectItem>
+            }
+        </MudSelect>
+    }
+
+    @* Carga mientras buscamos cócteles de la categoría *@
+    @if (isLoading)
+    {
+        <MudProgressCircular Indeterminate="true" Class="mt-2" />
+    }
+    else if (drinks is null)
+    {
+        <MudText Class="mt-4" Color="Color.Secondary">
+            Selecciona una categoría para ver cócteles.
+        </MudText>
+    }
+    else
+    {
+        <MudGrid Class="mt-4">
+            @foreach (var drink in drinks)
+            {
+                <MudItem xs="12" sm="6" md="4" lg="3">
+                    <MudCard Class="mb-4 hover-elevate" Style="cursor:pointer"
+                             @onclick="@(() => Nav.NavigateTo($"/cocktail/{drink.IdDrink}"))">
+                        <MudCardMedia Image="@drink.StrDrinkThumb" Height="160" Alt="@drink.StrDrink" />
+                        <MudCardContent>
+                            <MudText Typo="Typo.subtitle2">@drink.StrDrink</MudText>
+                        </MudCardContent>
+                    </MudCard>
+                </MudItem>
+            }
+        </MudGrid>
+    }
+</MudStack>
+
+@code {
+    List<CategoryDTO>? categories;
+    string? selectedCategory;
+    List<CocktailItemDTO>? drinks;
+    bool isLoading;
+    long lastRequestId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            categories = (await Api.Cocktails_GetCategoriesAsync())?.ToList();
+        }
+        catch (ApiException ex)
+        {
+            Snackbar.Add($"Error cargando categorías: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private async Task OnCategoryChanged(string? value)
+    {
+        selectedCategory = value;
+
+        if (string.IsNullOrWhiteSpace(selectedCategory))
+        {
+            drinks = null;
+            StateHasChanged();
+            return;
+        }
+
+        drinks = null;
+        isLoading = true;
+        StateHasChanged();
+        var reqId = Interlocked.Increment(ref lastRequestId);
+
+        try
+        {
+            var result = (await Api.Cocktails_GetByCategoryAsync(selectedCategory))?.ToList();
+
+            if (reqId != lastRequestId) return;
+            drinks = result ?? new();
+        }
+        catch (ApiException ex)
+        {
+            if (reqId == lastRequestId)
+            {
+                Snackbar.Add($"Error cargando cócteles: {ex.Message}", Severity.Error);
+                drinks = new();
+            }
+        }
+        finally
+        {
+            if (reqId == lastRequestId)
+            {
+                isLoading = false;
+                StateHasChanged();
+            }
+        }
+    }
+}

@@ -2,9 +2,25 @@
 @using API.APIService
 @inject APIClient Api
 @inject ISnackbar Snackbar
+@inject NavigationManager Nav
 
 
-<h3>@(detail?.StrDrink ?? "Detalle")</h3>
+<MudGrid AlignItems="Center" Class="mb-2">
+    <MudItem xs="12" md="9">
+        <MudText Typo="Typo.h4" Truncate="true" Class="m-0">
+            @((detail?.StrDrink) ?? "Detalle")
+        </MudText>
+    </MudItem>
+    <MudItem xs="12" md="3" Class="d-flex justify-end">
+
+    <MudButton Variant="Variant.Filled"
+               Color="Color.Primary"
+               StartIcon="@Icons.Material.Filled.ArrowBack"
+               OnClick="@(() => Nav.NavigateTo("/alcohol"))">
+        Volver
+    </MudButton>
+    </MudItem>
+</MudGrid>
 
 @if (loading)
 {
