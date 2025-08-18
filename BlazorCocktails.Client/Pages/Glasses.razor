@@ -1,5 +1,7 @@
 ﻿@page "/glasses"
+@using System.Linq
 @using API.APIService
+@using BlazorCocktails.Client.Shared
 @inject APIClient Api
 @inject ISnackbar Snackbar
 @inject NavigationManager Nav
@@ -27,7 +29,7 @@
             {
                 <MudSelectItem Value="@g.StrGlass">
                     @g.StrGlass
-                    @* Si quieres traducir los nombres de vaso, cambia a: @L[g.StrGlass] *@
+                    @* Si quieres traducir: @L[g.StrGlass] y añade las claves en App.es-ES.resx *@
                 </MudSelectItem>
             }
         </MudSelect>
@@ -45,8 +47,17 @@
     }
     else
     {
-        <MudGrid Class="mt-4">
-            @foreach (var d in drinks)
+        @* PAGER ARRIBA *@
+        @if (drinks.Count > pageSize)
+        {
+            <Pager TotalItems="drinks.Count"
+                   PageSize="pageSize"
+                   Radius="2"
+                   @bind-CurrentPage="page" />
+        }
+
+        <MudGrid Class="mt-2">
+            @foreach (var d in PagedDrinks)
             {
                 <MudItem xs="12" sm="6" md="4" lg="3">
                     <MudCard Class="mb-4 hover-elevate" Style="cursor:pointer"
@@ -69,6 +80,13 @@
     string? selectedGlass;
     bool isLoading;
     long lastRequestId = 0;
+    int page = 1;
+    const int pageSize = 8;
+
+    IEnumerable<CocktailItemDTO> PagedDrinks =>
+        (drinks ?? Enumerable.Empty<CocktailItemDTO>())
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize);
 
     protected override async Task OnInitializedAsync()
     {
@@ -85,6 +103,7 @@
     private async Task OnSelectedGlassChanged(string? glass)
     {
         selectedGlass = glass;
+        page = 1;
 
         if (string.IsNullOrWhiteSpace(selectedGlass))
         {
@@ -102,7 +121,6 @@
         try
         {
             var result = (await Api.Cocktails_GetByGlassAsync(selectedGlass))?.ToList();
-
             if (requestId != lastRequestId) return;
             drinks = result ?? new();
         }

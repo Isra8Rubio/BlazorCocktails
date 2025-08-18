@@ -1,5 +1,7 @@
 ﻿@page "/alcohol"
+@using System.Linq
 @using API.APIService
+@using BlazorCocktails.Client.Shared
 @inject APIClient Api
 @inject ISnackbar Snackbar
 @inject NavigationManager Nav
@@ -50,8 +52,17 @@
     }
     else
     {
-        <MudGrid Class="mt-4">
-            @foreach (var drink in drinks)
+        @* PAGER ARRIBA *@
+        @if (drinks.Count > pageSize)
+        {
+            <Pager TotalItems="drinks.Count"
+                   PageSize="pageSize"
+                   Radius="2"
+                   @bind-CurrentPage="page" />
+        }
+
+        <MudGrid Class="mt-2">
+            @foreach (var drink in PagedDrinks)
             {
                 <MudItem xs="12" sm="6" md="4" lg="3">
                     <MudCard Class="mb-4 hover-elevate" Style="cursor:pointer"
@@ -74,6 +85,13 @@
     string? selectedAlcoholType;
     bool isLoading;
     long lastRequestId = 0;
+    int page = 1;
+    const int pageSize = 8;
+
+    IEnumerable<CocktailItemDTO> PagedDrinks =>
+        (drinks ?? Enumerable.Empty<CocktailItemDTO>())
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize);
 
     protected override async Task OnInitializedAsync()
     {
@@ -90,6 +108,7 @@
     private async Task OnSelectedAlcoholTypeChanged(string? newValue)
     {
         selectedAlcoholType = newValue;
+        page = 1; // reset al cambiar el filtro
 
         if (string.IsNullOrWhiteSpace(selectedAlcoholType))
         {
