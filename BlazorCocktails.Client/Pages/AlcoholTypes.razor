@@ -3,51 +3,52 @@
 @inject APIClient Api
 @inject ISnackbar Snackbar
 @inject NavigationManager Nav
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<App> L
 
+<PageTitle>@L["AlcoholTypes_Title"]</PageTitle>
 
-<PageTitle>Alcohol Types</PageTitle>
+<HeadContent>
+    <link rel="icon" type="image/svg+xml" href="icons/alcohol.svg" />
+</HeadContent>
 
 <MudStack Spacing="2">
-    <MudText Typo="Typo.h4">Alcohol</MudText>
 
-    @* Mientras aún no tenemos los tipos, mostramos un progreso lineal *@
     @if (alcoholTypes is null)
     {
         <MudProgressLinear Indeterminate="true" Class="mb-4" />
     }
     else
     {
-        @* 
-           - Placeholder visible hasta que haya selección
-           - Clearable para poder limpiar la selección
-           - Disabled cuando estamos cargando (evita “doble clic” o cambios rápidos)
-        *@
         <MudSelect T="string"
-                   Label="Tipo"
+                   Label="@L["AlcoholTypes_Label"]"
                    Dense="true"
                    Clearable="true"
-                   Placeholder="Selecciona una opción…"
+                   Placeholder="@L["AlcoholTypes_Placeholder"]"
                    Value="selectedAlcoholType"
                    ValueChanged="OnSelectedAlcoholTypeChanged"
                    Immediate="true"
                    Disabled="@isLoading">
             @foreach (var t in alcoholTypes)
             {
-                <MudSelectItem Value="@t.StrAlcoholic">@t.StrAlcoholic</MudSelectItem>
+                <MudSelectItem Value="@t.StrAlcoholic">
+                    @DisplayAlcoholType(t.StrAlcoholic)
+                </MudSelectItem>
             }
         </MudSelect>
     }
 
-    @* Indicador de carga mientras traemos las bebidas del tipo seleccionado *@
     @if (isLoading)
     {
         <MudProgressCircular Indeterminate="true" Class="mt-2" />
     }
     else if (drinks is null)
     {
-        <MudText Class="mt-4" Color="Color.Secondary">Selecciona un tipo para ver cócteles.</MudText>
+        <MudText Class="mt-4" Color="Color.Secondary">
+            @L["AlcoholTypes_SelectHint"]
+        </MudText>
     }
-    else if (drinks is not null)
+    else
     {
         <MudGrid Class="mt-4">
             @foreach (var drink in drinks)
@@ -67,28 +68,22 @@
 </MudStack>
 
 @code {
-    // Datos del selector y resultados
     List<AlcoholTypeDTO>? alcoholTypes;
     List<CocktailItemDTO>? drinks;
 
-    // Estado de la selección y carga
     string? selectedAlcoholType;
     bool isLoading;
-
-    // requestId: número que aumenta en cada petición;
-    // si una respuesta llega con id viejo, la ignoramos (evita “saltos” visuales)
     long lastRequestId = 0;
 
     protected override async Task OnInitializedAsync()
     {
         try
         {
-            // Cargamos la lista de tipos; no seleccionamos ninguno por defecto
             alcoholTypes = (await Api.Cocktails_GetAlcoholTypesAsync())?.ToList();
         }
         catch (ApiException ex)
         {
-            Snackbar.Add($"Error cargando tipos: {ex.Message}", Severity.Error);
+            Snackbar.Add($"{L["AlcoholTypes_Error_LoadTypes"]}: {ex.Message}", Severity.Error);
         }
     }
 
@@ -96,7 +91,6 @@
     {
         selectedAlcoholType = newValue;
 
-        // Si se limpia el select o queda vacío, limpiamos la rejilla y salimos
         if (string.IsNullOrWhiteSpace(selectedAlcoholType))
         {
             drinks = null;
@@ -104,38 +98,28 @@
             return;
         }
 
-        // Limpiamos resultados anteriores y marcamos carga
         drinks = null;
         isLoading = true;
         StateHasChanged();
 
-        // Capturamos un id único para esta petición
         var requestId = System.Threading.Interlocked.Increment(ref lastRequestId);
 
         try
         {
-            // Llamada a tu API (cliente NSwag).
-            // Si en el futuro activas CancellationToken en el cliente, aquí lo inyectamos.
             var result = (await Api.Cocktails_GetByTypeAsync(selectedAlcoholType))?.ToList();
-
-            // Si llegó una respuesta “vieja” (el usuario cambió de opción mientras tanto), la ignoramos
-            if (requestId != lastRequestId)
-                return;
-
+            if (requestId != lastRequestId) return;
             drinks = result ?? new();
         }
         catch (ApiException ex)
         {
-            // Solo mostramos el error si esta sigue siendo la petición “vigente”
             if (requestId == lastRequestId)
             {
-                Snackbar.Add($"Error cargando cócteles: {ex.Message}", Severity.Error);
+                Snackbar.Add($"{L["AlcoholTypes_Error_LoadDrinks"]}: {ex.Message}", Severity.Error);
                 drinks = new();
             }
         }
         finally
         {
-            // Solo cerramos el estado de carga si esta petición sigue siendo la vigente
             if (requestId == lastRequestId)
             {
                 isLoading = false;
@@ -144,11 +128,16 @@
         }
     }
 
-    void GoToDetail(CocktailItemDTO drink)
+    // Muestra traducido, pero conserva el Value original para filtrar
+    private string DisplayAlcoholType(string? apiValue)
     {
-        var name = Uri.EscapeDataString(drink.StrDrink ?? string.Empty);
-        if (!string.IsNullOrWhiteSpace(name))
-            Nav.NavigateTo($"/cocktail/{name}");
+        var key = (apiValue ?? "").Trim().ToLowerInvariant() switch
+        {
+            "alcoholic" => "AlcoholType_Alcoholic",
+            "non alcoholic" => "AlcoholType_NonAlcoholic",
+            "optional alcohol" => "AlcoholType_OptionalAlcohol",
+            _ => apiValue ?? ""
+        };
+        return string.IsNullOrEmpty(key) ? "" : L[key];
     }
-
 }

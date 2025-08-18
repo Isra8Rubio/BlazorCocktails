@@ -302,6 +302,40 @@ namespace Infraestructura.Services
             }
         }
 
+        public async Task<IngredientDetailDTO?> GetIngredientByNameAsync(string name)
+        {
+            try
+            {
+                var request = new RestRequest("search.php", Method.Get)
+                    .AddQueryParameter("i", name);
+
+                var response = await restClient.ExecuteAsync<IngredientSearchResponseDTO>(request);
+                if (!response.IsSuccessful)
+                    throw new Exception($@"
+                        CocktailDB API error:
+                        StatusCode: {response.StatusCode}
+                        ErrorMessage: {response.ErrorMessage}
+                        Content: {response.Content}
+                    ");
+
+                var api = response.Data?.Ingredients?.FirstOrDefault();
+                if (api is null) return null;
+
+                return new IngredientDetailDTO
+                {
+                    IdIngredient = api.IdIngredient,
+                    Name = api.StrIngredient,
+                    Type = api.StrType,
+                    Description = api.StrDescription
+                };
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("CocktailClientService.GetIngredientByNameAsync error", ex);
+            }
+        }
+
+
         // Llama a random.php y devuelve un CocktailDetailDTO.
         public async Task<CocktailDetailDTO?> GetRandomAsync()
         {

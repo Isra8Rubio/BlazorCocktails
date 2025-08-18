@@ -402,6 +402,52 @@ namespace Weather.api.Controllers
         }
 
 
+        // Detalle de ingrediente por nombre (para popup)
+        [HttpGet("IngredientNamePopup")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IngredientDetailDTO))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<IngredientDetailDTO>> GetIngredientByNameAsync([FromQuery] string name)
+        {
+            // TraceId para correlación de logs
+            var traceId = httpContext.HttpContext?.TraceIdentifier?.Split(':')[0] ?? "";
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                logger.LogWarning("[{TraceId}] GetIngredientByNameAsync – parámetro 'name' vacío", traceId);
+                return BadRequest(new { Message = "El parámetro de consulta 'name' es obligatorio." });
+            }
+
+            try
+            {
+                logger.LogInformation("[{TraceId}] Call: GetIngredientByNameAsync(name={Name})", traceId, name);
+
+                var dto = await cocktailClientService.GetIngredientByNameAsync(name);
+
+                logger.LogInformation(dto != null
+                    ? "[{TraceId}] FinishCall: GetIngredientByNameAsync – encontrado"
+                    : "[{TraceId}] FinishCall: GetIngredientByNameAsync – no encontrado",
+                    traceId);
+
+                if (dto == null)
+                    return NotFound();
+
+                return Ok(dto);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "[{TraceId}] GetIngredientByNameAsync error", traceId);
+                return StatusCode(500, new
+                {
+                    Message = "Error llamando a TheCocktailDB",
+                    Detail = ex.Message
+                });
+            }
+        }
+
+
         // Devuelve el cóctel aleatorio más reciente, almacenado en memoria.
         [HttpGet("Random")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CocktailDetailDTO))]

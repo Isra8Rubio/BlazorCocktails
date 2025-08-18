@@ -157,9 +157,9 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "Weather API",
+        Title = "Cocktail API",
         Version = "v1",
-        Description = "API The time"
+        Description = "API Bar"
     });
 
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -202,7 +202,7 @@ try
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Weather API 1");
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Cocktail API 1");
         options.RoutePrefix = string.Empty;
     });
 

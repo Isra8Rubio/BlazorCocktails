@@ -41,16 +41,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29ja3RhaWxEZXRhaWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+[C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Pages/Glasses.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2xhc3Nlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2VhdGhlci5yYXpvcg==
+[C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Shared/IngredientDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEluZ3JlZGllbnREaWFsb2cucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Shared/LanguageSwitcher.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExhbmd1YWdlU3dpdGNoZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Shared/Pager.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFBhZ2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/_Imports.razor]

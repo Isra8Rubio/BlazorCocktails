@@ -1,11 +1,12 @@
 ﻿@inherits LayoutComponentBase
 @using MudBlazor
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<App> L
 
 <MudThemeProvider IsDarkMode="@_isDark" />
-<MudDialogProvider />
-<MudSnackbarProvider />
 
 <MudLayout Class="@(_isDark ? "summer-dark" : "summer-light")">
+
     <MudAppBar Elevation="2" Color="Color.Primary">
         <MudIconButton Icon="@Icons.Material.Filled.Menu"
                        Color="Color.Inherit"
@@ -16,8 +17,11 @@
 
         <MudSpacer />
 
-        <MudIconButton Icon="@(_isDark? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode)"
-                       Title="Cambiar tema"
+        @* 🇪🇸🇬🇧 Selector de idioma en la AppBar *@
+        <LanguageSwitcher />
+
+        <MudIconButton Icon="@(_isDark ? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode)"
+                       Title="@L["Theme_Toggle"]"
                        Color="Color.Inherit"
                        OnClick="ToggleDarkMode" />
     </MudAppBar>
@@ -27,7 +31,7 @@
                Elevation="1"
                Class="p-0 drawer-fix">
         <MudDrawerHeader Class="px-4 py-3">
-            <MudText Typo="Typo.subtitle1">Menú</MudText>
+            <MudText Typo="Typo.subtitle1">@L["Nav_Menu"]</MudText>
         </MudDrawerHeader>
 
         <div class="drawer-scroll">

@@ -1,24 +1,39 @@
-﻿<MudNavMenu Dense="true" Class="py-2">
-    <MudText Typo="Typo.overline" Class="px-4 pt-1 pb-2 opacity-75">General</MudText>
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<App> L
+
+<MudNavMenu Dense="true" Class="py-2">
+
+    <MudText Typo="Typo.overline" Class="px-4 pt-1 pb-2 opacity-75">
+        @L["Nav_Section_General"]
+    </MudText>
 
     <MudNavLink Href="/" Match="NavLinkMatch.All"
                 Icon="@Icons.Material.Filled.Home"
                 ActiveClass="mud-primary-text">
-        Inicio
+        @L["Nav_Home"]
     </MudNavLink>
 
-    <MudText Typo="Typo.overline" Class="px-4 pt-4 pb-2 opacity-75">Cocktails</MudText>
+    <MudText Typo="Typo.overline" Class="px-4 pt-4 pb-2 opacity-75">
+        @L["Nav_Section_Cocktails"]
+    </MudText>
 
     <MudNavLink Href="/alcohol" Icon="@Icons.Material.Filled.LocalBar"
                 ActiveClass="mud-primary-text">
-        Alcohol
+        @L["Nav_Alcohol"]
     </MudNavLink>
 
     <MudNavLink Href="/categories" Icon="@Icons.Material.Filled.Category"
                 ActiveClass="mud-primary-text">
-        Categorías
+        @L["Nav_Categories"]
+    </MudNavLink>
+
+    <MudNavLink Href="/glasses" Icon="@Icons.Material.Filled.WineBar"
+                ActiveClass="mud-primary-text">
+        @L["Nav_Glasses"]
     </MudNavLink>
 
     <MudDivider Class="my-3" />
-    <MudText Typo="Typo.caption" Class="px-4 pb-3 opacity-60">v0.1 • BlazorCocktails</MudText>
+    <MudText Typo="Typo.caption" Class="px-4 pb-3 opacity-60">
+        @L["Nav_Version", "0.1"]
+    </MudText>
 </MudNavMenu>

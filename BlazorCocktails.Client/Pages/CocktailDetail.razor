@@ -1,24 +1,28 @@
 ﻿@page "/cocktail/{id}"
 @using API.APIService
+@using BlazorCocktails.Client.Shared
+@using MudBlazor
 @inject APIClient Api
 @inject ISnackbar Snackbar
 @inject NavigationManager Nav
+@inject IDialogService Dialog
+@inject Microsoft.Extensions.Localization.IStringLocalizer<App> L
 
+<PageTitle>@((detail?.StrDrink) ?? L["CocktailDetail_Title"])</PageTitle>
 
 <MudGrid AlignItems="Center" Class="mb-2">
     <MudItem xs="12" md="9">
         <MudText Typo="Typo.h4" Truncate="true" Class="m-0">
-            @((detail?.StrDrink) ?? "Detalle")
+            @((detail?.StrDrink) ?? L["CocktailDetail_Title"])
         </MudText>
     </MudItem>
     <MudItem xs="12" md="3" Class="d-flex justify-end">
-
-    <MudButton Variant="Variant.Filled"
-               Color="Color.Primary"
-               StartIcon="@Icons.Material.Filled.ArrowBack"
-               OnClick="@(() => Nav.NavigateTo("/alcohol"))">
-        Volver
-    </MudButton>
+        <MudButton Variant="Variant.Filled"
+                   Color="Color.Primary"
+                   StartIcon="@Icons.Material.Filled.ArrowBack"
+                   OnClick="@(() => Nav.NavigateTo("/alcohol"))">
+            @L["CocktailDetail_Back"]
+        </MudButton>
     </MudItem>
 </MudGrid>
 
@@ -28,24 +32,34 @@
 }
 else if (detail is null)
 {
-    <MudText Color="Color.Error">No se encontró el cóctel.</MudText>
+    <MudText Color="Color.Error">@L["CocktailDetail_NotFound"]</MudText>
 }
 else
 {
     <MudStack Spacing="2" Class="mt-2">
         <img src="@detail.StrDrinkThumb" alt="@detail.StrDrink" style="max-width:320px" />
-        <MudText Typo="Typo.subtitle1">@detail.StrCategory — @detail.StrGlass</MudText>
+
+        <MudText Typo="Typo.subtitle1">
+            @L["CocktailDetail_CategoryGlass_Format", detail.StrCategory, detail.StrGlass]
+        </MudText>
+
         <MudText>@detail.StrInstructions</MudText>
-        @if (detail?.Ingredients?.Any() == true)
+
+        @if (detail?.Ingredients is not null && detail.Ingredients.Any())
         {
-            <MudList T="string" Dense="true" Class="mt-2">
-                @foreach (var ing in detail.Ingredients!)
+            <MudStack Spacing="1" Class="mt-3">
+                @foreach (var ing in detail.Ingredients)
                 {
-                    <MudListItem Value="@ing.Name">
-                        @ing.Name @(!string.IsNullOrWhiteSpace(ing.Measure) ? $"({ing.Measure})" : "")
-                    </MudListItem>
+                    <MudChip T="string"
+                             OnClick="@(() => ShowIngredient(Sanitize(ing.Name)))"
+                             Color="Color.Primary"
+                             Variant="Variant.Outlined"
+                             Disabled="@string.IsNullOrWhiteSpace(ing.Name)"
+                             Class="mr-1 mb-1">
+                        @(!string.IsNullOrWhiteSpace(ing.Measure) ? $"{ing.Name} — {ing.Measure}" : ing.Name)
+                    </MudChip>
                 }
-            </MudList>
+            </MudStack>
         }
     </MudStack>
 }
@@ -53,26 +67,36 @@ else
 @code {
     [Parameter] public string? id { get; set; }
 
-    CocktailDetailDTO? detail;
-    bool loading;
+    private CocktailDetailDTO? detail;
+    private bool loading;
 
     protected override async Task OnParametersSetAsync()
     {
         if (string.IsNullOrWhiteSpace(id)) return;
-
         loading = true;
-        try
-        {
-            detail = await Api.Cocktails_GetByIdAsync(id);
-        }
+        try { detail = await Api.Cocktails_GetByIdAsync(id); }
         catch (ApiException ex)
         {
-            Snackbar.Add($"Error cargando detalle: {ex.Message}", Severity.Error);
+            Snackbar.Add($"{L["CocktailDetail_Error_Load"]}: {ex.Message}", Severity.Error);
             detail = null;
         }
-        finally
-        {
-            loading = false;
-        }
+        finally { loading = false; }
+    }
+
+    private static string Sanitize(string? s)
+    {
+        if (string.IsNullOrWhiteSpace(s)) return string.Empty;
+        var x = s;
+        var i = x.IndexOf('—'); if (i >= 0) x = x[..i];
+        i = x.IndexOf('('); if (i >= 0) x = x[..i];
+        return x.Trim();
+    }
+
+    private void ShowIngredient(string name)
+    {
+        var parameters = new DialogParameters { ["Name"] = name };
+        var options = new DialogOptions { CloseButton = true, CloseOnEscapeKey = true, MaxWidth = MaxWidth.Medium, FullWidth = true };
+        var title = L["CocktailDetail_Ingredient_Title", name];
+        _ = Dialog.ShowAsync<IngredientDialog>(title, parameters, options);
     }
 }

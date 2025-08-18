@@ -1,0 +1,62 @@
+﻿@using API.APIService
+@using MudBlazor
+@inject APIClient Api
+@inject ISnackbar Snackbar
+@inject Microsoft.Extensions.Localization.IStringLocalizer<App> L
+
+@if (loading)
+{
+    <MudProgressLinear Indeterminate="true" />
+}
+else if (ingredient is null)
+{
+    <MudText Color="Color.Secondary">@L["IngredientDialog_NotFound"]</MudText>
+}
+else
+{
+    <MudStack Spacing="2">
+        @if (!string.IsNullOrWhiteSpace(ingredient.Type))
+        {
+            <MudStack AlignItems="AlignItems.Center" Spacing="0">
+                <MudText Color="Color.Primary" Typo="Typo.subtitle2">@L["IngredientDialog_Type"]</MudText>
+                <MudText Typo="Typo.body1">@ingredient.Type</MudText>
+            </MudStack>
+        }
+
+        @if (!string.IsNullOrWhiteSpace(ingredient.Description))
+        {
+            <MudPaper Class="pa-3" Elevation="0" Style="max-height:260px;overflow:auto">
+                <MudText>@ingredient.Description</MudText>
+            </MudPaper>
+        }
+    </MudStack>
+}
+
+@code {
+    [Parameter] public string Name { get; set; } = default!;
+
+    private IngredientDetailDTO? ingredient;
+    private bool loading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            ingredient = await Api.Cocktails_GetIngredientByNameAsync(Name);
+        }
+        catch (ApiException ex)
+        {
+            Snackbar.Add($"Error ({ex.StatusCode}): {ex.Message}", Severity.Error);
+            ingredient = null;
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error cargando ingrediente: {ex.Message}", Severity.Error);
+            ingredient = null;
+        }
+        finally
+        {
+            loading = false;
+        }
+    }
+}

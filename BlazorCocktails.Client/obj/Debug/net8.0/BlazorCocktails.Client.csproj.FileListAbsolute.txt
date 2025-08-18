@@ -10,9 +10,7 @@ C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\dotnet.native.wasm
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\dotnet.runtime.8.0.18.ywnsgzrxur.js
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\dotnet.runtime.js.map
-C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\icudt_CJK.dat
-C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\icudt_EFIGS.dat
-C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\icudt_no_CJK.dat
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\icudt.dat
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\Microsoft.AspNetCore.Authorization.wasm
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Forms.wasm
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\Microsoft.AspNetCore.Components.wasm
@@ -225,7 +223,6 @@ C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\System.Net.wasm.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\WindowsBase.wasm.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Forms.wasm.gz
-C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\icudt_no_CJK.dat.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\BlazorCocktails.Client.wasm.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\mscorlib.wasm.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\System.ValueTuple.wasm.gz
@@ -331,7 +328,6 @@ C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\Microsoft.AspNetCore.Components.WebAssembly.wasm.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\Microsoft.Extensions.FileProviders.Abstractions.wasm.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\System.IO.Pipes.wasm.gz
-C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\icudt_CJK.dat.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\System.Runtime.CompilerServices.VisualC.wasm.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\System.Windows.wasm.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\System.IO.FileSystem.Watcher.wasm.gz
@@ -381,6 +377,7 @@ C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\System.Reflection.Extensions.wasm.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\Microsoft.Extensions.Configuration.Abstractions.wasm.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\System.Threading.Tasks.Extensions.wasm.gz
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\icudt.dat.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\ApiClient.pdb.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\System.Net.Quic.wasm.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\System.Security.Cryptography.OpenSsl.wasm.gz
@@ -388,7 +385,6 @@ C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\System.Xml.Linq.wasm.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\System.Web.wasm.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\System.Diagnostics.Debug.wasm.gz
-C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\icudt_EFIGS.dat.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\System.Security.Cryptography.X509Certificates.wasm.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\System.Threading.wasm.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\BlazorCocktails.Client.pdb.gz
@@ -627,9 +623,7 @@ C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\dotnet.native.wasm
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\dotnet.runtime.js
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\dotnet.runtime.js.map
-C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\icudt_CJK.dat
-C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\icudt_EFIGS.dat
-C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\icudt_no_CJK.dat
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\icudt.dat
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\ApiClient.dll
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\ApiClient.pdb
@@ -1055,9 +1049,7 @@ C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\compressed\ghd3p9giij.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\compressed\ywnsgzrxur.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\compressed\x4eflpt5va.gz
-C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\compressed\kwbu86rslh.gz
-C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\compressed\uae8czvx91.gz
-C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\compressed\351tug98gd.gz
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\compressed\t4arpdpj3p.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\compressed\yp2c6lsuta.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\compressed\0jqslxra61.gz
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\compressed\t5fv7x46v7.gz
@@ -1069,3 +1061,18 @@ C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\refint\BlazorCocktails.Client.dll
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\BlazorCocktails.Client.pdb
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\ref\BlazorCocktails.Client.dll
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\BlazorCocktails.Client.csproj.GenerateResource.cache
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\en-US\BlazorCocktails.Client.resources.wasm
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\es-ES\BlazorCocktails.Client.resources.wasm
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\es-ES\BlazorCocktails.Client.resources.wasm.gz
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\wwwroot\_framework\en-US\BlazorCocktails.Client.resources.wasm.gz
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\en-US\BlazorCocktails.Client.resources.dll
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\bin\Debug\net8.0\es-ES\BlazorCocktails.Client.resources.dll
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\BlazorCocktails.Client.Resources.App.en-US.resources
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\BlazorCocktails.Client.Resources.App.es-ES.resources
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\en-US\BlazorCocktails.Client.resources.dll
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\es-ES\BlazorCocktails.Client.resources.dll
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\webcil\en-US\BlazorCocktails.Client.resources.wasm
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\webcil\es-ES\BlazorCocktails.Client.resources.wasm
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\compressed\j7iq1zw4yu.gz
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\BlazorCocktails.Client\obj\Debug\net8.0\compressed\7epd4r0bug.gz
