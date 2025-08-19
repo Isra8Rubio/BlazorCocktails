@@ -1067,6 +1067,10 @@
             "type": "string",
             "nullable": true
           },
+          "strInstructionsES": {
+            "type": "string",
+            "nullable": true
+          },
           "strAlcoholic": {
             "type": "string",
             "nullable": true

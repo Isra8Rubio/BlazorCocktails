@@ -1,0 +1,41 @@
+﻿@page "/register"
+@using MudBlazor
+
+<MudPaper Class="auth-page auth-page--paper" Elevation="0" Square="true">
+    <MudCard Class="auth-card">
+        <MudCardHeader Class="bg-gradient-auth">
+            <MudText Typo="Typo.h5">Crear cuenta</MudText>
+        </MudCardHeader>
+
+        <MudCardContent Class="p-6">
+            <MudTextField T="string"
+                          Label="Correo"
+                          Placeholder="tucorreo@dominio.com"
+                          InputType="InputType.Email"
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Email"
+                          Immediate="true" />
+
+            <MudTextField T="string"
+                          Class="mt-4"
+                          Label="Contraseña"
+                          Placeholder="••••••••"
+                          InputType="InputType.Password"
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Lock" />
+
+            <MudTextField T="string"
+                          Class="mt-3"
+                          Label="Confirmar contraseña"
+                          Placeholder="••••••••"
+                          InputType="InputType.Password"
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Lock" />
+
+            <MudStack Row="true" Spacing="2" Class="mt-4">
+                <MudButton Class="auth-btn" Color="Color.Warning" Variant="Variant.Filled">Registrar</MudButton>
+                <MudButton Class="auth-btn-outline" Variant="Variant.Outlined" Href="/login">Ya tengo cuenta</MudButton>
+            </MudStack>
+        </MudCardContent>
+    </MudCard>
+</MudPaper>

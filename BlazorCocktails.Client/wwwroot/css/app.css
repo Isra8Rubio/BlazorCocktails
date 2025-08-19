@@ -224,3 +224,135 @@ a, .btn-link {
     --mud-palette-drawer-background: #20242E;
     --mud-palette-text-primary: #F4F4F5;
 }
+
+/* =========================================================
+   THEME TOKENS
+   ========================================================= */
+:root {
+    --appbar-start: #ff9966;
+    --appbar-end: #ff5e62;
+    --auth-start: #ff8a56;
+    --auth-end: #ff4d6d;
+}
+
+/* =========================================================
+   AUTH PAGES (Login / Register)
+   ========================================================= */
+
+/* Wrapper ligero (MudPaper) para centrar y limitar ancho */
+.auth-page--paper {
+    background: transparent;
+    box-shadow: none;
+    min-height: auto;
+    padding: 0;
+    display: block;
+    max-width: 560px; /* +aire; puedes bajar a 520 si prefieres */
+    margin: 24px auto 40px;
+}
+
+/* Card del formulario (esquinas + sombra) */
+.auth-card {
+    width: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+/* Fondo semitransparente (glass) según modo */
+.summer-dark .auth-card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(6px) saturate(120%);
+    -webkit-backdrop-filter: blur(6px) saturate(120%);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.summer-light .auth-card {
+    background: rgba(255,255,255,0.78);
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Cabecera con degradado cálido (distinta al AppBar) */
+.bg-gradient-auth {
+    padding: 1.25rem 1.5rem;
+    color: #fff;
+    background: linear-gradient(135deg, var(--auth-start) 0%, var(--auth-end) 100%);
+    border-bottom: 1px solid rgba(255,255,255,.28);
+}
+
+/* Utilidad para subtítulos tenues */
+.opacity-80 {
+    opacity: .8;
+}
+
+/* Botón principal: misma gama que la cabecera */
+.mud-button-root.mud-button-filled.auth-btn {
+    background: linear-gradient(135deg, var(--auth-start), var(--auth-end)) !important;
+    color: #fff !important;
+    border: none;
+}
+
+    .mud-button-root.mud-button-filled.auth-btn:hover {
+        filter: brightness(1.06);
+    }
+
+/* Botón secundario (outline) en la misma gama */
+.mud-button-root.mud-button-outlined.auth-btn-outline {
+    border-color: var(--auth-end) !important;
+    color: var(--auth-end) !important;
+}
+    /* fallback sin color-mix; si quieres, ajusta opacidad */
+    .mud-button-root.mud-button-outlined.auth-btn-outline:hover {
+        background-color: rgba(255, 77, 109, .12);
+    }
+
+/* =========================================================
+   APP BAR
+   ========================================================= */
+
+/* Altura suficiente para 2 filas dentro del AppBar */
+.appbar-2rows {
+    overflow: visible;
+}
+    /* por si el tema recorta */
+    .appbar-2rows .mud-toolbar {
+        min-height: 70px; /* <-- ya dijiste que así queda perfect */
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+
+/* Contenedor y filas */
+.appbar-actions-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .35rem;
+}
+
+.appbar-row {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+/* Conmutador de idioma compacto */
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+}
+
+/* Borde claro para outline sobre AppBar */
+.appbar-btn {
+    border-color: rgba(255,255,255,.75) !important;
+}
+
+
+
+
+
+
+
+
+

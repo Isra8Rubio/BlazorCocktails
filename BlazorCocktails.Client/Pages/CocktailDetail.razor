@@ -2,6 +2,7 @@
 @using API.APIService
 @using BlazorCocktails.Client.Shared
 @using MudBlazor
+@using System.Globalization
 @inject APIClient Api
 @inject ISnackbar Snackbar
 @inject NavigationManager Nav
@@ -43,7 +44,9 @@ else
             @L["CocktailDetail_CategoryGlass_Format", detail.StrCategory, detail.StrGlass]
         </MudText>
 
-        <MudText>@detail.StrInstructions</MudText>
+        <MudText>
+            @GetLocalizedInstructions(detail)
+        </MudText>
 
         @if (detail?.Ingredients is not null && detail.Ingredients.Any())
         {
@@ -66,7 +69,6 @@ else
 
 @code {
     [Parameter] public string? id { get; set; }
-
     private CocktailDetailDTO? detail;
     private bool loading;
 
@@ -74,7 +76,10 @@ else
     {
         if (string.IsNullOrWhiteSpace(id)) return;
         loading = true;
-        try { detail = await Api.Cocktails_GetByIdAsync(id); }
+        try
+        {
+            detail = await Api.Cocktails_GetByIdAsync(id);
+        }
         catch (ApiException ex)
         {
             Snackbar.Add($"{L["CocktailDetail_Error_Load"]}: {ex.Message}", Severity.Error);
@@ -99,4 +104,11 @@ else
         var title = L["CocktailDetail_Ingredient_Title", name];
         _ = Dialog.ShowAsync<IngredientDialog>(title, parameters, options);
     }
+
+
+    private static string? GetLocalizedInstructions(CocktailDetailDTO d)
+        => CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "es"
+           ? (!string.IsNullOrWhiteSpace(d.StrInstructionsES) ? d.StrInstructionsES : d.StrInstructions)
+           : d.StrInstructions;
+
 }

@@ -21,6 +21,8 @@ namespace Core.DTO
         public string? StrGlass { get; set; }
         [JsonPropertyName("strInstructions")] 
         public string? StrInstructions { get; set; }
+        [JsonPropertyName("strInstructionsES")]
+        public string? StrInstructionsES { get; set; }
         [JsonPropertyName("strDrinkThumb")] 
         public string? StrDrinkThumb { get; set; }
 

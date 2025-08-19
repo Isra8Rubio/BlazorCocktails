@@ -2233,6 +2233,9 @@ namespace API.APIService
         [Newtonsoft.Json.JsonProperty("strCategory", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string StrCategory { get; set; }
 
+        [Newtonsoft.Json.JsonProperty("strInstructionsES", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string StrInstructionsES { get; set; }
+
         [Newtonsoft.Json.JsonProperty("strAlcoholic", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string StrAlcoholic { get; set; }
 

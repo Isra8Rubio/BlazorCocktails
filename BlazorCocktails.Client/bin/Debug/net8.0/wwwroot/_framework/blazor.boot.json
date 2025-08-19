@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "BlazorCocktails.Client",
   "resources": {
-    "hash": "sha256-7bpP9QOAzUE+QA14Js/oV5sioT5/DY2RLUM/PQeJEH8=",
+    "hash": "sha256-0irxhkefMQW6+pFLbbDTSd3hr/oWePdkyKWUX9esLVs=",
     "jsModuleNative": {
       "dotnet.native.8.0.18.4b91dzoo3b.js": "sha256-1QpKPnxEuRCElzcp+e3MrovJeAJkuzqKmRQay/6Aa08="
     },
@@ -211,20 +211,20 @@
       "mscorlib.wasm": "sha256-UnQd0YPXNpwbXsKqO8RAqgUVuwZsSpprfAIPpdV/y1Q=",
       "netstandard.wasm": "sha256-/QbD8JDZyYwfyk89W3qJL3HTAINDCVziZIySHIZcDhw=",
       "System.Private.CoreLib.wasm": "sha256-oBqNgH7R24FqGbaL3XnfQDqn3rk28jERFosgAryKT6U=",
-      "ApiClient.wasm": "sha256-UR3YXFOCYlJek2zLAGwEOLhIs+sWDlbndJzzeXyy1F0=",
+      "ApiClient.wasm": "sha256-pE1ZnBx+mhTOeOwHJDbKSS07R5258Q3TOfXux4FM/xg=",
       "Newtonsoft.Json.wasm": "sha256-uv8FUjHHm+iADjXK+clfLxlpLxfTcy0koZKX59RW9Ck=",
-      "BlazorCocktails.Client.wasm": "sha256-Oov3NwQ27h5EYFu/9o4Dib0m+wvMzMwdstVhtOLAHdk="
+      "BlazorCocktails.Client.wasm": "sha256-WEp4vpJwqUy9sCe6QCrrfpjE5iMdWpGv9sBNj8MssyI="
     },
     "pdb": {
-      "ApiClient.pdb": "sha256-gxs56aM44Kq0lAQxmQp65XXSbfzI5jIMWS91LWDoFOA=",
-      "BlazorCocktails.Client.pdb": "sha256-8WEbByKW0G+hQswhJU3CxwEUoYMDrtEQYW8jDwLvMJ8="
+      "ApiClient.pdb": "sha256-xQi1C932jmCJBe7bYTMuuhW0r2NgECw2ysLF7sJ20Tg=",
+      "BlazorCocktails.Client.pdb": "sha256-DROJLH4O3eQXjri3FEM7GC9I12kNu6h0x6lIfsv2UQs="
     },
     "satelliteResources": {
       "en-US": {
-        "BlazorCocktails.Client.resources.wasm": "sha256-32zcrvkinBxduQWnwiCkPR+qpP9IRKGVgcML0p3RdEI="
+        "BlazorCocktails.Client.resources.wasm": "sha256-vIg2JtuKhKO2N0sImm0ehucJwpJ6Qxxg+V4aUFei0yc="
       },
       "es-ES": {
-        "BlazorCocktails.Client.resources.wasm": "sha256-H+cnO7tL1WRg0kYFCJZaZkVzhvZiCVHZX/q3nPPYapQ="
+        "BlazorCocktails.Client.resources.wasm": "sha256-img2CsiDyq3ruUcwRNGBmdinszj67D1tRYpbNqYiksk="
       }
     }
   },

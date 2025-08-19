@@ -2,4 +2,14 @@
 @using System.Globalization
 @using Microsoft.Extensions.Localization
 @inject IStringLocalizer<App> L
+@using BlazorCocktails.Client.Shared.Charts
+
+<MudStack Spacing="3">
+    <AlcoholTypesChart />
+</MudStack>
+
+<CategoryDistributionChart
+    Title="@L["Chart_Category_Title"]"
+    MaxSlices="10" />
+
 

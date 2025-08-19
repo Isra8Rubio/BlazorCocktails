@@ -192,7 +192,7 @@
   <data name="Category_Beer" xml:space="preserve">
     <value>Cerveza</value>
   </data>
-  <data name="Category_SoftDrinkSoda" xml:space="preserve">
+  <data name="Category_SoftDrink" xml:space="preserve">
     <value>Refresco</value>
   </data>
   <data name="Glasses_Title" xml:space="preserve">
@@ -269,5 +269,20 @@
   </data>
   <data name="Pager_Next" xml:space="preserve">
     <value>Siguiente</value>
+  </data>
+  <data name="Chart_Home_AlcoholTypes_Title" xml:space="preserve">
+    <value>Cócteles por tipo de alcohol</value>
+  </data>
+  <data name="Chart_Empty" xml:space="preserve">
+    <value>No hay datos para mostrar gráfico</value>
+  </data>
+  <data name="Chart_ClickToSelect" xml:space="preserve">
+    <value>Clic en segmento para obtener %</value>
+  </data>
+  <data name="Category_Others" xml:space="preserve">
+    <value>Otro</value>
+  </data>
+  <data name="Chart_Category_Title" xml:space="preserve">
+    <value>Cócteles por categoría</value>
   </data>
 </root>

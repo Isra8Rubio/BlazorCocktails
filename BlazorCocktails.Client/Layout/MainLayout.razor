@@ -7,7 +7,7 @@
 
 <MudLayout Class="@(_isDark ? "summer-dark" : "summer-light")">
 
-    <MudAppBar Elevation="2" Color="Color.Primary">
+    <MudAppBar Elevation="2" Color="Color.Primary" Class="appbar-2rows">
         <MudIconButton Icon="@Icons.Material.Filled.Menu"
                        Color="Color.Inherit"
                        Edge="Edge.Start"
@@ -17,14 +17,38 @@
 
         <MudSpacer />
 
-        @* 🇪🇸🇬🇧 Selector de idioma en la AppBar *@
-        <LanguageSwitcher />
+        <div class="appbar-actions-col">
+            <div class="appbar-row top">
+                <MudButton Href="/login"
+                           Variant="Variant.Outlined"
+                           Color="Color.Inherit"
+                           StartIcon="@Icons.Material.Filled.Login"
+                           Size="Size.Small"
+                           Class="appbar-btn">
+                    LOGIN
+                </MudButton>
 
-        <MudIconButton Icon="@(_isDark ? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode)"
-                       Title="@L["Theme_Toggle"]"
-                       Color="Color.Inherit"
-                       OnClick="ToggleDarkMode" />
+                <MudButton Href="/register"
+                           Variant="Variant.Outlined"
+                           Color="Color.Inherit"
+                           StartIcon="@Icons.Material.Filled.PersonAdd"
+                           Size="Size.Small"
+                           Class="appbar-btn">
+                    REGISTRO
+                </MudButton>
+            </div>
+
+            <div class="appbar-row bottom">
+                <LanguageSwitcher />
+                <MudIconButton Icon="@(_isDark? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode)"
+                               Title="@L["Theme_Toggle"]"
+                               Color="Color.Inherit"
+                               Size="Size.Small" />
+            </div>
+        </div>
     </MudAppBar>
+
+
 
     <MudDrawer @bind-Open="_drawerOpen"
                Variant="DrawerVariant.Responsive"

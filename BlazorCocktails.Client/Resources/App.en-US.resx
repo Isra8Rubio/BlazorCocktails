@@ -192,8 +192,8 @@
   <data name="Category_Beer" xml:space="preserve">
     <value>Beer</value>
   </data>
-  <data name="Category_SoftDrinkSoda" xml:space="preserve">
-    <value>Soft drink / Soda</value>
+  <data name="Category_SoftDrink" xml:space="preserve">
+    <value>Soft drink</value>
   </data>
   <data name="Glasses_Title" xml:space="preserve">
     <value>Glasses</value>
@@ -269,5 +269,20 @@
   </data>
   <data name="Pager_Next" xml:space="preserve">
     <value>Next</value>
+  </data>
+  <data name="Chart_Home_AlcoholTypes_Title" xml:space="preserve">
+    <value>Cocktails by alcohol type</value>
+  </data>
+  <data name="Chart_Empty" xml:space="preserve">
+    <value>No data to chart.</value>
+  </data>
+  <data name="Chart_ClickToSelect" xml:space="preserve">
+    <value>Click on segment to obtain %</value>
+  </data>
+  <data name="Category_Others" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="Chart_Category_Title" xml:space="preserve">
+    <value>Cocktails by category</value>
   </data>
 </root>

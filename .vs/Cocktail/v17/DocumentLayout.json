@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\pages\\glasses.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\pages\\glasses.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\pages\\alcoholtypes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\pages\\alcoholtypes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -27,32 +18,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Glasses.razor",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Pages\\Glasses.razor",
-              "RelativeDocumentMoniker": "BlazorCocktails.Client\\Pages\\Glasses.razor",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Pages\\Glasses.razor",
-              "RelativeToolTip": "BlazorCocktails.Client\\Pages\\Glasses.razor",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAUwGcAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-18T12:08:22.796Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AlcoholTypes.razor",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Pages\\AlcoholTypes.razor",
-              "RelativeDocumentMoniker": "BlazorCocktails.Client\\Pages\\AlcoholTypes.razor",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Pages\\AlcoholTypes.razor",
-              "RelativeToolTip": "BlazorCocktails.Client\\Pages\\AlcoholTypes.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFgAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-18T12:05:44.522Z",
-              "EditorCaption": ""
             }
           ]
         }

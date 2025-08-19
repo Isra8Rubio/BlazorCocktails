@@ -1,0 +1,121 @@
+﻿@using API.APIService
+@using Microsoft.Extensions.Localization
+@using MudBlazor
+@inject APIClient Api
+@inject IStringLocalizer<App> L
+@inject ISnackbar Snackbar
+
+<MudPaper Class="pa-4">
+    <MudStack Spacing="2">
+        <MudText Typo="Typo.h6">@L["Chart_Home_AlcoholTypes_Title"]</MudText>
+
+        @if (loading)
+        {
+            <MudProgressLinear Indeterminate="true" />
+        }
+        else if (series is null || labels is null || series.Length == 0 || labels.Length == 0)
+        {
+            <MudText Color="Color.Secondary">@L["Chart_Empty"]</MudText>
+        }
+        else
+        {
+            <MudChart ChartType="ChartType.Donut"
+                      InputLabels="labels"
+                      InputData="series"
+                      @bind-SelectedIndex="selectedIndex"
+                      Width="100%"
+                      Height="300px" />
+            <MudText Class="mt-2" Typo="Typo.subtitle2">
+                @if (selectedIndex >= 0 && labels is not null && series is not null)
+                {
+                    var count = series[selectedIndex];
+                    var total = series.Sum();
+                    var pct = total > 0 ? Math.Round(count / total * 100, 1) : 0;
+                    @($"{labels[selectedIndex]}: {count:N0} ({pct}%)")
+                }
+                else
+                {
+                    @L["Chart_ClickToSelect"]
+                }
+            </MudText>
+
+        }
+    </MudStack>
+</MudPaper>
+
+
+@code {
+    private bool loading = true;
+    private string[]? labels;
+    private double[]? series;
+    private int selectedIndex = -1;
+
+    protected override async Task OnInitializedAsync() => await LoadCountsAsync();
+
+    private static string MapToApiFilter(string? raw) =>
+        (raw ?? "").Trim().ToLowerInvariant() switch
+        {
+            "alcoholic" => "Alcoholic",
+            "non alcoholic" => "Non_Alcoholic",
+            "optional alcohol" => "Optional_alcohol",
+            _ => (raw ?? "").Replace(' ', '_')
+        };
+
+    private async Task LoadCountsAsync()
+    {
+        loading = true;
+        try
+        {
+            var types = await Api.Cocktails_GetAlcoholTypesAsync();
+
+            var names = types?
+                .Select(t => t.StrAlcoholic)
+                .Where(s => !string.IsNullOrWhiteSpace(s))
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .OrderBy(s => s switch
+                {
+                    "Alcoholic" => 0,
+                    "Non alcoholic" => 1,
+                    "Optional alcohol" => 2,
+                    _ => 99
+                })
+                .ToList() ?? new();
+
+            if (names.Count == 0)
+            {
+                labels = Array.Empty<string>();
+                series = Array.Empty<double>();
+                return;
+            }
+
+            var filters = names.Select(MapToApiFilter).ToList();
+            var results = await Task.WhenAll(filters.Select(f => Api.Cocktails_GetByTypeAsync(f)));
+
+            labels = names.Select(LocalizeAlcoholType).ToArray();
+            series = results.Select(r => (double)(r?.Count ?? 0)).ToArray();
+        }
+        catch (ApiException ex)
+        {
+            Snackbar.Add($"Error loading chart: {ex.Message}", Severity.Error);
+            labels = Array.Empty<string>();
+            series = Array.Empty<double>();
+        }
+        finally
+        {
+            loading = false;
+            StateHasChanged();
+        }
+    }
+
+    private string LocalizeAlcoholType(string? apiValue)
+    {
+        var key = (apiValue ?? "").Trim().ToLowerInvariant() switch
+        {
+            "alcoholic" => "AlcoholType_Alcoholic",
+            "non alcoholic" => "AlcoholType_NonAlcoholic",
+            "optional alcohol" => "AlcoholType_OptionalAlcohol",
+            _ => apiValue ?? ""
+        };
+        return L[key].Value;
+    }
+}

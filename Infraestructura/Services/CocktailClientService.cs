@@ -94,7 +94,7 @@ namespace Infraestructura.Services
                 if (apiDrink == null)
                     return null;
 
-                // 3) Mapeamos dinámicamente los ingredientes
+                // 3) Mapeamos los ingredientes
                 var mappedIngredients = new List<IngredientDTO>();
                 for (int index = 1; index <= 15; index++)
                 {
@@ -128,6 +128,7 @@ namespace Infraestructura.Services
                     StrAlcoholic = apiDrink.StrAlcoholic,
                     StrGlass = apiDrink.StrGlass,
                     StrInstructions = apiDrink.StrInstructions,
+                    StrInstructionsES = apiDrink.StrInstructionsES,
                     StrDrinkThumb = apiDrink.StrDrinkThumb,
                     Ingredients = mappedIngredients
                 };

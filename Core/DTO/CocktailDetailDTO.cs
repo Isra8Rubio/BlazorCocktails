@@ -12,6 +12,7 @@ namespace Core.DTO
         public string? IdDrink { get; set; }
         public string? StrDrink { get; set; }
         public string? StrCategory { get; set; }
+        public string? StrInstructionsES { get; set; }
         public string? StrAlcoholic { get; set; }
         public string? StrGlass { get; set; }
         public string? StrInstructions { get; set; }
