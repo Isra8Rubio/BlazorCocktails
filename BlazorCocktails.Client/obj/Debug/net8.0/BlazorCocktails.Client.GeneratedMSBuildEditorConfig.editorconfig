@@ -65,6 +65,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXENoYXJ0c1xDYXRlZ29yeURpc3RyaWJ1dGlvbkNoYXJ0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Shared/HomeDashboard.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEhvbWVEYXNoYm9hcmQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Shared/IngredientDialog.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEluZ3JlZGllbnREaWFsb2cucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -75,6 +79,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Shared/Pager.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFBhZ2VyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Shared/RandomCocktailWidget.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFJhbmRvbUNvY2t0YWlsV2lkZ2V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/_Imports.razor]

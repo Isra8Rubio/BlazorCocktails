@@ -14,6 +14,8 @@ namespace Infraestructura.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options) { }
 
+        public DbSet<RandomCocktail> RandomCocktails { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

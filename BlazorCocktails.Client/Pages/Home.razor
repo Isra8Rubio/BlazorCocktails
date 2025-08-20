@@ -4,12 +4,14 @@
 @inject IStringLocalizer<App> L
 @using BlazorCocktails.Client.Shared.Charts
 
+<HomeDashboard />
+
 <MudStack Spacing="3">
     <AlcoholTypesChart />
 </MudStack>
 
 <CategoryDistributionChart
     Title="@L["Chart_Category_Title"]"
-    MaxSlices="10" />
+    MaxSlices="11" />
 
 

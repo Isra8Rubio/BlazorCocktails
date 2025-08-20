@@ -22,6 +22,31 @@ namespace Weather.infra.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Core.Entities.RandomCocktail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("DrinkId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ThumbUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RandomCocktails");
+                });
+
             modelBuilder.Entity("Core.Entities.Usuario", b =>
                 {
                     b.Property<string>("Id")
@@ -85,41 +110,6 @@ namespace Weather.infra.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-                });
-
-            modelBuilder.Entity("Core.Entities.WeatherComplete", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("IdProvince")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("MaxTemperature")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MinTemperature")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NameProvince")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NameTown")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StateSkyDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StateSkyId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdateDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("WeatherComplete");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

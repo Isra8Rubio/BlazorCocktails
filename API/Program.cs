@@ -42,6 +42,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(opts =>
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<UserService>();
 
+
 // MemoryCache
 builder.Services.AddMemoryCache();
 
@@ -53,13 +54,14 @@ builder.Services.AddCors(opt =>
         p.WithOrigins("https://localhost:7032", "http://localhost:7032")
          .AllowAnyHeader()
          .AllowAnyMethod()
-    // .AllowCredentials() // solo si vas a usar cookies. Con Bearer NO hace falta.
     );
 });
 
 
 // HostedService para refrescar cada X minutos
 builder.Services.AddHostedService<RandomCocktailHostedService>();
+builder.Services.AddScoped<RandomCocktailRepository>();
+
 
 // External Client
 builder.Services.AddSingleton(_ =>

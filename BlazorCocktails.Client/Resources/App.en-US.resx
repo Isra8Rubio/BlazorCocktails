@@ -285,4 +285,16 @@
   <data name="Chart_Category_Title" xml:space="preserve">
     <value>Cocktails by category</value>
   </data>
+  <data name="Random_Title" xml:space="preserve">
+    <value>Random cocktail</value>
+  </data>
+  <data name="Random_Refresh" xml:space="preserve">
+    <value>Refresh now</value>
+  </data>
+  <data name="Random_LastUpdated" xml:space="preserve">
+    <value>Last update:</value>
+  </data>
+  <data name="Random_NoData" xml:space="preserve">
+    <value>No random cocktail yet.</value>
+  </data>
 </root>

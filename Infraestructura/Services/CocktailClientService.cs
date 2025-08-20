@@ -338,6 +338,26 @@ namespace Infraestructura.Services
 
 
         // Llama a random.php y devuelve un CocktailDetailDTO.
+
+        public async Task<RandomCocktailDTO?> GetRandomLiteAsync(CancellationToken ct = default)
+        {
+            var request = new RestRequest("random.php", Method.Get);
+            var response = await restClient.ExecuteAsync<CocktailLookupResponseDTO>(request, ct);
+
+            if (!response.IsSuccessful)
+                throw new Exception($"CocktailDB API error ({response.StatusCode}): {response.ErrorMessage}");
+
+            var raw = response.Data?.Drinks?.FirstOrDefault();
+            if (raw == null) return null;
+
+            return new RandomCocktailDTO
+            {
+                DrinkId = raw.IdDrink ?? "",
+                Name = raw.StrDrink ?? "",
+                ThumbUrl = raw.StrDrinkThumb ?? ""
+            };
+        }
+
         public async Task<CocktailDetailDTO?> GetRandomAsync()
         {
             var request = new RestRequest("random.php", Method.Get);

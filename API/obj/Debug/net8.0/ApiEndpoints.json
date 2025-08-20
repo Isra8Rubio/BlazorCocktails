@@ -494,15 +494,58 @@
   },
   {
     "ContainingType": "Weather.api.Controllers.CocktailsController",
-    "Method": "GetRandomAsync",
-    "RelativePath": "api/Cocktails/Random",
+    "Method": "RefreshRandomNowAsync",
+    "RelativePath": "api/Cocktails/Random/RefreshNow",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Core.DTO.RandomCocktailDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "Weather.api.Controllers.CocktailsController",
+    "Method": "GetRandomRowAsync",
+    "RelativePath": "api/Cocktails/Random/Row",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "Core.DTO.CocktailDetailDTO",
+        "Type": "Core.DTO.RandomCocktailDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",

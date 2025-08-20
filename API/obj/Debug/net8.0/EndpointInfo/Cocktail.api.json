@@ -868,19 +868,62 @@
         }
       }
     },
-    "/api/Cocktails/Random": {
+    "/api/Cocktails/Random/Row": {
       "get": {
         "tags": [
           "Cocktails"
         ],
-        "operationId": "Cocktails_GetRandom",
+        "operationId": "Cocktails_GetRandomRow",
         "responses": {
           "200": {
             "description": "",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CocktailDetailDTO"
+                  "$ref": "#/components/schemas/RandomCocktailDTO"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/Cocktails/Random/RefreshNow": {
+      "post": {
+        "tags": [
+          "Cocktails"
+        ],
+        "operationId": "Cocktails_RefreshRandomNow",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RandomCocktailDTO"
                 }
               }
             }
@@ -1153,6 +1196,24 @@
             "nullable": true
           },
           "description": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "RandomCocktailDTO": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "drinkId": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "thumbUrl": {
             "type": "string",
             "nullable": true
           }

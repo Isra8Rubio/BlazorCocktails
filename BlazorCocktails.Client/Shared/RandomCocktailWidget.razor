@@ -1,0 +1,73 @@
+﻿@using API.APIService
+@using Microsoft.Extensions.Localization
+@inject APIClient Api
+@inject ISnackbar Snackbar
+@inject IStringLocalizer<App> L
+
+<MudPaper Elevation="1" Class="pa-4">
+    <MudStack Direction="Row" AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween" Class="mb-2">
+        <MudText Typo="Typo.h6">@L["Random_Title", "🍹"]</MudText>
+
+        <MudButton Variant="Variant.Outlined"
+                   StartIcon="@Icons.Material.Filled.Refresh"
+                   Disabled="@refreshing"
+                   OnClick="RefreshAsync">
+            @L["Random_Refresh"]
+        </MudButton>
+    </MudStack>
+
+    @if (loading)
+    {
+        <MudSkeleton Height="120" />
+    }
+    else if (row is null)
+    {
+        <MudText Color="Color.Secondary">@L["Random_NoData"]</MudText>
+    }
+    else
+    {
+        <MudCard Class="hover-elevate" Style="max-width: 520px;">
+            <MudCardMedia Image="@row.ThumbUrl" Height="180" Alt="@row.Name" />
+            <MudCardContent>
+                <MudText Typo="Typo.subtitle1">@row.Name</MudText>
+                <MudText Typo="Typo.caption" Color="Color.Secondary">@row.DrinkId</MudText>
+            </MudCardContent>
+        </MudCard>
+    }
+</MudPaper>
+
+@code {
+    private RandomCocktailDTO? row;
+    private bool loading = true;
+    private bool refreshing;
+
+    protected override async Task OnInitializedAsync()
+    {
+        loading = true;
+        try
+        {
+            row = await Api.Cocktails_GetRandomRowAsync();
+        }
+        catch (ApiException ex)
+        {
+            Snackbar.Add($"Error cargando: {ex.Message}", Severity.Error);
+        }
+        finally { loading = false; }
+    }
+
+    private async Task RefreshAsync()
+    {
+        refreshing = true;
+        try
+        {
+            row = await Api.Cocktails_RefreshRandomNowAsync();
+            Snackbar.Add("¡Actualizado!", Severity.Success);
+        }
+        catch (ApiException ex)
+        {
+            Snackbar.Add($"Error refrescando: {ex.Message}", Severity.Error);
+        }
+        finally { refreshing = false; }
+    }
+}
+

@@ -1,70 +1,57 @@
-﻿using Infraestructura.Services;
-using Microsoft.Extensions.Caching.Memory;
+﻿// Infraestructura/Services/RandomCocktailHostedService.cs
+using Infraestructura.Repositories;
+using Infraestructura.Services; // donde tengas CocktailClientService
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 public class RandomCocktailHostedService : IHostedService, IDisposable
 {
-    private readonly IServiceProvider _svcProvider;
+    private readonly IServiceProvider _sp;
     private readonly ILogger<RandomCocktailHostedService> _logger;
-    private readonly IMemoryCache _cache;
     private Timer? _timer;
-    private readonly TimeSpan _interval = TimeSpan.FromSeconds(3);
+    private bool _running;
+    private readonly TimeSpan _interval = TimeSpan.FromMinutes(2);
 
-    // Key fija para el cache
-    private const string CacheKey = "RandomCocktail";
-
-    public RandomCocktailHostedService(
-        IServiceProvider svcProvider,
-        ILogger<RandomCocktailHostedService> logger,
-        IMemoryCache cache)
+    public RandomCocktailHostedService(IServiceProvider sp, ILogger<RandomCocktailHostedService> logger)
     {
-        _svcProvider = svcProvider;
-        _logger = logger;
-        _cache = cache;
+        _sp = sp; _logger = logger;
     }
 
     public Task StartAsync(CancellationToken _)
     {
-        _logger.LogInformation("RandomCocktailHostedService arrancando. Interval: {Min} min.", _interval.TotalMinutes);
+        _logger.LogInformation("RandomCocktailHostedService iniciado (cada {m} min).", _interval.TotalMinutes);
         _timer = new Timer(async _ => await DoWorkAsync(), null, TimeSpan.Zero, _interval);
         return Task.CompletedTask;
     }
 
     private async Task DoWorkAsync()
     {
+        if (_running) return;
+        _running = true;
         try
         {
-            using var scope = _svcProvider.CreateScope();
+            using var scope = _sp.CreateScope();
             var client = scope.ServiceProvider.GetRequiredService<CocktailClientService>();
+            var repo = scope.ServiceProvider.GetRequiredService<RandomCocktailRepository>();
 
-            _logger.LogInformation("HostedService: obteniendo cóctel aleatorio…");
-            var random = await client.GetRandomAsync();
+            var detail = await client.GetRandomAsync();
+            if (detail == null) return;
 
-            if (random != null)
+            await repo.AddOrUpdateAsync(new Core.Entities.RandomCocktail
             {
-                // Guarda en memoria, sin expiración absoluta ni deslizamiento
-                _cache.Set(CacheKey, random);
-                _logger.LogInformation("HostedService: cóctel aleatorio actualizado: {Drink}", random.StrDrink);
-            }
-            else
-            {
-                _logger.LogWarning("HostedService: la API devolvió null en random.php");
-            }
+                DrinkId = detail.IdDrink ?? "",
+                Name = detail.StrDrink ?? "",
+                ThumbUrl = detail.StrDrinkThumb ?? ""
+            });
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "HostedService: fallo al obtener random cocktail");
+            _logger.LogError(ex, "Error en RandomCocktailHostedService");
         }
+        finally { _running = false; }
     }
 
-    public Task StopAsync(CancellationToken _)
-    {
-        _logger.LogInformation("RandomCocktailHostedService detenido.");
-        _timer?.Change(Timeout.Infinite, 0);
-        return Task.CompletedTask;
-    }
-
+    public Task StopAsync(CancellationToken _) { _timer?.Change(Timeout.Infinite, 0); return Task.CompletedTask; }
     public void Dispose() => _timer?.Dispose();
 }

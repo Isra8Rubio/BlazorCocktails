@@ -1,7 +1,10 @@
 ﻿using Core.DTO;
+using Core.Entities;
+using Infraestructura.Repositories;
 using Infraestructura.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace Weather.api.Controllers
@@ -448,31 +451,95 @@ namespace Weather.api.Controllers
         }
 
 
-        // Devuelve el cóctel aleatorio más reciente, almacenado en memoria.
-        [HttpGet("Random")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CocktailDetailDTO))]
+        // Obtener random de BD
+        [HttpGet("Random/Row")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RandomCocktailDTO))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<CocktailDetailDTO>> GetRandomAsync()
+        public async Task<ActionResult<RandomCocktailDTO>> GetRandomRowAsync(
+            [FromServices] RandomCocktailRepository repo)
         {
-            const string CacheKey = "RandomCocktail";
+            try
+            {
+                var row = await repo.GetAsync();
+                if (row is null) return NotFound(new { Message = "No hay fila persistida todavía." });
 
-            // Intentamos leer de cache
-            if (cache.TryGetValue<CocktailDetailDTO>(CacheKey, out var random))
-                return Ok(random);
-
-            // Si no había nada, vamos a la API y cacheamos
-            logger.LogInformation("GetRandom: cache vacío, obteniendo al vuelo…");
-            random = await cocktailClientService.GetRandomAsync();
-
-            if (random == null)
-                return NotFound(new { Message = "No se pudo obtener un cóctel aleatorio." });
-
-            // Guardamos en cache sin expiración
-            cache.Set(CacheKey, random);
-            return Ok(random);
+                return Ok(new RandomCocktailDTO
+                {
+                    DrinkId = row.DrinkId,
+                    Name = row.Name,
+                    ThumbUrl = row.ThumbUrl
+                });
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "GetRandomRowAsync error.");
+                return StatusCode(500, new { Message = "Error interno.", Detail = ex.Message });
+            }
         }
 
+
+        // Llama a API, upsert en BD y devuelve la fila actualizada
+        [HttpPost("Random/RefreshNow")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RandomCocktailDTO))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<RandomCocktailDTO>> RefreshRandomNowAsync(
+            [FromServices] CocktailClientService client,
+            [FromServices] RandomCocktailRepository repo,
+            CancellationToken ct = default)
+        {
+            try
+            {
+                // Método ligero que sólo trae DrinkId, Name y ThumbUrl
+                var dto = await client.GetRandomLiteAsync(ct);
+                if (dto is null)
+                    return NotFound(new { Message = "No se pudo obtener un cóctel aleatorio." });
+
+                await repo.AddOrUpdateAsync(new RandomCocktail
+                {
+                    DrinkId = dto.DrinkId ?? "",
+                    Name = dto.Name ?? "",
+                    ThumbUrl = dto.ThumbUrl ?? ""
+                }, ct);
+
+                return Ok(dto);
+            }
+            catch (DbUpdateException dbex)
+            {
+                logger.LogError(dbex, "EF error: {Detail}", dbex.InnerException?.Message);
+                return StatusCode(500, new { Message = "Error interno.", Detail = dbex.InnerException?.Message ?? dbex.Message });
+            }
+
+        }
+
+
+        // Devuelve el cóctel aleatorio más reciente usando IMemoryCache (dejo acción de ejemplo)
+        //[HttpGet("Random")]
+        //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CocktailDetailDTO))]
+        //[ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        //[ProducesResponseType(StatusCodes.Status404NotFound)]
+        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        //public async Task<ActionResult<CocktailDetailDTO>> GetRandomAsync()
+        //{
+        //    const string CacheKey = "RandomCocktail";
+
+        //    // Intentamos leer de cache
+        //    if (cache.TryGetValue<CocktailDetailDTO>(CacheKey, out var random))
+        //        return Ok(random);
+
+        //    // Si no había nada, vamos a la API y cacheamos
+        //    logger.LogInformation("GetRandom: cache vacío, obteniendo al vuelo…");
+        //    random = await cocktailClientService.GetRandomAsync();
+
+        //    if (random == null)
+        //        return NotFound(new { Message = "No se pudo obtener un cóctel aleatorio." });
+
+        //    // Guardamos en cache sin expiración
+        //    cache.Set(CacheKey, random);
+        //    return Ok(random);
+        //}
     }
 }
