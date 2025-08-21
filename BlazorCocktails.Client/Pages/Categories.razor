@@ -80,10 +80,8 @@
     List<CocktailItemDTO>? drinks;
     bool isLoading;
     long lastRequestId;
-
-    // --- Paginación ---
     int page = 1;
-    const int pageSize = 8;   // <= ahora 8 por página
+    const int pageSize = 8;
 
     IEnumerable<CocktailItemDTO> PagedDrinks =>
         (drinks ?? Enumerable.Empty<CocktailItemDTO>())
@@ -105,7 +103,7 @@
     private async Task OnCategoryChanged(string? value)
     {
         selectedCategory = value;
-        page = 1; // reset al cambiar de categoría
+        page = 1;
 
         if (string.IsNullOrWhiteSpace(selectedCategory))
         {

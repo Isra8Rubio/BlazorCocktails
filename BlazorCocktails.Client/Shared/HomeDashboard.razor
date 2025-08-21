@@ -3,6 +3,7 @@
 @inject API.APIService.APIClient Api
 @inject ISnackbar Snackbar
 @inject Microsoft.Extensions.Localization.IStringLocalizer<App> L
+@inject NavigationManager Nav
 
 <MudGrid Class="gap-4">
     <MudItem xs="12" md="5">
@@ -27,23 +28,28 @@
                 }
                 else
                 {
-                    <MudCardMedia Image="@_random.ThumbUrl"
-                                  Alt="@_random.Name"
-                                  Style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px" />
-                    <MudText Typo="Typo.h6" Class="mt-2">@_random.Name</MudText>
-                    <MudText Color="Color.Secondary">@_random.DrinkId</MudText>
+                    <div @onclick="GoToDetail"
+                         style="cursor:pointer"
+                         aria-label="Ver detalle del cóctel">
 
-                    @if (_lastUpdated is not null)
-                    {
-                        <MudText Typo="Typo.caption" Class="mt-2">
-                            @L["Random_LastUpdated"]: @_lastUpdated?.ToLocalTime().ToString("HH:mm:ss")
-                        </MudText>
-                    }
+                        <MudCardMedia Image="@_random.ThumbUrl"
+                                      Alt="@_random.Name"
+                                      Style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px" />
+                        <MudText Typo="Typo.h6" Class="mt-2">@_random.Name</MudText>
+                        <MudText Color="Color.Secondary">@_random.DrinkId</MudText>
+
+                        @if (_lastUpdated is not null)
+                        {
+                            <MudText Typo="Typo.caption" Class="mt-2">
+                                @L["Random_LastUpdated"]: @_lastUpdated?.ToLocalTime().ToString("HH:mm:ss")
+                            </MudText>
+                        }
+                    </div>
                 }
             </MudCardContent>
         </MudCard>
     </MudItem>
-</MudGrid> 
+</MudGrid>
 
 @code {
     private API.APIService.RandomCocktailDTO? _random;
@@ -87,5 +93,11 @@
         {
             _refreshing = false;
         }
+    }
+
+    private void GoToDetail()
+    {
+        if (!string.IsNullOrWhiteSpace(_random?.DrinkId))
+            Nav.NavigateTo($"/cocktail/{_random.DrinkId}");
     }
 }

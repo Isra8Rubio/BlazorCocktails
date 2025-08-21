@@ -2,16 +2,25 @@
 @using System.Globalization
 @using Microsoft.Extensions.Localization
 @inject IStringLocalizer<App> L
+@using BlazorCocktails.Client.Shared
 @using BlazorCocktails.Client.Shared.Charts
 
-<HomeDashboard />
+<MudGrid Spacing="2" Class="gap-4">
 
-<MudStack Spacing="3">
-    <AlcoholTypesChart />
-</MudStack>
+    <MudItem xs="12" sm="5">
+        <AlcoholTypesChart />
+    </MudItem>
 
-<CategoryDistributionChart
-    Title="@L["Chart_Category_Title"]"
-    MaxSlices="11" />
+    <MudItem xs="12" sm="6">
+        <CategoryDistributionChart
+            MaxSlices="11" />
+    </MudItem>
 
+    <MudItem xs="12">
+        <div class="mx-auto" style="max-width:240px">
+            <RandomCocktailWidget />
+        </div>
+    </MudItem>
+
+</MudGrid>
 

@@ -297,4 +297,67 @@
   <data name="Random_NoData" xml:space="preserve">
     <value>No random cocktail yet.</value>
   </data>
+  <data name="MainLayout_Login" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="MainLayout_Register" xml:space="preserve">
+    <value>Sign up</value>
+  </data>
+  <data name="MainLayout_Lang_Spanish" xml:space="preserve">
+    <value>Spanish</value>
+  </data>
+  <data name="MainLayout_Lang_English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="MainLayout_AppTitle" xml:space="preserve">
+    <value>Cocktail Bar</value>
+  </data>
+  <data name="Login_Title" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="Login_EmailLabel" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Login_EmailPlaceholder" xml:space="preserve">
+    <value>you@example.com</value>
+  </data>
+  <data name="Login_PasswordLabel" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Login_Remember" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="Login_Forgot" xml:space="preserve">
+    <value>Forgot your password?</value>
+  </data>
+  <data name="Login_Submit" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="Login_CreateAccount" xml:space="preserve">
+    <value>Create account</value>
+  </data>
+  <data name="Register_Title" xml:space="preserve">
+    <value>Create account</value>
+  </data>
+  <data name="Register_EmailLabel" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Register_EmailPlaceholder" xml:space="preserve">
+    <value>you@example.com</value>
+  </data>
+  <data name="Register_PasswordLabel" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Register_ConfirmLabel" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="Register_Submit" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Register_GoLogin" xml:space="preserve">
+    <value>I already have an account</value>
+  </data>
+  <data name="MainLayout_Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
 </root>

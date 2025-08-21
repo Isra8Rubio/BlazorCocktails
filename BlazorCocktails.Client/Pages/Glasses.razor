@@ -93,6 +93,108 @@
         try
         {
             glasses = (await Api.Cocktails_GetGlassesAsync())?.ToList();
+
+            if (glasses?.Any() == true)
+                await LoadDrinksAsync(null);
+        }
+        catch (ApiException ex)
+        {
+            Snackbar.Add($"{L["Glasses_Error_LoadGlasses"]}: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private async Task OnSelectedGlassChanged(string? glass)
+    {
+        selectedGlass = glass;
+        page = 1;
+        await LoadDrinksAsync(selectedGlass);
+    }
+
+    private async Task LoadDrinksAsync(string? glass)
+    {
+        isLoading = true;
+        drinks = null;
+        StateHasChanged();
+
+        var requestId = System.Threading.Interlocked.Increment(ref lastRequestId);
+
+        try
+        {
+            List<CocktailItemDTO> result;
+
+            if (string.IsNullOrWhiteSpace(glass))
+            {
+                var names = (glasses ?? Enumerable.Empty<GlassDTO>())
+                    .Select(g => g.StrGlass)
+                    .Where(s => !string.IsNullOrWhiteSpace(s))
+                    .Distinct();
+
+                var tasks = names.Select(n => Api.Cocktails_GetByGlassAsync(n));
+                var batches = await Task.WhenAll(tasks);
+
+                var dict = new Dictionary<string, CocktailItemDTO>();
+                foreach (var batch in batches)
+                {
+                    if (batch is null) continue;
+                    foreach (var d in batch)
+                    {
+                        if (!string.IsNullOrWhiteSpace(d.IdDrink))
+                            dict[d.IdDrink] = d;
+                    }
+                }
+
+                result = dict.Values
+                             .OrderBy(d => d.StrDrink)
+                             .ToList();
+            }
+            else
+            {
+                result = (await Api.Cocktails_GetByGlassAsync(glass))?.ToList() ?? new();
+            }
+
+            if (requestId == lastRequestId)
+                drinks = result;
+        }
+        catch (ApiException ex)
+        {
+            if (requestId == lastRequestId)
+            {
+                Snackbar.Add($"{L["Glasses_Error_LoadDrinks"]}: {ex.Message}", Severity.Error);
+                drinks = new();
+            }
+        }
+        finally
+        {
+            if (requestId == lastRequestId)
+            {
+                isLoading = false;
+                StateHasChanged();
+            }
+        }
+    }
+
+}
+
+@*             @code {
+    List<GlassDTO>? glasses;
+    List<CocktailItemDTO>? drinks;
+
+    string? selectedGlass;
+    bool isLoading;
+    long lastRequestId = 0;
+    int page = 1;
+    const int pageSize = 8;
+
+    IEnumerable<CocktailItemDTO> PagedDrinks =>
+        (drinks ?? Enumerable.Empty<CocktailItemDTO>())
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize);
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            glasses = (await Api.Cocktails_GetGlassesAsync())?.ToList();
         }
         catch (ApiException ex)
         {
@@ -140,5 +242,4 @@
                 StateHasChanged();
             }
         }
-    }
-}
+    } *@

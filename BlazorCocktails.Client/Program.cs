@@ -1,10 +1,13 @@
 using API.APIService;
 using BlazorCocktails.Client;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.JSInterop;
 using MudBlazor.Services;
 using System.Globalization;
+using System.Reflection;
+using System.Runtime.Loader;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");

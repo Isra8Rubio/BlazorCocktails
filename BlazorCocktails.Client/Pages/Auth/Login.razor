@@ -1,16 +1,20 @@
 ﻿@page "/login"
 @using MudBlazor
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<App> L
+
+<PageTitle>@L["Login_Title"]</PageTitle>
 
 <MudPaper Class="auth-page auth-page--paper" Elevation="0" Square="true">
     <MudCard Class="auth-card">
         <MudCardHeader Class="bg-gradient-auth">
-            <MudText Typo="Typo.h5">Iniciar sesión</MudText>
+            <MudText Typo="Typo.h5">@L["Login_Title"]</MudText>
         </MudCardHeader>
 
         <MudCardContent Class="p-6">
             <MudTextField T="string"
-                          Label="Correo"
-                          Placeholder="tucorreo@dominio.com"
+                          Label="@L["Login_EmailLabel"]"
+                          Placeholder="@L["Login_EmailPlaceholder"]"
                           InputType="InputType.Email"
                           Adornment="Adornment.Start"
                           AdornmentIcon="@Icons.Material.Filled.Email"
@@ -18,23 +22,22 @@
 
             <MudTextField T="string"
                           Class="mt-4"
-                          Label="Contraseña"
+                          Label="@L["Login_PasswordLabel"]"
                           Placeholder="••••••••"
                           InputType="InputType.Password"
                           Adornment="Adornment.Start"
                           AdornmentIcon="@Icons.Material.Filled.Lock" />
 
             <MudStack Row="true" AlignItems="AlignItems.Center" Class="mt-3">
-                <MudCheckBox T="bool" Label="Recordarme" Dense="true" />
+                <MudCheckBox T="bool" Label="@L["Login_Remember"]" Dense="true" />
                 <MudSpacer />
-                <MudLink Href="#" Class="text-sm opacity-80">¿Olvidaste la contraseña?</MudLink>
+                <MudLink Href="#" Class="text-sm opacity-80">@L["Login_Forgot"]</MudLink>
             </MudStack>
 
             <MudStack Row="true" Spacing="2" Class="mt-5">
-                <MudButton Class="auth-btn" Variant="Variant.Filled">ENTRAR</MudButton>
-                <MudButton Class="auth-btn-outline" Variant="Variant.Outlined" Href="/register">CREAR CUENTA</MudButton>
+                <MudButton Class="auth-btn" Variant="Variant.Filled">@L["Login_Submit"]</MudButton>
+                <MudButton Class="auth-btn-outline" Variant="Variant.Outlined" Href="/register">@L["Login_CreateAccount"]</MudButton>
             </MudStack>
-
         </MudCardContent>
     </MudCard>
 </MudPaper>

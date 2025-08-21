@@ -1,8 +1,10 @@
 ﻿@using API.APIService
 @using Microsoft.Extensions.Localization
+@implements IAsyncDisposable
 @inject APIClient Api
 @inject ISnackbar Snackbar
 @inject IStringLocalizer<App> L
+@inject NavigationManager Nav
 
 <MudPaper Elevation="1" Class="pa-4">
     <MudStack Direction="Row" AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween" Class="mb-2">
@@ -26,13 +28,15 @@
     }
     else
     {
-        <MudCard Class="hover-elevate" Style="max-width: 520px;">
-            <MudCardMedia Image="@row.ThumbUrl" Height="180" Alt="@row.Name" />
-            <MudCardContent>
-                <MudText Typo="Typo.subtitle1">@row.Name</MudText>
-                <MudText Typo="Typo.caption" Color="Color.Secondary">@row.DrinkId</MudText>
-            </MudCardContent>
-        </MudCard>
+        <MudLink Href="@($"/cocktail/{row.DrinkId}")"
+                 Style="display:inline-block; text-decoration:none; color:inherit;">
+            <MudCard Class="hover-elevate cursor-pointer" Style="max-width: 520px;">
+                <MudCardMedia Image="@row.ThumbUrl" Height="180" Alt="@row.Name" />
+                <MudCardContent>
+                    <MudText Typo="Typo.subtitle1">@row.Name</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudLink>
     }
 </MudPaper>
 
@@ -40,19 +44,59 @@
     private RandomCocktailDTO? row;
     private bool loading = true;
     private bool refreshing;
+    private PeriodicTimer? _timer;
+    private CancellationTokenSource? _cts;
 
     protected override async Task OnInitializedAsync()
     {
         loading = true;
         try
         {
+            // Carga inicial (lee lo que ya dejó el hosted service en BD)
             row = await Api.Cocktails_GetRandomRowAsync();
         }
         catch (ApiException ex)
         {
             Snackbar.Add($"Error cargando: {ex.Message}", Severity.Error);
         }
-        finally { loading = false; }
+        finally
+        {
+            loading = false;
+        }
+
+        // Iniciar bucle de auto-actualización cada 12 segundos
+        _cts = new CancellationTokenSource();
+        _timer = new PeriodicTimer(TimeSpan.FromSeconds(12));
+
+        _ = RunAutoRefreshLoopAsync(_cts.Token);
+    }
+
+    private async Task RunAutoRefreshLoopAsync(CancellationToken ct)
+    {
+        try
+        {
+            while (await _timer!.WaitForNextTickAsync(ct))
+            {
+                try
+                {
+                    // Lee el último "random" guardado
+                    var latest = await Api.Cocktails_GetRandomRowAsync();
+
+                    if (latest?.DrinkId != row?.DrinkId)
+                    {
+                        row = latest;
+                        await InvokeAsync(StateHasChanged);
+                    }
+                }
+                catch (ApiException ex)
+                {
+                    Snackbar.Add($"Auto-refresh: {ex.Message}", Severity.Warning);
+                }
+            }
+        }
+        catch (OperationCanceledException)
+        {
+        }
     }
 
     private async Task RefreshAsync()
@@ -67,7 +111,24 @@
         {
             Snackbar.Add($"Error refrescando: {ex.Message}", Severity.Error);
         }
-        finally { refreshing = false; }
+        finally
+        {
+            refreshing = false;
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    private void GoToDetail()
+    {
+        if (!string.IsNullOrWhiteSpace(row?.DrinkId))
+            Nav.NavigateTo($"/cocktail/{row!.DrinkId}");
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        _cts?.Cancel();
+        _timer?.Dispose();
+        _cts?.Dispose();
+        await Task.CompletedTask;
     }
 }
-

@@ -1,10 +1,13 @@
 ﻿@using Microsoft.JSInterop
 @inject IJSRuntime JS
 @inject NavigationManager Nav
+@inject Microsoft.Extensions.Localization.IStringLocalizer<App> L
 
 <MudStack Row="true" AlignItems="AlignItems.Center" Spacing="1" Class="lang-switcher">
     <MudIconButton Size="Size.Small" Color="Color.Inherit"
-                   OnClick="@(() => Set("es-ES"))" Title="Español" Class="min-w-0">
+                   Title="@L["MainLayout_Lang_Spanish"]"
+                   AriaLabel="@L["MainLayout_Lang_Spanish"]"
+                   OnClick="@(() => Set("es-ES"))" Class="min-w-0">
         <svg viewBox="0 0 3 2" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
             <rect width="3" height="2" fill="#c60b1e" />
             <rect y="0.5" width="3" height="1" fill="#ffc400" />
@@ -12,7 +15,9 @@
     </MudIconButton>
 
     <MudIconButton Size="Size.Small" Color="Color.Inherit"
-                   OnClick="@(() => Set("en-US"))" Title="English" Class="min-w-0">
+                   Title="@L["MainLayout_Lang_English"]"
+                   AriaLabel="@L["MainLayout_Lang_English"]"
+                   OnClick="@(() => Set("en-US"))" Class="min-w-0">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="20" height="20">
             <rect width="60" height="30" fill="#012169" />
             <path d="M0,0 60,30 M60,0 0,30" stroke="#fff" stroke-width="6" />

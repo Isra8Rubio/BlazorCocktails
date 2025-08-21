@@ -52,7 +52,6 @@
     }
     else
     {
-        @* PAGER ARRIBA *@
         @if (drinks.Count > pageSize)
         {
             <Pager TotalItems="drinks.Count"
@@ -98,6 +97,10 @@
         try
         {
             alcoholTypes = (await Api.Cocktails_GetAlcoholTypesAsync())?.ToList();
+
+            // Cargar TODO por defecto
+            if (alcoholTypes?.Any() == true)
+                await LoadDrinksAsync(null);
         }
         catch (ApiException ex)
         {
@@ -108,26 +111,47 @@
     private async Task OnSelectedAlcoholTypeChanged(string? newValue)
     {
         selectedAlcoholType = newValue;
-        page = 1; // reset al cambiar el filtro
+        page = 1;
+        await LoadDrinksAsync(selectedAlcoholType);
+    }
 
-        if (string.IsNullOrWhiteSpace(selectedAlcoholType))
-        {
-            drinks = null;
-            StateHasChanged();
-            return;
-        }
-
-        drinks = null;
+    private async Task LoadDrinksAsync(string? type)
+    {
         isLoading = true;
+        drinks = null;
         StateHasChanged();
 
         var requestId = System.Threading.Interlocked.Increment(ref lastRequestId);
 
         try
         {
-            var result = (await Api.Cocktails_GetByTypeAsync(selectedAlcoholType))?.ToList();
-            if (requestId != lastRequestId) return;
-            drinks = result ?? new();
+            List<CocktailItemDTO> result;
+
+            if (string.IsNullOrWhiteSpace(type))
+            {
+                var dict = new Dictionary<string, CocktailItemDTO>();
+
+                foreach (var t in alcoholTypes ?? Enumerable.Empty<AlcoholTypeDTO>())
+                {
+                    var list = await Api.Cocktails_GetByTypeAsync(t.StrAlcoholic) ?? new List<CocktailItemDTO>();
+                    foreach (var d in list)
+                    {
+                        if (!string.IsNullOrWhiteSpace(d.IdDrink))
+                            dict[d.IdDrink] = d;
+                    }
+                }
+
+                result = dict.Values
+                             .OrderBy(d => d.StrDrink)
+                             .ToList();
+            }
+            else
+            {
+                result = (await Api.Cocktails_GetByTypeAsync(type))?.ToList() ?? new();
+            }
+
+            if (requestId == lastRequestId)
+                drinks = result;
         }
         catch (ApiException ex)
         {
@@ -147,7 +171,6 @@
         }
     }
 
-    // Muestra traducido, pero conserva el Value original para filtrar
     private string DisplayAlcoholType(string? apiValue)
     {
         var key = (apiValue ?? "").Trim().ToLowerInvariant() switch

@@ -493,7 +493,6 @@ namespace Weather.api.Controllers
         {
             try
             {
-                // Método ligero que sólo trae DrinkId, Name y ThumbUrl
                 var dto = await client.GetRandomLiteAsync(ct);
                 if (dto is null)
                     return NotFound(new { Message = "No se pudo obtener un cóctel aleatorio." });

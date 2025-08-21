@@ -6,14 +6,15 @@
 <MudThemeProvider IsDarkMode="@_isDark" />
 
 <MudLayout Class="@(_isDark ? "summer-dark" : "summer-light")">
-
     <MudAppBar Elevation="2" Color="Color.Primary" Class="appbar-2rows">
         <MudIconButton Icon="@Icons.Material.Filled.Menu"
                        Color="Color.Inherit"
                        Edge="Edge.Start"
+                       Title="@L["MainLayout_ToggleDrawer"]"
+                       AriaLabel="@L["MainLayout_ToggleDrawer"]"
                        OnClick="ToggleDrawer" />
 
-        <MudText Typo="Typo.h6" Class="ml-2">BlazorCocktails</MudText>
+        <MudText Typo="Typo.h6" Class="ml-2">@L["MainLayout_AppTitle"]</MudText>
 
         <MudSpacer />
 
@@ -24,8 +25,10 @@
                            Color="Color.Inherit"
                            StartIcon="@Icons.Material.Filled.Login"
                            Size="Size.Small"
-                           Class="appbar-btn">
-                    LOGIN
+                           Class="appbar-btn"
+                           Title="@L["MainLayout_Login"]"
+                           AriaLabel="@L["MainLayout_Login"]">
+                    @L["MainLayout_Login"]
                 </MudButton>
 
                 <MudButton Href="/register"
@@ -33,29 +36,31 @@
                            Color="Color.Inherit"
                            StartIcon="@Icons.Material.Filled.PersonAdd"
                            Size="Size.Small"
-                           Class="appbar-btn">
-                    REGISTRO
+                           Class="appbar-btn"
+                           Title="@L["MainLayout_Register"]"
+                           AriaLabel="@L["MainLayout_Register"]">
+                    @L["MainLayout_Register"]
                 </MudButton>
             </div>
 
             <div class="appbar-row bottom">
                 <LanguageSwitcher />
                 <MudIconButton Icon="@(_isDark? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode)"
-                               Title="@L["Theme_Toggle"]"
+                               Title="@L["MainLayout_ThemeToggle"]"
+                               AriaLabel="@L["MainLayout_ThemeToggle"]"
                                Color="Color.Inherit"
-                               Size="Size.Small" />
+                               Size="Size.Small"
+                               OnClick="ToggleDarkMode" />
             </div>
         </div>
     </MudAppBar>
-
-
 
     <MudDrawer @bind-Open="_drawerOpen"
                Variant="DrawerVariant.Responsive"
                Elevation="1"
                Class="p-0 drawer-fix">
         <MudDrawerHeader Class="px-4 py-3">
-            <MudText Typo="Typo.subtitle1">@L["Nav_Menu"]</MudText>
+            <MudText Typo="Typo.subtitle1">@L["MainLayout_Menu"]</MudText>
         </MudDrawerHeader>
 
         <div class="drawer-scroll">
@@ -72,7 +77,7 @@
 
 @code {
     private bool _drawerOpen = true;
-    private bool _isDark = true; // modo noche por defecto
+    private bool _isDark = true;
 
     private void ToggleDrawer() => _drawerOpen = !_drawerOpen;
     private void ToggleDarkMode() => _isDark = !_isDark;

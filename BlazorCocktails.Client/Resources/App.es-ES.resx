@@ -297,4 +297,67 @@
   <data name="Random_NoData" xml:space="preserve">
     <value>Aún no hay cóctel aleatorio.</value>
   </data>
+  <data name="MainLayout_Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="MainLayout_Register" xml:space="preserve">
+    <value>Registro</value>
+  </data>
+  <data name="MainLayout_Lang_Spanish" xml:space="preserve">
+    <value>Español</value>
+  </data>
+  <data name="MainLayout_Lang_English" xml:space="preserve">
+    <value>Inglés</value>
+  </data>
+  <data name="MainLayout_AppTitle" xml:space="preserve">
+    <value>Coctelería</value>
+  </data>
+  <data name="Login_Title" xml:space="preserve">
+    <value>Iniciar sesión</value>
+  </data>
+  <data name="Login_EmailLabel" xml:space="preserve">
+    <value>Correo</value>
+  </data>
+  <data name="Login_EmailPlaceholder" xml:space="preserve">
+    <value>tucorreo@dominio.com</value>
+  </data>
+  <data name="Login_PasswordLabel" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="Login_Remember" xml:space="preserve">
+    <value>Recordarme</value>
+  </data>
+  <data name="Login_Forgot" xml:space="preserve">
+    <value>¿Olvidaste la contraseña?</value>
+  </data>
+  <data name="Login_Submit" xml:space="preserve">
+    <value>Entrar</value>
+  </data>
+  <data name="Login_CreateAccount" xml:space="preserve">
+    <value>Crear cuenta</value>
+  </data>
+  <data name="Register_Title" xml:space="preserve">
+    <value>Crear cuenta</value>
+  </data>
+  <data name="Register_EmailLabel" xml:space="preserve">
+    <value>Correo</value>
+  </data>
+  <data name="Register_EmailPlaceholder" xml:space="preserve">
+    <value>tucorreo@dominio.com</value>
+  </data>
+  <data name="Register_PasswordLabel" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="Register_ConfirmLabel" xml:space="preserve">
+    <value>Confirmar contraseña</value>
+  </data>
+  <data name="Register_Submit" xml:space="preserve">
+    <value>Registrar</value>
+  </data>
+  <data name="Register_GoLogin" xml:space="preserve">
+    <value>Ya tengo cuenta</value>
+  </data>
+  <data name="MainLayout_Menu" xml:space="preserve">
+    <value>Menú</value>
+  </data>
 </root>

@@ -1,6 +1,5 @@
-﻿// Infraestructura/Services/RandomCocktailHostedService.cs
-using Infraestructura.Repositories;
-using Infraestructura.Services; // donde tengas CocktailClientService
+﻿using Infraestructura.Repositories;
+using Infraestructura.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -11,7 +10,7 @@ public class RandomCocktailHostedService : IHostedService, IDisposable
     private readonly ILogger<RandomCocktailHostedService> _logger;
     private Timer? _timer;
     private bool _running;
-    private readonly TimeSpan _interval = TimeSpan.FromMinutes(2);
+    private readonly TimeSpan _interval = TimeSpan.FromSeconds(10);
 
     public RandomCocktailHostedService(IServiceProvider sp, ILogger<RandomCocktailHostedService> logger)
     {

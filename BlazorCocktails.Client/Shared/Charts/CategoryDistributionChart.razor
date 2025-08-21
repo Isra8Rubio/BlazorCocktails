@@ -8,7 +8,7 @@
 
 <MudPaper Class="pa-4">
     <MudStack Spacing="2">
-        <MudText Typo="Typo.h6">@Title</MudText>
+        <MudText Typo="Typo.h6">@L["Chart_Category_Title"]</MudText>
 
         @if (loading)
         {
@@ -45,21 +45,13 @@
 </MudPaper>
 
 @code {
-    // --- Parámetros ---
     [Parameter] public string? Title { get; set; }
-
-    // Nuevo nombre
     [Parameter] public int MaxSlices { get; set; } = 10;
-
-    // Compatibilidad hacia atrás (si te olvidas y pasas TopN, lo usamos)
     [Parameter] public int? TopN { get; set; }
-
-    // Categorías que deben mostrarse siempre
     [Parameter]
     public string[] RequiredCategories { get; set; } =
         new[] { "Cocoa", "Homemade liqueur", "Beer", "Soft Drink" };
 
-    // --- Estado ---
     private bool loading = true;
     private string[]? labels;
     private double[]? series;
@@ -67,10 +59,7 @@
 
     protected override async Task OnParametersSetAsync()
     {
-        // Si te pasan Title sin traducir, ponemos el por defecto localizado
         Title ??= L["Chart_Category_Title"].Value;
-
-        // Back-compat: si llega TopN lo aplicamos a MaxSlices
         if (TopN.HasValue) MaxSlices = TopN.Value;
 
         await LoadAsync();
@@ -130,7 +119,7 @@
 
             if (othersCount > 0)
             {
-                labelList.Add(L["Category_Others"].Value); // añade la traducción en ES
+                labelList.Add(L["Category_Others"].Value);
                 dataList.Add(othersCount);
             }
 
@@ -164,7 +153,7 @@
             case "other / unknown": return L["Category_OtherUnknown"].Value;
             case "coffee / tea": return L["Category_CoffeeTea"].Value;
             case "milk / float / shake": return L["Category_MilkFloatShake"].Value;
-            case "shake": return L["Category_MilkFloatShake"].Value; // alias por si llega como "Shake"
+            case "shake": return L["Category_MilkFloatShake"].Value;
             case "homemade liqueur": return L["Category_HomemadeLiqueur"].Value;
             case "beer": return L["Category_Beer"].Value;
             case "cocoa": return L["Category_Cocoa"].Value;
