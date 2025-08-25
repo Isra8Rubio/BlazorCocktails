@@ -101,3 +101,30 @@
             Nav.NavigateTo($"/cocktail/{_random.DrinkId}");
     }
 }
+
+@*
+ Qué hacemos:
+  - Mostramos una tarjeta con un cóctel aleatorio y un botón para refrescarlo. Al hacer clic en la tarjeta, navegamos al detalle.
+
+ UI:
+  - Grid con una tarjeta (<MudCard>) que contiene:
+     • Header con título y botón de refresco (con tooltip).
+     • Contenido: skeletons mientras cargamos; imagen 16:9, nombre e Id cuando hay datos.
+     • Marca de tiempo “Última actualización” (hora local) cuando procede.
+
+ Flujo:
+  - OnInitializedAsync(): cargamos el cóctel aleatorio (Cocktails_GetRandomRowAsync) y guardamos _lastUpdated (UTC).
+  - RefreshRandom(): evitamos repetidos con _refreshing; pedimos al backend que refresque
+    (Cocktails_RefreshRandomNowAsync) y recargamos la tarjeta.
+
+ Estado y errores:
+  - _random (DTO del cóctel), _refreshing (evita taps dobles), _lastUpdated (timestamp).
+  - Ante errores mostramos Snackbar y dejamos _random = null para volver a skeletons.
+
+ Accesibilidad y navegación:
+  - El contenedor del cóctel es clicable (cursor:pointer) con aria-label.
+  - Si hay DrinkId, navegamos a /cocktail/{id}.
+
+ Localización:
+  - Usamos IStringLocalizer<App> (L) para título, tooltip y etiqueta de “Última actualización”.
+*@

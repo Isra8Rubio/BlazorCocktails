@@ -360,4 +360,49 @@
   <data name="MainLayout_Menu" xml:space="preserve">
     <value>Menu</value>
   </data>
+  <data name="Register_Working" xml:space="preserve">
+    <value>Working…</value>
+  </data>
+  <data name="Register_Success" xml:space="preserve">
+    <value>Account created successfully. Please log in.</value>
+  </data>
+  <data name="Register_EmailRequired" xml:space="preserve">
+    <value>Email is required.</value>
+  </data>
+  <data name="Register_EmailInvalid" xml:space="preserve">
+    <value>Invalid email format.</value>
+  </data>
+  <data name="Register_PasswordRequired" xml:space="preserve">
+    <value>Password is required.</value>
+  </data>
+  <data name="Register_PasswordMin" xml:space="preserve">
+    <value>Password must be at least 6 characters.</value>
+  </data>
+  <data name="Register_ConfirmRequired" xml:space="preserve">
+    <value>Please confirm your password.</value>
+  </data>
+  <data name="Register_PasswordsDontMatch" xml:space="preserve">
+    <value>Passwords do not match.</value>
+  </data>
+  <data name="MainLayout_Logout" xml:space="preserve">
+    <value>Sign out</value>
+  </data>
+  <data name="Login_Working" xml:space="preserve">
+    <value>Working…</value>
+  </data>
+  <data name="Login_EmailRequired" xml:space="preserve">
+    <value>Email is required.</value>
+  </data>
+  <data name="Login_EmailInvalid" xml:space="preserve">
+    <value>Invalid email format.</value>
+  </data>
+  <data name="Login_PasswordRequired" xml:space="preserve">
+    <value>Password is required.</value>
+  </data>
+  <data name="Login_Success" xml:space="preserve">
+    <value>Signed in successfully.</value>
+  </data>
+  <data name="Login_Failed" xml:space="preserve">
+    <value>Couldn’t sign in.</value>
+  </data>
 </root>

@@ -1,7 +1,11 @@
 ﻿@inherits LayoutComponentBase
+@implements IDisposable
 @using MudBlazor
 @using Microsoft.Extensions.Localization
+@using API.APIService
 @inject IStringLocalizer<App> L
+@inject IJSRuntime JS
+@inject NavigationManager Nav
 
 <MudThemeProvider IsDarkMode="@_isDark" />
 
@@ -20,27 +24,43 @@
 
         <div class="appbar-actions-col">
             <div class="appbar-row top">
-                <MudButton Href="/login"
-                           Variant="Variant.Outlined"
-                           Color="Color.Inherit"
-                           StartIcon="@Icons.Material.Filled.Login"
-                           Size="Size.Small"
-                           Class="appbar-btn"
-                           Title="@L["MainLayout_Login"]"
-                           AriaLabel="@L["MainLayout_Login"]">
-                    @L["MainLayout_Login"]
-                </MudButton>
+                @if (!IsAuthenticated)
+                {
+                    <MudButton Href="/login"
+                               Variant="Variant.Outlined"
+                               Color="Color.Inherit"
+                               StartIcon="@Icons.Material.Filled.Login"
+                               Size="Size.Small"
+                               Class="appbar-btn"
+                               Title="@L["MainLayout_Login"]"
+                               AriaLabel="@L["MainLayout_Login"]">
+                        @L["MainLayout_Login"]
+                    </MudButton>
 
-                <MudButton Href="/register"
-                           Variant="Variant.Outlined"
-                           Color="Color.Inherit"
-                           StartIcon="@Icons.Material.Filled.PersonAdd"
-                           Size="Size.Small"
-                           Class="appbar-btn"
-                           Title="@L["MainLayout_Register"]"
-                           AriaLabel="@L["MainLayout_Register"]">
-                    @L["MainLayout_Register"]
-                </MudButton>
+                    <MudButton Href="/register"
+                               Variant="Variant.Outlined"
+                               Color="Color.Inherit"
+                               StartIcon="@Icons.Material.Filled.PersonAdd"
+                               Size="Size.Small"
+                               Class="appbar-btn"
+                               Title="@L["MainLayout_Register"]"
+                               AriaLabel="@L["MainLayout_Register"]">
+                        @L["MainLayout_Register"]
+                    </MudButton>
+                }
+                else
+                {
+                    <MudButton Variant="Variant.Outlined"
+                               Color="Color.Inherit"
+                               StartIcon="@Icons.Material.Filled.Logout"
+                               Size="Size.Small"
+                               Class="appbar-btn"
+                               OnClick="LogoutAsync"
+                               Title="@L["MainLayout_Logout"]"
+                               AriaLabel="@L["MainLayout_Logout"]">
+                        @L["MainLayout_Logout"]
+                    </MudButton>
+                }
             </div>
 
             <div class="appbar-row bottom">
@@ -79,6 +99,40 @@
     private bool _drawerOpen = true;
     private bool _isDark = true;
 
+    private bool IsAuthenticated => !string.IsNullOrWhiteSpace(APIClient.Token);
+
+    protected override void OnInitialized()
+    {
+        // Refresca el layout cuando cambie el token (login/logout o al cargarlo)
+        APIClient.TokenChanged += OnTokenChanged;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        // Cargar el token del storage (por si F5 o cambia idioma)
+        if (firstRender && string.IsNullOrEmpty(APIClient.Token))
+        {
+            var token = await JS.InvokeAsync<string?>("localStorage.getItem", "authToken")
+                        ?? await JS.InvokeAsync<string?>("sessionStorage.getItem", "authToken");
+            APIClient.Token = token;
+        }
+    }
+
+    private void OnTokenChanged() => InvokeAsync(StateHasChanged);
+
+    public void Dispose()
+    {
+        APIClient.TokenChanged -= OnTokenChanged;
+    }
+
     private void ToggleDrawer() => _drawerOpen = !_drawerOpen;
     private void ToggleDarkMode() => _isDark = !_isDark;
+
+    private async Task LogoutAsync()
+    {
+        APIClient.Token = null;
+        await JS.InvokeVoidAsync("localStorage.removeItem", "authToken");
+        await JS.InvokeVoidAsync("sessionStorage.removeItem", "authToken");
+        Nav.NavigateTo("/login", forceLoad: true);
+    }
 }

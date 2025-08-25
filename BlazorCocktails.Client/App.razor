@@ -1,4 +1,6 @@
-﻿<MudThemeProvider />
+﻿@inject IJSRuntime JS
+
+<MudThemeProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
 <MudPopoverProvider />
@@ -14,4 +16,30 @@
   </NotFound>
 </Router>
 
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && string.IsNullOrEmpty(API.APIService.APIClient.Token))
+        {
+            var token = await JS.InvokeAsync<string?>("localStorage.getItem", "authToken")
+                        ?? await JS.InvokeAsync<string?>("sessionStorage.getItem", "authToken");
+            API.APIService.APIClient.Token = token;
+        }
+    }
+}
 
+
+@*
+ Qué hacemos:
+  - Registramos los **providers globales** de MudBlazor: Theme, Dialog, Snackbar y Popover.
+  - Definimos el **Router** de la app: si la ruta existe, renderizamos <RouteView> con el
+    layout por defecto **MainLayout**; si no, mostramos la vista de **NotFound** dentro del mismo layout.
+
+ Detalles:
+  - <RouteView> aplica MainLayout a todas las páginas que no indiquen otro layout.
+  - La sección <NotFound> usa <LayoutView> para mantener la misma estructura y mostrar el mensaje “Not found”.
+
+ Notas:
+  - El control del tema (claro/oscuro) lo gestionamos en **MainLayout**; aquí el ThemeProvider es global.
+  - Si más adelante añadimos autenticación, podemos envolver el Router con <CascadingAuthenticationState>.
+*@

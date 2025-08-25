@@ -119,3 +119,31 @@
         return L[key].Value;
     }
 }
+
+@*
+ Qué hacemos:
+  - Mostramos un gráfico donut con el reparto de cócteles por **tipo de alcohol**
+    (Alcoholic / Non alcoholic / Optional alcohol).
+
+ Flujo de datos:
+  - Al iniciar (OnInitializedAsync) cargamos los tipos con Api.Cocktails_GetAlcoholTypesAsync().
+  - Normalizamos los nombres y los ordenamos (Alcoholic, Non alcoholic, Optional alcohol).
+  - Convertimos cada nombre al filtro de la API (MapToApiFilter: p. ej. "Non alcoholic" -> "Non_Alcoholic").
+  - Pedimos en paralelo las listas por tipo (Task.WhenAll de Cocktails_GetByTypeAsync) y calculamos:
+      • labels: nombres localizados (LocalizeAlcoholType + .resx).
+      • series: número de cócteles por tipo.
+
+ UI e interacción:
+  - <MudChart ChartType="Donut"> con alto 300px; bind a SelectedIndex para detectar el segmento activo.
+  - Bajo el gráfico mostramos el texto dinámico: etiqueta, recuento y porcentaje sobre el total,
+    o un hint si no hay selección.
+  - Estados de carga y vacíos: barra indeterminada mientras carga; mensaje "Chart_Empty" si no hay datos.
+
+ Estado/errores:
+  - Campos: loading, labels[], series[], selectedIndex.
+  - Ante errores de API, mostramos Snackbar y dejamos arrays vacíos de forma segura.
+
+ Notas:
+  - Localizamos las etiquetas de tipo con claves .resx (AlcoholType_*).
+  - Si la API no devuelve tipos válidos, mantenemos el gráfico vacío.
+*@

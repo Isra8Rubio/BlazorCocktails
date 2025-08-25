@@ -1,7 +1,10 @@
 ﻿@page "/login"
-@using MudBlazor
-@using Microsoft.Extensions.Localization
-@inject IStringLocalizer<App> L
+@using API.APIService
+@inject APIClient Api
+@inject ISnackbar Snackbar
+@inject NavigationManager Nav
+@inject Microsoft.Extensions.Localization.IStringLocalizer<App> L
+@inject IJSRuntime JS
 
 <PageTitle>@L["Login_Title"]</PageTitle>
 
@@ -12,32 +15,119 @@
         </MudCardHeader>
 
         <MudCardContent Class="p-6">
-            <MudTextField T="string"
-                          Label="@L["Login_EmailLabel"]"
-                          Placeholder="@L["Login_EmailPlaceholder"]"
-                          InputType="InputType.Email"
-                          Adornment="Adornment.Start"
-                          AdornmentIcon="@Icons.Material.Filled.Email"
-                          Immediate="true" />
+            <MudForm @ref="_form">
 
-            <MudTextField T="string"
-                          Class="mt-4"
-                          Label="@L["Login_PasswordLabel"]"
-                          Placeholder="••••••••"
-                          InputType="InputType.Password"
-                          Adornment="Adornment.Start"
-                          AdornmentIcon="@Icons.Material.Filled.Lock" />
+                <MudTextField Variant="Variant.Filled"
+                              T="string"
+                              Label="@L["Login_EmailLabel"]"
+                              Placeholder="@L["Login_EmailPlaceholder"]"
+                              @bind-Value="_model.Email"
+                              For="@(() => _model.Email)"
+                              InputType="InputType.Email"
+                              Required="true"
+                              Validation="@(new Func<string?, string?>(EmailValidator))"
+                              Immediate="true"
+                              Adornment="Adornment.Start"
+                              AdornmentIcon="@Icons.Material.Filled.Email" />
 
-            <MudStack Row="true" AlignItems="AlignItems.Center" Class="mt-3">
-                <MudCheckBox T="bool" Label="@L["Login_Remember"]" Dense="true" />
-                <MudSpacer />
-                <MudLink Href="#" Class="text-sm opacity-80">@L["Login_Forgot"]</MudLink>
-            </MudStack>
+                <MudTextField Class="mt-4"
+                              Variant="Variant.Filled"
+                              T="string"
+                              Label="@L["Login_PasswordLabel"]"
+                              @bind-Value="_model.Password"
+                              For="@(() => _model.Password)"
+                              InputType="@(_showPass ? InputType.Text : InputType.Password)"
+                              Required="true"
+                              Validation="@(new Func<string?, string?>(PasswordValidator))"
+                              Immediate="true"
+                              Adornment="Adornment.End"
+                              AdornmentIcon="@(_showPass ? Icons.Material.Filled.VisibilityOff : Icons.Material.Filled.Visibility)"
+                              OnAdornmentClick="@(()=> _showPass = !_showPass)" />
 
-            <MudStack Row="true" Spacing="2" Class="mt-5">
-                <MudButton Class="auth-btn" Variant="Variant.Filled">@L["Login_Submit"]</MudButton>
-                <MudButton Class="auth-btn-outline" Variant="Variant.Outlined" Href="/register">@L["Login_CreateAccount"]</MudButton>
-            </MudStack>
+                <MudStack Row="true" AlignItems="AlignItems.Center" Class="mt-3">
+                    <MudCheckBox T="bool" @bind-Checked="_remember" Dense="true" Label="@L["Login_Remember"]" />
+                    <MudSpacer />
+                    <MudLink Href="/forgot" Class="text-sm opacity-80">@L["Login_Forgot"]</MudLink>
+                </MudStack>
+
+                <MudStack Row="true" Spacing="2" Class="mt-5">
+                    <MudButton Class="auth-btn" Variant="Variant.Filled"
+                               OnClick="LoginAsync" Disabled="@_busy">
+                        @(_busy? L["Login_Working"] : L["Login_Submit"])
+                    </MudButton>
+                    <MudButton Class="auth-btn-outline" Variant="Variant.Outlined" Href="/register" Disabled="@_busy">
+                        @L["Login_CreateAccount"]
+                    </MudButton>
+                </MudStack>
+
+            </MudForm>
         </MudCardContent>
     </MudCard>
 </MudPaper>
+
+@code {
+    private MudForm? _form;
+    private bool _busy, _remember, _showPass;
+    private CredentialsUserDTO _model = new();
+
+    private string? EmailValidator(string? v)
+    {
+        if (string.IsNullOrWhiteSpace(v)) return L["Login_EmailRequired"];
+        try { _ = new System.Net.Mail.MailAddress(v); return null; }
+        catch { return L["Login_EmailInvalid"]; }
+    }
+    private string? PasswordValidator(string? v)
+        => string.IsNullOrWhiteSpace(v) ? L["Login_PasswordRequired"] : null ?? "";
+
+    private async Task LoginAsync()
+    {
+        await _form!.Validate();
+        if (!_form.IsValid) return;
+
+        _busy = true;
+        try
+        {
+            // Tu endpoint devuelve AnswerAuthenticationDTO. Toma la propiedad del token:
+            var res = await Api.Users_LoginAsync(_model);
+
+            // ⬇️ AJUSTA AQUÍ si tu DTO usa otro nombre: Token / AccessToken / Jwt …
+            var jwt = res.Token;
+
+            // Bearer automático para todas las llamadas del ApiClient
+            API.APIService.APIClient.Token = jwt;
+
+            // Persistir (opcional)
+            if (_remember)
+                await JS.InvokeVoidAsync("localStorage.setItem", "authToken", jwt);
+            else
+                await JS.InvokeVoidAsync("sessionStorage.setItem", "authToken", jwt);
+
+            Snackbar.Add(L["Login_Success"], Severity.Success);
+            Nav.NavigateTo("/");
+        }
+        catch (ApiException ex)
+        {
+            var msg = TryExtractServerError(ex) ?? L["Login_Failed"];
+            Snackbar.Add(msg, Severity.Error);
+        }
+        finally { _busy = false; }
+    }
+
+    private static string? TryExtractServerError(ApiException ex)
+    {
+        if (!string.IsNullOrWhiteSpace(ex.Response))
+        {
+            try
+            {
+                using var doc = System.Text.Json.JsonDocument.Parse(ex.Response);
+                if (doc.RootElement.TryGetProperty("title", out var title)) return title.GetString();
+                if (doc.RootElement.TryGetProperty("errors", out var errors))
+                    foreach (var p in errors.EnumerateObject())
+                        if (p.Value.ValueKind == System.Text.Json.JsonValueKind.Array && p.Value.GetArrayLength() > 0)
+                            return p.Value[0].GetString();
+            }
+            catch { }
+        }
+        return null;
+    }
+}

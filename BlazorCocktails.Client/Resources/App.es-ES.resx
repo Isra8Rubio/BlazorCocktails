@@ -360,4 +360,49 @@
   <data name="MainLayout_Menu" xml:space="preserve">
     <value>Menú</value>
   </data>
+  <data name="Register_Working" xml:space="preserve">
+    <value>Trabajando...</value>
+  </data>
+  <data name="Register_Success" xml:space="preserve">
+    <value>Cuenta creada correctamente. Inicia sesión.</value>
+  </data>
+  <data name="Register_EmailRequired" xml:space="preserve">
+    <value>El correo es obligatorio.</value>
+  </data>
+  <data name="Register_EmailInvalid" xml:space="preserve">
+    <value>Formato de correo inválido.</value>
+  </data>
+  <data name="Register_PasswordRequired" xml:space="preserve">
+    <value>La contraseña es obligatoria.</value>
+  </data>
+  <data name="Register_PasswordMin" xml:space="preserve">
+    <value>La contraseña debe tener al menos 6 caracteres.</value>
+  </data>
+  <data name="Register_ConfirmRequired" xml:space="preserve">
+    <value>Debe confirmar la contraseña.</value>
+  </data>
+  <data name="Register_PasswordsDontMatch" xml:space="preserve">
+    <value>Las contraseñas no coinciden.</value>
+  </data>
+  <data name="MainLayout_Logout" xml:space="preserve">
+    <value>Cerrar sesión</value>
+  </data>
+  <data name="Login_Working" xml:space="preserve">
+    <value>Trabajando…</value>
+  </data>
+  <data name="Login_EmailRequired" xml:space="preserve">
+    <value>El correo es obligatorio.</value>
+  </data>
+  <data name="Login_EmailInvalid" xml:space="preserve">
+    <value>Formato de correo inválido.</value>
+  </data>
+  <data name="Login_PasswordRequired" xml:space="preserve">
+    <value>La contraseña es obligatoria.</value>
+  </data>
+  <data name="Login_Success" xml:space="preserve">
+    <value>Sesión iniciada correctamente.</value>
+  </data>
+  <data name="Login_Failed" xml:space="preserve">
+    <value>No se pudo iniciar sesión</value>
+  </data>
 </root>

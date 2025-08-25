@@ -2,11 +2,6 @@
 using Core.Entities;
 using FluentValidation;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 public class RegisterUserDTOValidator : AbstractValidator<RegisterUserDTO>
 {
@@ -26,6 +21,8 @@ public class RegisterUserDTOValidator : AbstractValidator<RegisterUserDTO>
             .NotEmpty().WithMessage("La contraseña es obligatoria.")
             .MinimumLength(6).WithMessage("La contraseña debe tener al menos 6 caracteres.");
 
+        RuleFor(x => x.ConfirmPassword)
+            .NotEmpty().WithMessage("Debe confirmar la contraseña.")
+            .Equal(x => x.Password).WithMessage("Las contraseñas no coinciden.");
     }
 }
-

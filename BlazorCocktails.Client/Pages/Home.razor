@@ -24,3 +24,23 @@
 
 </MudGrid>
 
+@*
+ Qué hacemos:
+  - Componemos la página de inicio mostrando dos gráficos y un widget de cóctel aleatorio.
+
+ Estructura/UI:
+  - <MudGrid> con separación y gap uniforme.
+  - Columna izquierda (xs=12, sm=5): <AlcoholTypesChart />.
+  - Columna derecha (xs=12, sm=6): <CategoryDistributionChart MaxSlices="11" />.
+  - Fila inferior (xs=12): <RandomCocktailWidget /> centrado y con ancho máximo (240px).
+
+ Datos:
+  - Delegamos en cada componente (charts y widget) la carga de sus datos y su propio estado.
+
+ Localización:
+  - Inyectamos IStringLocalizer<App> (L) por si añadimos textos; actualmente no lo usamos aquí.
+
+ Notas:
+  - El layout es responsive por los breakpoints de MudItem.
+  - Si más adelante añadimos contenido adicional, podemos ajustar Spacing/gap o mover componentes a nuevas filas.
+*@

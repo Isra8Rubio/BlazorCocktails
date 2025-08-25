@@ -37,3 +37,26 @@
         Nav.NavigateTo(Nav.Uri, forceLoad: true);
     }
 }
+
+@*
+ Qué hacemos:
+  - Permitimos cambiar el idioma de la UI entre **es-ES** y **en-US**.
+
+ Cómo funciona:
+  - Al pulsar un botón llamamos, vía JS interop, a `blazorCulture.set(culture)`.
+  - Forzamos recarga con `NavigationManager.NavigateTo(Nav.Uri, forceLoad:true)` para que
+    se apliquen recursos `.resx` y la cultura de la app.
+
+ Requisitos:
+  - Debemos tener cargado `wwwroot/js/culture.js` (define `window.blazorCulture`).
+
+ UI/Accesibilidad:
+  - Dos `MudIconButton` compactos con SVGs de banderas.
+  - Usamos `Title` y `AriaLabel` localizados (IStringLocalizer<App>) para accesibilidad.
+
+ Persistencia:
+  - Guardamos la preferencia en `localStorage` por navegador/dominio, así mantenemos el idioma entre sesiones.
+
+ Extensible:
+  - Si queremos más idiomas, añadimos más botones que llamen a `Set("<tag BCP-47>")`.
+*@

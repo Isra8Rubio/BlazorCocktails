@@ -13,3 +13,20 @@
 @using API.APIService
 @using System.Linq
 @using BlazorCocktails.Client.Shared
+
+@*
+ Qué hacemos:
+  - Centralizamos los `@using` que queremos tener disponibles en **todas** las páginas
+    y componentes `.razor` del mismo directorio y sus subcarpetas.
+  - Evitamos repetir directivas `@using` en cada componente.
+
+ Qué contiene:
+  - Espacios de nombres para HTTP/JSON, Blazor (Components, Forms, Routing, Virtualization, JSInterop),
+    WebAssembly Http, MudBlazor, y el cliente de API (`API.APIService`), además de utilidades LINQ y Shared.
+
+ Alcance y notas:
+  - Su alcance es **por carpeta**: si ponemos este archivo en `Client/` aplica a los `.razor` dentro.
+  - No renderiza UI; solo declara directivas.
+  - Si necesitamos imports distintos por zona, añadimos otro archivo en la subcarpeta correspondiente.
+  - En muchos proyectos este archivo se llama `_Imports.razor`; podemos usar ese nombre para seguir la convención.
+*@

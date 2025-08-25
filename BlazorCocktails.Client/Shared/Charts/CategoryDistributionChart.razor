@@ -162,3 +162,38 @@
         }
     }
 }
+
+@*
+ Qué hacemos:
+  - Mostramos un gráfico **pie** con la distribución de cócteles por categoría.
+  - Limitamos el número de porciones visibles y agrupamos el resto en “Otros”.
+  - Forzamos que ciertas categorías aparezcan siempre (RequiredCategories).
+
+ Parámetros:
+  - Title?: título opcional (por defecto: L["Chart_Category_Title"]).
+  - MaxSlices: nº máx. de porciones visibles (por defecto 10). Si TopN tiene valor, lo usamos como MaxSlices.
+  - TopN?: alias para limitar porciones (sobrescribe MaxSlices).
+  - RequiredCategories: categorías que incluimos sí o sí antes de completar con el Top restante.
+
+ Flujo de datos:
+  - Obtenemos categorías (Cocktails_GetCategoriesAsync) y sus conteos en paralelo
+    (Cocktails_GetByCategoryAsync por cada nombre).
+  - Ordenamos por recuento y:
+      1) Seleccionamos todas las Required.
+      2) Rellenamos hasta MaxSlices con las más frecuentes restantes.
+      3) Sumamos el resto en “Otros” si queda algo.
+  - Localizamos etiquetas con LocalizeCategory y normalizamos con Norm.
+
+ UI e interacción:
+  - <MudChart ChartType="Pie" Height="300px"> con @bind-SelectedIndex para mostrar debajo
+    “Etiqueta: Recuento (Porcentaje)”. Mostramos hint si no hay selección.
+  - Estados: barra indeterminada mientras carga y mensaje “Chart_Empty” si no hay datos.
+
+ Estado y errores:
+  - Campos: loading, labels[], series[], selectedIndex.
+  - Ante errores de la API, mostramos Snackbar y dejamos el gráfico vacío de forma segura.
+
+ Notas:
+  - Title se resuelve en OnParametersSetAsync; también aplicamos TopN->MaxSlices ahí.
+  - Norm() homogeneiza las cadenas; LocalizeCategory mapea a claves .resx conocidas.
+*@

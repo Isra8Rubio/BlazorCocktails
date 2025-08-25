@@ -17,16 +17,13 @@ namespace Weather.api.Controllers
         private readonly ILogger<CocktailsController> logger;
         private readonly CocktailClientService cocktailClientService;
         private readonly IHttpContextAccessor httpContext;
-        private readonly IMemoryCache cache;
-        private const string CacheKey = "RandomCocktail";
 
         public CocktailsController(ILogger<CocktailsController> logger, CocktailClientService cocktailClientService,
-            IHttpContextAccessor httpContext, IMemoryCache cache)
+            IHttpContextAccessor httpContext)
         {
             this.logger = logger;
             this.cocktailClientService = cocktailClientService;
             this.httpContext = httpContext;
-            this.cache = cache;
         }
 
 
@@ -513,32 +510,5 @@ namespace Weather.api.Controllers
             }
 
         }
-
-
-        // Devuelve el cóctel aleatorio más reciente usando IMemoryCache (dejo acción de ejemplo)
-        //[HttpGet("Random")]
-        //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CocktailDetailDTO))]
-        //[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //public async Task<ActionResult<CocktailDetailDTO>> GetRandomAsync()
-        //{
-        //    const string CacheKey = "RandomCocktail";
-
-        //    // Intentamos leer de cache
-        //    if (cache.TryGetValue<CocktailDetailDTO>(CacheKey, out var random))
-        //        return Ok(random);
-
-        //    // Si no había nada, vamos a la API y cacheamos
-        //    logger.LogInformation("GetRandom: cache vacío, obteniendo al vuelo…");
-        //    random = await cocktailClientService.GetRandomAsync();
-
-        //    if (random == null)
-        //        return NotFound(new { Message = "No se pudo obtener un cóctel aleatorio." });
-
-        //    // Guardamos en cache sin expiración
-        //    cache.Set(CacheKey, random);
-        //    return Ok(random);
-        //}
     }
 }

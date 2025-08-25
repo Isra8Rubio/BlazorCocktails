@@ -43,10 +43,6 @@ builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<UserService>();
 
 
-// MemoryCache
-builder.Services.AddMemoryCache();
-
-
 // CORS
 builder.Services.AddCors(opt =>
 {
@@ -56,6 +52,8 @@ builder.Services.AddCors(opt =>
          .AllowAnyMethod()
     );
 });
+
+
 
 
 // HostedService para refrescar cada X minutos
@@ -150,9 +148,9 @@ builder.Services.AddOpenApiDocument(o =>
 });
 
 
-//builder.Services.AddSingleton<IValidator<CredentialsUserDTO>, CredentialsUserDTOValidator>();
 builder.Services.AddScoped<IValidator<CredentialsUserDTO>, CredentialsUserDTOValidator>();
 builder.Services.AddScoped<IValidator<RegisterUserDTO>, RegisterUserDTOValidator>();
+
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>

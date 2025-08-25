@@ -3,6 +3,7 @@
 @using BlazorCocktails.Client.Shared
 @using MudBlazor
 @using System.Globalization
+@using Microsoft.AspNetCore.Components
 @inject APIClient Api
 @inject ISnackbar Snackbar
 @inject NavigationManager Nav
@@ -17,11 +18,12 @@
             @((detail?.StrDrink) ?? L["CocktailDetail_Title"])
         </MudText>
     </MudItem>
+
     <MudItem xs="12" md="3" Class="d-flex justify-end">
         <MudButton Variant="Variant.Filled"
                    Color="Color.Primary"
                    StartIcon="@Icons.Material.Filled.ArrowBack"
-                   OnClick="@(() => Nav.NavigateTo("/alcohol"))">
+                   Href="@BackUrl">
             @L["CocktailDetail_Back"]
         </MudButton>
     </MudItem>
@@ -69,6 +71,20 @@ else
 
 @code {
     [Parameter] public string? id { get; set; }
+
+    // Lee ?from=alcohol|categories|glasses
+    [SupplyParameterFromQuery(Name = "from")]
+    public string? From { get; set; }
+
+    private string BackUrl =>
+        (From ?? string.Empty).Trim().ToLowerInvariant() switch
+        {
+            "alcohol" => "/alcohol",
+            "categories" => "/categories",
+            "glasses" => "/glasses",
+            _ => "/" // fallback
+        };
+
     private CocktailDetailDTO? detail;
     private bool loading;
 
@@ -105,10 +121,39 @@ else
         _ = Dialog.ShowAsync<IngredientDialog>(title, parameters, options);
     }
 
-
     private static string? GetLocalizedInstructions(CocktailDetailDTO d)
         => CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "es"
            ? (!string.IsNullOrWhiteSpace(d.StrInstructionsES) ? d.StrInstructionsES : d.StrInstructions)
            : d.StrInstructions;
-
 }
+
+@*
+ Qué hacemos:
+  - Mostramos el detalle de un cóctel: título, imagen, categoría/vaso, instrucciones (localizadas)
+    y chips de ingredientes; al pulsarlos abrimos un diálogo con su detalle.
+
+ Flujo:
+  - Recibimos {id} en la ruta. En OnParametersSetAsync() pedimos el cóctel con Api.Cocktails_GetByIdAsync(id),
+    gestionamos "loading" y mostramos errores con Snackbar. Si no hay datos, renderizamos "NotFound".
+  - Leemos ?from=alcohol|categories|glasses (SupplyParameterFromQuery) y calculamos BackUrl
+    para que el botón “Volver” regrese al listado adecuado (o "/" como fallback).
+
+ UI:
+  - Cabecera con título dinámico y botón de vuelta.
+  - Imagen del cóctel (máx. 320px).
+  - Línea “Categoría — Vaso”.
+  - Instrucciones: GetLocalizedInstructions() usa ES si la UI está en español; si no, cae al texto por defecto.
+  - Ingredientes: cada elemento se muestra como MudChip; onClick -> ShowIngredient() abre <IngredientDialog>.
+
+ Utilidades:
+  - Sanitize(): limpia el nombre del ingrediente (corta en "—" o "(" y recorta espacios).
+  - GetLocalizedInstructions(): elige StrInstructionsES cuando CultureInfo.CurrentUICulture es “es”.
+
+ Estado y dependencias:
+  - Campos: detail, loading.
+  - Dependencias: APIClient (Api), ISnackbar, NavigationManager, IDialogService, IStringLocalizer<App>.
+
+ Notas:
+  - Evitamos null refs comprobando detail/Ingredients.
+  - <PageTitle> usa el nombre del cóctel cuando está disponible.
+*@

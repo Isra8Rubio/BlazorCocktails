@@ -65,7 +65,7 @@
             {
                 <MudItem xs="12" sm="6" md="4" lg="3">
                     <MudCard Class="mb-4 hover-elevate" Style="cursor:pointer"
-                             @onclick="@(() => Nav.NavigateTo($"/cocktail/{drink.IdDrink}"))">
+                             @onclick="@(() => Nav.NavigateTo($"/cocktail/{drink.IdDrink}?from=alcohol"))">
                         <MudCardMedia Image="@drink.StrDrinkThumb" Height="160" Alt="@drink.StrDrink" />
                         <MudCardContent>
                             <MudText Typo="Typo.subtitle2">@drink.StrDrink</MudText>
@@ -183,3 +183,39 @@
         return string.IsNullOrEmpty(key) ? "" : L[key];
     }
 }
+
+@*
+ Qué hacemos:
+  - Listamos cócteles filtrables por tipo de alcohol (Alcoholic / Non Alcoholic / Optional Alcohol).
+  - Cargamos los tipos al iniciar y, por defecto, cargamos TODOS los cócteles (agregando y deduplicando por Id).
+
+ UI:
+  - <MudSelect> para elegir tipo (con placeholder, clearable e Immediate=true).
+  - Indicadores de carga: <MudProgressLinear> (tipos) y <MudProgressCircular> (cócteles).
+  - Grilla de tarjetas (<MudGrid>/<MudCard>) con imagen y nombre; al pulsar navegamos a /cocktail/{id}?from=alcohol.
+  - Paginación con <Pager> cuando hay más de pageSize (8) elementos.
+
+ Flujo y estado:
+  - OnInitializedAsync(): pedimos tipos con Api.Cocktails_GetAlcoholTypesAsync(); luego llamamos LoadDrinksAsync(null) para traer todo.
+  - OnSelectedAlcoholTypeChanged(): actualizamos selección, reseteamos página y recargamos.
+  - PagedDrinks: aplicamos Skip/Take según página actual.
+
+ Concurrencia:
+  - Usamos lastRequestId para ignorar respuestas tardías si el usuario cambia rápido de filtro.
+  - isLoading controla el estado visual y forzamos StateHasChanged() donde procede.
+
+ Errores:
+  - Mostramos Snackbar con mensajes localizados si fallan tipos o cócteles y dejamos la lista vacía de forma segura.
+
+ Localización:
+  - IStringLocalizer<App> (L) para títulos, etiquetas, placeholders y errores.
+  - DisplayAlcoholType() mapea valores de la API a claves de recursos (p. ej., "alcoholic" -> "AlcoholType_Alcoholic").
+
+ Dependencias:
+  - APIClient (Api), ISnackbar, NavigationManager, MudBlazor y componente Pager de Shared.
+  - HeadContent añade favicon específico (icons/alcohol.svg).
+
+ Notas:
+  - Cuando cargamos “TODO”, agregamos listas por cada tipo y deduplicamos con Dictionary<string, CocktailItemDTO>; luego ordenamos por nombre.
+  - pageSize = 8 (const). Podemos ajustar/parametrizar o cachear resultados si hiciera falta.
+*@

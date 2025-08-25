@@ -29,7 +29,7 @@
             @foreach (var c in categories)
             {
                 <MudSelectItem Value="@c.StrCategory">
-                    @DisplayCategory(c.StrCategory) @* o @L[c.StrCategory] si prefieres clave=texto API *@
+                    @DisplayCategory(c.StrCategory)
                 </MudSelectItem>
             }
         </MudSelect>
@@ -47,7 +47,6 @@
     }
     else
     {
-        @* PAGER ARRIBA *@
         @if (drinks.Count > pageSize)
         {
             <Pager TotalItems="drinks.Count"
@@ -61,7 +60,7 @@
             {
                 <MudItem xs="12" sm="6" md="4" lg="3">
                     <MudCard Class="mb-4 hover-elevate" Style="cursor:pointer"
-                             @onclick="@(() => Nav.NavigateTo($"/cocktail/{drink.IdDrink}"))">
+                     @onclick="@(() => Nav.NavigateTo($"/cocktail/{drink.IdDrink}?from=categories"))">
                         <MudCardMedia Image="@drink.StrDrinkThumb" Height="160" Alt="@drink.StrDrink" />
                         <MudCardContent>
                             <MudText Typo="Typo.subtitle2">@drink.StrDrink</MudText>
@@ -161,3 +160,31 @@
         return L[key];
     }
 }
+
+@*
+ Qué hacemos:
+  - Listamos cócteles filtrables por **categoría** y mostramos los resultados en tarjetas con paginación.
+
+ UI:
+  - <MudSelect> para elegir categoría (clearable, Immediate, placeholder).
+  - Indicadores de carga: <MudProgressLinear> (categorías) y <MudProgressCircular> (cócteles).
+  - Grid de <MudCard> con imagen/título; al hacer clic navegamos a /cocktail/{id}?from=categories.
+  - <Pager> cuando superamos pageSize (8).
+
+ Flujo:
+  - OnInitializedAsync(): cargamos categorías con Api.Cocktails_GetCategoriesAsync().
+  - OnCategoryChanged(): actualizamos selección, reiniciamos página, limpiamos lista si se deselecciona y pedimos cócteles de la categoría.
+
+ Concurrencia y estado:
+  - Controlamos peticiones con lastRequestId para ignorar respuestas tardías.
+  - Manejamos isLoading y forzamos StateHasChanged() cuando toca.
+  - PagedDrinks aplica Skip/Take según la página actual.
+
+ Localización y errores:
+  - Usamos IStringLocalizer<App> para todos los textos y Snackbar para errores.
+  - DisplayCategory() mapea el valor de la API a claves .resx (ej.: "ordinary drink" -> "Category_OrdinaryDrink").
+
+ Notas:
+  - pageSize = 8 (constante).
+  - Si se deselecciona la categoría, dejamos drinks = null para mostrar el hint.
+*@

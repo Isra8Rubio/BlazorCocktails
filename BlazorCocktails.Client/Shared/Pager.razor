@@ -89,3 +89,36 @@
         await OnChanged.InvokeAsync();
     }
 }
+
+@*
+ Qué hacemos:
+  - Implementamos un **paginador** reutilizable con enlaces numéricos, elipsis y botones Anterior/Siguiente,
+    con textos localizados.
+
+ Parámetros:
+  - TotalItems (int): total de elementos a paginar.
+  - PageSize (int=12): elementos por página.
+  - Radius (int=2): cuántas páginas mostramos alrededor de la actual.
+  - CurrentPage (int=1): página activa (soporta two-way bind con @bind-CurrentPage).
+  - CurrentPageChanged (EventCallback<int>): se dispara al cambiar de página.
+  - OnChanged (EventCallback): callback adicional tras el cambio (útil para recargar datos).
+
+ Lógica:
+  - Calculamos TotalPages = ceil(TotalItems / PageSize) y **acotamos** CurrentPage al rango [1..TotalPages].
+  - BuildLinks() genera:
+      • Primera página si no está en el rango visible.
+      • Elipsis cuando hay huecos.
+      • Ventana [CurrentPage-Radius .. CurrentPage+Radius].
+      • Última página si procede.
+  - GoTo(page) actualiza CurrentPage, reconstruye enlaces y lanza CurrentPageChanged + OnChanged.
+
+ UI:
+  - Botones Anterior/Siguiente (deshabilitados en extremos).
+  - Botones numéricos; la página activa usa `Variant.Filled` y `Color.Primary`.
+  - Elipsis renderizada como MudText (“…”).
+  - Textos “Anterior/Siguiente” localizados con `IStringLocalizer<App>`.
+
+ Notas:
+  - Si PageSize < 1 lo normalizamos a 1 para evitar divisiones por cero.
+  - Ideal para listas con paginación en servidor: en OnChanged podemos invocar el fetch de la página.
+*@

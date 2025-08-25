@@ -101,13 +101,19 @@ code {
     }
 
 /* =========================================================
-   5) Paleta “verano” (variables propias)
+   5) Variables de tema (paleta “verano” + tokens)
    ========================================================= */
 :root {
+    /* Paleta principal */
     --summer-primary: #FF8A65; /* coral */
     --summer-accent: #33D6C2; /* turquesa */
     --summer-hover: rgba(255,138,101,.14);
     --summer-active: rgba(255,138,101,.22);
+    /* Gradientes específicos (auth/appbar) */
+    --appbar-start: #ff9966;
+    --appbar-end: #ff5e62;
+    --auth-start: #ff8a56;
+    --auth-end: #ff4d6d;
 }
 
 /* =========================================================
@@ -144,7 +150,6 @@ a, .btn-link {
 /* =========================================================
    7) Drawer & Nav (MudBlazor)
    ========================================================= */
-/* estructura del drawer y scroll interno */
 .drawer-fix .mud-drawer-content {
     display: flex;
     flex-direction: column;
@@ -156,13 +161,12 @@ a, .btn-link {
     overflow-y: auto;
 }
 
-/* NavMenu pegado arriba */
+/* Links del menú lateral (hover/activo coral) */
 .mud-navmenu {
     justify-content: flex-start !important;
     padding-top: .5rem;
 }
 
-/* Links del menú lateral (hover/activo coral) */
 .mud-drawer .mud-nav-link {
     color: var(--mud-palette-text-primary);
     border-radius: 10px;
@@ -180,7 +184,7 @@ a, .btn-link {
         color: var(--summer-primary);
         font-weight: 600;
     }
-    /* Iconos heredan color en hover/activo */
+
     .mud-drawer .mud-nav-link .mud-icon-root {
         opacity: .9;
     }
@@ -208,7 +212,6 @@ a, .btn-link {
     --mud-palette-drawer-background: #FFF3E0;
     --mud-palette-text-primary: #2B2B2B;
 }
-
 /* Oscuro */
 .summer-dark {
     --mud-palette-primary: #FF8A65;
@@ -226,39 +229,61 @@ a, .btn-link {
 }
 
 /* =========================================================
-   THEME TOKENS
+   9) App Bar
    ========================================================= */
-:root {
-    --appbar-start: #ff9966;
-    --appbar-end: #ff5e62;
-    --auth-start: #ff8a56;
-    --auth-end: #ff4d6d;
+.appbar-2rows {
+    overflow: visible;
+}
+
+    .appbar-2rows .mud-toolbar {
+        min-height: 70px; /* 2 filas cómodas */
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+
+.appbar-actions-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .35rem;
+}
+
+.appbar-row {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+}
+
+.appbar-btn {
+    border-color: rgba(255,255,255,.75) !important;
 }
 
 /* =========================================================
-   AUTH PAGES (Login / Register)
+   10) Auth pages (Login / Register)
    ========================================================= */
-
-/* Wrapper ligero (MudPaper) para centrar y limitar ancho */
 .auth-page--paper {
     background: transparent;
     box-shadow: none;
     min-height: auto;
     padding: 0;
     display: block;
-    max-width: 560px; /* +aire; puedes bajar a 520 si prefieres */
+    max-width: 560px;
     margin: 24px auto 40px;
 }
 
-/* Card del formulario (esquinas + sombra) */
 .auth-card {
     width: 100%;
-    border-radius: 1rem;
+    border-radius: .50rem;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    box-shadow: 0 30px 30px rgba(0,0,0,.25);
 }
 
-/* Fondo semitransparente (glass) según modo */
 .summer-dark .auth-card {
     background: rgba(255,255,255,0.05);
     backdrop-filter: blur(6px) saturate(120%);
@@ -273,7 +298,6 @@ a, .btn-link {
     border: 1px solid rgba(0,0,0,0.06);
 }
 
-/* Cabecera con degradado cálido (distinta al AppBar) */
 .bg-gradient-auth {
     padding: 1.25rem 1.5rem;
     color: #fff;
@@ -281,12 +305,10 @@ a, .btn-link {
     border-bottom: 1px solid rgba(255,255,255,.28);
 }
 
-/* Utilidad para subtítulos tenues */
 .opacity-80 {
     opacity: .8;
 }
 
-/* Botón principal: misma gama que la cabecera */
 .mud-button-root.mud-button-filled.auth-btn {
     background: linear-gradient(135deg, var(--auth-start), var(--auth-end)) !important;
     color: #fff !important;
@@ -297,62 +319,60 @@ a, .btn-link {
         filter: brightness(1.06);
     }
 
-/* Botón secundario (outline) en la misma gama */
 .mud-button-root.mud-button-outlined.auth-btn-outline {
     border-color: var(--auth-end) !important;
     color: var(--auth-end) !important;
 }
-    /* fallback sin color-mix; si quieres, ajusta opacidad */
+
     .mud-button-root.mud-button-outlined.auth-btn-outline:hover {
         background-color: rgba(255, 77, 109, .12);
     }
 
+
 /* =========================================================
-   APP BAR
+   11) MudBlazor overrides
    ========================================================= */
 
-/* Altura suficiente para 2 filas dentro del AppBar */
-.appbar-2rows {
-    overflow: visible;
+/* Botón primary (filled) coral */
+.mud-button-filled-primary {
+    background-color: #FF8A65 !important;
+    color: #fff !important;
 }
-    /* por si el tema recorta */
-    .appbar-2rows .mud-toolbar {
-        min-height: 70px; /* <-- ya dijiste que así queda perfect */
-        padding-top: 4px;
-        padding-bottom: 4px;
+
+    .mud-button-filled-primary:hover,
+    .mud-button-filled-primary:focus {
+        background-color: #E5674E !important;
     }
 
-/* Contenedor y filas */
-.appbar-actions-col {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: .35rem;
+    .mud-button-filled-primary:active {
+        background-color: #CC543C !important;
+    }
+
+/* Ripple primary */
+.mud-ripple-surface.mud-ripple-surface-primary .mud-ripple-element {
+    background-color: rgba(229,103,78,.35) !important;
 }
 
-.appbar-row {
-    display: flex;
-    align-items: center;
-    gap: .5rem;
+/* Chips outlined primary -> coral en hover y texto blanco */
+.mud-chip.mud-chip-outlined.mud-chip-color-primary:hover,
+.mud-chip.mud-chip-outlined.mud-chip-color-primary:focus-visible {
+    background-color: #FF8A65 !important;
+    border-color: #FF8A65 !important;
 }
 
-/* Conmutador de idioma compacto */
-.lang-switcher {
-    display: flex;
-    align-items: center;
-    gap: .25rem;
+    .mud-chip.mud-chip-outlined.mud-chip-color-primary:hover .mud-chip-content,
+    .mud-chip.mud-chip-outlined.mud-chip-color-primary:hover .mud-chip-label,
+    .mud-chip.mud-chip-outlined.mud-chip-color-primary:hover .mud-chip-icon,
+    .mud-chip.mud-chip-outlined.mud-chip-color-primary:hover svg {
+        color: #fff !important;
+        fill: #fff !important;
+    }
+
+.mud-chip.mud-chip-outlined.mud-chip-color-primary:active {
+    background-color: #E5674E !important;
+    border-color: #E5674E !important;
 }
-
-/* Borde claro para outline sobre AppBar */
-.appbar-btn {
-    border-color: rgba(255,255,255,.75) !important;
+/* Ripple de chips a juego */
+.mud-chip.mud-chip-color-primary .mud-ripple-surface .mud-ripple-element {
+    background-color: rgba(229,103,78,.35) !important;
 }
-
-
-
-
-
-
-
-
-

@@ -1,45 +1,141 @@
 ﻿@page "/register"
-@using MudBlazor
-@using Microsoft.Extensions.Localization
-@inject IStringLocalizer<App> L
+@using API.APIService
+@inject APIClient Api
+@inject ISnackbar Snackbar
+@inject NavigationManager Nav
+@inject Microsoft.Extensions.Localization.IStringLocalizer<App> L
 
 <PageTitle>@L["Register_Title"]</PageTitle>
 
-<MudPaper Class="auth-page auth-page--paper" Elevation="0" Square="true">
-    <MudCard Class="auth-card">
-        <MudCardHeader Class="bg-gradient-auth">
+<MudPaper Class="auth-page--paper" Elevation="0" Square="true">
+    <div class="auth-card">
+        <div class="bg-gradient-auth">
             <MudText Typo="Typo.h5">@L["Register_Title"]</MudText>
-        </MudCardHeader>
+        </div>
 
-        <MudCardContent Class="p-6">
-            <MudTextField T="string"
-                          Label="@L["Register_EmailLabel"]"
-                          Placeholder="@L["Register_EmailPlaceholder"]"
-                          InputType="InputType.Email"
-                          Adornment="Adornment.Start"
-                          AdornmentIcon="@Icons.Material.Filled.Email"
-                          Immediate="true" />
+        <div class="pa-6">
+            <MudForm @ref="_form">
+                <MudTextField Variant="Variant.Filled"
+                              Label="@L["Register_EmailLabel"]"
+                              Placeholder="@L["Register_EmailPlaceholder"]"
+                              @bind-Value="_model.Email"
+                              For="@(() => _model.Email)"
+                              Required="true"
+                              Validation="@(new Func<string?, string?>(EmailValidator))"
+                              Immediate="true"
+                              Disabled="@_busy"
+                              Adornment="Adornment.Start"
+                              AdornmentIcon="@Icons.Material.Filled.Email" />
 
-            <MudTextField T="string"
-                          Class="mt-4"
-                          Label="@L["Register_PasswordLabel"]"
-                          Placeholder="••••••••"
-                          InputType="InputType.Password"
-                          Adornment="Adornment.Start"
-                          AdornmentIcon="@Icons.Material.Filled.Lock" />
+                <MudTextField Class="mt-4" Variant="Variant.Filled"
+                              Label="@L["Register_PasswordLabel"]"
+                              @bind-Value="_model.Password"
+                              For="@(() => _model.Password)"
+                              InputType="@(_show1? InputType.Text: InputType.Password)"
+                              Required="true"
+                              Validation="@(new Func<string?, string?>(PasswordValidator))"
+                              Immediate="true"
+                              Disabled="@_busy"
+                              Adornment="Adornment.End"
+                              AdornmentIcon="@(_show1? Icons.Material.Filled.VisibilityOff : Icons.Material.Filled.Visibility)"
+                              OnAdornmentClick="@(() => _show1 = !_show1)" />
 
-            <MudTextField T="string"
-                          Class="mt-3"
-                          Label="@L["Register_ConfirmLabel"]"
-                          Placeholder="••••••••"
-                          InputType="InputType.Password"
-                          Adornment="Adornment.Start"
-                          AdornmentIcon="@Icons.Material.Filled.Lock" />
+                <MudTextField Class="mt-4" Variant="Variant.Filled"
+                              Label="@L["Register_ConfirmLabel"]"
+                              @bind-Value="_confirm"
+                              InputType="@(_show2? InputType.Text: InputType.Password)"
+                              Required="true"
+                              Validation="@(new Func<string?, string?>(ConfirmValidator))"
+                              Immediate="true"
+                              Disabled="@_busy"
+                              Adornment="Adornment.End"
+                              AdornmentIcon="@(_show2? Icons.Material.Filled.VisibilityOff : Icons.Material.Filled.Visibility)"
+                              OnAdornmentClick="@(() => _show2 = !_show2)" />
 
-            <MudStack Row="true" Spacing="2" Class="mt-4">
-                <MudButton Class="auth-btn" Variant="Variant.Filled">@L["Register_Submit"]</MudButton>
-                <MudButton Class="auth-btn-outline" Variant="Variant.Outlined" Href="/login">@L["Register_GoLogin"]</MudButton>
-            </MudStack>
-        </MudCardContent>
-    </MudCard>
+                <MudStack Row="true" Spacing="2" Class="mt-6">
+                    <MudButton Variant="Variant.Filled"
+                               Class="auth-btn"
+                               OnClick="RegisterAsync"
+                               Disabled="@_busy">
+                        @(_busy? L["Register_Working"] : L["Register_Submit"])
+                    </MudButton>
+
+                    <MudButton Variant="Variant.Outlined"
+                               Class="auth-btn-outline"
+                               OnClick="@(() => Nav.NavigateTo("/login"))"
+                               Disabled="@_busy">
+                        @L["Register_GoLogin"]
+                    </MudButton>
+                </MudStack>
+            </MudForm>
+        </div>
+    </div>
 </MudPaper>
+
+
+@code {
+    private MudForm? _form;
+    private bool _busy, _show1, _show2;
+    private string _confirm = string.Empty;
+    private RegisterUserDTO _model = new();
+
+    private string? EmailValidator(string? v)
+    {
+        if (string.IsNullOrWhiteSpace(v)) return L["Register_EmailRequired"];
+        try { _ = new System.Net.Mail.MailAddress(v); return null; }
+        catch { return L["Register_EmailInvalid"]; }
+    }
+
+    private string? PasswordValidator(string? v)
+    {
+        if (string.IsNullOrWhiteSpace(v)) return L["Register_PasswordRequired"];
+        if (v.Length < 6) return L["Register_PasswordMin"];
+        return null;
+    }
+
+    private string? ConfirmValidator(string? v)
+    {
+        if (string.IsNullOrWhiteSpace(v)) return L["Register_ConfirmRequired"];
+        if (v != _model.Password) return L["Register_PasswordsDontMatch"];
+        return null;
+    }
+
+    private async Task RegisterAsync()
+    {
+        await _form!.Validate();
+        if (!_form.IsValid) return;
+
+        _model.ConfirmPassword = _confirm;
+        _busy = true;
+        try
+        {
+            await Api.Users_RegisterAsync(_model);
+            Snackbar.Add(L["Register_Success"], Severity.Success);
+            Nav.NavigateTo("/login");
+        }
+        catch (ApiException ex)
+        {
+            var msg = TryExtractServerError(ex) ?? ex.Message;
+            Snackbar.Add(msg, Severity.Error);
+        }
+        finally { _busy = false; }
+    }
+
+    private static string? TryExtractServerError(ApiException ex)
+    {
+        if (!string.IsNullOrWhiteSpace(ex.Response))
+        {
+            try
+            {
+                using var doc = System.Text.Json.JsonDocument.Parse(ex.Response);
+                if (doc.RootElement.TryGetProperty("title", out var title)) return title.GetString();
+                if (doc.RootElement.TryGetProperty("errors", out var errors))
+                    foreach (var p in errors.EnumerateObject())
+                        if (p.Value.ValueKind == System.Text.Json.JsonValueKind.Array && p.Value.GetArrayLength() > 0)
+                            return p.Value[0].GetString();
+            }
+            catch { }
+        }
+        return null;
+    }
+}

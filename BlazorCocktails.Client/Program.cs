@@ -32,3 +32,24 @@ CultureInfo.DefaultThreadCurrentCulture = culture;
 CultureInfo.DefaultThreadCurrentUICulture = culture;
 
 await host.RunAsync();
+
+/*
+ Qué hacemos:
+  - Arrancamos Blazor WebAssembly, montando <App> en "#app" y <HeadOutlet> en "head::after".
+  - Registramos MudBlazor (servicios UI), HttpClient con BaseAddress hacia nuestro backend
+    (https://localhost:7131) y el APIClient generado (NSwag) que reutiliza ese HttpClient.
+  - Habilitamos localización con recursos .resx en la carpeta "Resources".
+  - Leemos la cultura guardada vía JS (`blazorCulture.get`) y establecemos la cultura por defecto;
+    si no hay valor, usamos "es-ES". Esto aplica formatos y textos localizados desde el arranque.
+
+ Detalles:
+  - CultureInfo.DefaultThreadCurrentCulture / DefaultThreadCurrentUICulture afectan a toda la app.
+  - Para que `blazorCulture.get` funcione, incluimos `wwwroot/js/culture.js` en la página host.
+  - En despliegue, conviene ajustar `BaseAddress` del HttpClient a la URL real del backend.
+
+ Flujo:
+  1) Construimos el host y registramos servicios.
+  2) Obtenemos `stored` desde JS interop (localStorage).
+  3) Fijamos la CultureInfo adecuada.
+  4) Ejecutamos la app con `host.RunAsync()`.
+*/

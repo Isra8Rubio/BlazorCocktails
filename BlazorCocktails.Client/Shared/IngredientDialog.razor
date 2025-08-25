@@ -60,3 +60,28 @@ else
         }
     }
 }
+
+@*
+ Qué hacemos:
+  - Mostramos la ficha de un **ingrediente** (tipo y descripción) dentro de un diálogo.
+  - Mientras carga enseñamos un progress; si no hay datos, mostramos un mensaje “NotFound”.
+
+ Flujo:
+  - Recibimos [Parameter] Name.
+  - En OnInitializedAsync pedimos el detalle con Api.Cocktails_GetIngredientByNameAsync(Name).
+  - Controlamos el estado con `loading` y gestionamos errores mostrando Snackbar.
+
+ UI:
+  - <MudProgressLinear> durante la carga.
+  - Si hay datos:
+     • “Tipo”: etiqueta + valor.
+     • “Descripción”: texto en <MudPaper> con scroll (altura máx. 260px).
+  - El título del diálogo lo pone el invocador (p. ej., Dialog.ShowAsync<IngredientDialog>(title,...)).
+
+ Localización y dependencias:
+  - Textos con IStringLocalizer<App> (L).
+  - Dependencias: APIClient (Api) e ISnackbar.
+
+ Notas:
+  - Se espera que el nombre venga saneado por el llamador (p. ej., desde CocktailDetail).
+*@

@@ -132,3 +132,30 @@
         await Task.CompletedTask;
     }
 }
+
+@*
+ Qué hacemos:
+  - Mostramos un cóctel aleatorio con opción de refrescar manualmente y **auto-actualización cada 12s**.
+  - Al hacer clic en la tarjeta, navegamos al detalle del cóctel.
+
+ Flujo:
+  - OnInitializedAsync(): cargamos el registro actual (Cocktails_GetRandomRowAsync) y
+    arrancamos un bucle con PeriodicTimer(12s) + CancellationToken.
+  - En cada tick comparamos el nuevo DrinkId con el actual; si cambia, actualizamos el estado.
+  - El botón "Refrescar" llama Cocktails_RefreshRandomNowAsync y vuelve a pintar.
+
+ UI:
+  - <MudPaper> con header (título + botón refresh con loading/disabled).
+  - Skeleton mientras cargamos; si no hay datos, mostramos "Random_NoData".
+  - Tarjeta clicable (MudLink) con imagen 16:9 y nombre del cóctel.
+
+ Estado/errores:
+  - Campos: row, loading, refreshing, _timer, _cts.
+  - Mostramos errores/avisos vía Snackbar (carga inicial, auto-refresh y manual).
+
+ Limpieza:
+  - Implementamos IAsyncDisposable: cancelamos el token y liberamos el timer en DisposeAsync().
+
+ Localización:
+  - Usamos IStringLocalizer<App> (L) para títulos, textos y mensajes.
+*@
