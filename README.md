@@ -1,124 +1,171 @@
-# WeatherAPI
+# BlazorCocktails 🍸
 
-Una API de .NET 8 que consume el servicio externo de El Tiempo (`https://www.el-tiempo.net/api/json/v2`) y almacena datos de clima en una base de datos SQL Server.
+Aplicación **full-stack** en **.NET 8** para explorar y gestionar cócteles.  
+Incluye **API REST** (JWT + FluentValidation + EF Core) y **cliente Blazor WebAssembly** con MudBlazor, localización ES/EN, tema oscuro y métricas visuales.
 
-## 🎯 Características principales
+---
 
-* **Consulta de datos externos**: Provincias, detalles de provincia, municipios y detalle de municipio.
-* **Endpoint `/home`**: Obtiene una lista de ciudades con estado del cielo y temperaturas.
-* **Persistencia automática**: Hosted Service que actualiza datos desde `/home` al arranque y de forma periódica (configurable).
-* **Almacenamiento en SQL Server**: Uso de EF Core con upsert (AddOrUpdate) para mantener un único registro actualizado.
-* **Autenticación y autorización**: Usuarios con JWT, registro, login, roles de administrador y cambio de contraseña.
-* **Logging centralizado**: NLog para trazas en consola y archivo (`logs/Api.log`).
+## ✨ Características
 
-## 📂 Estructura del proyecto
+- **Autenticación JWT**
+  - Registro, login y logout.
+  - Persistencia del token (local/session storage).
+  - Hook en el cliente NSwag para enviar `Authorization: Bearer …`.
+  - Páginas protegidas y chip **Admin** en la AppBar para el rol.
 
-```text
-WeatherAPI/
-├─ Weather.api/             # Proyecto Web API (controladores, Program.cs)
-├─ Infraestructura/          # Data, Repositories, Services, HostedService, Configuración
-├─ Core/                     # DTOs, Entidades, Validadores
-└─ README.md                 # Documentación de alto nivel
-```
+- **UI moderna (MudBlazor)**
+  - Tema **oscuro forzado**, gradientes suaves y diseño responsive.
+  - Páginas de **Login** y **Registro** pulidas (toggle de contraseña, validaciones UX).
+  - **Home** con “hero”.
 
-## 🚀 Requisitos previos
+- **Localización**
+  - Interfaz en **español** e **inglés** mediante `.resx`.
+  - Conmutador de idioma en la AppBar.
 
-* [.NET 8 SDK](https://dotnet.microsoft.com/download)
-* SQL Server (local o remoto)
-* (Opcional) Docker y Docker Compose
+- **Dominio / navegación**
+  - Listados por **Alcohol**, **Categorías** y **Vasos**.
+  - **Detalle** de cóctel.
+  - Menú lateral visible solo con sesión iniciada.
 
-## 🔧 Configuración
+- **Calidad y DX**
+  - **FluentValidation** en la API.
+  - **NSwag** para cliente tipado (`ApiClient`).
+  - Snackbars y mensajes legibles para errores de API.
 
-1. Clona el repositorio:
+---
 
-   ```bash
-   ```
+## 🧱 Estructura
 
-git clone [https://github.com/Isra8Rubio/WeatherAPI.git](https://github.com/Isra8Rubio/WeatherAPI.git)
-cd WeatherAPI
+~~~text
+BlazorCocktails/
+├─ ApiClient/                 # Cliente NSwag (parciales con hook del token)
+├─ BlazorCocktails.Client/    # Blazor WebAssembly (UI, páginas, servicios)
+├─ Cocktail.api/              # API REST (.NET 8, JWT, FluentValidation)
+├─ Core/                      # Entidades, DTOs, contratos
+├─ Infraestructura/           # EF Core, repositorios, migraciones
+└─ README.md
+~~~
 
-````
+---
 
-2. Copia y edita `appsettings.json`:
-   ```json
-   {
-     "ConnectionStrings": {
-       "DefaultConnection": "Server=.;Database=WeatherDb;Trusted_Connection=True;"
-     },
-     "Jwt": {
-       "Key": "TU_CLAVE_SECRETA",
-       "Issuer": "WeatherAPI",
-       "Audience": "WeatherAPIUsers",
-       "ExpiresInMinutes": 60
-     }
-   }
-````
+## 🚀 Requisitos
 
-3. Asegúrate de que `nlog.config` tenga:
+- **.NET 8 SDK**
+- **SQL Server** (LocalDB o instancia)
+- (Opcional) **EF Core Tools**
 
-   ```xml
-   <rules>
-     <logger name="Microsoft.*" minlevel="Info" writeTo="console" />
-     <logger name="Infraestructura.Services.*" minlevel="Info" writeTo="file,console" />
-     <logger name="*" minlevel="Info" writeTo="file" />
-   </rules>
-   ```
+~~~bash
+dotnet tool install --global dotnet-ef
+~~~
 
-4. Crea la base de datos y aplica migraciones:
+---
 
-   ```bash
-   ```
+## 🔧 Configuración rápida
 
-dotnet ef database update --project Infraestructura --startup-project Weather.api
+### 1) Clonar
 
-````
+~~~bash
+git clone https://github.com/Isra8Rubio/BlazorCocktails.git
+cd BlazorCocktails
+~~~
 
-## ▶️ Ejecutar la aplicación
+### 2) API – `Cocktail.api/appsettings.json`
 
-Desde la raíz del repo:
-```bash
-dotnet run --project Weather.api
-````
+Ajusta conexión y JWT:
 
-* Swagger UI disponible en `https://localhost:7131`.
-* El Hosted Service se inicia automáticamente y actualiza datos cada 2 minutos.
+~~~json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=.;Database=CocktailsDb;Trusted_Connection=True;MultipleActiveResultSets=true"
+  },
+  "Jwt": {
+    "Key": "TU_CLAVE_SECRETA_LARGA_Y_SEGURA",
+    "Issuer": "CocktailApi",
+    "Audience": "CocktailClient",
+    "ExpiresInMinutes": 60
+  }
+}
+~~~
 
-## ⚙️ Endpoints importantes
+### 3) Migraciones / Base de datos
 
-* **Provincias**: `GET /api/RemoteWeather/provincias`
+~~~bash
+dotnet ef database update --project Infraestructura --startup-project Cocktail.api
+~~~
 
-* **Detalle provincia**: `GET /api/RemoteWeather/provincias/{cod}`
+### 4) Ejecutar API
 
-* **Municipios**: `GET /api/RemoteWeather/provincias/{cod}/municipios`
+~~~bash
+dotnet run --project Cocktail.api
+~~~
 
-* **Detalle municipio**: `GET /api/RemoteWeather/provincias/{codProv}/municipios/{codMun}`
+> Swagger estará disponible al iniciar la API (URL de desarrollo).
 
-* **Home**: `GET /api/RemoteWeather/home`
+### 5) Ejecutar Cliente (Blazor WASM)
 
-* **Usuarios**:
+~~~bash
+dotnet run --project BlazorCocktails.Client
+~~~
 
-  * `POST /api/Users/register`
-  * `POST /api/Users/login`
-  * `GET /api/Users` (admin)
-  * `PUT /api/Users/password`
+> Abre la URL que muestre la consola (por ejemplo, `https://localhost:****`).
 
-* **WeatherComplete** (CRUD interno): `GET/POST/PUT/DELETE /api/WeatherComplete`
+---
 
-## 🔄 Hosted Service
+## 🔐 Autenticación y token
 
-La clase `WeatherUpdateHostedService` implementa `IHostedService` y:
+- El **login** devuelve un JWT que el cliente guarda en:
+  - `localStorage` si marcas **Recordarme**,
+  - `sessionStorage` si no lo marcas.
+- `ApiClient` (NSwag) incluye un **partial** que añade `Authorization` en cada request.
+- `App.razor` **restaura** el token antes de renderizar el Router (evita `401` al recargar/cambiar idioma).
+- `MainLayout` **reacciona** a cambios del token (Drawer, botones Login/Logout, chip Admin).
 
-1. Llama a `/home` al arrancar y cada intervalo (2 min).
-2. Selecciona una ciudad al azar de la lista.
-3. Persiste o actualiza la entidad `WeatherComplete` en BD.
+---
 
-Puedes ajustar el intervalo modificando `_interval` en minutos.
+## 🌍 Localización
 
-## 🧪 Pruebas y desarrollo
+- Archivos `.resx` en el cliente (**es-ES** / **en-US**).
+- Claves agrupadas: `Login_*`, `Register_*`, `Home_*` para localizarlas rápido.
+- Selector de idioma en la AppBar.
 
-* Agrega **unit tests** para los servicios y repositorios.
-* Simula respuestas de la API externa con **moq** o **HttpMessageHandler**.
+---
+
+## 📊 Gráficos & Widgets
+
+- `AlcoholTypesChart` y `CategoryDistributionChart` (MudBlazor Charts).
+- `RandomCocktailWidget` para propuesta instantánea.
+
+---
+
+## 🧪 Desarrollo
+
+- **Regenerar cliente NSwag** si cambias la API.  
+  (El partial `APIClient.Partials.cs` mantiene el hook del token).
+- **Validaciones**: reglas con FluentValidation en la API + validaciones UX ligeras en formularios.
+- **Tema**: modo **oscuro** fijo (conmutador deshabilitado por diseño).
+
+---
+
+## ⚠️ Problemas comunes
+
+**Migraciones**  
+Verifica la cadena de conexión y ejecuta:
+
+~~~bash
+dotnet ef database update --project Infraestructura --startup-project Cocktail.api
+~~~
+
+---
+
+## 🗺️ Roadmap
+
+- Recuperación de contraseña.
+- Buscador avanzado.
+- Más métricas (vasos más usados, top categorías por periodo).
+- *Seed* de datos y creación de admin desde consola.
+
+---
 
 ## 📄 Licencia
 
-Este proyecto está bajo la licencia MIT.
+Distribuido bajo **licencia MIT**.
