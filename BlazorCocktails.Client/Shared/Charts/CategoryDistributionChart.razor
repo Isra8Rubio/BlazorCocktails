@@ -8,7 +8,9 @@
 
 <MudPaper Class="pa-4">
     <MudStack Spacing="2">
-        <MudText Typo="Typo.h6">@L["Chart_Category_Title"]</MudText>
+        <MudText Typo="Typo.h6" Align="Align.Center">
+            @L["Chart_Category_Title"]
+        </MudText>
 
         @if (loading)
         {
@@ -43,6 +45,7 @@
         }
     </MudStack>
 </MudPaper>
+
 
 @code {
     [Parameter] public string? Title { get; set; }

@@ -13,19 +13,10 @@
 <PageTitle>@((detail?.StrDrink) ?? L["CocktailDetail_Title"])</PageTitle>
 
 <MudGrid AlignItems="Center" Class="mb-2">
-    <MudItem xs="12" md="9">
+    <MudItem xs="12">
         <MudText Typo="Typo.h4" Truncate="true" Class="m-0">
             @((detail?.StrDrink) ?? L["CocktailDetail_Title"])
         </MudText>
-    </MudItem>
-
-    <MudItem xs="12" md="3" Class="d-flex justify-end">
-        <MudButton Variant="Variant.Filled"
-                   Color="Color.Primary"
-                   StartIcon="@Icons.Material.Filled.ArrowBack"
-                   Href="@BackUrl">
-            @L["CocktailDetail_Back"]
-        </MudButton>
     </MudItem>
 </MudGrid>
 
@@ -39,35 +30,53 @@ else if (detail is null)
 }
 else
 {
-    <MudStack Spacing="2" Class="mt-2">
-        <img src="@detail.StrDrinkThumb" alt="@detail.StrDrink" style="max-width:320px" />
+    <MudGrid Class="mt-2" AlignItems="Start" Spacing="3">
+        <MudItem xs="12" md="4" lg="3">
+            <img src="@detail.StrDrinkThumb"
+                 alt="@detail.StrDrink"
+                 style="max-width:100%; width:100%; max-height:420px; object-fit:cover; border-radius:12px; box-shadow:0 10px 24px rgba(0,0,0,.22);" />
+        </MudItem>
 
-        <MudText Typo="Typo.subtitle1">
-            @L["CocktailDetail_CategoryGlass_Format", detail.StrCategory, detail.StrGlass]
-        </MudText>
+        <MudItem xs="12" md="8" lg="9">
+            <MudStack Spacing="2">
+                <MudStack Row="true" Justify="Justify.FlexEnd" AlignItems="AlignItems.Center" Spacing="1">
+                    <MudButton Variant="Variant.Filled"
+                               Color="Color.Primary"
+                               StartIcon="@Icons.Material.Filled.ArrowBack"
+                               Href="@BackUrl">
+                        @L["CocktailDetail_Back"]
+                    </MudButton>
+                </MudStack>
 
-        <MudText>
-            @GetLocalizedInstructions(detail)
-        </MudText>
+                <MudText Typo="Typo.subtitle1">
+                    @L["CocktailDetail_CategoryGlass_Format", detail.StrCategory, detail.StrGlass]
+                </MudText>
 
-        @if (detail?.Ingredients is not null && detail.Ingredients.Any())
-        {
-            <MudStack Spacing="1" Class="mt-3">
-                @foreach (var ing in detail.Ingredients)
+                <MudText>
+                    @GetLocalizedInstructions(detail)
+                </MudText>
+
+                @if (detail?.Ingredients is not null && detail.Ingredients.Any())
                 {
-                    <MudChip T="string"
-                             OnClick="@(() => ShowIngredient(Sanitize(ing.Name)))"
-                             Color="Color.Primary"
-                             Variant="Variant.Outlined"
-                             Disabled="@string.IsNullOrWhiteSpace(ing.Name)"
-                             Class="mr-1 mb-1">
-                        @(!string.IsNullOrWhiteSpace(ing.Measure) ? $"{ing.Name} — {ing.Measure}" : ing.Name)
-                    </MudChip>
+                    <MudStack Row="true" Wrap="Wrap.Wrap" Spacing="1" Class="mt-1">
+                        @foreach (var ing in detail.Ingredients)
+                        {
+                            <MudChip T="string"
+                                     OnClick="@(() => ShowIngredient(Sanitize(ing.Name)))"
+                                     Color="Color.Primary"
+                                     Variant="Variant.Outlined"
+                                     Disabled="@string.IsNullOrWhiteSpace(ing.Name)"
+                                     Class="mr-1 mb-1">
+                                @(!string.IsNullOrWhiteSpace(ing.Measure) ? $"{ing.Name} — {ing.Measure}" : ing.Name)
+                            </MudChip>
+                        }
+                    </MudStack>
                 }
             </MudStack>
-        }
-    </MudStack>
+        </MudItem>
+    </MudGrid>
 }
+
 
 @code {
     [Parameter] public string? id { get; set; }

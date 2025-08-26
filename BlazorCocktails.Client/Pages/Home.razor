@@ -24,12 +24,17 @@
 
 <!-- RANDOM: texto sin Paper a la izquierda + widget a la derecha -->
 <MudGrid Spacing="3" Class="home-section random-split" AlignItems="Center">
-    <MudItem xs="12" md="6">
-        <div class="random-text-block">
-            <MudText Typo="Typo.h5" Class="mb-2">@L["Home_RandomHeading"]</MudText>
-            <MudText Class="opacity-80 mb-4">@L["Home_RandomCopy"]</MudText>
+    <MudItem xs="12" md="6" Class="random-left vcenter">
+        <div class="random-text-block random-emph">
+            <MudText Typo="Typo.h4" Align="Align.Center" Class="random-lead">
+                @L["Home_RandomHeading"]
+            </MudText>
+            <MudText Typo="Typo.subtitle1" Align="Align.Center" Class="random-sublead">
+                @L["Home_RandomCopy"]
+            </MudText>
         </div>
     </MudItem>
+
 
     <MudItem xs="12" md="6" Class="center-col">
         <RandomCocktailWidget Compact="true" />

@@ -5,9 +5,13 @@
 @inject IStringLocalizer<App> L
 @inject ISnackbar Snackbar
 
-<MudPaper Class="pa-4">
-    <MudStack Spacing="2">
-        <MudText Typo="Typo.h6">@L["Chart_Home_AlcoholTypes_Title"]</MudText>
+<MudPaper Class="pa-4 h-100">
+    <!-- Stack en columna ocupando el 100% de alto -->
+    <MudStack Spacing="2" Class="h-100">
+        <!-- Título centrado -->
+        <MudText Typo="Typo.h6" Align="Align.Center">
+            @L["Chart_Home_AlcoholTypes_Title"]
+        </MudText>
 
         @if (loading)
         {
@@ -19,13 +23,18 @@
         }
         else
         {
-            <MudChart ChartType="ChartType.Donut"
-                      InputLabels="labels"
-                      InputData="series"
-                      @bind-SelectedIndex="selectedIndex"
-                      Width="100%"
-                      Height="300px" />
-            <MudText Class="mt-2" Typo="Typo.subtitle2">
+            <!-- Contenedor flexible: el chart "estira" -->
+            <div class="chart-flex">
+                <MudChart ChartType="ChartType.Donut"
+                          InputLabels="labels"
+                          InputData="series"
+                          @bind-SelectedIndex="selectedIndex"
+                          Width="100%"
+                          Height="100%" />
+            </div>
+
+            <!-- Hint centrado -->
+            <MudText Typo="Typo.subtitle2" Class="chart-hint">
                 @if (selectedIndex >= 0 && labels is not null && series is not null)
                 {
                     var count = series[selectedIndex];
@@ -38,11 +47,9 @@
                     @L["Chart_ClickToSelect"]
                 }
             </MudText>
-
         }
     </MudStack>
 </MudPaper>
-
 
 @code {
     private bool loading = true;
@@ -119,6 +126,7 @@
         return L[key].Value;
     }
 }
+
 
 @*
  Qué hacemos:

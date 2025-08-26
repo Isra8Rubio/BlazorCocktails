@@ -5,6 +5,7 @@ using FluentValidation;
 using Infraestructura.Data;
 using Infraestructura.Repositories;
 using Infraestructura.Services;
+using Infraestructura.Workers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

@@ -104,7 +104,7 @@ code {
    5) Variables de tema (paleta “verano” + tokens)
    ========================================================= */
 :root {
-    --summer-primary: #FF8A65;
+    --summer-primary: #FF6B88;
     --summer-accent: #33D6C2;
     --summer-hover: rgba(255,138,101,.14);
     --summer-active: rgba(255,138,101,.22);
@@ -222,38 +222,53 @@ a, .btn-link {
 /* =========================================================
    9) App Bar
    ========================================================= */
+/* ===== AppBar coral con degradado invertido (oscuro → claro) ===== */
 .appbar-2rows {
-    overflow: visible;
+    position: relative;
+    background: linear-gradient(90deg, var(--appbar-end) 0%, var(--appbar-start) 100%) !important;
+    color: #fff !important;
+    box-shadow: 0 2px 14px rgba(0,0,0,.25);
 }
 
-    .appbar-2rows .mud-toolbar {
-        min-height: 70px;
-        padding-top: 4px;
-        padding-bottom: 4px;
+    /* línea base sutil */
+    .appbar-2rows::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: rgba(0,0,0,.12);
     }
 
-.appbar-actions-col {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: .35rem;
-}
+    /* el toolbar transparente para que se vea el gradiente */
+    .appbar-2rows .mud-toolbar {
+        background: transparent !important;
+    }
 
-.appbar-row {
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-}
+    /* texto e iconos en blanco */
+    .appbar-2rows .mud-typography,
+    .appbar-2rows .mud-icon-button,
+    .appbar-2rows .mud-link,
+    .appbar-2rows .mud-breadcrumbs {
+        color: #fff !important;
+    }
 
-.lang-switcher {
-    display: flex;
-    align-items: center;
-    gap: .25rem;
-}
 
-.appbar-btn {
-    border-color: rgba(255,255,255,.75) !important;
-}
+    /* Botón “Sign out” outlined: borde y hover acordes al AppBar */
+    .appbar-2rows .appbar-btn {
+        color: #fff !important;
+        border-color: rgba(255,255,255,.85) !important;
+    }
+
+        .appbar-2rows .appbar-btn:hover {
+            background: rgba(255,255,255,.12) !important;
+        }
+
+        .appbar-2rows .appbar-btn:active {
+            background: rgba(255,255,255,.18) !important;
+        }
+
 
 /* =========================================================
    10) Auth pages (Login / Register)
@@ -373,6 +388,7 @@ a, .btn-link {
 /* =========================================================
    11) MudBlazor overrides (botón/chips/ripple)
    ========================================================= */
+
 .mud-button-filled-primary {
     background-color: #FF8A65 !important;
     color: #fff !important;
@@ -474,8 +490,42 @@ a, .btn-link {
     border: 1px solid rgba(255,255,255,.06);
 }
 
+.vcenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: clamp(220px, 26vw, 360px);
+}
+
+.random-left .random-text-block {
+    width: 100%;
+    max-width: 640px;
+    padding: 8px 12px;
+}
+
+.random-emph {
+    text-align: center;
+}
+
+    .random-emph .random-lead {
+        color: #fff !important;
+        font-weight: 800;
+        letter-spacing: .01em;
+        text-shadow: 0 2px 6px rgba(0,0,0,.35);
+        margin-bottom: .35rem;
+        font-size: clamp(1.6rem, 1.1rem + 1.8vw, 2.4rem);
+    }
+
+    .random-emph .random-sublead {
+        color: rgba(255,255,255,.92) !important;
+        max-width: 46ch;
+        margin: .25rem auto 0;
+        line-height: 1.65;
+    }
+
+
 .chart-frame {
-    height: 320px;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -490,6 +540,18 @@ a, .btn-link {
         width: 100% !important;
         height: 100% !important;
     }
+
+.chart-flex {
+    flex: 1 1 auto;
+    display: flex;
+    min-height: 0;
+}
+
+    .chart-flex > * {
+        flex: 1 1 auto;
+        min-height: 0;
+    }
+
 
 /* =========================================================
    13) RANDOM / STATS (maqueta específica)
@@ -695,34 +757,40 @@ a, .btn-link {
 }
 
 
+/* Footer coral suave */
 .app-footer {
     padding: 12px 0;
-    background: transparent;
+    background: linear-gradient(135deg, #E5674E, rgba(255,138,101,.08));
     backdrop-filter: saturate(120%) blur(0px);
+    color: #fff;
 }
 
-    .app-footer .footer-inner {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
-
+/* Bordes según tema pero en coral */
 .summer-dark .app-footer {
-    border-top: 1px solid rgba(255,255,255,.08);
+    border-top: 1px solid rgba(255,138,101,.35);
 }
 
 .summer-light .app-footer {
-    border-top: 1px solid rgba(0,0,0,.08);
+    border-top: 1px solid rgba(255,138,101,.25);
+}
+
+.app-footer .footer-inner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .footer-link {
     text-decoration: none;
-    opacity: .85;
+    opacity: .9;
+    color: #fff;
 }
 
     .footer-link:hover {
         opacity: 1;
+        text-decoration: underline;
     }
+
 
 
 html, body, #app {
@@ -749,21 +817,4 @@ html, body, #app {
     }
 }
 
-/* Centrar el header de las cards de charts */
-.home-card .mud-card-header {
-    justify-content: center; /* MudCardHeader usa flex */
-}
-
-/* Centrar títulos tipo h6 que usas en las cards */
-.home-card .mud-typography-h6 {
-    text-align: center;
-    width: 100%;
-    display: block;
-}
-
-/* Centrar el texto de ayuda bajo los charts */
-.chart-hint {
-    margin-top: 50px !important;
-    text-align: center;
-}
 
