@@ -1,32 +1,72 @@
-﻿@inject IJSRuntime JS
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@using System.Reflection
+@inject IJSRuntime JS
+@inject NavigationManager Nav
 
-<MudThemeProvider />
-<MudDialogProvider />
-<MudSnackbarProvider />
-<MudPopoverProvider />
+@if (!_bootstrapped)
+{
+    <div style="height:100vh;display:flex;align-items:center;justify-content:center;">
+        <MudProgressCircular Indeterminate="true" Size="Size.Large" />
+    </div>
+}
+else
+{
+    <CascadingAuthenticationState>
+        <MudThemeProvider />
+        <MudDialogProvider />
+        <MudSnackbarProvider />
+        <MudPopoverProvider />
 
-<Router AppAssembly="@typeof(App).Assembly">
-  <Found Context="routeData">
-    <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-  </Found>
-  <NotFound>
-    <LayoutView Layout="@typeof(MainLayout)">
-      <MudText Typo="Typo.h6">Not found</MudText>
-    </LayoutView>
-  </NotFound>
-</Router>
+        <Router AppAssembly="@typeof(App).Assembly">
+            <Found Context="routeData">
+                <!-- Si NO hay sesión, solo deja ver páginas [AllowAnonymous]; el resto redirige a /login -->
+                <AuthorizeView>
+                    <Authorized>
+                        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+                    </Authorized>
+                    <NotAuthorized>
+                        @if (IsAnonymous(routeData.PageType))
+                        {
+                            <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+                        }
+                        else
+                        {
+                            <RedirectToLogin ReturnUrl="@Nav.ToBaseRelativePath(Nav.Uri)" />
+                        }
+                    </NotAuthorized>
+                </AuthorizeView>
+            </Found>
+
+            <NotFound>
+                <LayoutView Layout="@typeof(MainLayout)">
+                    <MudText Typo="Typo.h6">Not found</MudText>
+                </LayoutView>
+            </NotFound>
+        </Router>
+    </CascadingAuthenticationState>
+}
 
 @code {
+    private bool _bootstrapped;
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender && string.IsNullOrEmpty(API.APIService.APIClient.Token))
+        if (firstRender)
         {
+            // Restaura el token ANTES de montar el router
             var token = await JS.InvokeAsync<string?>("localStorage.getItem", "authToken")
                         ?? await JS.InvokeAsync<string?>("sessionStorage.getItem", "authToken");
             API.APIService.APIClient.Token = token;
+
+            _bootstrapped = true;
+            StateHasChanged();
         }
     }
+
+    private static bool IsAnonymous(Type pageType) =>
+        pageType.GetCustomAttributes(typeof(AllowAnonymousAttribute), inherit: true).Any();
 }
+
 
 
 @*

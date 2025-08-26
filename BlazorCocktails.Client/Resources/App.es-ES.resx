@@ -319,7 +319,7 @@
     <value>Correo</value>
   </data>
   <data name="Login_EmailPlaceholder" xml:space="preserve">
-    <value>tucorreo@dominio.com</value>
+    <value>  tucorreo@dominio.com</value>
   </data>
   <data name="Login_PasswordLabel" xml:space="preserve">
     <value>Contraseña</value>
@@ -404,5 +404,62 @@
   </data>
   <data name="Login_Failed" xml:space="preserve">
     <value>No se pudo iniciar sesión</value>
+  </data>
+  <data name="Home_HeroTitle" xml:space="preserve">
+    <value>Tu coctelería de datos y recetas</value>
+  </data>
+  <data name="Home_HeroSubtitle" xml:space="preserve">
+    <value>Explora categorías, tipos de alcohol y descubre un cóctel al azar cada día.</value>
+  </data>
+  <data name="Home_HeroPrimary" xml:space="preserve">
+    <value>Ver categorías</value>
+  </data>
+  <data name="Home_HeroSecondary" xml:space="preserve">
+    <value>Tipos de alcohol</value>
+  </data>
+  <data name="Home_AlcoholChartTitle" xml:space="preserve">
+    <value>Cócteles por tipo de alcohol</value>
+  </data>
+  <data name="Home_CategoryChartTitle" xml:space="preserve">
+    <value>Cócteles por categoría</value>
+  </data>
+  <data name="Home_RandomTitle" xml:space="preserve">
+    <value>Cóctel aleatorio</value>
+  </data>
+  <data name="Home_WhatsNewTitle" xml:space="preserve">
+    <value>Novedades</value>
+  </data>
+  <data name="Home_StatsFootnote" xml:space="preserve">
+    <value>Estadísticas generadas a partir de nuestra base de datos.</value>
+  </data>
+  <data name="Home_StatsTitle" xml:space="preserve">
+    <value>Estadísticas</value>
+  </data>
+  <data name="Home_RandomHeading" xml:space="preserve">
+    <value>¿Quieres un cóctel y no sabes cuál?</value>
+  </data>
+  <data name="Home_RandomCopy" xml:space="preserve">
+    <value>Deja que el azar te sorprenda. Descubre una receta al instante o sigue probando hasta dar con tu favorita.</value>
+  </data>
+  <data name="Home_StatsHeading" xml:space="preserve">
+    <value>¿Curiosidad por la estadística?</value>
+  </data>
+  <data name="Home_StatsCopy" xml:space="preserve">
+    <value>Explora cómo se reparten nuestras recetas por tipo de alcohol y categoría.</value>
+  </data>
+  <data name="Home_StatsPoint1" xml:space="preserve">
+    <value>% de cócteles con/sin alcohol.</value>
+  </data>
+  <data name="Home_StatsPoint2" xml:space="preserve">
+    <value>Top de categorías más populares.</value>
+  </data>
+  <data name="Home_StatsPoint3" xml:space="preserve">
+    <value>Tendencias para decidir tu próxima mezcla.</value>
+  </data>
+  <data name="Footer_Privacy" xml:space="preserve">
+    <value>Privacidad</value>
+  </data>
+  <data name="Footer_Terms" xml:space="preserve">
+    <value>Términos</value>
   </data>
 </root>

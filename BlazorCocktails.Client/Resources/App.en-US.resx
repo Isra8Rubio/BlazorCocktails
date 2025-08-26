@@ -319,7 +319,7 @@
     <value>Email</value>
   </data>
   <data name="Login_EmailPlaceholder" xml:space="preserve">
-    <value>you@example.com</value>
+    <value>  you@example.com</value>
   </data>
   <data name="Login_PasswordLabel" xml:space="preserve">
     <value>Password</value>
@@ -404,5 +404,62 @@
   </data>
   <data name="Login_Failed" xml:space="preserve">
     <value>Couldn’t sign in.</value>
+  </data>
+  <data name="Home_HeroTitle" xml:space="preserve">
+    <value>Your cocktails, stats &amp; recipes</value>
+  </data>
+  <data name="Home_HeroSubtitle" xml:space="preserve">
+    <value>Browse categories, alcohol types and discover a random cocktail every day.</value>
+  </data>
+  <data name="Home_HeroPrimary" xml:space="preserve">
+    <value>Browse categories</value>
+  </data>
+  <data name="Home_HeroSecondary" xml:space="preserve">
+    <value>Alcohol types</value>
+  </data>
+  <data name="Home_AlcoholChartTitle" xml:space="preserve">
+    <value>Cocktails by alcohol type</value>
+  </data>
+  <data name="Home_CategoryChartTitle" xml:space="preserve">
+    <value>Cocktails by category</value>
+  </data>
+  <data name="Home_RandomTitle" xml:space="preserve">
+    <value>Random cocktail</value>
+  </data>
+  <data name="Home_WhatsNewTitle" xml:space="preserve">
+    <value>What’s new</value>
+  </data>
+  <data name="Home_StatsFootnote" xml:space="preserve">
+    <value>Stats driven by our dataset.</value>
+  </data>
+  <data name="Home_StatsTitle" xml:space="preserve">
+    <value>Stats</value>
+  </data>
+  <data name="Home_RandomHeading" xml:space="preserve">
+    <value>Want a cocktail but not sure which one?</value>
+  </data>
+  <data name="Home_RandomCopy" xml:space="preserve">
+    <value>Let chance surprise you. Reveal a recipe instantly or keep trying until you find your favorite.</value>
+  </data>
+  <data name="Home_StatsHeading" xml:space="preserve">
+    <value>Curious about the stats?</value>
+  </data>
+  <data name="Home_StatsCopy" xml:space="preserve">
+    <value>See how our recipes break down by spirit and category.</value>
+  </data>
+  <data name="Home_StatsPoint1" xml:space="preserve">
+    <value>% of cocktails with/without alcohol.</value>
+  </data>
+  <data name="Home_StatsPoint2" xml:space="preserve">
+    <value>Top categories by popularity.</value>
+  </data>
+  <data name="Home_StatsPoint3" xml:space="preserve">
+    <value>Trends to help pick your next mix.</value>
+  </data>
+  <data name="Footer_Privacy" xml:space="preserve">
+    <value>Privacity</value>
+  </data>
+  <data name="Footer_Terms" xml:space="preserve">
+    <value>Terms</value>
   </data>
 </root>

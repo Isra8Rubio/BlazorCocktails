@@ -1,28 +1,77 @@
 ﻿@page "/"
-@using System.Globalization
-@using Microsoft.Extensions.Localization
-@inject IStringLocalizer<App> L
-@using BlazorCocktails.Client.Shared
 @using BlazorCocktails.Client.Shared.Charts
+@using Microsoft.AspNetCore.Components.Authorization
+@inject IStringLocalizer<App> L
+@inject NavigationManager Nav
+@inject AuthenticationStateProvider AuthStateProvider
 
-<MudGrid Spacing="2" Class="gap-4">
+<!-- HERO (igual que ya tenías) -->
+<div class="home-hero">
+    <div class="home-hero__bg"></div>
+    <div class="home-hero__content">
+        <MudText Typo="Typo.h3">@L["Home_HeroTitle"]</MudText>
+        <MudText Typo="Typo.subtitle1" Class="opacity-80 mt-2">@L["Home_HeroSubtitle"]</MudText>
+        <MudStack Row="true" Spacing="2" Class="mt-4">
+            <MudButton Variant="Variant.Filled" Class="auth-btn" OnClick="@(() => Nav.NavigateTo("/categorias"))">
+                @L["Home_HeroPrimary"]
+            </MudButton>
+            <MudButton Variant="Variant.Outlined" Class="auth-btn-outline" OnClick="@(() => Nav.NavigateTo("/alcohol"))">
+                @L["Home_HeroSecondary"]
+            </MudButton>
+        </MudStack>
+    </div>
+</div>
 
-    <MudItem xs="12" sm="5">
-        <AlcoholTypesChart />
-    </MudItem>
-
-    <MudItem xs="12" sm="6">
-        <CategoryDistributionChart
-            MaxSlices="11" />
-    </MudItem>
-
-    <MudItem xs="12">
-        <div class="mx-auto" style="max-width:240px">
-            <RandomCocktailWidget />
+<!-- RANDOM: texto sin Paper a la izquierda + widget a la derecha -->
+<MudGrid Spacing="3" Class="home-section random-split" AlignItems="Center">
+    <MudItem xs="12" md="6">
+        <div class="random-text-block">
+            <MudText Typo="Typo.h5" Class="mb-2">@L["Home_RandomHeading"]</MudText>
+            <MudText Class="opacity-80 mb-4">@L["Home_RandomCopy"]</MudText>
         </div>
     </MudItem>
 
+    <MudItem xs="12" md="6" Class="center-col">
+        <RandomCocktailWidget Compact="true" />
+    </MudItem>
+
 </MudGrid>
+
+
+<MudGrid Spacing="3" Class="home-section stats-split" AlignItems="Stretch" Justify="Justify.Center">
+    <!-- IZQ -->
+    <MudItem xs="12" md="4">
+        <MudPaper Class="home-card tinted pa-6 h-100">
+            <div class="chart-frame">
+                <AlcoholTypesChart />
+            </div>
+        </MudPaper>
+    </MudItem>
+
+    <!-- CENTRO -->
+    <MudItem xs="12" md="4">
+        <div class="stats-center hero">
+            <MudText Typo="Typo.h4" Class="stats-title mb-2">@L["Home_StatsHeading"]</MudText>
+            <MudText Class="stats-subtitle opacity-80 mb-4">@L["Home_StatsCopy"]</MudText>
+            <MudList T="string" Dense="true" Class="opacity-80 stats-list">
+                <MudListItem>@L["Home_StatsPoint1"]</MudListItem>
+                <MudListItem>@L["Home_StatsPoint2"]</MudListItem>
+                <MudListItem>@L["Home_StatsPoint3"]</MudListItem>
+            </MudList>
+        </div>
+    </MudItem>
+
+    <!-- DCHA -->
+    <MudItem xs="12" md="4">
+        <MudPaper Class="home-card tinted pa-6 h-100">
+            <div class="chart-frame">
+                <CategoryDistributionChart MaxSlices="11" />
+            </div>
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+
+
 
 @*
  Qué hacemos:

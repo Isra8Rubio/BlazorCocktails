@@ -11,7 +11,6 @@ namespace Weather.api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [AllowAnonymous]
     public class CocktailsController: ControllerBase
     {
         private readonly ILogger<CocktailsController> logger;

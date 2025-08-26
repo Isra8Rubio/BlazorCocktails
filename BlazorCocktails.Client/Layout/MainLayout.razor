@@ -2,21 +2,26 @@
 @implements IDisposable
 @using MudBlazor
 @using Microsoft.Extensions.Localization
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Routing
 @using API.APIService
 @inject IStringLocalizer<App> L
 @inject IJSRuntime JS
 @inject NavigationManager Nav
 
-<MudThemeProvider IsDarkMode="@_isDark" />
 
-<MudLayout Class="@(_isDark ? "summer-dark" : "summer-light")">
+<MudThemeProvider IsDarkMode="true" />
+<MudLayout Class="summer-dark">
     <MudAppBar Elevation="2" Color="Color.Primary" Class="appbar-2rows">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu"
-                       Color="Color.Inherit"
-                       Edge="Edge.Start"
-                       Title="@L["MainLayout_ToggleDrawer"]"
-                       AriaLabel="@L["MainLayout_ToggleDrawer"]"
-                       OnClick="ToggleDrawer" />
+        @if (IsAuthenticated)
+        {
+            <MudIconButton Icon="@Icons.Material.Filled.Menu"
+                           Color="Color.Inherit"
+                           Edge="Edge.Start"
+                           Title="@L["MainLayout_ToggleDrawer"]"
+                           AriaLabel="@L["MainLayout_ToggleDrawer"]"
+                           OnClick="ToggleDrawer" />
+        }
 
         <MudText Typo="Typo.h6" Class="ml-2">@L["MainLayout_AppTitle"]</MudText>
 
@@ -26,38 +31,42 @@
             <div class="appbar-row top">
                 @if (!IsAuthenticated)
                 {
-                    <MudButton Href="/login"
-                               Variant="Variant.Outlined"
-                               Color="Color.Inherit"
-                               StartIcon="@Icons.Material.Filled.Login"
-                               Size="Size.Small"
-                               Class="appbar-btn"
-                               Title="@L["MainLayout_Login"]"
-                               AriaLabel="@L["MainLayout_Login"]">
-                        @L["MainLayout_Login"]
-                    </MudButton>
+                    @if (!IsAuthPage)
+                    {
+                        <MudButton Href="/login"
+                                   Variant="Variant.Outlined"
+                                   Color="Color.Inherit"
+                                   StartIcon="@Icons.Material.Filled.Login"
+                                   Size="Size.Small"
+                                   Class="appbar-btn">
+                            @L["MainLayout_Login"]
+                        </MudButton>
 
-                    <MudButton Href="/register"
-                               Variant="Variant.Outlined"
-                               Color="Color.Inherit"
-                               StartIcon="@Icons.Material.Filled.PersonAdd"
-                               Size="Size.Small"
-                               Class="appbar-btn"
-                               Title="@L["MainLayout_Register"]"
-                               AriaLabel="@L["MainLayout_Register"]">
-                        @L["MainLayout_Register"]
-                    </MudButton>
+                        <MudButton Href="/register"
+                                   Variant="Variant.Outlined"
+                                   Color="Color.Inherit"
+                                   StartIcon="@Icons.Material.Filled.PersonAdd"
+                                   Size="Size.Small"
+                                   Class="appbar-btn">
+                            @L["MainLayout_Register"]
+                        </MudButton>
+                    }
                 }
                 else
                 {
+                    <AuthorizeView Roles="Admin">
+                        <Authorized>
+                            <MudChip T="string" Color="Color.Success" Variant="Variant.Outlined"
+                                     StartIcon="@Icons.Material.Filled.Verified">Admin</MudChip>
+                        </Authorized>
+                    </AuthorizeView>
+
                     <MudButton Variant="Variant.Outlined"
                                Color="Color.Inherit"
                                StartIcon="@Icons.Material.Filled.Logout"
                                Size="Size.Small"
                                Class="appbar-btn"
-                               OnClick="LogoutAsync"
-                               Title="@L["MainLayout_Logout"]"
-                               AriaLabel="@L["MainLayout_Logout"]">
+                               OnClick="LogoutAsync">
                         @L["MainLayout_Logout"]
                     </MudButton>
                 }
@@ -65,68 +74,94 @@
 
             <div class="appbar-row bottom">
                 <LanguageSwitcher />
-                <MudIconButton Icon="@(_isDark? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode)"
-                               Title="@L["MainLayout_ThemeToggle"]"
-                               AriaLabel="@L["MainLayout_ThemeToggle"]"
-                               Color="Color.Inherit"
-                               Size="Size.Small"
-                               OnClick="ToggleDarkMode" />
+                @* Eliminado el botón de cambiar tema (siempre oscuro) *@
             </div>
         </div>
     </MudAppBar>
 
-    <MudDrawer @bind-Open="_drawerOpen"
-               Variant="DrawerVariant.Responsive"
-               Elevation="1"
-               Class="p-0 drawer-fix">
-        <MudDrawerHeader Class="px-4 py-3">
-            <MudText Typo="Typo.subtitle1">@L["MainLayout_Menu"]</MudText>
-        </MudDrawerHeader>
+    @if (IsAuthenticated)
+    {
+        <MudDrawer @bind-Open="_drawerOpen"
+                   Variant="DrawerVariant.Responsive"
+                   Elevation="1"
+                   Class="p-0 drawer-fix">
+            <MudDrawerHeader Class="px-4 py-3">
+                <MudText Typo="Typo.subtitle1">@L["MainLayout_Menu"]</MudText>
+            </MudDrawerHeader>
 
-        <div class="drawer-scroll">
-            <NavMenu />
-        </div>
-    </MudDrawer>
+            <div class="drawer-scroll">
+                <NavMenu />
+            </div>
+        </MudDrawer>
+    }
 
-    <MudMainContent>
-        <div class="p-4">
-            @Body
+    @* Si estamos en login/register sin sesión *@
+    @if (IsAuthPage && !IsAuthenticated)
+    {
+        <div class="auth-shell">
+            <div class="auth-overlay"></div>
+            <div class="auth-content">
+                <div class="p-4">@Body</div>
+            </div>
         </div>
-    </MudMainContent>
+    }
+    else
+    {
+        <MudMainContent>
+            <div class="page-shell">
+                <div class="page-body">
+                    @Body
+                </div>
+                <Footer />
+            </div>
+        </MudMainContent>
+    }
 </MudLayout>
 
 @code {
     private bool _drawerOpen = true;
-    private bool _isDark = true;
+    private bool IsAuthPage { get; set; }
 
     private bool IsAuthenticated => !string.IsNullOrWhiteSpace(APIClient.Token);
 
     protected override void OnInitialized()
     {
-        // Refresca el layout cuando cambie el token (login/logout o al cargarlo)
         APIClient.TokenChanged += OnTokenChanged;
+        Nav.LocationChanged += OnLocationChanged;
+        UpdateIsAuthPage();
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        // Cargar el token del storage (por si F5 o cambia idioma)
         if (firstRender && string.IsNullOrEmpty(APIClient.Token))
         {
             var token = await JS.InvokeAsync<string?>("localStorage.getItem", "authToken")
                         ?? await JS.InvokeAsync<string?>("sessionStorage.getItem", "authToken");
-            APIClient.Token = token;
+            APIClient.Token = token; // disparará TokenChanged
         }
     }
 
     private void OnTokenChanged() => InvokeAsync(StateHasChanged);
 
+    private void OnLocationChanged(object? s, LocationChangedEventArgs e)
+    {
+        UpdateIsAuthPage();
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void UpdateIsAuthPage()
+    {
+        var path = Nav.ToBaseRelativePath(Nav.Uri).ToLowerInvariant();
+        IsAuthPage = path.StartsWith("login") || path.StartsWith("register");
+    }
+
     public void Dispose()
     {
         APIClient.TokenChanged -= OnTokenChanged;
+        Nav.LocationChanged -= OnLocationChanged;
     }
 
     private void ToggleDrawer() => _drawerOpen = !_drawerOpen;
-    private void ToggleDarkMode() => _isDark = !_isDark;
 
     private async Task LogoutAsync()
     {

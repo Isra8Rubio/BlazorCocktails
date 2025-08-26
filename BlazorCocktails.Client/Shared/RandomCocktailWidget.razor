@@ -6,41 +6,77 @@
 @inject IStringLocalizer<App> L
 @inject NavigationManager Nav
 
-<MudPaper Elevation="1" Class="pa-4">
-    <MudStack Direction="Row" AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween" Class="mb-2">
-        <MudText Typo="Typo.h6">@L["Random_Title", "🍹"]</MudText>
+@if (Compact)
+{
+    <div class="random-compact">
+        <MudStack Direction="Row" AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween" Class="rw-head">
+            <MudText Typo="Typo.overline" Class="rw-title">@L["Random_Title", "🍹"]</MudText>
+            <MudIconButton Class="rw-refresh"
+                           Icon="@Icons.Material.Filled.Refresh"
+                           Disabled="@refreshing"
+                           AriaLabel="@L["Random_Refresh"]"
+                           OnClick="RefreshAsync" />
+        </MudStack>
 
-        <MudButton Variant="Variant.Outlined"
-                   StartIcon="@Icons.Material.Filled.Refresh"
-                   Disabled="@refreshing"
-                   OnClick="RefreshAsync">
-            @L["Random_Refresh"]
-        </MudButton>
-    </MudStack>
+        @if (loading)
+        {
+            <MudSkeleton Height="110" />
+        }
+        else if (row is null)
+        {
+            <MudText Color="Color.Secondary">@L["Random_NoData"]</MudText>
+        }
+        else
+        {
+            <MudLink Href="@($"/cocktail/{row.DrinkId}")" Style="display:inline-block; text-decoration:none; color:inherit;">
+                <MudCard Class="rw-card hover-elevate cursor-pointer" Style="max-width:260px;">
+                    <MudCardMedia Image="@row.ThumbUrl" Height="160" Alt="@row.Name" />
+                    <MudCardContent Class="rw-card-content">
+                        <MudText Typo="Typo.subtitle1" Class="rw-name">@row.Name</MudText>
+                    </MudCardContent>
+                </MudCard>
+            </MudLink>
+        }
+    </div>
+}
+else
+{
+    <MudPaper Elevation="1" Class="pa-4">
+        <MudStack Direction="Row" AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween" Class="mb-2">
+            <MudText Typo="Typo.h6">@L["Random_Title", "🍹"]</MudText>
+            <MudButton Variant="Variant.Outlined"
+                       StartIcon="@Icons.Material.Filled.Refresh"
+                       Disabled="@refreshing"
+                       OnClick="RefreshAsync">
+                @L["Random_Refresh"]
+            </MudButton>
+        </MudStack>
 
-    @if (loading)
-    {
-        <MudSkeleton Height="120" />
-    }
-    else if (row is null)
-    {
-        <MudText Color="Color.Secondary">@L["Random_NoData"]</MudText>
-    }
-    else
-    {
-        <MudLink Href="@($"/cocktail/{row.DrinkId}")"
-                 Style="display:inline-block; text-decoration:none; color:inherit;">
-            <MudCard Class="hover-elevate cursor-pointer" Style="max-width: 520px;">
-                <MudCardMedia Image="@row.ThumbUrl" Height="180" Alt="@row.Name" />
-                <MudCardContent>
-                    <MudText Typo="Typo.subtitle1">@row.Name</MudText>
-                </MudCardContent>
-            </MudCard>
-        </MudLink>
-    }
-</MudPaper>
+        @if (loading)
+        {
+            <MudSkeleton Height="120" />
+        }
+        else if (row is null)
+        {
+            <MudText Color="Color.Secondary">@L["Random_NoData"]</MudText>
+        }
+        else
+        {
+            <MudLink Href="@($"/cocktail/{row.DrinkId}")" Style="display:inline-block; text-decoration:none; color:inherit;">
+                <MudCard Class="hover-elevate cursor-pointer rw-card" Style="max-width:220px;">
+                    <MudCardMedia Image="@row.ThumbUrl" Height="140" Alt="@row.Name" />
+                    <MudCardContent>
+                        <MudText Typo="Typo.subtitle1">@row.Name</MudText>
+                    </MudCardContent>
+                </MudCard>
+            </MudLink>
+        }
+    </MudPaper>
+}
 
 @code {
+    [Parameter] public bool Compact { get; set; } = true;
+
     private RandomCocktailDTO? row;
     private bool loading = true;
     private bool refreshing;
@@ -50,24 +86,12 @@
     protected override async Task OnInitializedAsync()
     {
         loading = true;
-        try
-        {
-            // Carga inicial (lee lo que ya dejó el hosted service en BD)
-            row = await Api.Cocktails_GetRandomRowAsync();
-        }
-        catch (ApiException ex)
-        {
-            Snackbar.Add($"Error cargando: {ex.Message}", Severity.Error);
-        }
-        finally
-        {
-            loading = false;
-        }
+        try { row = await Api.Cocktails_GetRandomRowAsync(); }
+        catch (ApiException ex) { Snackbar.Add($"Error cargando: {ex.Message}", Severity.Error); }
+        finally { loading = false; }
 
-        // Iniciar bucle de auto-actualización cada 12 segundos
         _cts = new CancellationTokenSource();
         _timer = new PeriodicTimer(TimeSpan.FromSeconds(12));
-
         _ = RunAutoRefreshLoopAsync(_cts.Token);
     }
 
@@ -79,43 +103,25 @@
             {
                 try
                 {
-                    // Lee el último "random" guardado
                     var latest = await Api.Cocktails_GetRandomRowAsync();
-
                     if (latest?.DrinkId != row?.DrinkId)
                     {
                         row = latest;
                         await InvokeAsync(StateHasChanged);
                     }
                 }
-                catch (ApiException ex)
-                {
-                    Snackbar.Add($"Auto-refresh: {ex.Message}", Severity.Warning);
-                }
+                catch (ApiException ex) { Snackbar.Add($"Auto-refresh: {ex.Message}", Severity.Warning); }
             }
         }
-        catch (OperationCanceledException)
-        {
-        }
+        catch (OperationCanceledException) { }
     }
 
     private async Task RefreshAsync()
     {
         refreshing = true;
-        try
-        {
-            row = await Api.Cocktails_RefreshRandomNowAsync();
-            Snackbar.Add("¡Actualizado!", Severity.Success);
-        }
-        catch (ApiException ex)
-        {
-            Snackbar.Add($"Error refrescando: {ex.Message}", Severity.Error);
-        }
-        finally
-        {
-            refreshing = false;
-            await InvokeAsync(StateHasChanged);
-        }
+        try { row = await Api.Cocktails_RefreshRandomNowAsync(); Snackbar.Add("¡Actualizado!", Severity.Success); }
+        catch (ApiException ex) { Snackbar.Add($"Error refrescando: {ex.Message}", Severity.Error); }
+        finally { refreshing = false; await InvokeAsync(StateHasChanged); }
     }
 
     private void GoToDetail()
@@ -132,6 +138,8 @@
         await Task.CompletedTask;
     }
 }
+
+
 
 @*
  Qué hacemos:

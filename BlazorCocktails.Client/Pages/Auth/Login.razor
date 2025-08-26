@@ -5,6 +5,8 @@
 @inject NavigationManager Nav
 @inject Microsoft.Extensions.Localization.IStringLocalizer<App> L
 @inject IJSRuntime JS
+@attribute [AllowAnonymous]
+
 
 <PageTitle>@L["Login_Title"]</PageTitle>
 
@@ -19,7 +21,6 @@
 
                 <MudTextField Variant="Variant.Filled"
                               T="string"
-                              Label="@L["Login_EmailLabel"]"
                               Placeholder="@L["Login_EmailPlaceholder"]"
                               @bind-Value="_model.Email"
                               For="@(() => _model.Email)"

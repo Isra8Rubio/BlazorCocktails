@@ -1,13 +1,12 @@
 using API.APIService;
 using BlazorCocktails.Client;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.JSInterop;
 using MudBlazor.Services;
 using System.Globalization;
-using System.Reflection;
-using System.Runtime.Loader;
+using BlazorCocktails.Client.Services;
+using Microsoft.AspNetCore.Components.Authorization;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -17,6 +16,9 @@ builder.Services.AddMudServices();
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7131") });
 builder.Services.AddScoped(sp => new APIClient(sp.GetRequiredService<HttpClient>()));
+
+builder.Services.AddAuthorizationCore();
+builder.Services.AddScoped<AuthenticationStateProvider, JwtAuthStateProvider>();
 
 // Localización
 builder.Services.AddLocalization(o => o.ResourcesPath = "Resources");
