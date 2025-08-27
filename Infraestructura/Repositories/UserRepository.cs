@@ -1,9 +1,10 @@
 ﻿
+using Core.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using Core.Entities;
 
 namespace Infraestructura.Repositories
 {
@@ -55,5 +56,7 @@ namespace Infraestructura.Repositories
         public Task<IdentityResult> ResetPasswordAsync(Usuario user, string token, string newPassword) =>
             _userManager.ResetPasswordAsync(user, token, newPassword);
 
+        public Task<int> CountAsync(CancellationToken ct = default)
+            => _userManager.Users.CountAsync(ct);
     }
 }

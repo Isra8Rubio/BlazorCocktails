@@ -478,7 +478,7 @@
     <value>Volver a iniciar sesión</value>
   </data>
   <data name="Password_ForgotSent" xml:space="preserve">
-    <value>Si el email existe, te hemos enviado instrucciones.</value>
+    <value>Te hemos enviado instrucciones para restablecer la contraseña.</value>
   </data>
   <data name="Password_ForgotError" xml:space="preserve">
     <value>No se pudo enviar el correo</value>
@@ -515,5 +515,65 @@
   </data>
   <data name="Home_CarouselCopy_Body" xml:space="preserve">
     <value>Los mejores cócteles se disfrutan en compañía. Comparte recetas, risas y pequeñas victorias con tu gente. Elige un cóctel, reparte tareas —quien agita, quien sirve, quien pone la música— y cread juntos momentos que valen un brindis.</value>
+  </data>
+  <data name="Admin_UsersTitle" xml:space="preserve">
+    <value>Usuarios</value>
+  </data>
+  <data name="Admin_DownloadCsv" xml:space="preserve">
+    <value>Descargar CSV</value>
+  </data>
+  <data name="Admin_Refresh" xml:space="preserve">
+    <value>Actualizar</value>
+  </data>
+  <data name="Admin_TotalRegistered" xml:space="preserve">
+    <value>Total registrados</value>
+  </data>
+  <data name="Admin_LastUpdate" xml:space="preserve">
+    <value>Última actualización:</value>
+  </data>
+  <data name="Admin_GrantAdminTitle" xml:space="preserve">
+    <value>Conceder rol “Admin”</value>
+  </data>
+  <data name="Admin_UserEmailLabel" xml:space="preserve">
+    <value>Email del usuario*</value>
+  </data>
+  <data name="Admin_Processing" xml:space="preserve">
+    <value>Procesando…</value>
+  </data>
+  <data name="Admin_MakeAdmin" xml:space="preserve">
+    <value>Hacer admin</value>
+  </data>
+  <data name="Admin_GrantAdminHelp" xml:space="preserve">
+    <value>Introduce el correo exacto del usuario. Si ya es admin o el email no existe, se mostrará un aviso.</value>
+  </data>
+  <data name="Admin_LoadCountError" xml:space="preserve">
+    <value>Error cargando conteo: {0}</value>
+  </data>
+  <data name="Admin_EmailCheck" xml:space="preserve">
+    <value>Revisa el email: el campo es obligatorio y debe tener formato válido.</value>
+  </data>
+  <data name="Admin_MadeAdminOk" xml:space="preserve">
+    <value>Ahora ‘{0}’ es admin.</value>
+  </data>
+  <data name="Admin_MakeAdminError" xml:space="preserve">
+    <value>No se pudo conceder admin: {0}</value>
+  </data>
+  <data name="Validation_EmailRequired" xml:space="preserve">
+    <value>El email es obligatorio.</value>
+  </data>
+  <data name="Validation_EmailInvalid" xml:space="preserve">
+    <value>Email no válido.</value>
+  </data>
+  <data name="Common_Clear" xml:space="preserve">
+    <value>Limpiar</value>
+  </data>
+  <data name="Common_UnexpectedError" xml:space="preserve">
+    <value>Error inesperado: {0}</value>
+  </data>
+  <data name="Admin_CsvHeader" xml:space="preserve">
+    <value>fecha,total_usuarios</value>
+  </data>
+  <data name="Admin_CsvPrefix" xml:space="preserve">
+    <value>users_stats</value>
   </data>
 </root>

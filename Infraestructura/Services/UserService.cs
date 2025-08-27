@@ -28,6 +28,8 @@ namespace Infraestructura.Services
             _config = config;
         }
 
+        public Task<int> CountAsync(CancellationToken ct = default) => _repo.CountAsync(ct);
+
         public async Task<AnswerAuthenticationDTO> RegisterAsync(RegisterUserDTO dto)
         {
             try

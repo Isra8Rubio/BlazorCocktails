@@ -921,6 +921,23 @@ html, body, #app {
     }
 }
 
+/* más separación entre botones superiores */
+.appbar-actions-col .appbar-row.top {
+    gap: .9rem;
+}
+
+/* estilo del botón ADMIN (sin azul) */
+.appbar-admin {
+    border-color: rgba(255,255,255,.75) !important;
+    color: #fff !important;
+}
+
+    .appbar-admin:hover,
+    .appbar-admin:focus {
+        background-color: rgba(255,255,255,.10) !important;
+        border-color: rgba(255,255,255,.85) !important;
+        color: #fff !important;
+    }
 
 
 

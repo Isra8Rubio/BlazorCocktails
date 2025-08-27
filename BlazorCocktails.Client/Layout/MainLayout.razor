@@ -31,11 +31,15 @@
             <div class="appbar-row top">
                 @if (IsAuthenticated)
                 {
-                    <AuthorizeView Roles="Admin">
-                        <Authorized>
-                            <MudChip T="string" Color="Color.Success" Variant="Variant.Outlined"
-                                     StartIcon="@Icons.Material.Filled.Verified">Admin</MudChip>
-                        </Authorized>
+                    <AuthorizeView Policy="isAdmin">
+                        <MudButton Variant="Variant.Outlined"
+                                   Color="Color.Inherit"
+                                   Class="appbar-admin"
+                                   Href="/admin"
+                                   StartIcon="@Icons.Material.Filled.AdminPanelSettings">
+                            ADMIN
+                        </MudButton>
+
                     </AuthorizeView>
 
                     <MudButton Variant="Variant.Outlined"

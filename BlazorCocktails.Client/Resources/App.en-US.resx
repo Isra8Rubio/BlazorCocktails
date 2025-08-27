@@ -478,7 +478,7 @@
     <value>Back to sign in</value>
   </data>
   <data name="Password_ForgotSent" xml:space="preserve">
-    <value>If the email exists, we’ve sent you instructions.</value>
+    <value>We’ve sent you instructions.</value>
   </data>
   <data name="Password_ForgotError" xml:space="preserve">
     <value>Couldn’t send the email</value>
@@ -515,5 +515,65 @@
   </data>
   <data name="Home_CarouselCopy_Body" xml:space="preserve">
     <value>The best cocktails are enjoyed together. Share recipes, laughs and little victories with your people. Pick a drink, split the roles—shaker, pourer, DJ—and create moments worth a toast.</value>
+  </data>
+  <data name="Admin_UsersTitle" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="Admin_DownloadCsv" xml:space="preserve">
+    <value>Download CSV</value>
+  </data>
+  <data name="Admin_Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="Admin_TotalRegistered" xml:space="preserve">
+    <value>Total registered</value>
+  </data>
+  <data name="Admin_LastUpdate" xml:space="preserve">
+    <value>Last update:</value>
+  </data>
+  <data name="Admin_GrantAdminTitle" xml:space="preserve">
+    <value>Grant “Admin” role</value>
+  </data>
+  <data name="Admin_UserEmailLabel" xml:space="preserve">
+    <value>User email*</value>
+  </data>
+  <data name="Admin_Processing" xml:space="preserve">
+    <value>Processing…</value>
+  </data>
+  <data name="Admin_MakeAdmin" xml:space="preserve">
+    <value>Make admin</value>
+  </data>
+  <data name="Admin_GrantAdminHelp" xml:space="preserve">
+    <value>Enter the exact user email. If the user is already admin or the email doesn’t exist, a warning will be shown.</value>
+  </data>
+  <data name="Admin_LoadCountError" xml:space="preserve">
+    <value>Error loading count: {0}</value>
+  </data>
+  <data name="Admin_EmailCheck" xml:space="preserve">
+    <value>Check the email: the field is required and must be valid.</value>
+  </data>
+  <data name="Admin_MadeAdminOk" xml:space="preserve">
+    <value>‘{0}’ is now an admin.</value>
+  </data>
+  <data name="Admin_MakeAdminError" xml:space="preserve">
+    <value>Couldn’t grant admin: {0}</value>
+  </data>
+  <data name="Validation_EmailRequired" xml:space="preserve">
+    <value>Email is required.</value>
+  </data>
+  <data name="Validation_EmailInvalid" xml:space="preserve">
+    <value>Invalid email.</value>
+  </data>
+  <data name="Common_Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Common_UnexpectedError" xml:space="preserve">
+    <value>Unexpected error: {0}</value>
+  </data>
+  <data name="Admin_CsvHeader" xml:space="preserve">
+    <value>date,total_users</value>
+  </data>
+  <data name="Admin_CsvPrefix" xml:space="preserve">
+    <value>users_stats</value>
   </data>
 </root>

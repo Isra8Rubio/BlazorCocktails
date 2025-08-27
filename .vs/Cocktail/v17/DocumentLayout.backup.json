@@ -3,64 +3,68 @@
   "WorkspaceRootPath": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\resources\\app.en-us.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
       "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\resources\\app.en-us.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\shared\\charts\\categorydistributionchart.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\shared\\charts\\categorydistributionchart.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\shared\\charts\\alcoholtypeschart.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\shared\\charts\\alcoholtypeschart.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\pages\\auth\\resetpassword.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\pages\\auth\\resetpassword.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\core\\validators\\forgotpassworddtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{71F85BC7-7A62-41A4-8AED-32AD9DA3C924}|Core\\Core.csproj|solutionrelative:core\\validators\\forgotpassworddtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DFC8A63-959C-D52B-CB1B-586A6748FFE6}|API\\Cocktail.api.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DFC8A63-959C-D52B-CB1B-586A6748FFE6}|API\\Cocktail.api.csproj|solutionrelative:api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\pages\\admin\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\pages\\admin\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\pages\\auth\\forgotpassword.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\pages\\auth\\forgotpassword.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\pages\\auth\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\pages\\auth\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\pages\\auth\\resetpassword.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\pages\\auth\\resetpassword.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\shared\\redirecttologin.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\shared\\redirecttologin.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{FF2B3CFB-F8B1-4BDE-9008-70DF8CB1E292}|ApiClient\\ApiClient.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\apiclient\\cocktailsapiclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF2B3CFB-F8B1-4BDE-9008-70DF8CB1E292}|ApiClient\\ApiClient.csproj|solutionrelative:apiclient\\cocktailsapiclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\pages\\categories.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\pages\\categories.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{154E5C25-13C5-4557-99A2-CD959FE45DF1}|Infraestructura\\Infraestructura.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\infraestructura\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{154E5C25-13C5-4557-99A2-CD959FE45DF1}|Infraestructura\\Infraestructura.csproj|solutionrelative:infraestructura\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DFC8A63-959C-D52B-CB1B-586A6748FFE6}|API\\Cocktail.api.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DFC8A63-959C-D52B-CB1B-586A6748FFE6}|API\\Cocktail.api.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DFC8A63-959C-D52B-CB1B-586A6748FFE6}|API\\Cocktail.api.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DFC8A63-959C-D52B-CB1B-586A6748FFE6}|API\\Cocktail.api.csproj|solutionrelative:api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DFC8A63-959C-D52B-CB1B-586A6748FFE6}|API\\Cocktail.api.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\api\\controllers\\cocktailscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DFC8A63-959C-D52B-CB1B-586A6748FFE6}|API\\Cocktail.api.csproj|solutionrelative:api\\controllers\\cocktailscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -70,89 +74,35 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "app.css",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\wwwroot\\css\\app.css",
-              "RelativeDocumentMoniker": "BlazorCocktails.Client\\wwwroot\\css\\app.css",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\wwwroot\\css\\app.css",
-              "RelativeToolTip": "BlazorCocktails.Client\\wwwroot\\css\\app.css",
-              "ViewState": "AgIAAIADAAAAAAAAAAAqwJwDAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-08-27T07:09:10.51Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AlcoholTypesChart.razor",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Shared\\Charts\\AlcoholTypesChart.razor",
-              "RelativeDocumentMoniker": "BlazorCocktails.Client\\Shared\\Charts\\AlcoholTypesChart.razor",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Shared\\Charts\\AlcoholTypesChart.razor",
-              "RelativeToolTip": "BlazorCocktails.Client\\Shared\\Charts\\AlcoholTypesChart.razor",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAADMAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-27T08:21:50.431Z",
+              "DocumentIndex": 0,
+              "Title": "App.en-US.resx",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Resources\\App.en-US.resx",
+              "RelativeDocumentMoniker": "BlazorCocktails.Client\\Resources\\App.en-US.resx",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Resources\\App.en-US.resx",
+              "RelativeToolTip": "BlazorCocktails.Client\\Resources\\App.en-US.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2025-08-27T11:51:35.573Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "CategoryDistributionChart.razor",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Shared\\Charts\\CategoryDistributionChart.razor",
-              "RelativeDocumentMoniker": "BlazorCocktails.Client\\Shared\\Charts\\CategoryDistributionChart.razor",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Shared\\Charts\\CategoryDistributionChart.razor",
-              "RelativeToolTip": "BlazorCocktails.Client\\Shared\\Charts\\CategoryDistributionChart.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAqAAAAAAAAAA==",
+              "Title": "ResetPassword.razor",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Pages\\Auth\\ResetPassword.razor",
+              "RelativeDocumentMoniker": "BlazorCocktails.Client\\Pages\\Auth\\ResetPassword.razor",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Pages\\Auth\\ResetPassword.razor",
+              "RelativeToolTip": "BlazorCocktails.Client\\Pages\\Auth\\ResetPassword.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-27T08:17:38.525Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "NavMenu.razor",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Layout\\NavMenu.razor",
-              "RelativeDocumentMoniker": "BlazorCocktails.Client\\Layout\\NavMenu.razor",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Layout\\NavMenu.razor",
-              "RelativeToolTip": "BlazorCocktails.Client\\Layout\\NavMenu.razor",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAACAAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-27T07:13:55.852Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ForgotPasswordDTOValidator.cs",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\Validators\\ForgotPasswordDTOValidator.cs",
-              "RelativeDocumentMoniker": "Core\\Validators\\ForgotPasswordDTOValidator.cs",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Core\\Validators\\ForgotPasswordDTOValidator.cs",
-              "RelativeToolTip": "Core\\Validators\\ForgotPasswordDTOValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-27T06:32:55.22Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\API\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "API\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\API\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "API\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAAOsAAAAAAAAAAAAswA0BAABYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-27T06:32:08.247Z",
+              "WhenOpened": "2025-08-27T11:43:03.146Z",
               "EditorCaption": ""
             },
             {
@@ -163,108 +113,178 @@
               "RelativeDocumentMoniker": "BlazorCocktails.Client\\Layout\\MainLayout.razor",
               "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Layout\\MainLayout.razor",
               "RelativeToolTip": "BlazorCocktails.Client\\Layout\\MainLayout.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACgAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-26T13:42:15.969Z",
+              "WhenOpened": "2025-08-27T11:09:22.995Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 8,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\wwwroot\\index.html",
+              "RelativeDocumentMoniker": "BlazorCocktails.Client\\wwwroot\\index.html",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\wwwroot\\index.html",
+              "RelativeToolTip": "BlazorCocktails.Client\\wwwroot\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-08-27T11:07:11.883Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Categories.razor",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Pages\\Categories.razor",
+              "RelativeDocumentMoniker": "BlazorCocktails.Client\\Pages\\Categories.razor",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Pages\\Categories.razor",
+              "RelativeToolTip": "BlazorCocktails.Client\\Pages\\Categories.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-27T10:47:24.614Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Home.razor",
               "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Pages\\Home.razor",
               "RelativeDocumentMoniker": "BlazorCocktails.Client\\Pages\\Home.razor",
               "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Pages\\Home.razor",
               "RelativeToolTip": "BlazorCocktails.Client\\Pages\\Home.razor",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAwwFIAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAAUAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-26T13:29:10.409Z",
+              "WhenOpened": "2025-08-27T10:22:17.471Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\API\\Program.cs",
+              "RelativeDocumentMoniker": "API\\Program.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\API\\Program.cs",
+              "RelativeToolTip": "API\\Program.cs",
+              "ViewState": "AgIAAMEAAAAAAAAAAAAAANYAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T10:20:48.564Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "App.en-US.resx",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Resources\\App.en-US.resx",
-              "RelativeDocumentMoniker": "BlazorCocktails.Client\\Resources\\App.en-US.resx",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Resources\\App.en-US.resx",
-              "RelativeToolTip": "BlazorCocktails.Client\\Resources\\App.en-US.resx",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2025-08-26T13:09:13.924Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "RedirectToLogin.razor",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Shared\\RedirectToLogin.razor",
-              "RelativeDocumentMoniker": "BlazorCocktails.Client\\Shared\\RedirectToLogin.razor",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Shared\\RedirectToLogin.razor",
-              "RelativeToolTip": "BlazorCocktails.Client\\Shared\\RedirectToLogin.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-26T13:28:56.127Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Login.razor",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Pages\\Auth\\Login.razor",
-              "RelativeDocumentMoniker": "BlazorCocktails.Client\\Pages\\Auth\\Login.razor",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Pages\\Auth\\Login.razor",
-              "RelativeToolTip": "BlazorCocktails.Client\\Pages\\Auth\\Login.razor",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAAAF8AAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-26T13:26:54.483Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "_Imports.razor",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\_Imports.razor",
-              "RelativeDocumentMoniker": "BlazorCocktails.Client\\_Imports.razor",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\_Imports.razor",
-              "RelativeToolTip": "BlazorCocktails.Client\\_Imports.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-26T13:19:49.208Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "App.razor",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\App.razor",
-              "RelativeDocumentMoniker": "BlazorCocktails.Client\\App.razor",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\App.razor",
-              "RelativeToolTip": "BlazorCocktails.Client\\App.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-26T13:19:46.796Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ResetPassword.razor",
-              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Pages\\Auth\\ResetPassword.razor",
-              "RelativeDocumentMoniker": "BlazorCocktails.Client\\Pages\\Auth\\ResetPassword.razor",
-              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Pages\\Auth\\ResetPassword.razor",
-              "RelativeToolTip": "BlazorCocktails.Client\\Pages\\Auth\\ResetPassword.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-26T13:02:01.828Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
               "Title": "ForgotPassword.razor",
               "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Pages\\Auth\\ForgotPassword.razor",
               "RelativeDocumentMoniker": "BlazorCocktails.Client\\Pages\\Auth\\ForgotPassword.razor",
               "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Pages\\Auth\\ForgotPassword.razor",
               "RelativeToolTip": "BlazorCocktails.Client\\Pages\\Auth\\ForgotPassword.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE0AAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-26T13:01:21.385Z",
+              "WhenOpened": "2025-08-27T10:17:12.247Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Program.cs",
+              "RelativeDocumentMoniker": "BlazorCocktails.Client\\Program.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Program.cs",
+              "RelativeToolTip": "BlazorCocktails.Client\\Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T10:12:16.292Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\App.razor",
+              "RelativeDocumentMoniker": "BlazorCocktails.Client\\App.razor",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\App.razor",
+              "RelativeToolTip": "BlazorCocktails.Client\\App.razor",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAAACYAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-27T10:11:32.274Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CocktailsApiClient.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\ApiClient\\CocktailsApiClient.cs",
+              "RelativeDocumentMoniker": "ApiClient\\CocktailsApiClient.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\ApiClient\\CocktailsApiClient.cs",
+              "RelativeToolTip": "ApiClient\\CocktailsApiClient.cs",
+              "ViewState": "AgIAAOAJAAAAAAAAAAAIwOoJAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T09:55:12.24Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Infraestructura\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "Infraestructura\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\Infraestructura\\Services\\UserService.cs",
+              "RelativeToolTip": "Infraestructura\\Services\\UserService.cs",
+              "ViewState": "AgIAALYAAAAAAAAAAAAAwLIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T09:37:36.722Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CocktailsController.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\API\\Controllers\\CocktailsController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\CocktailsController.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\API\\Controllers\\CocktailsController.cs",
+              "RelativeToolTip": "API\\Controllers\\CocktailsController.cs",
+              "ViewState": "AgIAAJEBAAAAAAAAAAAqwHEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T09:24:15.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\API\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\API\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "API\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAADEBAAAAAAAAAAAswG0BAABmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T09:22:49.808Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "app.css",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\wwwroot\\css\\app.css",
+              "RelativeDocumentMoniker": "BlazorCocktails.Client\\wwwroot\\css\\app.css",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\wwwroot\\css\\app.css",
+              "RelativeToolTip": "BlazorCocktails.Client\\wwwroot\\css\\app.css",
+              "ViewState": "AgIAAI0DAAAAAAAAAAAAAJ4DAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-27T09:20:54.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.razor",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Pages\\Admin\\Index.razor",
+              "RelativeDocumentMoniker": "BlazorCocktails.Client\\Pages\\Admin\\Index.razor",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Pages\\Admin\\Index.razor",
+              "RelativeToolTip": "BlazorCocktails.Client\\Pages\\Admin\\Index.razor",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAAACYAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-27T09:19:18.552Z",
               "EditorCaption": ""
             }
           ]

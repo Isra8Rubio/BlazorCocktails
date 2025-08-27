@@ -342,5 +342,29 @@ namespace Infraestructura.Controllers
             }
         }
 
+
+        [HttpGet("count")]
+        [Authorize(Policy = "isAdmin")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(int))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<int>> CountAsync()
+        {
+            var traceId = _context.HttpContext?.TraceIdentifier?.Split(':')[0] ?? "";
+
+            try
+            {
+                _logger.Info($"[{traceId}] Call: CountUsers");
+                var total = await _userService.CountAsync();
+                _logger.Info($"[{traceId}] FinishCall: CountUsers – total={total}");
+                return Ok(total);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, $"[{traceId}] CountUsers error");
+                return StatusCode(500, new { Message = "Error counting users", Detail = ex.Message });
+            }
+        }
     }
 }

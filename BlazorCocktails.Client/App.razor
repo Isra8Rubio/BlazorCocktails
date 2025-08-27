@@ -19,22 +19,31 @@ else
 
         <Router AppAssembly="@typeof(App).Assembly">
             <Found Context="routeData">
-                <!-- Si NO hay sesión, solo deja ver páginas [AllowAnonymous]; el resto redirige a /login -->
-                <AuthorizeView>
-                    <Authorized>
-                        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-                    </Authorized>
-                    <NotAuthorized>
-                        @if (IsAnonymous(routeData.PageType))
+                <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+                    <NotAuthorized Context="authState">
+                        @if (!(authState?.User?.Identity?.IsAuthenticated ?? false))
                         {
-                            <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+                            if (IsAnonymous(routeData.PageType))
+                            {
+                                <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+                            }
+                            else
+                            {
+                                <RedirectToLogin ReturnUrl="@Nav.ToBaseRelativePath(Nav.Uri)" />
+                            }
                         }
                         else
                         {
-                            <RedirectToLogin ReturnUrl="@Nav.ToBaseRelativePath(Nav.Uri)" />
+                            <MudText>Not authorized.</MudText>
                         }
                     </NotAuthorized>
-                </AuthorizeView>
+
+                    <Authorizing>
+                        <div style="height:40vh;display:flex;align-items:center;justify-content:center;">
+                            <MudProgressCircular Indeterminate="true" />
+                        </div>
+                    </Authorizing>
+                </AuthorizeRouteView>
             </Found>
 
             <NotFound>
@@ -43,6 +52,7 @@ else
                 </LayoutView>
             </NotFound>
         </Router>
+
     </CascadingAuthenticationState>
 }
 

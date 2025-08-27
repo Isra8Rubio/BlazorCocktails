@@ -20,6 +20,11 @@ builder.Services.AddScoped(sp => new APIClient(sp.GetRequiredService<HttpClient>
 builder.Services.AddAuthorizationCore();
 builder.Services.AddScoped<AuthenticationStateProvider, JwtAuthStateProvider>();
 
+builder.Services.AddAuthorizationCore(options =>
+{
+    options.AddPolicy("isAdmin", policy => policy.RequireClaim("isAdmin", "true"));
+});
+
 // Localización
 builder.Services.AddLocalization(o => o.ResourcesPath = "Resources");
 
