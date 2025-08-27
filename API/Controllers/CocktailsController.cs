@@ -1,5 +1,6 @@
 ﻿using Core.DTO;
 using Core.Entities;
+using FluentValidation;
 using Infraestructura.Repositories;
 using Infraestructura.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -28,7 +29,6 @@ namespace Weather.api.Controllers
 
         // Lista de tipos de cócteles (Alcoholic / Non alcoholic / Optional alcohol).
         [HttpGet("AlcoholTypes")]
-        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<AlcoholTypeDTO>))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -401,7 +401,7 @@ namespace Weather.api.Controllers
         }
 
 
-        // Detalle de ingrediente por nombre (para popup)
+        // Detalle de ingrediente por nombre
         [HttpGet("IngredientNamePopup")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IngredientDetailDTO))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

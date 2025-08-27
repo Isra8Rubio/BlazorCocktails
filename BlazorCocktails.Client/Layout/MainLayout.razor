@@ -29,30 +29,7 @@
 
         <div class="appbar-actions-col">
             <div class="appbar-row top">
-                @if (!IsAuthenticated)
-                {
-                    @if (!IsAuthPage)
-                    {
-                        <MudButton Href="/login"
-                                   Variant="Variant.Outlined"
-                                   Color="Color.Inherit"
-                                   StartIcon="@Icons.Material.Filled.Login"
-                                   Size="Size.Small"
-                                   Class="appbar-btn">
-                            @L["MainLayout_Login"]
-                        </MudButton>
-
-                        <MudButton Href="/register"
-                                   Variant="Variant.Outlined"
-                                   Color="Color.Inherit"
-                                   StartIcon="@Icons.Material.Filled.PersonAdd"
-                                   Size="Size.Small"
-                                   Class="appbar-btn">
-                            @L["MainLayout_Register"]
-                        </MudButton>
-                    }
-                }
-                else
+                @if (IsAuthenticated)
                 {
                     <AuthorizeView Roles="Admin">
                         <Authorized>
@@ -74,7 +51,6 @@
 
             <div class="appbar-row bottom">
                 <LanguageSwitcher />
-                @* Eliminado el botón de cambiar tema (siempre oscuro) *@
             </div>
         </div>
     </MudAppBar>
@@ -85,17 +61,12 @@
                    Variant="DrawerVariant.Responsive"
                    Elevation="1"
                    Class="p-0 drawer-fix">
-            <MudDrawerHeader Class="px-4 py-3">
-                <MudText Typo="Typo.subtitle1">@L["MainLayout_Menu"]</MudText>
-            </MudDrawerHeader>
 
             <div class="drawer-scroll">
                 <NavMenu />
             </div>
         </MudDrawer>
     }
-
-    @* Si estamos en login/register sin sesión *@
     @if (IsAuthPage && !IsAuthenticated)
     {
         <div class="auth-shell">
@@ -137,7 +108,7 @@
         {
             var token = await JS.InvokeAsync<string?>("localStorage.getItem", "authToken")
                         ?? await JS.InvokeAsync<string?>("sessionStorage.getItem", "authToken");
-            APIClient.Token = token; // disparará TokenChanged
+            APIClient.Token = token;
         }
     }
 
@@ -152,7 +123,12 @@
     private void UpdateIsAuthPage()
     {
         var path = Nav.ToBaseRelativePath(Nav.Uri).ToLowerInvariant();
-        IsAuthPage = path.StartsWith("login") || path.StartsWith("register");
+
+        IsAuthPage =
+            path.StartsWith("login") ||
+            path.StartsWith("register") ||
+            path.StartsWith("forgot-password") ||
+            path.StartsWith("reset-password");
     }
 
     public void Dispose()

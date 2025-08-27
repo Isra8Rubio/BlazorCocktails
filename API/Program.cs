@@ -42,6 +42,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(opts =>
 
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<UserService>();
+builder.Services.AddTransient<IValidator<ForgotPasswordDTO>, ForgotPasswordDTOValidator>();
+builder.Services.AddTransient<IValidator<ResetPasswordDTO>, ResetPasswordDTOValidator>();
+
 
 
 // CORS

@@ -12,7 +12,7 @@
         <MudText Typo="Typo.h3">@L["Home_HeroTitle"]</MudText>
         <MudText Typo="Typo.subtitle1" Class="opacity-80 mt-2">@L["Home_HeroSubtitle"]</MudText>
         <MudStack Row="true" Spacing="2" Class="mt-4">
-            <MudButton Variant="Variant.Filled" Class="auth-btn" OnClick="@(() => Nav.NavigateTo("/categorias"))">
+            <MudButton Variant="Variant.Filled" Class="auth-btn" OnClick="@(() => Nav.NavigateTo("/categories"))">
                 @L["Home_HeroPrimary"]
             </MudButton>
             <MudButton Variant="Variant.Outlined" Class="auth-btn-outline" OnClick="@(() => Nav.NavigateTo("/alcohol"))">
@@ -76,7 +76,59 @@
     </MudItem>
 </MudGrid>
 
+<!-- CARRUSEL -->
+<MudGrid Spacing="3" Class="home-section carousel-split" AlignItems="Stretch">
+    <!-- IZQUIERDA -->
+    <MudItem xs="12" md="6">
+        <div class="hc-frame">
+            <MudCarousel Class="hc-fill"
+                         ShowArrows="@arrows"
+                         ShowBullets="@bullets"
+                         EnableSwipeGesture="@enableSwipeGesture"
+                         AutoCycle="@autocycle"
+                         AutoCycleInterval="6000"
+                         TData="object"
+                         Transition="@transition">
 
+                @foreach (var img in CarouselImages)
+                {
+                    <MudCarouselItem>
+                        <img src="@img" alt="Featured cocktail" class="hc-img" />
+                    </MudCarouselItem>
+                }
+            </MudCarousel>
+        </div>
+    </MudItem>
+
+    <!-- DERECHA: texto -->
+    <MudItem xs="12" md="6" Class="carousel-copy">
+        <div class="copy-block">
+            <MudText Typo="Typo.h3" Class="copy-title">
+                @L["Home_CarouselCopy_Title"]
+            </MudText>
+            <MudText Typo="Typo.subtitle1" Class="copy-sub">
+                @L["Home_CarouselCopy_Body"]
+            </MudText>
+        </div>
+    </MudItem>
+</MudGrid>
+
+
+@code {
+    private string[] CarouselImages =
+    {
+        "images/Carrusel1.jpg",
+        "images/Carrusel2.jpg",
+        "images/Carrusel3.jpg",
+        "images/Carrusel5.jpg"
+    };
+
+    private bool arrows = false;
+    private bool bullets = true;
+    private bool enableSwipeGesture = true;
+    private bool autocycle = true;
+    private Transition transition = Transition.Fade;
+}
 
 @*
  Qué hacemos:

@@ -462,4 +462,58 @@
   <data name="Footer_Terms" xml:space="preserve">
     <value>Terms</value>
   </data>
+  <data name="Password_ForgotTitle" xml:space="preserve">
+    <value>Forgot your password?</value>
+  </data>
+  <data name="Password_ForgotIntro" xml:space="preserve">
+    <value>Enter your email and we’ll send you a reset link.</value>
+  </data>
+  <data name="Password_ResetEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Password_Send" xml:space="preserve">
+    <value>Send instructions</value>
+  </data>
+  <data name="Password_BackToLogin" xml:space="preserve">
+    <value>Back to sign in</value>
+  </data>
+  <data name="Password_ForgotSent" xml:space="preserve">
+    <value>If the email exists, we’ve sent you instructions.</value>
+  </data>
+  <data name="Password_ForgotError" xml:space="preserve">
+    <value>Couldn’t send the email</value>
+  </data>
+  <data name="Password_ResetTitle" xml:space="preserve">
+    <value>Reset password</value>
+  </data>
+  <data name="Password_ResetSubtitle" xml:space="preserve">
+    <value>Set new password</value>
+  </data>
+  <data name="Password_New" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="Password_Confirm" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="Password_NoMatch" xml:space="preserve">
+    <value>Passwords don’t match</value>
+  </data>
+  <data name="Password_Save" xml:space="preserve">
+    <value>Save new password</value>
+  </data>
+  <data name="Password_GoLogin" xml:space="preserve">
+    <value>Go to sign in</value>
+  </data>
+  <data name="Password_ResetDone" xml:space="preserve">
+    <value>Password reset! You can sign in now.</value>
+  </data>
+  <data name="Password_ResetError" xml:space="preserve">
+    <value>Couldn’t reset</value>
+  </data>
+  <data name="Home_CarouselCopy_Title" xml:space="preserve">
+    <value>A toast to friendship</value>
+  </data>
+  <data name="Home_CarouselCopy_Body" xml:space="preserve">
+    <value>The best cocktails are enjoyed together. Share recipes, laughs and little victories with your people. Pick a drink, split the roles—shaker, pourer, DJ—and create moments worth a toast.</value>
+  </data>
 </root>

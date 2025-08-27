@@ -48,7 +48,7 @@
                 <MudStack Row="true" AlignItems="AlignItems.Center" Class="mt-3">
                     <MudCheckBox T="bool" @bind-Checked="_remember" Dense="true" Label="@L["Login_Remember"]" />
                     <MudSpacer />
-                    <MudLink Href="/forgot" Class="text-sm opacity-80">@L["Login_Forgot"]</MudLink>
+                    <MudLink Href="/forgot-password" Class="text-sm opacity-80">@L["Login_Forgot"]</MudLink>
                 </MudStack>
 
                 <MudStack Row="true" Spacing="2" Class="mt-5">
@@ -65,6 +65,7 @@
         </MudCardContent>
     </MudCard>
 </MudPaper>
+
 
 @code {
     private MudForm? _form;
@@ -88,16 +89,10 @@
         _busy = true;
         try
         {
-            // Tu endpoint devuelve AnswerAuthenticationDTO. Toma la propiedad del token:
             var res = await Api.Users_LoginAsync(_model);
-
-            // ⬇️ AJUSTA AQUÍ si tu DTO usa otro nombre: Token / AccessToken / Jwt …
             var jwt = res.Token;
-
-            // Bearer automático para todas las llamadas del ApiClient
             API.APIService.APIClient.Token = jwt;
 
-            // Persistir (opcional)
             if (_remember)
                 await JS.InvokeVoidAsync("localStorage.setItem", "authToken", jwt);
             else

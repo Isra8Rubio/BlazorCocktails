@@ -4,9 +4,8 @@ using FluentValidation.Results;
 using Infraestructura.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using System.Security.Claims;
 using NLog;
+using System.Security.Claims;
 
 namespace Infraestructura.Controllers
 {
@@ -19,17 +18,23 @@ namespace Infraestructura.Controllers
         private readonly IValidator<CredentialsUserDTO> _credsValidator;
         private readonly IHttpContextAccessor _context;
         private readonly IValidator<RegisterUserDTO> registerValidator;
+        private readonly IValidator<ForgotPasswordDTO> forgotValidator;
+        private readonly IValidator<ResetPasswordDTO> resetValidator;
 
         public UsersController(
             UserService userService,
             IValidator<CredentialsUserDTO> credsValidator,
             IHttpContextAccessor context,
-            IValidator<RegisterUserDTO> registerValidator)
+            IValidator<RegisterUserDTO> registerValidator,
+            IValidator<ForgotPasswordDTO> forgotValidator,
+            IValidator<ResetPasswordDTO> resetValidator)
         {
             _userService = userService;
             _credsValidator = credsValidator;
             _context = context;
             this.registerValidator = registerValidator;
+            this.forgotValidator = forgotValidator;
+            this.resetValidator = resetValidator;
         }
 
         [HttpPost("register")]
@@ -257,20 +262,85 @@ namespace Infraestructura.Controllers
         }
 
 
-        //  IValidator<ForgotPasswordDTO> forgotValidator
-        //[HttpPost("ForgotPassword")]
-        //[AllowAnonymous]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-        //public async Task<ActionResult> ForgotPassword([FromBody] ForgotPasswordDTO dto)
-        //{
-        //    ValidationResult validation = await forgotValidator.ValidateAsync(dto);
-        //    if (!validation.IsValid)
-        //        return ValidationProblem(validation.ToDictionary());
+        [HttpPost("forgot-password")]
+        [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> ForgotPassword([FromBody] ForgotPasswordDTO dto)
+        {
+            var traceId = _context.HttpContext?.TraceIdentifier?.Split(':')[0] ?? "";
 
-        //    // Genera token y envía email
-        //    await _userService.SendPasswordResetEmailAsync(dto.Email);
-        //    return Ok(new { Message = "Correo de recuperación enviado si el email existe." });
-        //}
+            FluentValidation.Results.ValidationResult validation = await forgotValidator.ValidateAsync(dto);
+            if (!validation.IsValid)
+            {
+                foreach (var err in validation.Errors)
+                    ModelState.AddModelError(err.PropertyName, err.ErrorMessage);
+                return ValidationProblem(ModelState);
+            }
+
+            try
+            {
+                const string ResetBase = "https://localhost:7032/reset-password";
+                _logger.Info($"[{traceId}] Call: ForgotPassword(email={dto.Email})");
+
+                await _userService.ForgotPasswordAsync(dto.Email!, ResetBase);
+
+                _logger.Info($"[{traceId}] FinishCall: ForgotPassword – mail encolado");
+                return Ok(new { Message = "Se han enviado instrucciones para restablecer la contraseña." });
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, $"[{traceId}] ForgotPassword error");
+                return StatusCode(500, new { Message = "Error sending email", Detail = ex.Message });
+            }
+        }
+
+
+        [HttpPost("reset-password")]
+        [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> ResetPassword([FromBody] ResetPasswordDTO dto)
+        {
+            var traceId = _context.HttpContext?.TraceIdentifier?.Split(':')[0] ?? "";
+
+            FluentValidation.Results.ValidationResult validation = await resetValidator.ValidateAsync(dto);
+            if (!validation.IsValid)
+            {
+                foreach (var err in validation.Errors)
+                    ModelState.AddModelError(err.PropertyName, err.ErrorMessage);
+                return ValidationProblem(ModelState);
+            }
+
+            try
+            {
+                _logger.Info($"[{traceId}] Call: ResetPassword(email={dto.Email})");
+
+                await _userService.ResetPasswordAsync(dto);
+
+                _logger.Info($"[{traceId}] FinishCall: ResetPassword – done");
+                return Ok(new { Message = "Contraseña restablecida correctamente." });
+            }
+            catch (InvalidOperationException ex)
+            {
+                _logger.Error(ex, $"[{traceId}] ResetPassword invalid");
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return ValidationProblem(ModelState);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                _logger.Error(ex, $"[{traceId}] ResetPassword not found");
+                return NotFound(new { Message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, $"[{traceId}] ResetPassword error");
+                return StatusCode(500, new { Message = "Error resetting password", Detail = ex.Message });
+            }
+        }
+
     }
 }

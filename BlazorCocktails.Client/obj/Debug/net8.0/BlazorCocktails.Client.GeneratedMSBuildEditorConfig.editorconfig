@@ -33,12 +33,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWxjb2hvbFR5cGVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Pages/Auth/ForgotPassword.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxGb3Jnb3RQYXNzd29yZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Pages/Auth/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxMb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Pages/Auth/Register.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxSZWdpc3Rlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Pages/Auth/ResetPassword.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxSZXNldFBhc3N3b3JkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Pages/Categories.razor]
@@ -71,10 +79,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Shared/Footer.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEZvb3Rlci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Shared/HomeDashboard.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEhvbWVEYXNoYm9hcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/IRubio-WS/source/repos/BlazorCocktails/BlazorCocktails.Client/Shared/IngredientDialog.razor]

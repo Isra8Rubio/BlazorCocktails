@@ -33,6 +33,22 @@
       "PackagePath": "staticwebassets\\icon-192.png"
     },
     {
+      "Id": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\wwwroot\\images\\Carrusel1.jpg",
+      "PackagePath": "staticwebassets\\images\\Carrusel1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\wwwroot\\images\\Carrusel2.jpg",
+      "PackagePath": "staticwebassets\\images\\Carrusel2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\wwwroot\\images\\Carrusel3.jpg",
+      "PackagePath": "staticwebassets\\images\\Carrusel3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\wwwroot\\images\\Carrusel5.jpg",
+      "PackagePath": "staticwebassets\\images\\Carrusel5.jpg"
+    },
+    {
       "Id": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\wwwroot\\images\\hero-cocktails.jpg",
       "PackagePath": "staticwebassets\\images\\hero-cocktails.jpg"
     },

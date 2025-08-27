@@ -12,7 +12,7 @@ namespace Infraestructura.Repositories
         private readonly UserManager<Usuario> _userManager;
         private readonly SignInManager<Usuario> _signInManager;
 
-        public UserRepository(UserManager<Usuario> userManager,SignInManager<Usuario> signInManager)
+        public UserRepository(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -30,7 +30,7 @@ namespace Infraestructura.Repositories
         public Task<Usuario?> FindByEmailAsync(string email) =>
             _userManager.FindByEmailAsync(email);
 
-        public Task<IdentityResult> ChangePasswordAsync(Usuario user,string currentPassword,string newPassword)
+        public Task<IdentityResult> ChangePasswordAsync(Usuario user, string currentPassword, string newPassword)
         {
             return _userManager.ChangePasswordAsync(user, currentPassword, newPassword);
         }
@@ -49,5 +49,11 @@ namespace Infraestructura.Repositories
 
         public Task<IdentityResult> AddClaimAsync(Usuario user, Claim claim) =>
             _userManager.AddClaimAsync(user, claim);
+
+        public Task<string> GeneratePasswordResetTokenAsync(Usuario user) =>
+            _userManager.GeneratePasswordResetTokenAsync(user);
+        public Task<IdentityResult> ResetPasswordAsync(Usuario user, string token, string newPassword) =>
+            _userManager.ResetPasswordAsync(user, token, newPassword);
+
     }
 }

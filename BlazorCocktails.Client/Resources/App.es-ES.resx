@@ -462,4 +462,58 @@
   <data name="Footer_Terms" xml:space="preserve">
     <value>Términos</value>
   </data>
+  <data name="Password_ForgotTitle" xml:space="preserve">
+    <value>¿Has olvidado tu contraseña?</value>
+  </data>
+  <data name="Password_ForgotIntro" xml:space="preserve">
+    <value>Introduce tu email y te enviaremos un enlace para restablecerla.</value>
+  </data>
+  <data name="Password_ResetEmail" xml:space="preserve">
+    <value>Correo</value>
+  </data>
+  <data name="Password_Send" xml:space="preserve">
+    <value>Enviar instrucciones</value>
+  </data>
+  <data name="Password_BackToLogin" xml:space="preserve">
+    <value>Volver a iniciar sesión</value>
+  </data>
+  <data name="Password_ForgotSent" xml:space="preserve">
+    <value>Si el email existe, te hemos enviado instrucciones.</value>
+  </data>
+  <data name="Password_ForgotError" xml:space="preserve">
+    <value>No se pudo enviar el correo</value>
+  </data>
+  <data name="Password_ResetTitle" xml:space="preserve">
+    <value>Restablecer contraseña</value>
+  </data>
+  <data name="Password_ResetSubtitle" xml:space="preserve">
+    <value>Indica la nueva contraseña</value>
+  </data>
+  <data name="Password_New" xml:space="preserve">
+    <value>Nueva contraseña</value>
+  </data>
+  <data name="Password_Confirm" xml:space="preserve">
+    <value>Confirmar contraseña</value>
+  </data>
+  <data name="Password_NoMatch" xml:space="preserve">
+    <value>Las contraseñas no coinciden</value>
+  </data>
+  <data name="Password_Save" xml:space="preserve">
+    <value>Guardar nueva contraseña</value>
+  </data>
+  <data name="Password_GoLogin" xml:space="preserve">
+    <value>Ir a iniciar sesión</value>
+  </data>
+  <data name="Password_ResetDone" xml:space="preserve">
+    <value>¡Contraseña restablecida! Ya puedes iniciar sesión.</value>
+  </data>
+  <data name="Password_ResetError" xml:space="preserve">
+    <value>No se pudo restablecer</value>
+  </data>
+  <data name="Home_CarouselCopy_Title" xml:space="preserve">
+    <value>Brindemos por la amistad</value>
+  </data>
+  <data name="Home_CarouselCopy_Body" xml:space="preserve">
+    <value>Los mejores cócteles se disfrutan en compañía. Comparte recetas, risas y pequeñas victorias con tu gente. Elige un cóctel, reparte tareas —quien agita, quien sirve, quien pone la música— y cread juntos momentos que valen un brindis.</value>
+  </data>
 </root>
