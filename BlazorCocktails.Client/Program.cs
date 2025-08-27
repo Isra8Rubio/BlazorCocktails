@@ -1,36 +1,53 @@
-using API.APIService;
-using BlazorCocktails.Client;
+using System.Globalization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.JSInterop;
 using MudBlazor.Services;
-using System.Globalization;
+using BlazorCocktails.Client;
 using BlazorCocktails.Client.Services;
-using Microsoft.AspNetCore.Components.Authorization;
+using API.APIService;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
+
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
+// -------------------------------------
+// UI
+// -------------------------------------
 builder.Services.AddMudServices();
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7131") });
-builder.Services.AddScoped(sp => new APIClient(sp.GetRequiredService<HttpClient>()));
-
-builder.Services.AddAuthorizationCore();
-builder.Services.AddScoped<AuthenticationStateProvider, JwtAuthStateProvider>();
-
+// -------------------------------------
+// AuthN / AuthZ
+// -------------------------------------
 builder.Services.AddAuthorizationCore(options =>
 {
     options.AddPolicy("isAdmin", policy => policy.RequireClaim("isAdmin", "true"));
 });
+builder.Services.AddScoped<AuthenticationStateProvider, JwtAuthStateProvider>();
 
+// -------------------------------------
+// HTTP / API client (typed) + redirect 401/403
+// -------------------------------------
+builder.Services.AddTransient<AuthRedirectHandler>();
+
+builder.Services.AddHttpClient<APIClient>(client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7131");
+})
+.AddHttpMessageHandler<AuthRedirectHandler>();
+
+// -------------------------------------
 // Localización
+// -------------------------------------
 builder.Services.AddLocalization(o => o.ResourcesPath = "Resources");
 
+// -------------------------------------
+// Build + cultura almacenada
+// -------------------------------------
 var host = builder.Build();
 
-// Cultura almacenada
 var js = host.Services.GetRequiredService<IJSRuntime>();
 var stored = await js.InvokeAsync<string?>("blazorCulture.get");
 var culture = !string.IsNullOrWhiteSpace(stored) ? new CultureInfo(stored!) : new CultureInfo("es-ES");
@@ -39,24 +56,3 @@ CultureInfo.DefaultThreadCurrentCulture = culture;
 CultureInfo.DefaultThreadCurrentUICulture = culture;
 
 await host.RunAsync();
-
-/*
- Qué hacemos:
-  - Arrancamos Blazor WebAssembly, montando <App> en "#app" y <HeadOutlet> en "head::after".
-  - Registramos MudBlazor (servicios UI), HttpClient con BaseAddress hacia nuestro backend
-    (https://localhost:7131) y el APIClient generado (NSwag) que reutiliza ese HttpClient.
-  - Habilitamos localización con recursos .resx en la carpeta "Resources".
-  - Leemos la cultura guardada vía JS (`blazorCulture.get`) y establecemos la cultura por defecto;
-    si no hay valor, usamos "es-ES". Esto aplica formatos y textos localizados desde el arranque.
-
- Detalles:
-  - CultureInfo.DefaultThreadCurrentCulture / DefaultThreadCurrentUICulture afectan a toda la app.
-  - Para que `blazorCulture.get` funcione, incluimos `wwwroot/js/culture.js` en la página host.
-  - En despliegue, conviene ajustar `BaseAddress` del HttpClient a la URL real del backend.
-
- Flujo:
-  1) Construimos el host y registramos servicios.
-  2) Obtenemos `stored` desde JS interop (localStorage).
-  3) Fijamos la CultureInfo adecuada.
-  4) Ejecutamos la app con `host.RunAsync()`.
-*/

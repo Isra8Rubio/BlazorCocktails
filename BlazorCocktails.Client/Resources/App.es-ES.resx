@@ -576,4 +576,52 @@
   <data name="Admin_CsvPrefix" xml:space="preserve">
     <value>users_stats</value>
   </data>
+  <data name="Err_Generic" xml:space="preserve">
+    <value>Ha ocurrido un error. Inténtalo de nuevo.</value>
+  </data>
+  <data name="Err_BadRequest" xml:space="preserve">
+    <value>Petición inválida.</value>
+  </data>
+  <data name="Err_Unauthorized" xml:space="preserve">
+    <value>Sesión caducada o no autorizada.</value>
+  </data>
+  <data name="Err_Forbidden" xml:space="preserve">
+    <value>No tienes permisos para esta acción.</value>
+  </data>
+  <data name="Err_NotFound" xml:space="preserve">
+    <value>Recurso no encontrado.</value>
+  </data>
+  <data name="Err_Conflict" xml:space="preserve">
+    <value>Conflicto en la operación.</value>
+  </data>
+  <data name="Admin_DeleteTitle" xml:space="preserve">
+    <value>Eliminar usuario</value>
+  </data>
+  <data name="Admin_UserIdLabel" xml:space="preserve">
+    <value>Id del usuario*</value>
+  </data>
+  <data name="Admin_UserIdRequired" xml:space="preserve">
+    <value>El Id del usuario es obligatorio.</value>
+  </data>
+  <data name="Admin_DeleteConfirmTitle" xml:space="preserve">
+    <value>Confirmar eliminación</value>
+  </data>
+  <data name="Admin_DeleteConfirmMessage" xml:space="preserve">
+    <value>¿Seguro que quieres eliminar al usuario {0}? Esta acción no se puede deshacer.</value>
+  </data>
+  <data name="Admin_DeleteOk " xml:space="preserve">
+    <value>Usuario eliminado correctamente.</value>
+  </data>
+  <data name="Admin_DeleteError" xml:space="preserve">
+    <value>No se pudo eliminar: {0}</value>
+  </data>
+  <data name="Admin_DeleteHelp" xml:space="preserve">
+    <value>Introduce el Id exacto del usuario (GUID). Si no existe, se mostrará un aviso.</value>
+  </data>
+  <data name="Common_Delete" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="Common_Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
 </root>

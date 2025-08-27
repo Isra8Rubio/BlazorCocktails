@@ -1,11 +1,14 @@
 ﻿@page "/register"
+@attribute [AllowAnonymous]
+
 @using API.APIService
+@using BlazorCocktails.Client.Shared.Helper
+@using Microsoft.Extensions.Localization
+
 @inject APIClient Api
 @inject ISnackbar Snackbar
 @inject NavigationManager Nav
-@inject Microsoft.Extensions.Localization.IStringLocalizer<App> L
-@attribute [AllowAnonymous]
-
+@inject IStringLocalizer<App> L
 
 <PageTitle>@L["Register_Title"]</PageTitle>
 
@@ -17,7 +20,8 @@
 
         <div class="pa-6">
             <MudForm @ref="_form">
-                <MudTextField Variant="Variant.Filled"
+                <MudTextField T="string"
+                              Variant="Variant.Filled"
                               Label="@L["Register_EmailLabel"]"
                               Placeholder="@L["Register_EmailPlaceholder"]"
                               @bind-Value="_model.Email"
@@ -29,29 +33,33 @@
                               Adornment="Adornment.Start"
                               AdornmentIcon="@Icons.Material.Filled.Email" />
 
-                <MudTextField Class="mt-4" Variant="Variant.Filled"
+                <MudTextField class="mt-4"
+                              T="string"
+                              Variant="Variant.Filled"
                               Label="@L["Register_PasswordLabel"]"
                               @bind-Value="_model.Password"
                               For="@(() => _model.Password)"
-                              InputType="@(_show1? InputType.Text: InputType.Password)"
+                              InputType="@(_show1 ? InputType.Text : InputType.Password)"
                               Required="true"
                               Validation="@(new Func<string?, string?>(PasswordValidator))"
                               Immediate="true"
                               Disabled="@_busy"
                               Adornment="Adornment.End"
-                              AdornmentIcon="@(_show1? Icons.Material.Filled.VisibilityOff : Icons.Material.Filled.Visibility)"
+                              AdornmentIcon="@(_show1 ? Icons.Material.Filled.VisibilityOff : Icons.Material.Filled.Visibility)"
                               OnAdornmentClick="@(() => _show1 = !_show1)" />
 
-                <MudTextField Class="mt-4" Variant="Variant.Filled"
+                <MudTextField class="mt-4"
+                              T="string"
+                              Variant="Variant.Filled"
                               Label="@L["Register_ConfirmLabel"]"
                               @bind-Value="_confirm"
-                              InputType="@(_show2? InputType.Text: InputType.Password)"
+                              InputType="@(_show2 ? InputType.Text : InputType.Password)"
                               Required="true"
                               Validation="@(new Func<string?, string?>(ConfirmValidator))"
                               Immediate="true"
                               Disabled="@_busy"
                               Adornment="Adornment.End"
-                              AdornmentIcon="@(_show2? Icons.Material.Filled.VisibilityOff : Icons.Material.Filled.Visibility)"
+                              AdornmentIcon="@(_show2 ? Icons.Material.Filled.VisibilityOff : Icons.Material.Filled.Visibility)"
                               OnAdornmentClick="@(() => _show2 = !_show2)" />
 
                 <MudStack Row="true" Spacing="2" Class="mt-6">
@@ -74,13 +82,14 @@
     </div>
 </MudPaper>
 
-
 @code {
+    // ---------- Estado ----------
     private MudForm? _form;
     private bool _busy, _show1, _show2;
     private string _confirm = string.Empty;
     private RegisterUserDTO _model = new();
 
+    // ---------- Validación ----------
     private string? EmailValidator(string? v)
     {
         if (string.IsNullOrWhiteSpace(v)) return L["Register_EmailRequired"];
@@ -102,6 +111,7 @@
         return null;
     }
 
+    // ---------- Acción ----------
     private async Task RegisterAsync()
     {
         await _form!.Validate();
@@ -115,29 +125,13 @@
             Snackbar.Add(L["Register_Success"], Severity.Success);
             Nav.NavigateTo("/login");
         }
-        catch (ApiException ex)
+        catch (Exception ex)
         {
-            var msg = TryExtractServerError(ex) ?? ex.Message;
-            Snackbar.Add(msg, Severity.Error);
+            ApiErrorHelper.Handle(ex, Snackbar, L, Nav);
         }
-        finally { _busy = false; }
-    }
-
-    private static string? TryExtractServerError(ApiException ex)
-    {
-        if (!string.IsNullOrWhiteSpace(ex.Response))
+        finally
         {
-            try
-            {
-                using var doc = System.Text.Json.JsonDocument.Parse(ex.Response);
-                if (doc.RootElement.TryGetProperty("title", out var title)) return title.GetString();
-                if (doc.RootElement.TryGetProperty("errors", out var errors))
-                    foreach (var p in errors.EnumerateObject())
-                        if (p.Value.ValueKind == System.Text.Json.JsonValueKind.Array && p.Value.GetArrayLength() > 0)
-                            return p.Value[0].GetString();
-            }
-            catch { }
+            _busy = false;
         }
-        return null;
     }
 }

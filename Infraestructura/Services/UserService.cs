@@ -30,6 +30,19 @@ namespace Infraestructura.Services
 
         public Task<int> CountAsync(CancellationToken ct = default) => _repo.CountAsync(ct);
 
+        public async Task<Usuario?> ResolveUserAsync(string userOrEmail)
+        {
+            try
+            {
+                return await _repo.FindByNameOrEmailAsync(userOrEmail);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("UserService.ResolveUserAsync error", ex);
+            }
+        }
+
+
         public async Task<AnswerAuthenticationDTO> RegisterAsync(RegisterUserDTO dto)
         {
             try

@@ -1,5 +1,7 @@
-﻿@using Microsoft.AspNetCore.Components.Authorization
+﻿@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
 @using System.Reflection
+
 @inject IJSRuntime JS
 @inject NavigationManager Nav
 
@@ -12,11 +14,13 @@
 else
 {
     <CascadingAuthenticationState>
+        <!-- Proveedores MudBlazor -->
         <MudThemeProvider />
         <MudDialogProvider />
         <MudSnackbarProvider />
         <MudPopoverProvider />
 
+        <!-- Enrutado -->
         <Router AppAssembly="@typeof(App).Assembly">
             <Found Context="routeData">
                 <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
@@ -52,20 +56,21 @@ else
                 </LayoutView>
             </NotFound>
         </Router>
-
     </CascadingAuthenticationState>
 }
 
 @code {
+    // ---------- Estado de arranque ----------
     private bool _bootstrapped;
 
+    // ---------- Bootstrap: restaurar token antes del router ----------
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            // Restaura el token ANTES de montar el router
             var token = await JS.InvokeAsync<string?>("localStorage.getItem", "authToken")
                         ?? await JS.InvokeAsync<string?>("sessionStorage.getItem", "authToken");
+
             API.APIService.APIClient.Token = token;
 
             _bootstrapped = true;
@@ -73,23 +78,7 @@ else
         }
     }
 
+    // ---------- Utilidades ----------
     private static bool IsAnonymous(Type pageType) =>
         pageType.GetCustomAttributes(typeof(AllowAnonymousAttribute), inherit: true).Any();
 }
-
-
-
-@*
- Qué hacemos:
-  - Registramos los **providers globales** de MudBlazor: Theme, Dialog, Snackbar y Popover.
-  - Definimos el **Router** de la app: si la ruta existe, renderizamos <RouteView> con el
-    layout por defecto **MainLayout**; si no, mostramos la vista de **NotFound** dentro del mismo layout.
-
- Detalles:
-  - <RouteView> aplica MainLayout a todas las páginas que no indiquen otro layout.
-  - La sección <NotFound> usa <LayoutView> para mantener la misma estructura y mostrar el mensaje “Not found”.
-
- Notas:
-  - El control del tema (claro/oscuro) lo gestionamos en **MainLayout**; aquí el ThemeProvider es global.
-  - Si más adelante añadimos autenticación, podemos envolver el Router con <CascadingAuthenticationState>.
-*@

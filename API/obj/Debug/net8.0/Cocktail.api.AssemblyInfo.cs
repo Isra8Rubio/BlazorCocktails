@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cocktail.api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de22acb3b32994d77b253ee221f0600f61cb0d14")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2bb237c1188a7ca16d847e341d88d7d36b2595bb")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cocktail.api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cocktail.api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

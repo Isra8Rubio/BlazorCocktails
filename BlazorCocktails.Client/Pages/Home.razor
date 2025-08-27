@@ -1,28 +1,42 @@
 ﻿@page "/"
+
 @using BlazorCocktails.Client.Shared.Charts
-@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.Extensions.Localization
 @inject IStringLocalizer<App> L
 @inject NavigationManager Nav
-@inject AuthenticationStateProvider AuthStateProvider
 
-<!-- HERO (igual que ya tenías) -->
+<PageTitle>@L["Home_Title"]</PageTitle>
+
+<!-- =========================
+     HERO
+     ========================= -->
 <div class="home-hero">
     <div class="home-hero__bg"></div>
     <div class="home-hero__content">
         <MudText Typo="Typo.h3">@L["Home_HeroTitle"]</MudText>
-        <MudText Typo="Typo.subtitle1" Class="opacity-80 mt-2">@L["Home_HeroSubtitle"]</MudText>
+        <MudText Typo="Typo.subtitle1" Class="opacity-80 mt-2">
+            @L["Home_HeroSubtitle"]
+        </MudText>
+
         <MudStack Row="true" Spacing="2" Class="mt-4">
-            <MudButton Variant="Variant.Filled" Class="auth-btn" OnClick="@(() => Nav.NavigateTo("/categories"))">
+            <MudButton Variant="Variant.Filled"
+                       Class="auth-btn"
+                       OnClick="@(() => Nav.NavigateTo("/categories"))">
                 @L["Home_HeroPrimary"]
             </MudButton>
-            <MudButton Variant="Variant.Outlined" Class="auth-btn-outline" OnClick="@(() => Nav.NavigateTo("/alcohol"))">
+
+            <MudButton Variant="Variant.Outlined"
+                       Class="auth-btn-outline"
+                       OnClick="@(() => Nav.NavigateTo("/alcohol"))">
                 @L["Home_HeroSecondary"]
             </MudButton>
         </MudStack>
     </div>
 </div>
 
-<!-- RANDOM: texto sin Paper a la izquierda + widget a la derecha -->
+<!-- =========================
+     RANDOM (texto izq. + widget dcha.)
+     ========================= -->
 <MudGrid Spacing="3" Class="home-section random-split" AlignItems="Center">
     <MudItem xs="12" md="6" Class="random-left vcenter">
         <div class="random-text-block random-emph">
@@ -35,16 +49,17 @@
         </div>
     </MudItem>
 
-
     <MudItem xs="12" md="6" Class="center-col">
         <RandomCocktailWidget Compact="true" />
     </MudItem>
-
 </MudGrid>
 
+<!-- =========================
+     STATS (charts + texto central)
+     ========================= -->
 
 <MudGrid Spacing="3" Class="home-section stats-split" AlignItems="Stretch" Justify="Justify.Center">
-    <!-- IZQ -->
+    <!-- IZQ: AlcoholTypes -->
     <MudItem xs="12" md="4">
         <MudPaper Class="home-card tinted pa-6 h-100">
             <div class="chart-frame">
@@ -53,11 +68,16 @@
         </MudPaper>
     </MudItem>
 
-    <!-- CENTRO -->
+    <!-- CENTRO: copy -->
     <MudItem xs="12" md="4">
         <div class="stats-center hero">
-            <MudText Typo="Typo.h4" Class="stats-title mb-2">@L["Home_StatsHeading"]</MudText>
-            <MudText Class="stats-subtitle opacity-80 mb-4">@L["Home_StatsCopy"]</MudText>
+            <MudText Typo="Typo.h4" Class="stats-title mb-2">
+                @L["Home_StatsHeading"]
+            </MudText>
+            <MudText Class="stats-subtitle opacity-80 mb-4">
+                @L["Home_StatsCopy"]
+            </MudText>
+
             <MudList T="string" Dense="true" Class="opacity-80 stats-list">
                 <MudListItem>@L["Home_StatsPoint1"]</MudListItem>
                 <MudListItem>@L["Home_StatsPoint2"]</MudListItem>
@@ -66,7 +86,7 @@
         </div>
     </MudItem>
 
-    <!-- DCHA -->
+    <!-- DCHA: CategoryDistribution -->
     <MudItem xs="12" md="4">
         <MudPaper Class="home-card tinted pa-6 h-100">
             <div class="chart-frame">
@@ -76,9 +96,11 @@
     </MudItem>
 </MudGrid>
 
-<!-- CARRUSEL -->
+<!-- =========================
+     CARRUSEL
+     ========================= -->
 <MudGrid Spacing="3" Class="home-section carousel-split" AlignItems="Stretch">
-    <!-- IZQUIERDA -->
+    <!-- IZQ: Carrusel -->
     <MudItem xs="12" md="6">
         <div class="hc-frame">
             <MudCarousel Class="hc-fill"
@@ -100,7 +122,7 @@
         </div>
     </MudItem>
 
-    <!-- DERECHA: texto -->
+    <!-- DCHA: Texto -->
     <MudItem xs="12" md="6" Class="carousel-copy">
         <div class="copy-block">
             <MudText Typo="Typo.h3" Class="copy-title">
@@ -113,9 +135,9 @@
     </MudItem>
 </MudGrid>
 
-
 @code {
-    private string[] CarouselImages =
+    // Imágenes del carrusel
+    private static readonly string[] CarouselImages =
     {
         "images/Carrusel1.jpg",
         "images/Carrusel2.jpg",
@@ -123,30 +145,12 @@
         "images/Carrusel5.jpg"
     };
 
+    // Ajustes UI carrusel
     private bool arrows = false;
     private bool bullets = true;
     private bool enableSwipeGesture = true;
     private bool autocycle = true;
+    private int autoCycleInterval = 6000;
     private Transition transition = Transition.Fade;
 }
 
-@*
- Qué hacemos:
-  - Componemos la página de inicio mostrando dos gráficos y un widget de cóctel aleatorio.
-
- Estructura/UI:
-  - <MudGrid> con separación y gap uniforme.
-  - Columna izquierda (xs=12, sm=5): <AlcoholTypesChart />.
-  - Columna derecha (xs=12, sm=6): <CategoryDistributionChart MaxSlices="11" />.
-  - Fila inferior (xs=12): <RandomCocktailWidget /> centrado y con ancho máximo (240px).
-
- Datos:
-  - Delegamos en cada componente (charts y widget) la carga de sus datos y su propio estado.
-
- Localización:
-  - Inyectamos IStringLocalizer<App> (L) por si añadimos textos; actualmente no lo usamos aquí.
-
- Notas:
-  - El layout es responsive por los breakpoints de MudItem.
-  - Si más adelante añadimos contenido adicional, podemos ajustar Spacing/gap o mover componentes a nuevas filas.
-*@

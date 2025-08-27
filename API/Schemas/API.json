@@ -455,6 +455,40 @@
         }
       }
     },
+    "/api/Users/by-username/{user}": {
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "Users_DeleteByUser",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Cocktails/AlcoholTypes": {
       "get": {
         "tags": [

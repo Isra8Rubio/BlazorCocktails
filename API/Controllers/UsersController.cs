@@ -366,5 +366,35 @@ namespace Infraestructura.Controllers
                 return StatusCode(500, new { Message = "Error counting users", Detail = ex.Message });
             }
         }
+
+        [HttpDelete("by-username/{user}")]
+        [Authorize(Policy = "isAdmin")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult> DeleteByUser(string user)
+        {
+            var traceId = _context.HttpContext?.TraceIdentifier?.Split(':')[0] ?? "";
+            try
+            {
+                _logger.Info($"[{traceId}] Call: DeleteByUser(user={user})");
+
+                var u = await _userService.ResolveUserAsync(user);
+                if (u is null) return NotFound(new { Message = "User not found" });
+
+                await _userService.DeleteUserAsync(u.Id!);
+
+                _logger.Info($"[{traceId}] FinishCall: DeleteByUser – user {u.Id} deleted");
+                return Ok(new { Message = "User deleted successfully." });
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound(new { Message = "User not found" });
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, $"[{traceId}] DeleteByUser error");
+                return StatusCode(500, new { Message = "Error deleting user", Detail = ex.Message });
+            }
+        }
     }
 }

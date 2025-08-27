@@ -1,18 +1,19 @@
 ﻿@page "/glasses"
-@using System.Linq
+
 @using API.APIService
 @using BlazorCocktails.Client.Shared
+@using Microsoft.Extensions.Localization
+@using System.Linq
+
 @inject APIClient Api
 @inject ISnackbar Snackbar
 @inject NavigationManager Nav
-@inject Microsoft.Extensions.Localization.IStringLocalizer<App> L
-@using System.Collections.Concurrent
-@using System.Threading
-
+@inject IStringLocalizer<App> L
 
 <PageTitle>@L["Glasses_Title"]</PageTitle>
 
 <MudStack Spacing="2">
+    @* === Select de vasos === *@
     @if (glasses is null)
     {
         <MudProgressLinear Indeterminate="true" Class="mb-4" />
@@ -35,6 +36,7 @@
         </MudSelect>
     }
 
+    @* === Resultados / estado === *@
     @if (isLoading)
     {
         <MudProgressCircular Indeterminate="true" Class="mt-2" />
@@ -49,7 +51,10 @@
     {
         @if (drinks.Count > pageSize)
         {
-            <Pager TotalItems="drinks.Count" PageSize="pageSize" Radius="2" @bind-CurrentPage="page" />
+            <Pager TotalItems="drinks.Count"
+                   PageSize="pageSize"
+                   Radius="2"
+                   @bind-CurrentPage="page" />
         }
 
         <MudGrid Class="mt-2">
@@ -70,21 +75,24 @@
 </MudStack>
 
 @code {
-    List<GlassDTO>? glasses;
-    List<CocktailItemDTO>? drinks;
+    // ---------- Estado ----------
+    private List<GlassDTO>? glasses;
+    private List<CocktailItemDTO>? drinks;
 
-    string? selectedGlass;
-    bool isLoading;
-    long lastRequestId = 0;
-    int page = 1;
-    const int pageSize = 8;
+    private string? selectedGlass;
+    private bool isLoading;
+    private long lastRequestId = 0;
+    private int page = 1;
+    private const int pageSize = 8;
 
-    IEnumerable<CocktailItemDTO> PagedDrinks =>
+    // ---------- Paginación ----------
+    private IEnumerable<CocktailItemDTO> PagedDrinks =>
         (drinks ?? Enumerable.Empty<CocktailItemDTO>())
             .OrderBy(d => d.StrDrink)
             .Skip((page - 1) * pageSize)
             .Take(pageSize);
 
+    // ---------- Lifecycle ----------
     protected override async Task OnInitializedAsync()
     {
         try
@@ -94,7 +102,7 @@
                         .Where(x => !string.IsNullOrWhiteSpace(x.StrGlass))
                         .OrderBy(x => x.StrGlass)
                         .ToList();
-            drinks = null;
+            drinks = null; // mostramos hint hasta que el usuario seleccione
         }
         catch (ApiException ex)
         {
@@ -102,6 +110,7 @@
         }
     }
 
+    // ---------- Handlers ----------
     private async Task OnSelectedGlassChanged(string? glass)
     {
         selectedGlass = glass;
@@ -109,6 +118,7 @@
         await LoadDrinksAsync(selectedGlass);
     }
 
+    // ---------- Data fetch ----------
     private async Task LoadDrinksAsync(string? glass)
     {
         var requestId = System.Threading.Interlocked.Increment(ref lastRequestId);
@@ -119,7 +129,7 @@
         {
             if (string.IsNullOrWhiteSpace(glass))
             {
-                // Mostramos el hint
+                // Sin selección: mostramos el hint
                 if (requestId == lastRequestId) drinks = null;
                 return;
             }
@@ -145,34 +155,3 @@
         }
     }
 }
-
-@*
- Qué hacemos:
-  - Listamos los **vasos** disponibles y, al seleccionar uno, cargamos los cócteles servidos en ese vaso.
-  - Mostramos los resultados en tarjetas con paginación y permitimos navegar al detalle del cóctel.
-
- UI:
-  - <MudSelect> de vasos (clearable, Immediate, placeholder y deshabilitado mientras cargamos).
-  - Indicadores de carga: <MudProgressLinear> mientras llegan los vasos y <MudProgressCircular> al traer cócteles.
-  - Grid de <MudCard> (imagen + nombre). Al hacer clic navegamos a /cocktail/{id}?from=glasses.
-  - <Pager> cuando hay más elementos que pageSize (8).
-
- Flujo:
-  - OnInitializedAsync(): pedimos vasos con Api.Cocktails_GetGlassesAsync(), filtramos nulos/vacíos y ordenamos alfabéticamente.
-  - OnSelectedGlassChanged(): actualizamos selección, reseteamos página y llamamos a LoadDrinksAsync().
-  - LoadDrinksAsync(): si no hay vaso seleccionado, dejamos drinks = null (mostramos el hint); si hay vaso, pedimos con Api.Cocktails_GetByGlassAsync().
-
- Concurrencia y estado:
-  - lastRequestId nos ayuda a **descartar respuestas tardías** si el usuario cambia rápido de selección.
-  - isLoading controla el estado visual; usamos StateHasChanged() donde corresponde.
-  - PagedDrinks ordena por nombre (StrDrink) y aplica Skip/Take según la página actual.
-
- Localización y errores:
-  - IStringLocalizer<App> (L) para textos y mensajes.
-  - Mostramos Snackbar con errores localizados si fallan las llamadas.
-
- Notas:
-  - pageSize = 8 (constante).
-  - Navegamos al detalle con el query ?from=glasses para que el botón “Volver” en el detalle nos retorne a esta pantalla.
-  - Dependencias: APIClient (Api), ISnackbar, NavigationManager, MudBlazor.
-*@

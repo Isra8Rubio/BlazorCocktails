@@ -677,6 +677,37 @@
   },
   {
     "ContainingType": "Infraestructura.Controllers.UsersController",
+    "Method": "DeleteByUser",
+    "RelativePath": "api/Users/by-username/{user}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "Infraestructura.Controllers.UsersController",
     "Method": "CountAsync",
     "RelativePath": "api/Users/count",
     "HttpMethod": "GET",

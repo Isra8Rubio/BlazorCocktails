@@ -58,5 +58,16 @@ namespace Infraestructura.Repositories
 
         public Task<int> CountAsync(CancellationToken ct = default)
             => _userManager.Users.CountAsync(ct);
+
+        public Task<Usuario?> FindByNameAsync(string userName) =>
+            _userManager.FindByNameAsync(userName);
+
+        public async Task<Usuario?> FindByNameOrEmailAsync(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value)) return null;
+            return value.Contains('@')
+                ? await _userManager.FindByEmailAsync(value)
+                : await _userManager.FindByNameAsync(value);
+        }
     }
 }
