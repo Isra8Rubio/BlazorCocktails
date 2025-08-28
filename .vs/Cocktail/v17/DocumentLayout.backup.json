@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\shared\\ingredientdialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\shared\\ingredientdialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|c:\\users\\irubio-ws\\source\\repos\\blazorcocktails\\blazorcocktails.client\\shared\\languageswitcher.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3B887C7B-1F19-81D1-A262-915F7EC3AE26}|BlazorCocktails.Client\\BlazorCocktails.Client.csproj|solutionrelative:blazorcocktails.client\\shared\\languageswitcher.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -31,6 +35,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "IngredientDialog.razor",
+              "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Shared\\IngredientDialog.razor",
+              "RelativeDocumentMoniker": "BlazorCocktails.Client\\Shared\\IngredientDialog.razor",
+              "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Shared\\IngredientDialog.razor",
+              "RelativeToolTip": "BlazorCocktails.Client\\Shared\\IngredientDialog.razor",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACgAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-28T09:26:31.886Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "LanguageSwitcher.razor",
               "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Shared\\LanguageSwitcher.razor",
               "RelativeDocumentMoniker": "BlazorCocktails.Client\\Shared\\LanguageSwitcher.razor",
@@ -38,8 +55,7 @@
               "RelativeToolTip": "BlazorCocktails.Client\\Shared\\LanguageSwitcher.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-28T09:14:08.308Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-28T09:14:08.308Z"
             },
             {
               "$type": "Document",
@@ -49,14 +65,14 @@
               "RelativeDocumentMoniker": "BlazorCocktails.Client\\wwwroot\\css\\app.css",
               "ToolTip": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\wwwroot\\css\\app.css",
               "RelativeToolTip": "BlazorCocktails.Client\\wwwroot\\css\\app.css",
-              "ViewState": "AgIAAGEDAAAAAAAAAAAAAI8DAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAK0DAAAAAAAAAAAmwMQDAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2025-08-28T09:05:35.093Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "MainLayout.razor",
               "DocumentMoniker": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\Layout\\MainLayout.razor",
               "RelativeDocumentMoniker": "BlazorCocktails.Client\\Layout\\MainLayout.razor",
@@ -64,8 +80,7 @@
               "RelativeToolTip": "BlazorCocktails.Client\\Layout\\MainLayout.razor",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAACsAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-28T09:05:09.654Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-28T09:05:09.654Z"
             }
           ]
         }

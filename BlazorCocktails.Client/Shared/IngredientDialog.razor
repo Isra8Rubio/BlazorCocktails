@@ -10,22 +10,31 @@
 }
 else if (ingredient is null)
 {
-    <MudText Color="Color.Secondary">@L["IngredientDialog_NotFound"]</MudText>
+    <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true">
+        @L["IngredientDialog_NotFound"]
+    </MudAlert>
 }
 else
 {
     <MudStack Spacing="2">
-        @if (!string.IsNullOrWhiteSpace(ingredient.Type))
-        {
-            <MudStack AlignItems="AlignItems.Center" Spacing="0">
-                <MudText Color="Color.Primary" Typo="Typo.subtitle2">@L["IngredientDialog_Type"]</MudText>
-                <MudText Typo="Typo.body1">@ingredient.Type</MudText>
-            </MudStack>
-        }
+        <MudPaper Class="ing-header pa-3" Elevation="0">
+            <MudAvatar Class="ing-avatar" Size="Size.Medium"
+                       Icon="@Icons.Material.Filled.LocalBar" />
+            <div class="ing-title">
+                <MudText Typo="Typo.h6">@Name</MudText>
+
+                @if (!string.IsNullOrWhiteSpace(ingredient.Type))
+                {
+                    <MudChip T="string" Class="ing-chip" Variant="Variant.Outlined" Size="Size.Small">
+                        @ingredient.Type
+                    </MudChip>
+                }
+            </div>
+        </MudPaper>
 
         @if (!string.IsNullOrWhiteSpace(ingredient.Description))
         {
-            <MudPaper Class="pa-3" Elevation="0" Style="max-height:260px;overflow:auto">
+            <MudPaper Class="ing-body pa-3" Elevation="0">
                 <MudText>@ingredient.Description</MudText>
             </MudPaper>
         }
@@ -60,4 +69,3 @@ else
         }
     }
 }
-

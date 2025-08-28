@@ -948,3 +948,38 @@ html, body, #app {
     padding-right: 8px;
 }
 
+/* === IngredientDialog look & feel ligero === */
+.ing-header {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    background: linear-gradient(90deg, rgba(255,138,101,.18), rgba(255,138,101,.06));
+    border: 1px solid rgba(255,138,101,.25);
+    border-radius: 12px;
+}
+
+.ing-title {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.ing-avatar.mud-avatar {
+    background-color: #FF8A65 !important;
+    color: #fff !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
+
+.ing-chip.mud-chip {
+    border-color: #FF8A65 !important;
+    color: #FF8A65 !important;
+}
+
+    .ing-chip.mud-chip:hover,
+    .ing-chip.mud-chip:focus-visible {
+        background-color: #FF8A65 !important;
+        color: #fff !important;
+        border-color: #FF8A65 !important;
+    }
+
+
