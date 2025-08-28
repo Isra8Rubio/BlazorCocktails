@@ -1,12 +1,14 @@
-using System.Globalization;
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.JSInterop;
-using MudBlazor.Services;
+using API.APIService;
 using BlazorCocktails.Client;
 using BlazorCocktails.Client.Services;
-using API.APIService;
+using BlazorCocktails.Client.Shared.Validators;
+using FluentValidation;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.JSInterop;
+using MudBlazor.Services;
+using System.Globalization;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
@@ -37,6 +39,13 @@ builder.Services.AddHttpClient<APIClient>(client =>
     client.BaseAddress = new Uri("https://localhost:7131");
 })
 .AddHttpMessageHandler<AuthRedirectHandler>();
+
+// -------------------------------------F
+// Validación
+// -------------------------------------
+builder.Services.AddValidatorsFromAssemblyContaining<CredentialsUserDTOValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<ForgotPasswordDTOValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<ResetModelValidator>();
 
 // -------------------------------------
 // Localización

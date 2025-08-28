@@ -846,16 +846,14 @@ html, body, #app {
     height: 100% !important;
 }
 
-/* Imagen a pantalla del frame, sin bandas */
 .hc-img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* llena y recorta lo justo */
+    object-fit: cover;
     object-position: center;
     display: block;
 }
 
-/* Texto de la derecha */
 .carousel-copy .copy-block {
     max-width: 560px;
 }
@@ -871,46 +869,35 @@ html, body, #app {
     line-height: 1.5;
 }
 
-/* Gap grande entre secciones */
 :root {
     --section-gap-xl: clamp(72px, 9vw, 160px);
 }
 
 .stats-split {
-    margin-bottom: var(--section-gap-xl) !important; /* hueco debajo de los gráficos */
+    margin-bottom: var(--section-gap-xl) !important;
 }
 
 .carousel-split {
-    margin-top: var(--section-gap-xl) !important; /* hueco encima del carrusel */
+    margin-top: var(--section-gap-xl) !important;
     position: relative;
-    z-index: 0; /* por si hay tooltips arriba */
+    z-index: 0;
 }
-/* La fila toma la altura del elemento más alto (el carrusel) */
+
 .carousel-split {
     margin-top: clamp(72px, 9vw, 160px);
 }
 
-/* Columna de texto: centro perfecto vertical y horizontal */
 .carousel-copy {
     display: grid;
-    place-items: center; /* centra el hijo en ambos ejes */
+    place-items: center;
     padding: 8px;
 }
 
-    /* El bloque de texto centrado y con ancho cómodo */
     .carousel-copy .copy-block {
         max-width: 560px;
-        text-align: center; /* centra las líneas del texto */
+        text-align: center;
     }
 
-/* Móvil: sin cambios, ya queda centrado */
-@media (max-width: 960px) {
-    .carousel-split {
-        margin-top: 48px;
-    }
-}
-
-/* En móvil: apila y deja aire */
 @media (max-width: 960px) {
     .carousel-split {
         margin-top: 28px;
@@ -921,12 +908,12 @@ html, body, #app {
     }
 }
 
-/* más separación entre botones superiores */
 .appbar-actions-col .appbar-row.top {
-    gap: .9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-/* estilo del botón ADMIN (sin azul) */
 .appbar-admin {
     border-color: rgba(255,255,255,.75) !important;
     color: #fff !important;
@@ -938,4 +925,26 @@ html, body, #app {
         border-color: rgba(255,255,255,.85) !important;
         color: #fff !important;
     }
+
+.appbar-actions-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+    .appbar-actions-col .appbar-row.bottom {
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+        padding-right: 0;
+    }
+
+.lang-switcher {
+    margin-right: 0 !important;
+}
+
+.appbar-2rows .mud-toolbar {
+    padding-right: 8px;
+}
 

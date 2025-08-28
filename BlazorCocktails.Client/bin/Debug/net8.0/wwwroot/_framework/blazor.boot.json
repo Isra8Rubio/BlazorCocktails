@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "BlazorCocktails.Client",
   "resources": {
-    "hash": "sha256-R3MJFrp59x41C74wCZ98De7tTXt1S1ko2vmNOkkKNpc=",
+    "hash": "sha256-crWdSzry2RckjJ94PrMMJwce76nSxL2WnymDQOtDh8k=",
     "jsModuleNative": {
       "dotnet.native.8.0.18.4b91dzoo3b.js": "sha256-1QpKPnxEuRCElzcp+e3MrovJeAJkuzqKmRQay/6Aa08="
     },
@@ -15,6 +15,9 @@
       "icudt.dat": "sha256-tO5O5YzMTVSaKBboxAqezOQL9ewmupzV2JrB5Rkc8a4="
     },
     "assembly": {
+      "Blazored.FluentValidation.wasm": "sha256-MSQuUWmw/uBMui2/n4kdEKi0h5j0G+EuO1sM6KK6ltM=",
+      "FluentValidation.wasm": "sha256-UzXm5ONFC2YfuSahJleOJiIJNURatHcRQIkXq2hoPew=",
+      "FluentValidation.DependencyInjectionExtensions.wasm": "sha256-qLaBdhUjR5bEUz7HCh/0M4bjp4OwaFuaS7hTGLishqk=",
       "Microsoft.AspNetCore.Authorization.wasm": "sha256-cF/PLwBpNWzO0iv0jUNLrwtSkbaiuMyMrnyDTzS8hPE=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-JI3+JHhOyNzePVhcAHAdypjptNEZWE3B9W9CzixVrOA=",
       "Microsoft.AspNetCore.Components.Authorization.wasm": "sha256-7SRRWn3PrRA89BEAsxPfgR+/9Z90ube9+vrZwjcL/Gg=",
@@ -223,18 +226,18 @@
       "System.Private.CoreLib.wasm": "sha256-oBqNgH7R24FqGbaL3XnfQDqn3rk28jERFosgAryKT6U=",
       "ApiClient.wasm": "sha256-cMLV46ihgqR2PQVBrmzBjffSo0FK+0Xo/ng/DKBvdDw=",
       "Newtonsoft.Json.wasm": "sha256-uv8FUjHHm+iADjXK+clfLxlpLxfTcy0koZKX59RW9Ck=",
-      "BlazorCocktails.Client.wasm": "sha256-5DDDfcSHvvfojiUW6mWYCTz98rlt3+iNW0Ul+MK/UuI="
+      "BlazorCocktails.Client.wasm": "sha256-IBmhFsKQUZTawSNnUTeOmi3BHIMR12EobiJrvSzeoww="
     },
     "pdb": {
       "ApiClient.pdb": "sha256-XDdkTZ5HvLYiw/tEd0h0FHnSNviq7gFIH2OtR0kEyT8=",
-      "BlazorCocktails.Client.pdb": "sha256-/fJr5IdDZh0kJ0FMYVrphlvXnnvbptxu4xeoVw42Otc="
+      "BlazorCocktails.Client.pdb": "sha256-uru/IATagxCv8ozmL+U1yEwk8iHzqOirQHPRx6FCbn4="
     },
     "satelliteResources": {
       "en-US": {
-        "BlazorCocktails.Client.resources.wasm": "sha256-kh6zN6FuaneYmk8tnhR4wUjK9WCEx7EeaJ1YNxBcBMU="
+        "BlazorCocktails.Client.resources.wasm": "sha256-UjzE6olBV+qUOGrUiEAPjVNxdlmqWW0f6TDfIxO30NM="
       },
       "es-ES": {
-        "BlazorCocktails.Client.resources.wasm": "sha256-JHD7jcgec95eU8cdJdrdjo44d631BJ9Z6yz9LHZ+GN8="
+        "BlazorCocktails.Client.resources.wasm": "sha256-etUdNJ+wR9tfgJAzcBkUD+JIAKucNyzdH2ZU5oguMlg="
       }
     }
   },

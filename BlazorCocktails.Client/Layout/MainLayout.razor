@@ -35,6 +35,7 @@
                         <MudButton Variant="Variant.Outlined"
                                    Color="Color.Inherit"
                                    Class="appbar-admin"
+                                   Size="Size.Small"
                                    Href="/admin"
                                    StartIcon="@Icons.Material.Filled.AdminPanelSettings">
                             ADMIN
@@ -99,6 +100,9 @@
 
     private bool IsAuthenticated => !string.IsNullOrWhiteSpace(APIClient.Token);
 
+    private void ToggleDrawer() => _drawerOpen = !_drawerOpen;
+    private void OnTokenChanged() => InvokeAsync(StateHasChanged);
+
     protected override void OnInitialized()
     {
         APIClient.TokenChanged += OnTokenChanged;
@@ -115,8 +119,6 @@
             APIClient.Token = token;
         }
     }
-
-    private void OnTokenChanged() => InvokeAsync(StateHasChanged);
 
     private void OnLocationChanged(object? s, LocationChangedEventArgs e)
     {
@@ -135,19 +137,17 @@
             path.StartsWith("reset-password");
     }
 
-    public void Dispose()
-    {
-        APIClient.TokenChanged -= OnTokenChanged;
-        Nav.LocationChanged -= OnLocationChanged;
-    }
-
-    private void ToggleDrawer() => _drawerOpen = !_drawerOpen;
-
     private async Task LogoutAsync()
     {
         APIClient.Token = null;
         await JS.InvokeVoidAsync("localStorage.removeItem", "authToken");
         await JS.InvokeVoidAsync("sessionStorage.removeItem", "authToken");
         Nav.NavigateTo("/login", forceLoad: true);
+    }
+
+    public void Dispose()
+    {
+        APIClient.TokenChanged -= OnTokenChanged;
+        Nav.LocationChanged -= OnLocationChanged;
     }
 }

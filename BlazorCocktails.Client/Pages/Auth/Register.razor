@@ -2,8 +2,10 @@
 @attribute [AllowAnonymous]
 
 @using API.APIService
-@using BlazorCocktails.Client.Shared.Helper
+@using Blazored.FluentValidation
 @using Microsoft.Extensions.Localization
+@using Microsoft.AspNetCore.Components.Forms
+@using BlazorCocktails.Client.Shared.Helper
 
 @inject APIClient Api
 @inject ISnackbar Snackbar
@@ -19,15 +21,17 @@
         </div>
 
         <div class="pa-6">
-            <MudForm @ref="_form">
+            <EditForm Model="_model"
+                      OnValidSubmit="RegisterAsync"
+                      OnInvalidSubmit="InvalidSubmit">
+                <FluentValidationValidator DisableAssemblyScanning="true" />
+
                 <MudTextField T="string"
                               Variant="Variant.Filled"
                               Label="@L["Register_EmailLabel"]"
                               Placeholder="@L["Register_EmailPlaceholder"]"
                               @bind-Value="_model.Email"
                               For="@(() => _model.Email)"
-                              Required="true"
-                              Validation="@(new Func<string?, string?>(EmailValidator))"
                               Immediate="true"
                               Disabled="@_busy"
                               Adornment="Adornment.Start"
@@ -40,8 +44,6 @@
                               @bind-Value="_model.Password"
                               For="@(() => _model.Password)"
                               InputType="@(_show1 ? InputType.Text : InputType.Password)"
-                              Required="true"
-                              Validation="@(new Func<string?, string?>(PasswordValidator))"
                               Immediate="true"
                               Disabled="@_busy"
                               Adornment="Adornment.End"
@@ -52,10 +54,9 @@
                               T="string"
                               Variant="Variant.Filled"
                               Label="@L["Register_ConfirmLabel"]"
-                              @bind-Value="_confirm"
+                              @bind-Value="_model.ConfirmPassword"
+                              For="@(() => _model.ConfirmPassword)"
                               InputType="@(_show2 ? InputType.Text : InputType.Password)"
-                              Required="true"
-                              Validation="@(new Func<string?, string?>(ConfirmValidator))"
                               Immediate="true"
                               Disabled="@_busy"
                               Adornment="Adornment.End"
@@ -65,59 +66,35 @@
                 <MudStack Row="true" Spacing="2" Class="mt-6">
                     <MudButton Variant="Variant.Filled"
                                Class="auth-btn"
-                               OnClick="RegisterAsync"
+                               ButtonType="ButtonType.Submit"
                                Disabled="@_busy">
                         @(_busy? L["Register_Working"] : L["Register_Submit"])
                     </MudButton>
 
                     <MudButton Variant="Variant.Outlined"
                                Class="auth-btn-outline"
-                               OnClick="@(() => Nav.NavigateTo("/login"))"
+                               Href="/login"
                                Disabled="@_busy">
                         @L["Register_GoLogin"]
                     </MudButton>
                 </MudStack>
-            </MudForm>
+            </EditForm>
         </div>
     </div>
 </MudPaper>
 
 @code {
-    // ---------- Estado ----------
-    private MudForm? _form;
     private bool _busy, _show1, _show2;
-    private string _confirm = string.Empty;
     private RegisterUserDTO _model = new();
 
-    // ---------- Validación ----------
-    private string? EmailValidator(string? v)
+    private void InvalidSubmit(EditContext ctx)
     {
-        if (string.IsNullOrWhiteSpace(v)) return L["Register_EmailRequired"];
-        try { _ = new System.Net.Mail.MailAddress(v); return null; }
-        catch { return L["Register_EmailInvalid"]; }
+        var first = ctx.GetValidationMessages().FirstOrDefault() ?? L["Err_Generic"];
+        Snackbar.Add(first, Severity.Warning);
     }
 
-    private string? PasswordValidator(string? v)
-    {
-        if (string.IsNullOrWhiteSpace(v)) return L["Register_PasswordRequired"];
-        if (v.Length < 6) return L["Register_PasswordMin"];
-        return null;
-    }
-
-    private string? ConfirmValidator(string? v)
-    {
-        if (string.IsNullOrWhiteSpace(v)) return L["Register_ConfirmRequired"];
-        if (v != _model.Password) return L["Register_PasswordsDontMatch"];
-        return null;
-    }
-
-    // ---------- Acción ----------
     private async Task RegisterAsync()
     {
-        await _form!.Validate();
-        if (!_form.IsValid) return;
-
-        _model.ConfirmPassword = _confirm;
         _busy = true;
         try
         {

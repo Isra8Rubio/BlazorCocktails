@@ -399,3 +399,5 @@ C:\Users\IRubio-WS\source\repos\BlazorCocktails\API\obj\Debug\net8.0\refint\Cock
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\API\obj\Debug\net8.0\Cocktail.api.pdb
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\API\obj\Debug\net8.0\Cocktail.api.genruntimeconfig.cache
 C:\Users\IRubio-WS\source\repos\BlazorCocktails\API\obj\Debug\net8.0\ref\Cocktail.api.dll
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\API\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
+C:\Users\IRubio-WS\source\repos\BlazorCocktails\API\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll

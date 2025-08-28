@@ -1,21 +1,13 @@
 ﻿using Core.DTO;
-using Core.Entities;
 using FluentValidation;
-using Microsoft.AspNetCore.Identity;
 
 public class RegisterUserDTOValidator : AbstractValidator<RegisterUserDTO>
 {
-    public RegisterUserDTOValidator(UserManager<Usuario> userManager)
+    public RegisterUserDTOValidator()
     {
         RuleFor(x => x.Email)
             .NotEmpty().WithMessage("El email es obligatorio.")
-            .EmailAddress().WithMessage("Formato de email inválido.")
-            .MustAsync(async (email, ct) =>
-            {
-                var u = await userManager.FindByEmailAsync(email);
-                return u == null;
-            })
-            .WithMessage("Ya existe un usuario registrado con ese email.");
+            .EmailAddress().WithMessage("Formato de email inválido.");
 
         RuleFor(x => x.Password)
             .NotEmpty().WithMessage("La contraseña es obligatoria.")

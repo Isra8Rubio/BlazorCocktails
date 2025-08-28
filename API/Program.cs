@@ -2,6 +2,7 @@ using Core.DTO;
 using Core.Entities;
 using Core.Validators;
 using FluentValidation;
+using FluentValidation.AspNetCore;
 using Infraestructura.Data;
 using Infraestructura.Repositories;
 using Infraestructura.Services;
@@ -42,8 +43,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(opts =>
 
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<UserService>();
-builder.Services.AddTransient<IValidator<ForgotPasswordDTO>, ForgotPasswordDTOValidator>();
-builder.Services.AddTransient<IValidator<ResetPasswordDTO>, ResetPasswordDTOValidator>();
 
 
 
@@ -58,9 +57,7 @@ builder.Services.AddCors(opt =>
 });
 
 
-
-
-// HostedService para refrescar cada X minutos
+// HostedService para refrescar cada X segundos
 builder.Services.AddHostedService<RandomCocktailHostedService>();
 builder.Services.AddScoped<RandomCocktailRepository>();
 
@@ -152,8 +149,14 @@ builder.Services.AddOpenApiDocument(o =>
 });
 
 
+// FluentValidation
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
+
 builder.Services.AddScoped<IValidator<CredentialsUserDTO>, CredentialsUserDTOValidator>();
 builder.Services.AddScoped<IValidator<RegisterUserDTO>, RegisterUserDTOValidator>();
+builder.Services.AddTransient<IValidator<ForgotPasswordDTO>, ForgotPasswordDTOValidator>();
+builder.Services.AddTransient<IValidator<ResetPasswordDTO>, ResetPasswordDTOValidator>();
 
 
 builder.Services.AddEndpointsApiExplorer();

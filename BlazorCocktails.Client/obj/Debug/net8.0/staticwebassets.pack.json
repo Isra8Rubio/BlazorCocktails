@@ -9,10 +9,6 @@
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
     },
     {
-      "Id": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\obj\\Debug\\net8.0\\scopedcss\\bundle\\BlazorCocktails.Client.styles.css",
-      "PackagePath": "staticwebassets\\BlazorCocktails.Client.styles.css"
-    },
-    {
       "Id": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },

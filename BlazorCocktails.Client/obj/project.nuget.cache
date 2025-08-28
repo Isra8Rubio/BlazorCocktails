@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "G5dOlOy4fss=",
+  "dgSpecHash": "ctUzPi7lhq4=",
   "success": true,
   "projectFilePath": "C:\\Users\\IRubio-WS\\source\\repos\\BlazorCocktails\\BlazorCocktails.Client\\BlazorCocktails.Client.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\IRubio-WS\\.nuget\\packages\\blazored.fluentvalidation\\2.2.0\\blazored.fluentvalidation.2.2.0.nupkg.sha512",
+    "C:\\Users\\IRubio-WS\\.nuget\\packages\\fluentvalidation\\12.0.0\\fluentvalidation.12.0.0.nupkg.sha512",
+    "C:\\Users\\IRubio-WS\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\12.0.0\\fluentvalidation.dependencyinjectionextensions.12.0.0.nupkg.sha512",
     "C:\\Users\\IRubio-WS\\.nuget\\packages\\microsoft.aspnetcore.authorization\\8.0.18\\microsoft.aspnetcore.authorization.8.0.18.nupkg.sha512",
     "C:\\Users\\IRubio-WS\\.nuget\\packages\\microsoft.aspnetcore.components\\8.0.18\\microsoft.aspnetcore.components.8.0.18.nupkg.sha512",
     "C:\\Users\\IRubio-WS\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\8.0.18\\microsoft.aspnetcore.components.analyzers.8.0.18.nupkg.sha512",

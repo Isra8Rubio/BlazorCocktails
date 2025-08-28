@@ -601,7 +601,7 @@
     <value>Id del usuario*</value>
   </data>
   <data name="Admin_UserIdRequired" xml:space="preserve">
-    <value>El Id del usuario es obligatorio.</value>
+    <value>El nombre o correo del usuario es obligatorio.</value>
   </data>
   <data name="Admin_DeleteConfirmTitle" xml:space="preserve">
     <value>Confirmar eliminación</value>
@@ -623,5 +623,11 @@
   </data>
   <data name="Common_Cancel" xml:space="preserve">
     <value>Cancelar</value>
+  </data>
+  <data name="Home_Title" xml:space="preserve">
+    <value>Cocteleria</value>
+  </data>
+  <data name="Admin_UserOrEmailLabel" xml:space="preserve">
+    <value>Escribe el usuario o correo</value>
   </data>
 </root>
