@@ -229,7 +229,7 @@ a, .btn-link {
 /* =========================================================
    9) App Bar
    ========================================================= */
-/* ===== AppBar coral con degradado invertido (oscuro → claro) ===== */
+
 .appbar-2rows {
     position: relative;
     background: linear-gradient(90deg, var(--appbar-end) 0%, var(--appbar-start) 100%) !important;
@@ -248,12 +248,10 @@ a, .btn-link {
         background: rgba(0,0,0,.12);
     }
 
-    /* el toolbar transparente para que se vea el gradiente */
     .appbar-2rows .mud-toolbar {
         background: transparent !important;
     }
 
-    /* texto e iconos en blanco */
     .appbar-2rows .mud-typography,
     .appbar-2rows .mud-icon-button,
     .appbar-2rows .mud-link,
@@ -262,7 +260,6 @@ a, .btn-link {
     }
 
 
-    /* Botón “Sign out” outlined: borde y hover acordes al AppBar */
     .appbar-2rows .appbar-btn {
         color: #fff !important;
         border-color: rgba(255,255,255,.85) !important;
@@ -444,7 +441,7 @@ a, .btn-link {
     position: relative;
     border-radius: 16px;
     overflow: hidden;
-    margin: 8px 0 24px;
+    margin: 8px 0 99px;
     min-height: 280px;
     display: flex;
     align-items: center;
@@ -561,47 +558,52 @@ a, .btn-link {
 
 
 /* =========================================================
-   13) RANDOM / STATS (maqueta específica)
+   RANDOM (compact + flat) — mínimo necesario
    ========================================================= */
-.random-text-block {
-    padding: 1.5rem 1.25rem;
-}
-
-.random-widget-frame {
-    padding: 1rem;
-    border-radius: 1rem;
-    background: rgba(255,255,255,0.02);
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.04) inset;
-}
-
-.stats-center {
-    height: 100%;
-    padding: 2.25rem 2rem;
-    border-radius: 1.25rem;
-    text-align: center;
+.random-compact {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+    .random-compact .rw-title {
+        width: 100%;
+        text-align: center;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: #FF8A65;
+        background: linear-gradient(90deg,#FF8A65 0%,#FF5E8A 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        filter: drop-shadow(0 0 .2rem rgba(255,138,101,.35));
+    }
+
+.rw-inline {
+    display: flex;
+    align-items: center;
     justify-content: center;
-    background: radial-gradient(120% 120% at 50% 0%, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.0) 40%), linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 100%);
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.06) inset, 0 12px 30px rgba(0,0,0,0.25);
+    gap: 16px;
 }
 
-.stats-title {
-    letter-spacing: .12em;
-    text-transform: uppercase;
+.rf-chip-link {
+    text-decoration: none;
+    color: inherit;
 }
 
-.stats-subtitle {
-    max-width: 36ch;
-    margin: 0 auto;
-    line-height: 1.6;
+.rf-chip.mud-chip {
+    border-color: #FF8A65 !important;
+    color: #FF8A65 !important;
 }
 
-.stats-list {
-    max-width: 34ch;
-    margin: 0 auto;
-    text-align: left;
-}
+    .rf-chip.mud-chip:hover,
+    .rf-chip.mud-chip:focus-visible {
+        background-color: #FF8A65 !important;
+        color: #fff !important;
+        border-color: #FF8A65 !important;
+    }
+
 
 /* =========================================================
    14) Responsive
@@ -616,7 +618,6 @@ a, .btn-link {
     }
 }
 
-/* === Espaciados entre secciones === */
 .random-split {
     margin-bottom: 145px !important;
 }
@@ -635,115 +636,59 @@ a, .btn-link {
 }
 
 /* =========================================================
-   15) RandomCocktailWidget compacto (COLOREADO)
+   15) RandomCocktailWidget flat
    ========================================================= */
-.random-compact {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: 340px;
-    min-height: 210px;
-    margin: 0 auto;
+.random-compact.flat {
+    max-width: 420px;
+    min-height: 110px;
     padding: 12px 14px;
-    border-radius: 16px;
-    background: linear-gradient(135deg, rgba(255,138,101,.12), rgba(51,214,194,.10));
-    border: 1px solid rgba(255,138,101,.26);
-    box-shadow: 0 10px 24px rgba(0,0,0,.22);
-    overflow: hidden;
-}
-
-    .random-compact::before, .random-compact::after {
-        content: "";
-        position: absolute;
-        pointer-events: none;
-        z-index: 0;
-    }
-
-    .random-compact::before {
-        top: -28%;
-        left: -18%;
-        width: 60%;
-        height: 60%;
-        background: radial-gradient(ellipse at top left, rgba(255,138,101,.22), transparent 60%);
-    }
-
-    .random-compact::after {
-        right: -22%;
-        bottom: -30%;
-        width: 60%;
-        height: 60%;
-        background: radial-gradient(ellipse at bottom right, rgba(51,214,194,.18), transparent 60%);
-    }
-
-
-.rw-head {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    margin-bottom: 6px;
-    padding-bottom: 6px;
-    border-bottom: 1px dashed rgba(255,138,101,.28);
-}
-
-.rw-title {
-    letter-spacing: .16em;
-    text-transform: uppercase;
-    font-weight: 800;
-    background: linear-gradient(90deg, var(--auth-start), var(--auth-end));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.rw-refresh {
-    border-radius: 999px;
-    border: 1px solid rgba(255,255,255,.22);
-    background: rgba(255,255,255,.06);
-    transition: transform .15s ease, filter .15s ease, background .15s ease;
-    color: var(--summer-accent);
-}
-
-    .rw-refresh:hover {
-        transform: translateY(-1px);
-        filter: brightness(1.1);
-        background: rgba(255,255,255,.10);
-    }
-
-
-.rw-card {
-    position: relative;
-    z-index: 1;
     border-radius: 14px;
-    background: rgba(255,255,255,.04);
-    border: 1px solid rgba(255,255,255,.10);
-    transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
-    margin: 8px auto 0;
 }
 
-    .rw-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 14px 28px rgba(0,0,0,.28);
-        border-color: rgba(255,255,255,.16);
+    .random-compact.flat .rw-head {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
-    .rw-card .mud-card-media {
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 8px 18px rgba(0,0,0,.28);
+    .random-compact.flat .rw-title {
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        font-weight: 800;
+        background: linear-gradient(90deg, var(--auth-start), var(--auth-end));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
     }
 
+    .random-compact.flat .rw-refresh {
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,.22);
+        background: rgba(255,255,255,.06);
+    }
 
-.rw-card-content {
-    text-align: center;
+    .random-compact.flat .rw-card,
+    .random-compact.flat .rw-card-content,
+    .random-compact.flat .rw-name {
+        display: none !important;
+    }
+
+.rf-chip.mud-chip {
+    margin-top: 8px;
+    border-color: #FF8A65 !important;
+    color: #FF8A65 !important;
 }
 
-.rw-name {
-    font-weight: 700;
-    letter-spacing: .02em;
-    text-shadow: 0 1px 1px rgba(0,0,0,.35);
-}
+    .rf-chip.mud-chip:hover,
+    .rf-chip.mud-chip:focus-visible {
+        background-color: #FF8A65 !important;
+        color: #fff !important;
+        border-color: #FF8A65 !important;
+    }
+
 
 /* =========================================================
    16) Extras / layout y footer
@@ -764,7 +709,6 @@ a, .btn-link {
 }
 
 
-/* Footer coral suave */
 .app-footer {
     padding: 12px 0;
     background: linear-gradient(135deg, #E5674E, rgba(255,138,101,.08));
@@ -772,7 +716,6 @@ a, .btn-link {
     color: #fff;
 }
 
-/* Bordes según tema pero en coral */
 .summer-dark .app-footer {
     border-top: 1px solid rgba(255,138,101,.35);
 }
@@ -825,12 +768,10 @@ html, body, #app {
     }
 }
 
-/* Espacio respecto a la sección anterior */
 .carousel-split {
     margin-top: clamp(28px, 5vw, 100px);
 }
 
-/* Frame 16:9, bordes y overflow para el carrusel */
 .hc-frame {
     aspect-ratio: 16 / 9;
     width: 100%;
@@ -838,7 +779,6 @@ html, body, #app {
     overflow: hidden;
 }
 
-/* Forzar que todo dentro del MudCarousel llene el frame */
 .hc-fill,
 .hc-fill .mud-carousel-content,
 .hc-fill .mud-carousel-item,
@@ -948,7 +888,6 @@ html, body, #app {
     padding-right: 8px;
 }
 
-/* === IngredientDialog look & feel ligero === */
 .ing-header {
     display: flex;
     align-items: center;

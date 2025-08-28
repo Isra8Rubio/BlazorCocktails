@@ -34,25 +34,6 @@
     </div>
 </div>
 
-<!-- =========================
-     RANDOM (texto izq. + widget dcha.)
-     ========================= -->
-<MudGrid Spacing="3" Class="home-section random-split" AlignItems="Center">
-    <MudItem xs="12" md="6" Class="random-left vcenter">
-        <div class="random-text-block random-emph">
-            <MudText Typo="Typo.h4" Align="Align.Center" Class="random-lead">
-                @L["Home_RandomHeading"]
-            </MudText>
-            <MudText Typo="Typo.subtitle1" Align="Align.Center" Class="random-sublead">
-                @L["Home_RandomCopy"]
-            </MudText>
-        </div>
-    </MudItem>
-
-    <MudItem xs="12" md="6" Class="center-col">
-        <RandomCocktailWidget Compact="true" />
-    </MudItem>
-</MudGrid>
 
 <!-- =========================
      STATS (charts + texto central)
@@ -77,12 +58,6 @@
             <MudText Class="stats-subtitle opacity-80 mb-4">
                 @L["Home_StatsCopy"]
             </MudText>
-
-            <MudList T="string" Dense="true" Class="opacity-80 stats-list">
-                <MudListItem>@L["Home_StatsPoint1"]</MudListItem>
-                <MudListItem>@L["Home_StatsPoint2"]</MudListItem>
-                <MudListItem>@L["Home_StatsPoint3"]</MudListItem>
-            </MudList>
         </div>
     </MudItem>
 
@@ -132,6 +107,13 @@
                 @L["Home_CarouselCopy_Body"]
             </MudText>
         </div>
+    </MudItem>
+</MudGrid>
+
+<!-- RANDOM plano centrado -->
+<MudGrid Class="home-section" Justify="Justify.Center">
+    <MudItem xs="12" md="5" Class="center-col">
+        <RandomCocktailWidget Compact="true" Flat="true" ShowName="true" NameRightOfIcon="true" />
     </MudItem>
 </MudGrid>
 
